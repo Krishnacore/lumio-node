@@ -2,12 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::DKGMessage;
-use aptos_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_network::{
+use lumio_config::network_id::{NetworkId, PeerNetworkId};
+use lumio_network::{
     application::{error::Error, interface::NetworkClientInterface},
     ProtocolId,
 };
-use aptos_types::PeerId;
+use lumio_types::PeerId;
 use bytes::Bytes;
 use std::{collections::HashMap, time::Duration};
 

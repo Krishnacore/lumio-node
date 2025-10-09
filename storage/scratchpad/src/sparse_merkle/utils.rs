@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::sparse_merkle::HashValueRef;
-use aptos_crypto::HashValue;
+use lumio_crypto::HashValue;
 
 /// Returns the shard id of the hashed key.
 pub fn get_state_shard_id(key: &HashValue) -> u8 {

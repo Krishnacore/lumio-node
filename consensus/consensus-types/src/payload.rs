@@ -3,7 +3,7 @@
 
 use crate::proof_of_store::{BatchInfo, ProofOfStore};
 use anyhow::ensure;
-use aptos_types::{transaction::SignedTransaction, PeerId};
+use lumio_types::{transaction::SignedTransaction, PeerId};
 use core::fmt;
 use serde::{Deserialize, Serialize};
 use std::{

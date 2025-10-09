@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::storage::ResponseDataProgressTracker;
-use aptos_time_service::TimeService;
+use lumio_time_service::TimeService;
 
 #[test]
 fn data_items_fits_in_response() {

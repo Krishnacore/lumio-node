@@ -2,16 +2,16 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos::test::CliTestFramework;
-use aptos_config::{config::NodeConfig, keys::ConfigKey, utils::get_available_port};
-use aptos_crypto::ed25519::Ed25519PrivateKey;
-use aptos_faucet_core::server::{FunderKeyEnum, RunConfig};
-use aptos_forge::{ActiveNodesGuard, Factory, LocalFactory, LocalSwarm, Node};
-use aptos_framework::ReleaseBundle;
-use aptos_genesis::builder::{InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn};
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_types::chain_id::ChainId;
+use lumio::test::CliTestFramework;
+use lumio_config::{config::NodeConfig, keys::ConfigKey, utils::get_available_port};
+use lumio_crypto::ed25519::Ed25519PrivateKey;
+use lumio_faucet_core::server::{FunderKeyEnum, RunConfig};
+use lumio_forge::{ActiveNodesGuard, Factory, LocalFactory, LocalSwarm, Node};
+use lumio_framework::ReleaseBundle;
+use lumio_genesis::builder::{InitConfigFn, InitGenesisConfigFn, InitGenesisStakeFn};
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_types::chain_id::ChainId;
 use once_cell::sync::Lazy;
 use rand::rngs::OsRng;
 use std::{num::NonZeroUsize, sync::Arc};
@@ -49,13 +49,13 @@ impl SwarmBuilder {
         Self::new(true, num_validators)
     }
 
-    pub fn with_aptos(mut self) -> Self {
-        self.genesis_framework = Some(aptos_cached_packages::head_release_bundle().clone());
+    pub fn with_lumio(mut self) -> Self {
+        self.genesis_framework = Some(lumio_cached_packages::head_release_bundle().clone());
         self
     }
 
-    pub fn with_aptos_testnet(mut self) -> Self {
-        self.genesis_framework = Some(aptos_framework::testnet_release_bundle().clone());
+    pub fn with_lumio_testnet(mut self) -> Self {
+        self.genesis_framework = Some(lumio_framework::testnet_release_bundle().clone());
         self
     }
 
@@ -86,7 +86,7 @@ impl SwarmBuilder {
 
     // Gas is not enabled with this setup, it's enabled via forge instance.
     pub async fn build_inner(&mut self) -> anyhow::Result<LocalSwarm> {
-        ::aptos_logger::Logger::new().init();
+        ::lumio_logger::Logger::new().init();
         info!("Preparing to finish compiling");
         // TODO change to return Swarm trait
         // Add support for forge
@@ -175,9 +175,9 @@ impl SwarmBuilder {
 }
 
 // Gas is not enabled with this setup, it's enabled via forge instance.
-pub async fn new_local_swarm_with_aptos(num_validators: usize) -> LocalSwarm {
+pub async fn new_local_swarm_with_lumio(num_validators: usize) -> LocalSwarm {
     SwarmBuilder::new_local(num_validators)
-        .with_aptos()
+        .with_lumio()
         .build()
         .await
 }
@@ -185,7 +185,7 @@ pub async fn new_local_swarm_with_aptos(num_validators: usize) -> LocalSwarm {
 #[tokio::test]
 async fn test_prevent_starting_nodes_twice() {
     // Create a validator swarm of 1 validator node
-    let mut swarm = new_local_swarm_with_aptos(1).await;
+    let mut swarm = new_local_swarm_with_lumio(1).await;
 
     assert!(swarm.launch().await.is_err());
     let validator = swarm.validators_mut().next().unwrap();

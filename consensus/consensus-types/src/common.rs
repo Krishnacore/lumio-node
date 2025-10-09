@@ -7,13 +7,13 @@ use crate::{
     proof_of_store::{BatchInfo, ProofCache, ProofOfStore},
 };
 use anyhow::ensure;
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{CryptoHash, CryptoHasher},
     HashValue,
 };
-use aptos_crypto_derive::CryptoHasher;
-use aptos_logger::prelude::*;
-use aptos_types::{
+use lumio_crypto_derive::CryptoHasher;
+use lumio_logger::prelude::*;
+use lumio_types::{
     account_address::AccountAddress,
     transaction::{ReplayProtector, SignedTransaction},
     validator_verifier::ValidatorVerifier,

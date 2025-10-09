@@ -4,7 +4,7 @@
 
 #![forbid(unsafe_code)]
 
-use aptos_types::{
+use lumio_types::{
     contract_event::ContractEvent, ledger_info::LedgerInfoWithSignatures, transaction::Transaction,
 };
 use async_trait::async_trait;
@@ -405,8 +405,8 @@ impl ConsensusSyncTargetNotification {
 #[cfg(test)]
 mod tests {
     use crate::{ConsensusNotification, ConsensusNotificationSender, Error};
-    use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
-    use aptos_types::{
+    use lumio_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+    use lumio_types::{
         account_address::AccountAddress,
         aggregate_signature::AggregateSignature,
         block_info::BlockInfo,
@@ -627,6 +627,6 @@ mod tests {
     }
 
     fn create_runtime() -> Runtime {
-        aptos_runtimes::spawn_named_runtime("test".into(), None)
+        lumio_runtimes::spawn_named_runtime("test".into(), None)
     }
 }

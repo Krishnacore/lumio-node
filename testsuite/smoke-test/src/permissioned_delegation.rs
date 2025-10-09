@@ -2,21 +2,21 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::smoke_test_environment::SwarmBuilder;
-use aptos::move_tool::MemberId;
-use aptos_cached_packages::aptos_stdlib;
-use aptos_crypto::SigningKey;
-use aptos_forge::Swarm;
-use aptos_types::function_info::FunctionInfo;
+use lumio::move_tool::MemberId;
+use lumio_cached_packages::lumio_stdlib;
+use lumio_crypto::SigningKey;
+use lumio_forge::Swarm;
+use lumio_types::function_info::FunctionInfo;
 use move_core_types::account_address::AccountAddress;
 use std::{str::FromStr, sync::Arc};
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn test_permissioned_delegation() {
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(1)
-        .with_aptos()
+        .with_lumio()
         .build_with_cli(0)
         .await;
-    let mut info = swarm.aptos_public_info();
+    let mut info = swarm.lumio_public_info();
 
     let mut account1 = info
         .create_and_fund_user_account(100_000_000_000)
@@ -53,13 +53,13 @@ async fn test_permissioned_delegation() {
     let script = format!(
         r#"
     script {{
-    use aptos_std::ed25519;
-    use aptos_framework::coin;
-    use aptos_framework::permissioned_delegation;
-    use aptos_framework::primary_fungible_store;
-    use aptos_framework::transaction_validation;
+    use lumio_std::ed25519;
+    use lumio_framework::coin;
+    use lumio_framework::permissioned_delegation;
+    use lumio_framework::primary_fungible_store;
+    use lumio_framework::transaction_validation;
     fun main(sender: &signer) {{
-        coin::migrate_to_fungible_store<aptos_framework::aptos_coin::AptosCoin>(sender);
+        coin::migrate_to_fungible_store<lumio_framework::lumio_coin::LumioCoin>(sender);
         let key = permissioned_delegation::gen_ed25519_key(ed25519::new_unvalidated_public_key_from_bytes(x"{}"));
         let permissioned_signer = permissioned_delegation::add_permissioned_handle(sender, key, std::option::none(), {});
         primary_fungible_store::grant_apt_permission(sender, &permissioned_signer, 1000000000); // 10 apt
@@ -104,7 +104,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                 account2.address(),
                 100000000,
             )),
@@ -116,7 +116,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                 account2.address(),
                 200000000,
             )),
@@ -128,7 +128,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                 account2.address(),
                 200000000,
             ))
@@ -140,7 +140,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                 account2.address(),
                 700000001,
             ))
@@ -152,7 +152,7 @@ async fn test_permissioned_delegation() {
         vec![],
         None,
         info.transaction_factory()
-            .payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+            .payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                 account2.address(),
                 700000000,
             ))

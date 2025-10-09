@@ -9,21 +9,21 @@ use crate::{
         native_transaction::{compute_deltas_for_batch, NativeTransaction},
     },
 };
-use aptos_aggregator::{
+use lumio_aggregator::{
     bounded_math::SignedU128,
     delayed_change::{DelayedApplyChange, DelayedChange},
     delta_change_set::{DeltaOp, DeltaWithMax},
     delta_math::DeltaHistory,
 };
-use aptos_block_executor::{
-    code_cache_global_manager::AptosModuleCacheManager,
+use lumio_block_executor::{
+    code_cache_global_manager::LumioModuleCacheManager,
     task::{ExecutionStatus, ExecutorTask},
     txn_commit_hook::NoOpTransactionCommitHook,
     txn_provider::default::DefaultTxnProvider,
 };
-use aptos_logger::error;
-use aptos_mvhashmap::types::TxnIndex;
-use aptos_types::{
+use lumio_logger::error;
+use lumio_mvhashmap::types::TxnIndex;
+use lumio_types::{
     account_address::AccountAddress,
     account_config::{
         primary_apt_store, AccountResource, CoinInfoResource, CoinRegister, CoinStoreResource,
@@ -44,14 +44,14 @@ use aptos_types::{
         Transaction, TransactionOutput, TransactionStatus, WriteSetPayload,
     },
     write_set::WriteOp,
-    AptosCoinType,
+    LumioCoinType,
 };
-use aptos_vm::{
-    block_executor::{AptosBlockExecutorWrapper, AptosTransactionOutput},
+use lumio_vm::{
+    block_executor::{LumioBlockExecutorWrapper, LumioTransactionOutput},
     VMBlockExecutor,
 };
-use aptos_vm_environment::environment::AptosEnvironment;
-use aptos_vm_types::{
+use lumio_vm_environment::environment::LumioEnvironment;
+use lumio_vm_types::{
     abstract_write_op::{
         AbstractResourceWriteOp, GroupWrite, ResourceGroupInPlaceDelayedFieldChangeOp,
     },
@@ -91,15 +91,15 @@ impl VMBlockExecutor for NativeVMBlockExecutor {
         onchain_config: BlockExecutorConfigFromOnchain,
         transaction_slice_metadata: TransactionSliceMetadata,
     ) -> Result<BlockOutput<SignatureVerifiedTransaction, TransactionOutput>, VMStatus> {
-        AptosBlockExecutorWrapper::<NativeVMExecutorTask>::execute_block_on_thread_pool::<
+        LumioBlockExecutorWrapper::<NativeVMExecutorTask>::execute_block_on_thread_pool::<
             _,
-            NoOpTransactionCommitHook<AptosTransactionOutput, VMStatus>,
+            NoOpTransactionCommitHook<LumioTransactionOutput, VMStatus>,
             _,
         >(
             Arc::clone(&NATIVE_EXECUTOR_POOL),
             txn_provider,
             state_view,
-            &AptosModuleCacheManager::new(),
+            &LumioModuleCacheManager::new(),
             BlockExecutorConfig {
                 local: BlockExecutorLocalConfig::default_with_concurrency_level(
                     NativeConfig::get_concurrency_level(),
@@ -120,10 +120,10 @@ pub(crate) struct NativeVMExecutorTask {
 impl ExecutorTask for NativeVMExecutorTask {
     type AuxiliaryInfo = AuxiliaryInfo;
     type Error = VMStatus;
-    type Output = AptosTransactionOutput;
+    type Output = LumioTransactionOutput;
     type Txn = SignatureVerifiedTransaction;
 
-    fn init(env: &AptosEnvironment, _state_view: &impl StateView) -> Self {
+    fn init(env: &LumioEnvironment, _state_view: &impl StateView) -> Self {
         let fa_migration_complete = env
             .features()
             .is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
@@ -150,18 +150,18 @@ impl ExecutorTask for NativeVMExecutorTask {
         txn: &SignatureVerifiedTransaction,
         _auxiliary_info: &AuxiliaryInfo,
         _txn_idx: TxnIndex,
-    ) -> ExecutionStatus<AptosTransactionOutput, VMStatus> {
+    ) -> ExecutionStatus<LumioTransactionOutput, VMStatus> {
         match self.execute_transaction_impl(
             executor_with_group_view,
             txn,
             self.fa_migration_complete,
         ) {
             Ok((change_set, gas_units)) => {
-                ExecutionStatus::Success(AptosTransactionOutput::new(VMOutput::new(
+                ExecutionStatus::Success(LumioTransactionOutput::new(VMOutput::new(
                     change_set,
                     ModuleWriteSet::empty(),
                     FeeStatement::new(gas_units, gas_units, 0, 0, 0),
-                    TransactionStatus::Keep(aptos_types::transaction::ExecutionStatus::Success),
+                    TransactionStatus::Keep(lumio_types::transaction::ExecutionStatus::Success),
                 )))
             },
             Err(_) => ExecutionStatus::SpeculativeExecutionAbortError("something".to_string()),
@@ -577,7 +577,7 @@ impl NativeVMExecutorTask {
         view: &(impl ExecutorView + ResourceGroupView),
         aggregator_v1_delta_set: &mut BTreeMap<StateKey, DeltaOp>,
     ) -> Result<(), ()> {
-        let (sender_coin_store, _metadata) = Self::get_value::<CoinInfoResource<AptosCoinType>>(
+        let (sender_coin_store, _metadata) = Self::get_value::<CoinInfoResource<LumioCoinType>>(
             &self.db_util.common.apt_coin_info_resource,
             view,
         )?
@@ -685,10 +685,10 @@ impl NativeVMExecutorTask {
         resource_write_set: &mut BTreeMap<StateKey, AbstractResourceWriteOp>,
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<(), ()> {
-        let sender_coin_store_key = self.db_util.new_state_key_aptos_coin(&sender_address);
+        let sender_coin_store_key = self.db_util.new_state_key_lumio_coin(&sender_address);
 
         let sender_coin_store_opt =
-            Self::get_value::<CoinStoreResource<AptosCoinType>>(&sender_coin_store_key, view)?;
+            Self::get_value::<CoinStoreResource<LumioCoinType>>(&sender_coin_store_key, view)?;
 
         let (mut sender_coin_store, metadata) = match sender_coin_store_opt {
             None => {
@@ -834,9 +834,9 @@ impl NativeVMExecutorTask {
         resource_write_set: &mut BTreeMap<StateKey, AbstractResourceWriteOp>,
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<bool, ()> {
-        let recipient_coin_store_key = self.db_util.new_state_key_aptos_coin(&recipient_address);
+        let recipient_coin_store_key = self.db_util.new_state_key_lumio_coin(&recipient_address);
         let (mut recipient_coin_store, recipient_coin_store_metadata, existed) =
-            match Self::get_value::<CoinStoreResource<AptosCoinType>>(
+            match Self::get_value::<CoinStoreResource<LumioCoinType>>(
                 &recipient_coin_store_key,
                 view,
             )? {
@@ -847,7 +847,7 @@ impl NativeVMExecutorTask {
                     events.push((
                         CoinRegister {
                             account: AccountAddress::ONE,
-                            type_info: DbAccessUtil::new_type_info_resource::<AptosCoinType>()
+                            type_info: DbAccessUtil::new_type_info_resource::<LumioCoinType>()
                                 .map_err(hide_error)?,
                         }
                         .create_event_v2()

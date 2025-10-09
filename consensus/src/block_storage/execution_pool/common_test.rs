@@ -5,14 +5,14 @@ use crate::{
     block_storage::{BlockReader, BlockStore},
     test_utils::TreeInserter,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     pipelined_block::PipelinedBlock,
     quorum_cert::QuorumCert,
     vote_data::VoteData,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_types::{
+use lumio_crypto::{hash::CryptoHash, HashValue};
+use lumio_types::{
     aggregate_signature::PartialSignatures,
     block_info::{BlockInfo, Round},
     ledger_info::{LedgerInfo, LedgerInfoWithVerifiedSignatures},
@@ -50,7 +50,7 @@ pub fn generate_qc(round: Round, parent_round: Round) -> QuorumCert {
     generate_quorum_inner(round, parent_round)
 }
 
-/// Helper function to get the [`OrderedBlockWindow`](aptos_consensus_types::pipelined_block::OrderedBlockWindow)
+/// Helper function to get the [`OrderedBlockWindow`](lumio_consensus_types::pipelined_block::OrderedBlockWindow)
 /// from the `block_store`
 pub fn get_blocks_from_block_store_and_window(
     block_store: Arc<BlockStore>,

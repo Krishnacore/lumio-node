@@ -12,9 +12,9 @@
 
 use crate::define_schema;
 use anyhow::Result;
-use aptos_consensus_types::block::Block;
-use aptos_crypto::HashValue;
-use aptos_schemadb::{
+use lumio_consensus_types::block::Block;
+use lumio_crypto::HashValue;
+use lumio_schemadb::{
     schema::{KeyCodec, ValueCodec},
     ColumnFamilyName,
 };

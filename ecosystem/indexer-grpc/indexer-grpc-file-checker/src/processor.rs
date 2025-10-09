@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{ensure, Context, Result};
-use aptos_indexer_grpc_utils::compression_util::{FileEntry, StorageFormat};
-use aptos_metrics_core::{register_int_counter, IntCounter};
+use lumio_indexer_grpc_utils::compression_util::{FileEntry, StorageFormat};
+use lumio_metrics_core::{register_int_counter, IntCounter};
 use cloud_storage::Client;
 use once_cell::sync::Lazy;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};

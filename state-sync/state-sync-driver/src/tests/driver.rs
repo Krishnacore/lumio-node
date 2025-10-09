@@ -11,30 +11,30 @@ use crate::{
         verify_commit_notification,
     },
 };
-use aptos_config::config::{NodeConfig, RoleType, StateSyncDriverConfig};
-use aptos_consensus_notifications::{ConsensusNotificationSender, ConsensusNotifier};
-use aptos_data_client::client::AptosDataClient;
-use aptos_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
-use aptos_db::AptosDB;
-use aptos_event_notifications::{
+use lumio_config::config::{NodeConfig, RoleType, StateSyncDriverConfig};
+use lumio_consensus_notifications::{ConsensusNotificationSender, ConsensusNotifier};
+use lumio_data_client::client::LumioDataClient;
+use lumio_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
+use lumio_db::LumioDB;
+use lumio_event_notifications::{
     DbBackedOnChainConfig, EventNotificationListener, EventSubscriptionService,
     ReconfigNotificationListener,
 };
-use aptos_executor::chunk_executor::ChunkExecutor;
-use aptos_executor_test_helpers::bootstrap_genesis;
-use aptos_infallible::RwLock;
-use aptos_mempool_notifications::MempoolNotificationListener;
-use aptos_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
-use aptos_storage_interface::DbReaderWriter;
-use aptos_storage_service_client::StorageServiceClient;
-use aptos_storage_service_notifications::StorageServiceNotificationListener;
-use aptos_time_service::TimeService;
-use aptos_types::{
+use lumio_executor::chunk_executor::ChunkExecutor;
+use lumio_executor_test_helpers::bootstrap_genesis;
+use lumio_infallible::RwLock;
+use lumio_mempool_notifications::MempoolNotificationListener;
+use lumio_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
+use lumio_storage_interface::DbReaderWriter;
+use lumio_storage_service_client::StorageServiceClient;
+use lumio_storage_service_notifications::StorageServiceNotificationListener;
+use lumio_time_service::TimeService;
+use lumio_types::{
     event::EventKey,
     transaction::{Transaction, WriteSetPayload},
     waypoint::Waypoint,
 };
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
+use lumio_vm::lumio_vm::LumioVMBlockExecutor;
 use claims::{assert_err, assert_none};
 use futures::{channel::mpsc::UnboundedSender, FutureExt, SinkExt, StreamExt};
 use ntest::timeout;
@@ -330,17 +330,17 @@ async fn create_driver_for_tests(
     TimeService,
 ) {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    lumio_logger::Logger::init_for_testing();
 
-    // Create test aptos database
-    let db_path = aptos_temppath::TempPath::new();
+    // Create test lumio database
+    let db_path = lumio_temppath::TempPath::new();
     db_path.create_as_dir().unwrap();
-    let (_, db_rw) = DbReaderWriter::wrap(AptosDB::new_for_test(db_path.path()));
+    let (_, db_rw) = DbReaderWriter::wrap(LumioDB::new_for_test(db_path.path()));
 
     // Bootstrap the genesis transaction
-    let (genesis, _) = aptos_vm_genesis::test_genesis_change_set_and_validators(Some(1));
+    let (genesis, _) = lumio_vm_genesis::test_genesis_change_set_and_validators(Some(1));
     let genesis_txn = Transaction::GenesisTransaction(WriteSetPayload::Direct(genesis));
-    bootstrap_genesis::<AptosVMBlockExecutor>(&db_rw, &genesis_txn).unwrap();
+    bootstrap_genesis::<LumioVMBlockExecutor>(&db_rw, &genesis_txn).unwrap();
 
     // Create the event subscription service and subscribe to events and reconfigurations
     let mut event_subscription_service =
@@ -356,21 +356,21 @@ async fn create_driver_for_tests(
 
     // Create consensus and mempool notifiers and listeners
     let (consensus_notifier, consensus_listener) =
-        aptos_consensus_notifications::new_consensus_notifier_listener_pair(5000);
+        lumio_consensus_notifications::new_consensus_notifier_listener_pair(5000);
     let (mempool_notifier, mempool_listener) =
-        aptos_mempool_notifications::new_mempool_notifier_listener_pair(100);
+        lumio_mempool_notifications::new_mempool_notifier_listener_pair(100);
 
     // Create the storage service notifier and listener
     let (storage_service_notifier, storage_service_listener) =
-        aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+        lumio_storage_service_notifications::new_storage_service_notifier_listener_pair();
 
     // Create the chunk executor
-    let chunk_executor = Arc::new(ChunkExecutor::<AptosVMBlockExecutor>::new(db_rw.clone()));
+    let chunk_executor = Arc::new(ChunkExecutor::<LumioVMBlockExecutor>::new(db_rw.clone()));
 
     // Create a streaming service client
     let (streaming_service_client, _) = new_streaming_service_client_listener_pair();
 
-    // Create a test aptos data client
+    // Create a test lumio data client
     let time_service = TimeService::mock();
     let network_client = StorageServiceClient::new(NetworkClient::new(
         vec![],
@@ -378,8 +378,8 @@ async fn create_driver_for_tests(
         HashMap::new(),
         PeersAndMetadata::new(&[]),
     ));
-    let (aptos_data_client, _) = AptosDataClient::new(
-        node_config.state_sync.aptos_data_client,
+    let (lumio_data_client, _) = LumioDataClient::new(
+        node_config.state_sync.lumio_data_client,
         node_config.base.clone(),
         time_service.clone(),
         db_rw.reader.clone(),
@@ -403,7 +403,7 @@ async fn create_driver_for_tests(
             metadata_storage,
             consensus_listener,
             event_subscription_service,
-            aptos_data_client,
+            lumio_data_client,
             streaming_service_client,
             time_service.clone(),
         );

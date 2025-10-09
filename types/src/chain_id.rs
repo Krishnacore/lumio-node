@@ -14,7 +14,7 @@ use std::{convert::TryFrom, fmt, str::FromStr};
 pub enum NamedChain {
     /// Users might accidentally initialize the ChainId field to 0, hence reserving ChainId 0 for accidental
     /// initialization.
-    /// MAINNET is the Aptos mainnet production chain and is reserved for 1
+    /// MAINNET is the Lumio mainnet production chain and is reserved for 1
     MAINNET = 1,
     // Even though these CHAIN IDs do not correspond to MAINNET, changing them should be avoided since they
     // can break test environments for various organisations.

@@ -10,8 +10,8 @@ use crate::{
     },
     Capability, CryptoStorage, Error, Identity, KVStorage, Namespaced, Permission, Policy, Storage,
 };
-use aptos_crypto::{test_utils::TestAptosCrypto, Signature};
-use aptos_vault_client::dev::{self, ROOT_TOKEN};
+use lumio_crypto::{test_utils::TestLumioCrypto, Signature};
+use lumio_vault_client::dev::{self, ROOT_TOKEN};
 
 /// VaultStorage namespace constants
 const VAULT_NAMESPACE_1: &str = "namespace_1";
@@ -252,7 +252,7 @@ fn test_vault_crypto_policies() {
         pubkey
     );
 
-    let message = TestAptosCrypto("Hello, World".to_string());
+    let message = TestLumioCrypto("Hello, World".to_string());
 
     // Verify exporter policy
     let exporter_token = storage.create_token(vec![EXPORTER]).unwrap();

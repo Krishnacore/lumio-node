@@ -110,7 +110,7 @@ mod tests {
             TransactionExecutable, TransactionExtraConfig, TransactionPayloadInner,
         },
     };
-    use aptos_crypto::{
+    use lumio_crypto::{
         ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
         HashValue, PrivateKey, SigningKey, Uniform,
     };

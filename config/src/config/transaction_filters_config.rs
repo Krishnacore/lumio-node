@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_transaction_filters::{
+use lumio_transaction_filters::{
     batch_transaction_filter::BatchTransactionFilter,
     block_transaction_filter::BlockTransactionFilter, transaction_filter::TransactionFilter,
 };

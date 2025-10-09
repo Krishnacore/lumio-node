@@ -6,7 +6,7 @@ use crate::{
     validator_verifier::ValidatorVerifier,
 };
 use anyhow::{anyhow, ensure};
-use aptos_crypto::{bls12381, Uniform};
+use lumio_crypto::{bls12381, Uniform};
 use move_core_types::account_address::AccountAddress;
 use rand::{CryptoRng, Rng, RngCore};
 use serde::{Deserialize, Serialize};

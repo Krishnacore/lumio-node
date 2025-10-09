@@ -94,7 +94,7 @@ impl MinimumPeersChecker {
                 50,
                 format!("{} {}", explanation, additional_info),
             )
-            .links(vec!["https://aptos.dev/issues-and-workarounds/".to_string()])
+            .links(vec!["https://lumio.dev/issues-and-workarounds/".to_string()])
         }
     }
 }
@@ -146,7 +146,7 @@ impl Checker for MinimumPeersChecker {
 // Helpers.
 //////////////////////////////////////////////////////////////////////////////
 
-const METRIC: &str = "aptos_connections";
+const METRIC: &str = "lumio_connections";
 
 static INBOUND_LABEL: Lazy<Label> = Lazy::new(|| Label {
     key: "direction",

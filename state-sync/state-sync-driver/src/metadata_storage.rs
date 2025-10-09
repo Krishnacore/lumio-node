@@ -6,14 +6,14 @@ use crate::{
     metadata_storage::database_schema::{MetadataKey, MetadataSchema, MetadataValue},
 };
 use anyhow::{anyhow, Result};
-use aptos_logger::prelude::*;
-use aptos_schemadb::{
+use lumio_logger::prelude::*;
+use lumio_schemadb::{
     batch::SchemaBatch,
     define_schema,
     schema::{KeyCodec, ValueCodec},
     ColumnFamilyName, Options, DB,
 };
-use aptos_types::ledger_info::LedgerInfoWithSignatures;
+use lumio_types::ledger_info::LedgerInfoWithSignatures;
 use serde::{Deserialize, Serialize};
 use std::{path::Path, sync::Arc, time::Instant};
 

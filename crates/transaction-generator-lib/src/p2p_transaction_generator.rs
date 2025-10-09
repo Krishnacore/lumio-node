@@ -1,9 +1,9 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 use crate::{ObjectPool, TransactionGenerator, TransactionGeneratorCreator};
-use aptos_sdk::{
+use lumio_sdk::{
     move_types::account_address::AccountAddress,
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    transaction_builder::{lumio_stdlib, TransactionFactory},
     types::{chain_id::ChainId, transaction::SignedTransaction, LocalAccount},
 };
 use rand::{
@@ -182,11 +182,11 @@ impl P2PTransactionGenerator {
     ) -> SignedTransaction {
         from.sign_with_transaction_builder(
             if self.use_fa_transfer {
-                txn_factory.payload(aptos_stdlib::aptos_account_fungible_transfer_only(
+                txn_factory.payload(lumio_stdlib::lumio_account_fungible_transfer_only(
                     *to, num_coins,
                 ))
             } else {
-                txn_factory.payload(aptos_stdlib::aptos_coin_transfer(*to, num_coins))
+                txn_factory.payload(lumio_stdlib::lumio_coin_transfer(*to, num_coins))
             },
         )
     }

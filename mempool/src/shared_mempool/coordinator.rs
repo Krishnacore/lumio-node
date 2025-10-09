@@ -19,25 +19,25 @@ use crate::{
     },
     MempoolEventsReceiver, QuorumStoreRequest,
 };
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_event_notifications::ReconfigNotificationListener;
-use aptos_infallible::{Mutex, RwLock};
-use aptos_logger::prelude::*;
-use aptos_mempool_notifications::{MempoolCommitNotification, MempoolNotificationListener};
-use aptos_network::{
+use lumio_bounded_executor::BoundedExecutor;
+use lumio_config::network_id::{NetworkId, PeerNetworkId};
+use lumio_event_notifications::ReconfigNotificationListener;
+use lumio_infallible::{Mutex, RwLock};
+use lumio_logger::prelude::*;
+use lumio_mempool_notifications::{MempoolCommitNotification, MempoolNotificationListener};
+use lumio_network::{
     application::{
         interface::{NetworkClientInterface, NetworkServiceEvents},
         storage::PeersAndMetadata,
     },
     protocols::network::Event,
 };
-use aptos_types::{
+use lumio_types::{
     on_chain_config::{OnChainConfigPayload, OnChainConfigProvider},
     transaction::SignedTransaction,
     PeerId,
 };
-use aptos_vm_validator::vm_validator::TransactionValidation;
+use lumio_vm_validator::vm_validator::TransactionValidation;
 use futures::{
     channel::mpsc,
     stream::{select_all, FuturesUnordered},

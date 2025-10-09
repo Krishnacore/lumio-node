@@ -21,15 +21,15 @@ use crate::{
     },
     PeerState,
 };
-use aptos_config::{
+use lumio_config::{
     config::{NodeConfig, PeerMonitoringServiceConfig, PeerRole},
     network_id::NetworkId,
 };
-use aptos_peer_monitoring_service_types::{
+use lumio_peer_monitoring_service_types::{
     request::PeerMonitoringServiceRequest,
     response::{LatencyPingResponse, PeerMonitoringServiceResponse},
 };
-use aptos_time_service::TimeServiceTrait;
+use lumio_time_service::TimeServiceTrait;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 

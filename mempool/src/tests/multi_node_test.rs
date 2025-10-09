@@ -14,12 +14,12 @@ use crate::{
         },
     },
 };
-use aptos_config::{
+use lumio_config::{
     config::{NodeConfig, PeerRole},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use lumio_netcore::transport::ConnectionOrigin;
+use lumio_network::{
     peer_manager::PeerManagerRequest,
     protocols::{
         direct_send::Message,
@@ -28,7 +28,7 @@ use aptos_network::{
     },
     ProtocolId,
 };
-use aptos_types::{
+use lumio_types::{
     transaction::{ReplayProtector, SignedTransaction},
     PeerId,
 };

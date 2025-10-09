@@ -2,10 +2,10 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::AptosPublicInfo;
+use crate::LumioPublicInfo;
 use anyhow::Result;
-use aptos_rest_client::Client as RestClient;
-use aptos_sdk::{
+use lumio_rest_client::Client as RestClient;
+use lumio_sdk::{
     transaction_builder::TransactionFactory,
     types::{chain_id::ChainId, LocalAccount},
 };
@@ -63,8 +63,8 @@ impl ChainInfo {
         TransactionFactory::new(self.chain_id())
     }
 
-    pub fn into_aptos_public_info(self) -> AptosPublicInfo {
-        AptosPublicInfo::new(
+    pub fn into_lumio_public_info(self) -> LumioPublicInfo {
+        LumioPublicInfo::new(
             self.chain_id,
             self.inspection_service_url.clone(),
             self.rest_api_url.clone(),

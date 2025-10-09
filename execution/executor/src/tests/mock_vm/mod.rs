@@ -6,9 +6,9 @@
 mod mock_vm_test;
 
 use anyhow::Result;
-use aptos_block_executor::txn_provider::{default::DefaultTxnProvider, TxnProvider};
-use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
-use aptos_types::{
+use lumio_block_executor::txn_provider::{default::DefaultTxnProvider, TxnProvider};
+use lumio_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
+use lumio_types::{
     account_address::AccountAddress,
     account_config::NEW_EPOCH_EVENT_V2_MOVE_TYPE_TAG,
     block_executor::{
@@ -30,7 +30,7 @@ use aptos_types::{
     vm_status::{StatusCode, VMStatus},
     write_set::{WriteOp, WriteSet, WriteSetMut},
 };
-use aptos_vm::{
+use lumio_vm::{
     sharded_block_executor::{executor_client::ExecutorClient, ShardedBlockExecutor},
     VMBlockExecutor,
 };

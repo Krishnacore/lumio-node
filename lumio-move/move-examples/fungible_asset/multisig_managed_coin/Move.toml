@@ -1,0 +1,11 @@
+[package]
+name = "MultisigManagedCoin"
+version = "0.0.0"
+
+[addresses]
+lumio_framework = "0x1"
+example_addr = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+ManagedFungibleAsset = { local = "../managed_fungible_asset" }

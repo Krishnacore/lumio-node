@@ -2,29 +2,29 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{driver_factory::DriverFactory, metadata_storage::PersistentMetadataStorage};
-use aptos_config::{
+use lumio_config::{
     config::{
         RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS,
         DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
     },
     utils::get_genesis_txn,
 };
-use aptos_consensus_notifications::new_consensus_notifier_listener_pair;
-use aptos_data_client::client::AptosDataClient;
-use aptos_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
-use aptos_db::AptosDB;
-use aptos_event_notifications::EventSubscriptionService;
-use aptos_executor::chunk_executor::ChunkExecutor;
-use aptos_executor_test_helpers::bootstrap_genesis;
-use aptos_genesis::test_utils::test_config;
-use aptos_infallible::RwLock;
-use aptos_mempool_notifications::new_mempool_notifier_listener_pair;
-use aptos_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
-use aptos_storage_interface::DbReaderWriter;
-use aptos_storage_service_client::StorageServiceClient;
-use aptos_temppath::TempPath;
-use aptos_time_service::TimeService;
-use aptos_vm::aptos_vm::AptosVMBlockExecutor;
+use lumio_consensus_notifications::new_consensus_notifier_listener_pair;
+use lumio_data_client::client::LumioDataClient;
+use lumio_data_streaming_service::streaming_client::new_streaming_service_client_listener_pair;
+use lumio_db::LumioDB;
+use lumio_event_notifications::EventSubscriptionService;
+use lumio_executor::chunk_executor::ChunkExecutor;
+use lumio_executor_test_helpers::bootstrap_genesis;
+use lumio_genesis::test_utils::test_config;
+use lumio_infallible::RwLock;
+use lumio_mempool_notifications::new_mempool_notifier_listener_pair;
+use lumio_network::application::{interface::NetworkClient, storage::PeersAndMetadata};
+use lumio_storage_interface::DbReaderWriter;
+use lumio_storage_service_client::StorageServiceClient;
+use lumio_temppath::TempPath;
+use lumio_time_service::TimeService;
+use lumio_vm::lumio_vm::LumioVMBlockExecutor;
 use futures::{FutureExt, StreamExt};
 use std::{collections::HashMap, sync::Arc};
 
@@ -32,7 +32,7 @@ use std::{collections::HashMap, sync::Arc};
 fn test_new_initialized_configs() {
     // Create a test database
     let tmp_dir = TempPath::new();
-    let db = AptosDB::open(
+    let db = LumioDB::open(
         StorageDirPaths::from_path(&tmp_dir),
         false,
         NO_OP_STORAGE_PRUNER_CONFIG,
@@ -47,7 +47,7 @@ fn test_new_initialized_configs() {
 
     // Bootstrap the database
     let (node_config, _) = test_config();
-    bootstrap_genesis::<AptosVMBlockExecutor>(&db_rw, get_genesis_txn(&node_config).unwrap())
+    bootstrap_genesis::<LumioVMBlockExecutor>(&db_rw, get_genesis_txn(&node_config).unwrap())
         .unwrap();
 
     // Create mempool and consensus notifiers
@@ -63,20 +63,20 @@ fn test_new_initialized_configs() {
 
     // Create the storage service notifier and listener
     let (storage_service_notifier, _storage_service_listener) =
-        aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+        lumio_storage_service_notifications::new_storage_service_notifier_listener_pair();
 
     // Create a test streaming service client
     let (streaming_service_client, _) = new_streaming_service_client_listener_pair();
 
-    // Create a test aptos data client
+    // Create a test lumio data client
     let network_client = StorageServiceClient::new(NetworkClient::new(
         vec![],
         vec![],
         HashMap::new(),
         PeersAndMetadata::new(&[]),
     ));
-    let (aptos_data_client, _) = AptosDataClient::new(
-        node_config.state_sync.aptos_data_client,
+    let (lumio_data_client, _) = LumioDataClient::new(
+        node_config.state_sync.lumio_data_client,
         node_config.base.clone(),
         TimeService::mock(),
         db_rw.reader.clone(),
@@ -85,7 +85,7 @@ fn test_new_initialized_configs() {
     );
 
     // Create the state sync driver factory
-    let chunk_executor = Arc::new(ChunkExecutor::<AptosVMBlockExecutor>::new(db_rw.clone()));
+    let chunk_executor = Arc::new(ChunkExecutor::<LumioVMBlockExecutor>::new(db_rw.clone()));
     let metadata_storage = PersistentMetadataStorage::new(tmp_dir.path());
     let _ = DriverFactory::create_and_spawn_driver(
         true,
@@ -98,7 +98,7 @@ fn test_new_initialized_configs() {
         metadata_storage,
         consensus_listener,
         event_subscription_service,
-        aptos_data_client,
+        lumio_data_client,
         streaming_service_client,
         TimeService::mock(),
     );

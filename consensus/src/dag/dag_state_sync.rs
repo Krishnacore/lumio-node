@@ -14,11 +14,11 @@ use crate::{
     pipeline::execution_client::TExecutionClient,
 };
 use anyhow::{bail, ensure};
-use aptos_channels::aptos_channel;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_logger::{debug, error};
-use aptos_time_service::TimeService;
-use aptos_types::{
+use lumio_channels::lumio_channel;
+use lumio_consensus_types::common::{Author, Round};
+use lumio_logger::{debug, error};
+use lumio_time_service::TimeService;
+use lumio_types::{
     epoch_change::EpochChangeProof, epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
 };
 use core::fmt;
@@ -286,7 +286,7 @@ impl SyncModeMessageHandler {
 
     pub(crate) async fn run(
         mut self,
-        dag_rpc_rx: &mut aptos_channel::Receiver<Author, IncomingDAGRequest>,
+        dag_rpc_rx: &mut lumio_channel::Receiver<Author, IncomingDAGRequest>,
         buffer: &mut Vec<DAGMessage>,
     ) -> Option<CertifiedNodeMessage> {
         while let Some(msg) = dag_rpc_rx.next().await {

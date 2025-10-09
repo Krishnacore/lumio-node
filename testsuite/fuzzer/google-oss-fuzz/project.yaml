@@ -1,12 +1,12 @@
-homepage: "https://aptos.dev"
+homepage: "https://lumio.dev"
 language: rust
-primary_contact: "gerardo@aptoslabs.com"
-main_repo: "https://github.com/aptos-labs/aptos-core"
+primary_contact: "gerardo@lumiolabs.com"
+main_repo: "https://github.com/lumio-labs/lumio-core"
 auto_ccs:
-  - "oss-fuzz-notifications@aptoslabs.com"
-  - "security@aptoslabs.com"
-  - "andrea.cappa@aptoslabs.com"
-  - "marco.ilardi@aptoslabs.com"
+  - "oss-fuzz-notifications@lumiolabs.com"
+  - "security@lumiolabs.com"
+  - "andrea.cappa@lumiolabs.com"
+  - "marco.ilardi@lumiolabs.com"
 sanitizers:
   - none
 fuzzing_engines:

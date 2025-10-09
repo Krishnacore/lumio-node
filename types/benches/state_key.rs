@@ -3,9 +3,9 @@
 
 #![allow(clippy::non_canonical_partial_ord_impl)]
 
-use aptos_crypto::HashValue;
-use aptos_proptest_helpers::ValueGenerator;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_proptest_helpers::ValueGenerator;
+use lumio_types::{
     access_path::AccessPath,
     account_config::AccountResource,
     state_store::state_key::{inner::StateKeyInner, registry::StateKeyRegistry, StateKey},

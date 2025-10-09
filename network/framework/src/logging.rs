@@ -6,10 +6,10 @@
 //! This module is to contain all networking logging information.
 //!
 //! ```
-//! use aptos_config::network_id::NetworkContext;
-//! use aptos_logger::info;
-//! use aptos_types::{PeerId, network_address::NetworkAddress};
-//! use aptos_network::logging::NetworkSchema;
+//! use lumio_config::network_id::NetworkContext;
+//! use lumio_logger::info;
+//! use lumio_types::{PeerId, network_address::NetworkAddress};
+//! use lumio_network::logging::NetworkSchema;
 //!
 //! info!(
 //!   NetworkSchema::new(&NetworkContext::mock())
@@ -25,10 +25,10 @@ use crate::{
     connectivity_manager::DiscoverySource,
     transport::{ConnectionId, ConnectionMetadata},
 };
-use aptos_config::network_id::NetworkContext;
-use aptos_logger::Schema;
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use lumio_config::network_id::NetworkContext;
+use lumio_logger::Schema;
+use lumio_netcore::transport::ConnectionOrigin;
+use lumio_types::{network_address::NetworkAddress, PeerId};
 
 #[derive(Schema)]
 pub struct NetworkSchema<'a> {

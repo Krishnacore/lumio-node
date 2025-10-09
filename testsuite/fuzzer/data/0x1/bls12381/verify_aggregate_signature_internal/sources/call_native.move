@@ -1,5 +1,5 @@
 module poc::verify_aggregate_signature_internal {
-    use aptos_std::bls12381::{Self, PublicKeyWithPoP, ProofOfPossession};
+    use lumio_std::bls12381::{Self, PublicKeyWithPoP, ProofOfPossession};
     use std::vector;
     use std::option::{Self};
 

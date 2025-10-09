@@ -8,17 +8,17 @@ use crate::{
     tests::mock::{MockClient, MockDatabaseReader},
     StorageServiceServer,
 };
-use aptos_config::{
+use lumio_config::{
     config::StorageServiceConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
-use aptos_logger::Level;
-use aptos_network::protocols::network::RpcError;
-use aptos_storage_service_notifications::{
+use lumio_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+use lumio_logger::Level;
+use lumio_network::protocols::network::RpcError;
+use lumio_storage_service_notifications::{
     StorageServiceNotificationSender, StorageServiceNotifier,
 };
-use aptos_storage_service_types::{
+use lumio_storage_service_types::{
     requests::{
         DataRequest, StateValuesWithProofRequest, StorageServiceRequest,
         SubscribeTransactionOutputsWithProofRequest,
@@ -31,8 +31,8 @@ use aptos_storage_service_types::{
     },
     Epoch, StorageServiceError,
 };
-use aptos_time_service::{MockTimeService, TimeService};
-use aptos_types::{
+use lumio_time_service::{MockTimeService, TimeService};
+use lumio_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
@@ -884,9 +884,9 @@ pub async fn get_transactions_with_proof(
     send_storage_request(mock_client, use_compression, data_request).await
 }
 
-/// Initializes the Aptos logger for tests
+/// Initializes the Lumio logger for tests
 pub fn initialize_logger() {
-    aptos_logger::Logger::builder()
+    lumio_logger::Logger::builder()
         .is_async(false)
         .level(Level::Debug)
         .build();
@@ -953,7 +953,7 @@ pub async fn subscribe_to_transactions_or_outputs(
     stream_index: u64,
     use_request_v2: bool,
     max_response_bytes_v2: u64,
-) -> Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>> {
+) -> Receiver<Result<bytes::Bytes, lumio_network::protocols::network::RpcError>> {
     subscribe_to_transactions_or_outputs_for_peer(
         mock_client,
         known_version,

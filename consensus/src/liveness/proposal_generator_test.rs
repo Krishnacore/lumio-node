@@ -15,13 +15,13 @@ use crate::{
     test_utils::{build_default_empty_tree, MockPayloadManager, TreeInserter},
     util::mock_time_service::SimulatedTimeService,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     common::Author,
     payload_pull_params::OptQSPayloadPullParams,
     utils::PayloadTxnsSize,
 };
-use aptos_types::{on_chain_config::ValidatorTxnConfig, validator_signer::ValidatorSigner};
+use lumio_types::{on_chain_config::ValidatorTxnConfig, validator_signer::ValidatorSigner};
 use std::{sync::Arc, time::Duration};
 
 const MAX_BLOCK_GAS_LIMIT: u64 = 30_000;

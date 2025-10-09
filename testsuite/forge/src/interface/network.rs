@@ -8,7 +8,7 @@ use crate::{
     success_criteria::{SuccessCriteria, SuccessCriteriaChecker},
     CoreContext, Result, Swarm, TestReport,
 };
-use aptos_transaction_emitter_lib::{EmitJobRequest, TxnStats};
+use lumio_transaction_emitter_lib::{EmitJobRequest, TxnStats};
 use async_trait::async_trait;
 use std::{future::Future, sync::Arc, time::Duration};
 use tokio::runtime::{Handle, Runtime};
@@ -79,7 +79,7 @@ impl<'t> NetworkContext<'t> {
             global_duration,
             emit_job,
             success_criteria,
-            runtime: aptos_runtimes::spawn_named_runtime("emitter".into(), Some(64)),
+            runtime: lumio_runtimes::spawn_named_runtime("emitter".into(), Some(64)),
         }
     }
 

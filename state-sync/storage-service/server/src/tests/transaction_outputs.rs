@@ -6,13 +6,13 @@ use crate::tests::{
     mock::{MockClient, MockDatabaseReader},
     utils,
 };
-use aptos_config::config::StorageServiceConfig;
-use aptos_storage_service_types::{
+use lumio_config::config::StorageServiceConfig;
+use lumio_storage_service_types::{
     requests::{DataRequest, TransactionOutputsWithProofRequest},
     responses::{DataResponse, StorageServiceResponse, TransactionDataResponseType},
     StorageServiceError,
 };
-use aptos_types::transaction::TransactionOutputListWithProofV2;
+use lumio_types::transaction::TransactionOutputListWithProofV2;
 use claims::assert_matches;
 use std::cmp::min;
 

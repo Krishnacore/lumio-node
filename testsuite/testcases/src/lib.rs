@@ -27,13 +27,13 @@ pub mod validator_join_leave_test;
 pub mod validator_reboot_stress_test;
 
 use anyhow::Context;
-use aptos_forge::{
+use lumio_forge::{
     prometheus_metrics::{fetch_latency_breakdown, LatencyBreakdown},
     EmitJob, EmitJobRequest, NetworkContext, NetworkContextSynchronizer, NetworkTest, NodeExt,
     Result, Swarm, SwarmExt, Test, TestReport, TxnEmitter, TxnStats, Version,
 };
-use aptos_rest_client::Client as RestClient;
-use aptos_sdk::{transaction_builder::TransactionFactory, types::PeerId};
+use lumio_rest_client::Client as RestClient;
+use lumio_sdk::{transaction_builder::TransactionFactory, types::PeerId};
 use async_trait::async_trait;
 use futures::future::join_all;
 use log::info;
@@ -162,7 +162,7 @@ pub async fn create_emitter_and_request(
 }
 
 pub fn traffic_emitter_runtime() -> Result<Runtime> {
-    let runtime = aptos_runtimes::spawn_named_runtime("emitter".into(), Some(64));
+    let runtime = lumio_runtimes::spawn_named_runtime("emitter".into(), Some(64));
     Ok(runtime)
 }
 

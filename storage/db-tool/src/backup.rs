@@ -3,7 +3,7 @@
 
 use crate::utils::parse_maxable_u64;
 use anyhow::Result;
-use aptos_backup_cli::{
+use lumio_backup_cli::{
     backup_types::{
         epoch_ending::backup::{EpochEndingBackupController, EpochEndingBackupOpt},
         state_snapshot::backup::{StateSnapshotBackupController, StateSnapshotBackupOpt},
@@ -20,7 +20,7 @@ use aptos_backup_cli::{
         ConcurrentDownloadsOpt, GlobalBackupOpt, TrustedWaypointOpt,
     },
 };
-use aptos_types::transaction::Version;
+use lumio_types::transaction::Version;
 use clap::{Parser, Subcommand};
 use std::{path::PathBuf, sync::Arc};
 
@@ -31,7 +31,7 @@ pub enum Command {
     Oneoff(OneoffBackupOpt),
     #[clap(
         about = "Run the backup coordinator which backs up blockchain data continuously off \
-    a Aptos Node."
+    a Lumio Node."
     )]
     Continuously(CoordinatorRunOpt),
     #[clap(

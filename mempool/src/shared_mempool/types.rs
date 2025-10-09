@@ -9,22 +9,22 @@ use crate::{
     shared_mempool::use_case_history::UseCaseHistory,
 };
 use anyhow::Result;
-use aptos_config::{
+use lumio_config::{
     config::{MempoolConfig, NodeType, TransactionFilterConfig},
     network_id::PeerNetworkId,
 };
-use aptos_consensus_types::common::{
+use lumio_consensus_types::common::{
     RejectedTransactionSummary, TransactionInProgress, TransactionSummary,
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::{Mutex, RwLock};
-use aptos_network::application::interface::NetworkClientInterface;
-use aptos_storage_interface::DbReader;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_infallible::{Mutex, RwLock};
+use lumio_network::application::interface::NetworkClientInterface;
+use lumio_storage_interface::DbReader;
+use lumio_types::{
     account_address::AccountAddress, mempool_status::MempoolStatus, transaction::SignedTransaction,
     vm_status::DiscardedVMStatus,
 };
-use aptos_vm_validator::vm_validator::TransactionValidation;
+use lumio_vm_validator::vm_validator::TransactionValidation;
 use futures::{
     channel::{mpsc, mpsc::UnboundedSender, oneshot},
     future::Future,

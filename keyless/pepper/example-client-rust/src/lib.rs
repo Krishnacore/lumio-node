@@ -1,15 +1,15 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
-use aptos_infallible::duration_since_epoch;
-use aptos_keyless_pepper_common::{
+use lumio_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, Uniform};
+use lumio_infallible::duration_since_epoch;
+use lumio_keyless_pepper_common::{
     account_recovery_db::AccountRecoveryDbEntry,
     jwt,
     vuf::{self, VUF},
     PepperInput, PepperRequest, PepperResponse, PepperV0VufPubKey, SignatureResponse,
 };
-use aptos_types::{keyless::OpenIdSig, transaction::authenticator::EphemeralPublicKey};
+use lumio_types::{keyless::OpenIdSig, transaction::authenticator::EphemeralPublicKey};
 use ark_bls12_381::G2Projective;
 use ark_serialize::CanonicalDeserialize;
 use firestore::{path, paths, FirestoreDb, FirestoreDbOptions};
@@ -68,7 +68,7 @@ pub async fn run_client_example(
     firestore_database_id: String,
 ) {
     utils::print(
-        "Starting the example client that interacts with the Aptos OIDB Pepper Service.",
+        "Starting the example client that interacts with the Lumio OIDB Pepper Service.",
         true,
     );
 

@@ -18,7 +18,7 @@ use crate::{
     },
 };
 use anyhow::{Context, Result};
-use aptos_api_types::{deserialize_from_string, Event, WriteResource};
+use lumio_api_types::{deserialize_from_string, Event, WriteResource};
 use bigdecimal::BigDecimal;
 use serde::{Deserialize, Serialize};
 use std::{
@@ -36,7 +36,7 @@ pub type EventIndex = i64;
 /// This contains both metadata for fungible assets and fungible tokens
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TokenV2AggregatedData {
-    pub aptos_collection: Option<AptosCollection>,
+    pub lumio_collection: Option<LumioCollection>,
     pub fixed_supply: Option<FixedSupply>,
     pub fungible_asset_metadata: Option<FungibleAssetMetadata>,
     pub fungible_asset_supply: Option<FungibleAssetSupply>,
@@ -143,12 +143,12 @@ impl Collection {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct AptosCollection {
+pub struct LumioCollection {
     pub mutable_description: bool,
     pub mutable_uri: bool,
 }
 
-impl AptosCollection {
+impl LumioCollection {
     pub fn from_write_resource(
         write_resource: &WriteResource,
         txn_version: i64,
@@ -169,7 +169,7 @@ impl AptosCollection {
             0, // Placeholder, this isn't used anyway
         );
 
-        if let V2TokenResource::AptosCollection(inner) =
+        if let V2TokenResource::LumioCollection(inner) =
             V2TokenResource::from_resource(&type_str, resource.data.as_ref().unwrap(), txn_version)?
         {
             Ok(Some(inner))
@@ -440,7 +440,7 @@ impl PropertyMap {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum V2TokenResource {
-    AptosCollection(AptosCollection),
+    LumioCollection(LumioCollection),
     Collection(Collection),
     FixedSupply(FixedSupply),
     ObjectCore(ObjectCore),
@@ -457,7 +457,7 @@ impl V2TokenResource {
                 | "0x4::collection::Collection"
                 | "0x4::collection::FixedSupply"
                 | "0x4::collection::UnlimitedSupply"
-                | "0x4::aptos_token::AptosCollection"
+                | "0x4::lumio_token::LumioCollection"
                 | "0x4::token::Token"
                 | "0x4::property_map::PropertyMap"
         )
@@ -481,8 +481,8 @@ impl V2TokenResource {
             "0x4::collection::UnlimitedSupply" => {
                 serde_json::from_value(data.clone()).map(|inner| Some(Self::UnlimitedSupply(inner)))
             },
-            "0x4::aptos_token::AptosCollection" => {
-                serde_json::from_value(data.clone()).map(|inner| Some(Self::AptosCollection(inner)))
+            "0x4::lumio_token::LumioCollection" => {
+                serde_json::from_value(data.clone()).map(|inner| Some(Self::LumioCollection(inner)))
             },
             "0x4::token::Token" => {
                 serde_json::from_value(data.clone()).map(|inner| Some(Self::TokenV2(inner)))

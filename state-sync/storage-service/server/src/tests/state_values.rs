@@ -6,14 +6,14 @@ use crate::tests::{
     mock::{MockClient, MockDatabaseReader},
     utils,
 };
-use aptos_config::config::StorageServiceConfig;
-use aptos_crypto::hash::HashValue;
-use aptos_storage_service_types::{
+use lumio_config::config::StorageServiceConfig;
+use lumio_crypto::hash::HashValue;
+use lumio_storage_service_types::{
     requests::{DataRequest, StateValuesWithProofRequest},
     responses::{DataResponse, StorageServiceResponse},
     StorageServiceError,
 };
-use aptos_types::{
+use lumio_types::{
     proof::definition::SparseMerkleRangeProof,
     state_store::{
         state_key::StateKey,

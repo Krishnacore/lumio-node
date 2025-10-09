@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Command to run all the mempool tests:
-//      cargo test --package aptos-mempool --lib -- tests --show-output
+//      cargo test --package lumio-mempool --lib -- tests --show-output
 
 #[cfg(test)]
 mod common;

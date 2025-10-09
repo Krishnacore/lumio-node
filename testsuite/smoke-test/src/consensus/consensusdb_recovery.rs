@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    smoke_test_environment::new_local_swarm_with_aptos,
+    smoke_test_environment::new_local_swarm_with_lumio,
     utils::{assert_balance, create_and_fund_account, transfer_coins, MAX_HEALTHY_WAIT_SECS},
 };
-use aptos_consensus::CONSENSUS_DB_NAME;
-use aptos_forge::{HealthCheckError, NodeExt, Swarm};
+use lumio_consensus::CONSENSUS_DB_NAME;
+use lumio_forge::{HealthCheckError, NodeExt, Swarm};
 use std::{
     fs,
     time::{Duration, Instant},
@@ -15,7 +15,7 @@ use std::{
 #[ignore] // TODO: turn this test back on once the flakes have resolved.
 #[tokio::test]
 async fn test_consensusdb_recovery() {
-    let mut swarm = new_local_swarm_with_aptos(4).await;
+    let mut swarm = new_local_swarm_with_lumio(4).await;
     let validator_peer_ids = swarm.validators().map(|v| v.peer_id()).collect::<Vec<_>>();
     let client_1 = swarm
         .validator(validator_peer_ids[1])

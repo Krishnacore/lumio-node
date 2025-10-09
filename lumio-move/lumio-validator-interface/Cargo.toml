@@ -1,0 +1,29 @@
+[package]
+name = "lumio-validator-interface"
+description = "Defines interfaces between the lumio nodes and local move infrastructure"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-api-types = { workspace = true }
+lumio-config = { workspace = true }
+lumio-db = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-rest-client = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-types = { workspace = true }
+async-recursion = { workspace = true }
+async-trait = { workspace = true }
+bcs = { workspace = true }
+lru = { workspace = true }
+move-core-types = { workspace = true }
+tokio = { workspace = true }

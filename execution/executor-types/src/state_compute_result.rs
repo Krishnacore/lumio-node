@@ -5,12 +5,12 @@ use crate::{
     execution_output::ExecutionOutput, state_checkpoint_output::StateCheckpointOutput,
     ChunkCommitNotification, LedgerUpdateOutput,
 };
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{TransactionAccumulatorHasher, ACCUMULATOR_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_storage_interface::chunk_to_commit::ChunkToCommit;
-use aptos_types::{
+use lumio_storage_interface::chunk_to_commit::ChunkToCommit;
+use lumio_types::{
     contract_event::ContractEvent,
     epoch_state::EpochState,
     proof::{accumulator::InMemoryTransactionAccumulator, AccumulatorExtensionProof},

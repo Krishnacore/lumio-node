@@ -3,15 +3,15 @@
 
 use crate::metrics::INDEXER_DB_LATENCY;
 use anyhow::Result;
-use aptos_config::config::{internal_indexer_db_config::InternalIndexerDBConfig, NodeConfig};
-use aptos_db_indexer::{
+use lumio_config::config::{internal_indexer_db_config::InternalIndexerDBConfig, NodeConfig};
+use lumio_db_indexer::{
     db_indexer::{DBIndexer, InternalIndexerDB},
     db_ops::open_internal_indexer_db,
     indexer_reader::IndexerReaders,
 };
-use aptos_indexer_grpc_utils::counters::{log_grpc_step, IndexerGrpcStep};
-use aptos_storage_interface::DbReader;
-use aptos_types::{indexer::indexer_db_reader::IndexerReader, transaction::Version};
+use lumio_indexer_grpc_utils::counters::{log_grpc_step, IndexerGrpcStep};
+use lumio_storage_interface::DbReader;
+use lumio_types::{indexer::indexer_db_reader::IndexerReader, transaction::Version};
 use std::{
     path::{Path, PathBuf},
     sync::Arc,

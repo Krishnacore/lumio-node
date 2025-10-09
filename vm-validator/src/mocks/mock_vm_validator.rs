@@ -4,13 +4,13 @@
 
 use crate::vm_validator::TransactionValidation;
 use anyhow::Result;
-use aptos_types::{
+use lumio_types::{
     account_address::AccountAddress,
     state_store::StateView,
     transaction::{SignedTransaction, VMValidatorResult},
     vm_status::StatusCode,
 };
-use aptos_vm::VMValidator;
+use lumio_vm::VMValidator;
 use move_vm_runtime::ModuleStorage;
 
 pub const ACCOUNT_DNE_TEST_ADD: AccountAddress =

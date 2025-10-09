@@ -1,0 +1,10 @@
+[package]
+name = 'guild'
+version = '1.0.0'
+
+[addresses]
+guild = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioTokenObjects = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }

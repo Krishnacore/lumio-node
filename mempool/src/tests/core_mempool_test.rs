@@ -10,10 +10,10 @@ use crate::{
         setup_mempool_with_broadcast_buckets, txn_bytes_len, TestTransaction,
     },
 };
-use aptos_config::config::{MempoolConfig, NodeConfig};
-use aptos_consensus_types::common::{TransactionInProgress, TransactionSummary};
-use aptos_crypto::HashValue;
-use aptos_types::{
+use lumio_config::config::{MempoolConfig, NodeConfig};
+use lumio_consensus_types::common::{TransactionInProgress, TransactionSummary};
+use lumio_crypto::HashValue;
+use lumio_types::{
     account_address::AccountAddress,
     mempool_status::MempoolStatusCode,
     transaction::{ReplayProtector, SignedTransaction},

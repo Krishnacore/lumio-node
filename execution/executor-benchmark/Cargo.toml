@@ -1,6 +1,6 @@
 [package]
-name = "aptos-executor-benchmark"
-description = "Aptos executor benchmark"
+name = "lumio-executor-benchmark"
+description = "Lumio executor benchmark"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,34 +14,34 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-aggregator = { workspace = true }
-aptos-block-executor = { workspace = true }
-aptos-block-partitioner = { workspace = true }
-aptos-config = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-db = { workspace = true }
-aptos-executor = { workspace = true }
-aptos-executor-service = { workspace = true }
-aptos-executor-types = { workspace = true }
-aptos-experimental-ptx-executor = { workspace = true }
-aptos-experimental-runtimes = { workspace = true }
-aptos-genesis = { workspace = true, features = ["testing"] }
-aptos-infallible = { workspace = true }
-aptos-jellyfish-merkle = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-mvhashmap = { workspace = true }
-aptos-node-resource-metrics = { workspace = true }
-aptos-push-metrics =  { workspace = true }
-aptos-sdk = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-transaction-generator-lib = { workspace = true }
-aptos-transaction-workloads-lib = { workspace = true }
-aptos-types = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-environment = { workspace = true }
-aptos-vm-logging = { workspace = true }
-aptos-vm-types = { workspace = true }
+lumio-aggregator = { workspace = true }
+lumio-block-executor = { workspace = true }
+lumio-block-partitioner = { workspace = true }
+lumio-config = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-executor = { workspace = true }
+lumio-executor-service = { workspace = true }
+lumio-executor-types = { workspace = true }
+lumio-experimental-ptx-executor = { workspace = true }
+lumio-experimental-runtimes = { workspace = true }
+lumio-genesis = { workspace = true, features = ["testing"] }
+lumio-infallible = { workspace = true }
+lumio-jellyfish-merkle = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-mvhashmap = { workspace = true }
+lumio-node-resource-metrics = { workspace = true }
+lumio-push-metrics =  { workspace = true }
+lumio-sdk = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-transaction-generator-lib = { workspace = true }
+lumio-transaction-workloads-lib = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-environment = { workspace = true }
+lumio-vm-logging = { workspace = true }
+lumio-vm-types = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
 bytes = { workspace = true }
@@ -63,12 +63,12 @@ tokio = { workspace = true }
 toml = { workspace = true }
 
 [target.'cfg(unix)'.dependencies]
-aptos-profiler = { workspace = true }
+lumio-profiler = { workspace = true }
 jemallocator = { workspace = true }
 
 [dev-dependencies]
-aptos-temppath = { workspace = true }
+lumio-temppath = { workspace = true }
 
 [features]
 default = []
-fuzzing = ["aptos-config/fuzzing", "aptos-crypto/fuzzing", "aptos-types/fuzzing"]
+fuzzing = ["lumio-config/fuzzing", "lumio-crypto/fuzzing", "lumio-types/fuzzing"]

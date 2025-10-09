@@ -10,15 +10,15 @@ use crate::{
     },
     ProofRead,
 };
-use aptos_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
-use aptos_types::proof::{definition::NodeInProof, SparseMerkleLeafNode, SparseMerkleProofExt};
-use aptos_vm::AptosVM;
+use lumio_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
+use lumio_types::proof::{definition::NodeInProof, SparseMerkleLeafNode, SparseMerkleProofExt};
+use lumio_vm::LumioVM;
 use once_cell::sync::Lazy;
 use std::cmp::Ordering;
 
 static POOL: Lazy<rayon::ThreadPool> = Lazy::new(|| {
     rayon::ThreadPoolBuilder::new()
-        .num_threads(AptosVM::get_num_proof_reading_threads())
+        .num_threads(LumioVM::get_num_proof_reading_threads())
         .thread_name(|index| format!("smt_update_{}", index))
         .build()
         .unwrap()

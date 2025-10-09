@@ -1,11 +1,11 @@
-# Aptos Protos
+# Lumio Protos
 
-This repository contains the protobuf definitions for Aptos.
+This repository contains the protobuf definitions for Lumio.
 
 ## Usage
 Import generated structs like this:
 ```rust
-use aptos_protos::transaction::v1::Transaction;
+use lumio_protos::transaction::v1::Transaction;
 ```
 
 Then use them like this:

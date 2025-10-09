@@ -9,13 +9,13 @@ use crate::{
     workflow::{do_get_execution_output::DoGetExecutionOutput, ApplyExecutionOutput},
 };
 use anyhow::{anyhow, ensure, format_err, Result};
-use aptos_crypto::HashValue;
-use aptos_logger::prelude::*;
-use aptos_storage_interface::{
+use lumio_crypto::HashValue;
+use lumio_logger::prelude::*;
+use lumio_storage_interface::{
     state_store::state_view::cached_state_view::CachedStateView, DbReaderWriter, DbWriter,
     LedgerSummary,
 };
-use aptos_types::{
+use lumio_types::{
     account_config::CORE_CODE_ADDRESS,
     aggregate_signature::AggregateSignature,
     block_executor::{
@@ -30,7 +30,7 @@ use aptos_types::{
     transaction::{AuxiliaryInfo, AuxiliaryInfoTrait, Transaction},
     waypoint::Waypoint,
 };
-use aptos_vm::VMBlockExecutor;
+use lumio_vm::VMBlockExecutor;
 use std::sync::Arc;
 
 pub fn generate_waypoint<V: VMBlockExecutor>(

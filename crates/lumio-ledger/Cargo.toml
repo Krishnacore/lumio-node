@@ -1,0 +1,21 @@
+[package]
+name = "lumio-ledger"
+description = "Library for integration with the Lumio app on Ledger"
+version = "0.2.0"
+publish = true
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+repository = "https://github.com/lumio-labs/lumio-core/tree/main/crates/lumio-ledger"
+rust-version = { workspace = true }
+
+[dependencies]
+lumio-crypto = { workspace = true }
+lumio-types = { workspace = true }
+hex = { workspace = true }
+ledger-apdu = "0.10.0"
+ledger-transport-hid = "0.10.0"
+thiserror = { workspace = true }

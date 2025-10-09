@@ -9,18 +9,18 @@ use crate::{
     DKGMessage,
 };
 use anyhow::{anyhow, Result};
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::config::{ReliableBroadcastConfig, SafetyRulesConfig};
-use aptos_event_notifications::{
+use lumio_bounded_executor::BoundedExecutor;
+use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+use lumio_config::config::{ReliableBroadcastConfig, SafetyRulesConfig};
+use lumio_event_notifications::{
     EventNotification, EventNotificationListener, ReconfigNotification,
     ReconfigNotificationListener,
 };
-use aptos_logger::{debug, error, info, warn};
-use aptos_network::{application::interface::NetworkClient, protocols::network::Event};
-use aptos_reliable_broadcast::ReliableBroadcast;
-use aptos_safety_rules::{safety_rules_manager::storage, PersistentSafetyStorage};
-use aptos_types::{
+use lumio_logger::{debug, error, info, warn};
+use lumio_network::{application::interface::NetworkClient, protocols::network::Event};
+use lumio_reliable_broadcast::ReliableBroadcast;
+use lumio_safety_rules::{safety_rules_manager::storage, PersistentSafetyStorage};
+use lumio_types::{
     account_address::AccountAddress,
     dkg::{DKGStartEvent, DKGState, DefaultDKG},
     epoch_state::EpochState,
@@ -29,7 +29,7 @@ use aptos_types::{
         OnChainRandomnessConfig, RandomnessConfigMoveStruct, RandomnessConfigSeqNum, ValidatorSet,
     },
 };
-use aptos_validator_transaction_pool::VTxnPoolState;
+use lumio_validator_transaction_pool::VTxnPoolState;
 use futures::StreamExt;
 use futures_channel::oneshot;
 use std::{sync::Arc, time::Duration};
@@ -46,13 +46,13 @@ pub struct EpochManager<P: OnChainConfigProvider> {
 
     // Msgs to DKG manager
     dkg_rpc_msg_tx:
-        Option<aptos_channel::Sender<AccountAddress, (AccountAddress, IncomingRpcRequest)>>,
+        Option<lumio_channel::Sender<AccountAddress, (AccountAddress, IncomingRpcRequest)>>,
     dkg_manager_close_tx: Option<oneshot::Sender<oneshot::Sender<()>>>,
-    dkg_start_event_tx: Option<aptos_channel::Sender<(), DKGStartEvent>>,
+    dkg_start_event_tx: Option<lumio_channel::Sender<(), DKGStartEvent>>,
     vtxn_pool: VTxnPoolState,
 
     // Network utils
-    self_sender: aptos_channels::Sender<Event<DKGMessage>>,
+    self_sender: lumio_channels::Sender<Event<DKGMessage>>,
     network_sender: DKGNetworkClient<NetworkClient<DKGMessage>>,
     rb_config: ReliableBroadcastConfig,
 
@@ -68,7 +68,7 @@ impl<P: OnChainConfigProvider> EpochManager<P> {
         my_addr: AccountAddress,
         reconfig_events: ReconfigNotificationListener<P>,
         dkg_start_events: EventNotificationListener,
-        self_sender: aptos_channels::Sender<Event<DKGMessage>>,
+        self_sender: lumio_channels::Sender<Event<DKGMessage>>,
         network_sender: DKGNetworkClient<NetworkClient<DKGMessage>>,
         vtxn_pool: VTxnPoolState,
         rb_config: ReliableBroadcastConfig,
@@ -214,17 +214,17 @@ impl<P: OnChainConfigProvider> EpochManager<P> {
                     .max_delay(Duration::from_millis(
                         self.rb_config.backoff_policy_max_delay_ms,
                     )),
-                aptos_time_service::TimeService::real(),
+                lumio_time_service::TimeService::real(),
                 Duration::from_millis(self.rb_config.rpc_timeout_ms),
                 BoundedExecutor::new(8, tokio::runtime::Handle::current()),
             );
             let agg_trx_producer = AggTranscriptProducer::new(rb);
 
             let (dkg_start_event_tx, dkg_start_event_rx) =
-                aptos_channel::new(QueueStyle::KLAST, 1, None);
+                lumio_channel::new(QueueStyle::KLAST, 1, None);
             self.dkg_start_event_tx = Some(dkg_start_event_tx);
 
-            let (dkg_rpc_msg_tx, dkg_rpc_msg_rx) = aptos_channel::new::<
+            let (dkg_rpc_msg_tx, dkg_rpc_msg_rx) = lumio_channel::new::<
                 AccountAddress,
                 (AccountAddress, IncomingRpcRequest),
             >(QueueStyle::FIFO, 100, None);

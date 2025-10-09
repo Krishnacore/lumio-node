@@ -9,10 +9,10 @@ use crate::{
     quorum_cert::QuorumCert,
 };
 use anyhow::{bail, ensure, format_err, Result};
-use aptos_bitvec::BitVec;
-use aptos_crypto::{bls12381, hash::CryptoHash, HashValue};
-use aptos_infallible::duration_since_epoch;
-use aptos_types::{
+use lumio_bitvec::BitVec;
+use lumio_crypto::{bls12381, hash::CryptoHash, HashValue};
+use lumio_infallible::duration_since_epoch;
+use lumio_types::{
     account_address::AccountAddress,
     block_info::BlockInfo,
     block_metadata::BlockMetadata,

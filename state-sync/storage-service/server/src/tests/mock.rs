@@ -6,13 +6,13 @@ use crate::{
     StorageServiceServer,
 };
 use anyhow::Result;
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+use lumio_config::{
     config::{StateSyncConfig, StorageServiceConfig},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_crypto::HashValue;
-use aptos_network::{
+use lumio_crypto::HashValue;
+use lumio_network::{
     application::{interface::NetworkServiceEvents, storage::PeersAndMetadata},
     protocols::{
         network::{NetworkEvents, NewNetworkEvents, ReceivedMessage},
@@ -22,14 +22,14 @@ use aptos_network::{
         },
     },
 };
-use aptos_storage_interface::{DbReader, LedgerSummary, Order};
-use aptos_storage_service_notifications::StorageServiceNotifier;
-use aptos_storage_service_types::{
+use lumio_storage_interface::{DbReader, LedgerSummary, Order};
+use lumio_storage_service_notifications::StorageServiceNotifier;
+use lumio_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, StorageServiceError,
     StorageServiceMessage,
 };
-use aptos_time_service::{MockTimeService, TimeService};
-use aptos_types::{
+use lumio_time_service::{MockTimeService, TimeService};
+use lumio_types::{
     account_address::AccountAddress,
     contract_event::{ContractEvent, EventWithVersion},
     epoch_change::EpochChangeProof,
@@ -65,7 +65,7 @@ const MAX_RESPONSE_TIMEOUT_SECS: u64 = 60;
 /// mock client requests to a [`StorageServiceServer`].
 pub struct MockClient {
     peer_manager_notifiers:
-        HashMap<NetworkId, aptos_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>>,
+        HashMap<NetworkId, lumio_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>>,
 }
 
 impl MockClient {
@@ -99,7 +99,7 @@ impl MockClient {
         let mut network_and_events = HashMap::new();
         let mut peer_manager_notifiers = HashMap::new();
         for network_id in network_ids.clone() {
-            let queue_cfg = aptos_channel::Config::new(
+            let queue_cfg = lumio_channel::Config::new(
                 storage_service_config.max_network_channel_size as usize,
             )
             .queue_style(QueueStyle::FIFO)
@@ -115,7 +115,7 @@ impl MockClient {
 
         // Create the storage service notifier and listener
         let (storage_service_notifier, storage_service_listener) =
-            aptos_storage_service_notifications::new_storage_service_notifier_listener_pair();
+            lumio_storage_service_notifications::new_storage_service_notifier_listener_pair();
 
         // Create the storage service
         let peers_and_metadata = create_peers_and_metadata(network_ids);
@@ -159,7 +159,7 @@ impl MockClient {
         request: StorageServiceRequest,
         peer_id: Option<AccountAddress>,
         network_id: Option<NetworkId>,
-    ) -> Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>> {
+    ) -> Receiver<Result<bytes::Bytes, lumio_network::protocols::network::RpcError>> {
         // Create the inbound rpc request
         let peer_id = peer_id.unwrap_or_else(PeerId::random);
         let network_id = network_id.unwrap_or_else(get_random_network_id);
@@ -193,7 +193,7 @@ impl MockClient {
     /// Helper method to wait for and deserialize a response on the specified receiver
     pub async fn wait_for_response(
         &mut self,
-        receiver: Receiver<Result<bytes::Bytes, aptos_network::protocols::network::RpcError>>,
+        receiver: Receiver<Result<bytes::Bytes, lumio_network::protocols::network::RpcError>>,
     ) -> Result<StorageServiceResponse, StorageServiceError> {
         if let Ok(response) =
             timeout(Duration::from_secs(MAX_RESPONSE_TIMEOUT_SECS), receiver).await
@@ -238,7 +238,7 @@ mock! {
             &self,
             start_epoch: u64,
             end_epoch: u64,
-        ) -> aptos_storage_interface::Result<EpochChangeProof>;
+        ) -> lumio_storage_interface::Result<EpochChangeProof>;
 
         fn get_transactions(
             &self,
@@ -246,32 +246,32 @@ mock! {
             batch_size: u64,
             ledger_version: Version,
             fetch_events: bool,
-        ) -> aptos_storage_interface::Result<TransactionListWithProofV2>;
+        ) -> lumio_storage_interface::Result<TransactionListWithProofV2>;
 
         fn get_transaction_by_hash(
             &self,
             hash: HashValue,
             ledger_version: Version,
             fetch_events: bool,
-        ) -> aptos_storage_interface::Result<Option<TransactionWithProof>>;
+        ) -> lumio_storage_interface::Result<Option<TransactionWithProof>>;
 
         fn get_transaction_by_version(
             &self,
             version: Version,
             ledger_version: Version,
             fetch_events: bool,
-        ) -> aptos_storage_interface::Result<TransactionWithProof>;
+        ) -> lumio_storage_interface::Result<TransactionWithProof>;
 
-        fn get_first_txn_version(&self) -> aptos_storage_interface::Result<Option<Version>>;
+        fn get_first_txn_version(&self) -> lumio_storage_interface::Result<Option<Version>>;
 
-        fn get_first_write_set_version(&self) -> aptos_storage_interface::Result<Option<Version>>;
+        fn get_first_write_set_version(&self) -> lumio_storage_interface::Result<Option<Version>>;
 
         fn get_transaction_outputs(
             &self,
             start_version: Version,
             limit: u64,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<TransactionOutputListWithProofV2>;
+        ) -> lumio_storage_interface::Result<TransactionOutputListWithProofV2>;
 
         fn get_events(
             &self,
@@ -280,25 +280,25 @@ mock! {
             order: Order,
             limit: u64,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<Vec<EventWithVersion>>;
+        ) -> lumio_storage_interface::Result<Vec<EventWithVersion>>;
 
-        fn get_block_timestamp(&self, version: u64) -> aptos_storage_interface::Result<u64>;
+        fn get_block_timestamp(&self, version: u64) -> lumio_storage_interface::Result<u64>;
 
         fn get_last_version_before_timestamp(
             &self,
             _timestamp: u64,
             _ledger_version: Version,
-        ) -> aptos_storage_interface::Result<Version>;
+        ) -> lumio_storage_interface::Result<Version>;
 
-        fn get_latest_ledger_info_option(&self) -> aptos_storage_interface::Result<Option<LedgerInfoWithSignatures>>;
+        fn get_latest_ledger_info_option(&self) -> lumio_storage_interface::Result<Option<LedgerInfoWithSignatures>>;
 
-        fn get_latest_ledger_info(&self) -> aptos_storage_interface::Result<LedgerInfoWithSignatures>;
+        fn get_latest_ledger_info(&self) -> lumio_storage_interface::Result<LedgerInfoWithSignatures>;
 
-        fn get_synced_version(&self) -> aptos_storage_interface::Result<Option<Version>>;
+        fn get_synced_version(&self) -> lumio_storage_interface::Result<Option<Version>>;
 
-        fn get_latest_ledger_info_version(&self) -> aptos_storage_interface::Result<Version>;
+        fn get_latest_ledger_info_version(&self) -> lumio_storage_interface::Result<Version>;
 
-        fn get_latest_commit_metadata(&self) -> aptos_storage_interface::Result<(Version, u64)>;
+        fn get_latest_commit_metadata(&self) -> lumio_storage_interface::Result<(Version, u64)>;
 
         fn get_account_ordered_transaction(
             &self,
@@ -306,7 +306,7 @@ mock! {
             seq_num: u64,
             include_events: bool,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<Option<TransactionWithProof>>;
+        ) -> lumio_storage_interface::Result<Option<TransactionWithProof>>;
 
         fn get_account_ordered_transactions(
             &self,
@@ -315,114 +315,114 @@ mock! {
             limit: u64,
             include_events: bool,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<AccountOrderedTransactionsWithProof>;
+        ) -> lumio_storage_interface::Result<AccountOrderedTransactionsWithProof>;
 
         fn get_state_proof_with_ledger_info(
             &self,
             known_version: u64,
             ledger_info: LedgerInfoWithSignatures,
-        ) -> aptos_storage_interface::Result<StateProof>;
+        ) -> lumio_storage_interface::Result<StateProof>;
 
-        fn get_state_proof(&self, known_version: u64) -> aptos_storage_interface::Result<StateProof>;
+        fn get_state_proof(&self, known_version: u64) -> lumio_storage_interface::Result<StateProof>;
 
         fn get_state_value_with_proof_by_version(
             &self,
             state_key: &StateKey,
             version: Version,
-        ) -> aptos_storage_interface::Result<(Option<StateValue>, SparseMerkleProof)>;
+        ) -> lumio_storage_interface::Result<(Option<StateValue>, SparseMerkleProof)>;
 
-        fn get_pre_committed_ledger_summary(&self) -> aptos_storage_interface::Result<LedgerSummary>;
+        fn get_pre_committed_ledger_summary(&self) -> lumio_storage_interface::Result<LedgerSummary>;
 
-        fn get_epoch_ending_ledger_info(&self, known_version: u64) ->aptos_storage_interface::Result<LedgerInfoWithSignatures>;
+        fn get_epoch_ending_ledger_info(&self, known_version: u64) ->lumio_storage_interface::Result<LedgerInfoWithSignatures>;
 
-        fn get_accumulator_root_hash(&self, _version: Version) -> aptos_storage_interface::Result<HashValue>;
+        fn get_accumulator_root_hash(&self, _version: Version) -> lumio_storage_interface::Result<HashValue>;
 
         fn get_accumulator_consistency_proof(
             &self,
             _client_known_version: Option<Version>,
             _ledger_version: Version,
-        ) -> aptos_storage_interface::Result<AccumulatorConsistencyProof>;
+        ) -> lumio_storage_interface::Result<AccumulatorConsistencyProof>;
 
         fn get_accumulator_summary(
             &self,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<TransactionAccumulatorSummary>;
+        ) -> lumio_storage_interface::Result<TransactionAccumulatorSummary>;
 
-        fn get_state_item_count(&self, version: Version) -> aptos_storage_interface::Result<usize>;
+        fn get_state_item_count(&self, version: Version) -> lumio_storage_interface::Result<usize>;
 
         fn get_state_value_chunk_with_proof(
             &self,
             version: Version,
             start_idx: usize,
             chunk_size: usize,
-        ) -> aptos_storage_interface::Result<StateValueChunkWithProof>;
+        ) -> lumio_storage_interface::Result<StateValueChunkWithProof>;
 
-        fn get_epoch_snapshot_prune_window(&self) -> aptos_storage_interface::Result<usize>;
+        fn get_epoch_snapshot_prune_window(&self) -> lumio_storage_interface::Result<usize>;
 
-        fn is_state_merkle_pruner_enabled(&self) -> aptos_storage_interface::Result<bool>;
+        fn is_state_merkle_pruner_enabled(&self) -> lumio_storage_interface::Result<bool>;
 
         fn get_persisted_auxiliary_info_iterator(
             &self,
             start_version: Version,
             num_persisted_auxiliary_info: usize,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<PersistedAuxiliaryInfo>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<PersistedAuxiliaryInfo>>>>;
 
         fn get_epoch_ending_ledger_info_iterator(
             &self,
             start_epoch: u64,
             end_epoch: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<LedgerInfoWithSignatures>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<LedgerInfoWithSignatures>>>>;
 
         fn get_transaction_iterator(
             &self,
             start_version: Version,
             limit: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<Transaction>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<Transaction>>>>;
 
         fn get_transaction_info_iterator(
             &self,
             start_version: Version,
             limit: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<TransactionInfo>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<TransactionInfo>>>>;
 
         fn get_events_iterator(
             &self,
             start_version: Version,
             limit: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<Vec<ContractEvent>>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<Vec<ContractEvent>>>>>;
 
         fn get_write_set_iterator(
             &self,
             start_version: Version,
             limit: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<WriteSet>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<WriteSet>>>>;
 
         fn get_auxiliary_data_iterator(
             &self,
             start_version: Version,
             limit: u64,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<TransactionAuxiliaryData>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<TransactionAuxiliaryData>>>>;
 
         fn get_transaction_accumulator_range_proof(
             &self,
             start_version: Version,
             limit: u64,
             ledger_version: Version,
-        ) -> aptos_storage_interface::Result<TransactionAccumulatorRangeProof>;
+        ) -> lumio_storage_interface::Result<TransactionAccumulatorRangeProof>;
 
         fn get_state_value_chunk_iter(
             &self,
             version: Version,
             first_index: usize,
             chunk_size: usize,
-        ) -> aptos_storage_interface::Result<Box<dyn Iterator<Item = aptos_storage_interface::Result<(StateKey, StateValue)>>>>;
+        ) -> lumio_storage_interface::Result<Box<dyn Iterator<Item = lumio_storage_interface::Result<(StateKey, StateValue)>>>>;
 
         fn get_state_value_chunk_proof(
             &self,
             version: Version,
             first_index: usize,
             state_key_values: Vec<(StateKey, StateValue)>,
-        ) -> aptos_storage_interface::Result<StateValueChunkWithProof>;
+        ) -> lumio_storage_interface::Result<StateValueChunkWithProof>;
     }
 }
 

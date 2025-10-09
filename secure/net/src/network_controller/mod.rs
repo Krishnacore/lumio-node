@@ -4,7 +4,7 @@
 use crate::network_controller::{
     inbound_handler::InboundHandler, outbound_handler::OutboundHandler,
 };
-use aptos_logger::{info, warn};
+use lumio_logger::{info, warn};
 use crossbeam_channel::{unbounded, Receiver, Sender};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -168,7 +168,7 @@ impl NetworkController {
 #[cfg(test)]
 mod tests {
     use crate::network_controller::{Message, NetworkController};
-    use aptos_config::utils;
+    use lumio_config::utils;
     use std::{
         net::{IpAddr, Ipv4Addr, SocketAddr},
         thread,

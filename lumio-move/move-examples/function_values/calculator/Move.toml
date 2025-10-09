@@ -1,0 +1,10 @@
+[package]
+name = "calculator"
+version = "0.0.0"
+
+[addresses]
+account = "_"
+
+[dependencies]
+LumioFramework = { local = "../../../framework/lumio-framework" }
+LumioStdlib = { local = "../../../framework/lumio-stdlib" }

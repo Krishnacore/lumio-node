@@ -7,12 +7,12 @@ use crate::{
     round_manager::round_manager_tests::NodeSetup,
     test_utils::{consensus_runtime, create_vec_signed_transactions, timed_block_on},
 };
-use aptos_config::config::ConsensusConfig;
-use aptos_consensus_types::{
+use lumio_config::config::ConsensusConfig;
+use lumio_consensus_types::{
     block::{block_test_utils::certificate_for_genesis, Block},
     common::Payload,
 };
-use aptos_types::{
+use lumio_types::{
     dkg::{real_dkg::RealDKG, DKGSessionMetadata, DKGTrait, DKGTranscript},
     jwks::QuorumCertifiedUpdate,
     on_chain_config::{

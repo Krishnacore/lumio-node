@@ -1,0 +1,9 @@
+[package]
+name = "LumioExperimental"
+version = "1.0.0"
+
+[addresses]
+lumio_experimental = "0x7"
+
+[dependencies]
+LumioFramework = { local = "../lumio-framework" }

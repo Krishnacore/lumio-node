@@ -17,9 +17,9 @@ use crate::{
     },
     test_utils::consensus_runtime,
 };
-use aptos_crypto::HashValue;
-use aptos_safety_rules::Error;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_safety_rules::Error;
+use lumio_types::{
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

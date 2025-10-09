@@ -1,5 +1,5 @@
 [package]
-name = "aptos-indexer-transaction-generator"
+name = "lumio-indexer-transaction-generator"
 description = "Indexer integration testing framework."
 version = "1.0.0"
 
@@ -15,11 +15,11 @@ rust-version = { workspace = true }
 [dependencies]
 anyhow = { workspace = true }
 # used for localnode.
-aptos = { workspace = true }
-aptos-config = { workspace = true }
-aptos-faucet-core = { workspace = true }
-aptos-indexer-grpc-utils = { workspace = true }
-aptos-protos ={ workspace = true }
+lumio = { workspace = true }
+lumio-config = { workspace = true }
+lumio-faucet-core = { workspace = true }
+lumio-indexer-grpc-utils = { workspace = true }
+lumio-protos ={ workspace = true }
 clap = { workspace = true }
 futures = { workspace = true }
 rand = { workspace = true }

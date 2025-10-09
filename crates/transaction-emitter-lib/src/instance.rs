@@ -1,12 +1,12 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_rest_client::{aptos_api_types, AptosBaseUrl, Client as RestClient};
+use lumio_rest_client::{lumio_api_types, LumioBaseUrl, Client as RestClient};
 use reqwest::Url;
 use std::fmt;
 
 // Custom header value to identify the client
-const X_APTOS_CLIENT_VALUE: &str = "aptos-transaction-emitter";
+const X_LUMIO_CLIENT_VALUE: &str = "lumio-transaction-emitter";
 
 #[derive(Clone)]
 pub struct Instance {
@@ -44,8 +44,8 @@ impl Instance {
     }
 
     pub fn rest_client(&self) -> RestClient {
-        let client = RestClient::builder(AptosBaseUrl::Custom(self.api_url()))
-            .header(aptos_api_types::X_APTOS_CLIENT, X_APTOS_CLIENT_VALUE)
+        let client = RestClient::builder(LumioBaseUrl::Custom(self.api_url()))
+            .header(lumio_api_types::X_LUMIO_CLIENT, X_LUMIO_CLIENT_VALUE)
             .expect("Failed to initialize REST Client instance");
 
         // add the API key if it is provided

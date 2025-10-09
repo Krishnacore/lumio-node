@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{error::PepperServiceError, process_common, tests::utils};
-use aptos_crypto::ed25519::Ed25519PublicKey;
-use aptos_infallible::Mutex;
-use aptos_types::{
+use lumio_crypto::ed25519::Ed25519PublicKey;
+use lumio_infallible::Mutex;
+use lumio_types::{
     keyless::{
         circuit_testcases::{
             sample_jwt_payload_json_overrides, SAMPLE_EXP_DATE, SAMPLE_JWT_EXTRA_FIELD,

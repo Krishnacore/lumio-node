@@ -1,0 +1,11 @@
+[package]
+name = "DataStructure"
+version = "0.0.1"
+
+[dependencies]
+LumioStdlib = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-stdlib", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+
+
+[addresses]
+std = "0x1"

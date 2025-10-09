@@ -1,8 +1,8 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_logger::info;
-use aptos_types::{
+use lumio_logger::info;
+use lumio_types::{
     on_chain_config::TransactionShufflerType,
     transaction::{
         signature_verified_transaction::SignatureVerifiedTransaction, SignedTransaction,

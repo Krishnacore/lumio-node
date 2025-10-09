@@ -17,10 +17,10 @@ use crate::{
     utils::{unix_timestamp_sec, GlobalRestoreOptions},
 };
 use anyhow::{anyhow, bail, ensure, Result};
-use aptos_db::state_restore::StateSnapshotRestoreMode;
-use aptos_executor_types::VerifyExecutionMode;
-use aptos_logger::prelude::*;
-use aptos_types::transaction::Version;
+use lumio_db::state_restore::StateSnapshotRestoreMode;
+use lumio_executor_types::VerifyExecutionMode;
+use lumio_logger::prelude::*;
+use lumio_types::transaction::Version;
 use clap::Parser;
 use std::sync::Arc;
 

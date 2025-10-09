@@ -1,6 +1,6 @@
 module poc::eq_internal {
-    use aptos_std::crypto_algebra::{Self};
-    use aptos_std::bls12381_algebra::{Fr};
+    use lumio_std::crypto_algebra::{Self};
+    use lumio_std::bls12381_algebra::{Fr};
 
     public entry fun main(_owner: &signer) {
         let five_1 = crypto_algebra::from_u64<Fr>(5);

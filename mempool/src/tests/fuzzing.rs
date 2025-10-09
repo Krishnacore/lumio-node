@@ -7,18 +7,18 @@ use crate::{
     network::{BroadcastPeerPriority, MempoolSyncMsg},
     shared_mempool::{tasks, types::SharedMempool},
 };
-use aptos_config::{
+use lumio_config::{
     config::{NodeConfig, NodeType},
     network_id::NetworkId,
 };
-use aptos_infallible::{Mutex, RwLock};
-use aptos_network::{
+use lumio_infallible::{Mutex, RwLock};
+use lumio_network::{
     application::{interface::NetworkClient, storage::PeersAndMetadata},
     protocols::wire::handshake::v1::ProtocolId::MempoolDirectSend,
 };
-use aptos_storage_interface::mock::MockDbReaderWriter;
-use aptos_types::transaction::SignedTransaction;
-use aptos_vm_validator::mocks::mock_vm_validator::MockVMValidator;
+use lumio_storage_interface::mock::MockDbReaderWriter;
+use lumio_types::transaction::SignedTransaction;
+use lumio_vm_validator::mocks::mock_vm_validator::MockVMValidator;
 use proptest::{
     arbitrary::any,
     prelude::*,

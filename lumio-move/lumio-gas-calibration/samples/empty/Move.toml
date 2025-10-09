@@ -1,0 +1,16 @@
+[package]
+name = "empty"
+version = "1.0.0"
+authors = []
+
+[addresses]
+empty = "0xcafe"
+
+[dev-addresses]
+
+[dependencies.LumioFramework]
+git = "https://github.com/lumio-labs/lumio-framework.git"
+rev = "mainnet"
+subdir = "lumio-framework"
+
+[dev-dependencies]

@@ -2,8 +2,8 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_consensus_types::common::Round;
-use aptos_types::{
+use lumio_consensus_types::common::Round;
+use lumio_types::{
     on_chain_config::{OnChainJWKConsensusConfig, OnChainRandomnessConfig},
     validator_txn::ValidatorTransaction,
 };

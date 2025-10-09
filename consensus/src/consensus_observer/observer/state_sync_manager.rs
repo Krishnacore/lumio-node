@@ -11,10 +11,10 @@ use crate::{
     },
     pipeline::execution_client::TExecutionClient,
 };
-use aptos_config::config::ConsensusObserverConfig;
-use aptos_logger::{error, info};
-use aptos_reliable_broadcast::DropGuard;
-use aptos_types::ledger_info::LedgerInfoWithSignatures;
+use lumio_config::config::ConsensusObserverConfig;
+use lumio_logger::{error, info};
+use lumio_reliable_broadcast::DropGuard;
+use lumio_types::ledger_info::LedgerInfoWithSignatures;
 use futures::future::{AbortHandle, Abortable};
 use std::{sync::Arc, time::Duration};
 use tokio::sync::mpsc::UnboundedSender;
@@ -262,7 +262,7 @@ impl StateSyncManager {
 mod test {
     use super::*;
     use crate::pipeline::execution_client::DummyExecutionClient;
-    use aptos_types::{aggregate_signature::AggregateSignature, ledger_info::LedgerInfo};
+    use lumio_types::{aggregate_signature::AggregateSignature, ledger_info::LedgerInfo};
 
     #[tokio::test]
     async fn test_clear_active_sync() {

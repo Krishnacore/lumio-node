@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::smoke_test_environment::SwarmBuilder;
-use aptos::{common::types::GasOptions, move_tool::MemberId, test::CliTestFramework};
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::info;
-use aptos_types::on_chain_config::OnChainRandomnessConfig;
+use lumio::{common::types::GasOptions, move_tool::MemberId, test::CliTestFramework};
+use lumio_forge::{NodeExt, Swarm, SwarmExt};
+use lumio_logger::info;
+use lumio_types::on_chain_config::OnChainRandomnessConfig;
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr, sync::Arc, time::Duration};
 
@@ -18,7 +18,7 @@ async fn e2e_basic_consumption() {
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_lumio()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
 
@@ -89,13 +89,13 @@ pub async fn publish_on_chain_dice_module(
     cli.init_package(
         "OnChainDice".to_string(),
         package_addresses,
-        Some(CliTestFramework::aptos_framework_dir()),
+        Some(CliTestFramework::lumio_framework_dir()),
     )
     .await
     .unwrap();
 
     let content =
-        include_str!("../../../../aptos-move/move-examples/on_chain_dice/sources/dice.move")
+        include_str!("../../../../lumio-move/move-examples/on_chain_dice/sources/dice.move")
             .to_string();
     cli.add_file_in_package("sources/dice.move", content);
 

@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::pipeline::{buffer_item::ExecutionFut, pipeline_phase::StatelessPipeline};
-use aptos_consensus_types::pipelined_block::PipelinedBlock;
-use aptos_crypto::HashValue;
-use aptos_executor_types::ExecutorResult;
+use lumio_consensus_types::pipelined_block::PipelinedBlock;
+use lumio_crypto::HashValue;
+use lumio_executor_types::ExecutorResult;
 use async_trait::async_trait;
 use std::{
     fmt::{Debug, Display, Formatter},

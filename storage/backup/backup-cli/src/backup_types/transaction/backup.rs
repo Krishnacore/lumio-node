@@ -14,8 +14,8 @@ use crate::{
     },
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_logger::prelude::*;
-use aptos_types::transaction::Version;
+use lumio_logger::prelude::*;
+use lumio_types::transaction::Version;
 use clap::Parser;
 use once_cell::sync::Lazy;
 use std::{convert::TryInto, str::FromStr, sync::Arc};

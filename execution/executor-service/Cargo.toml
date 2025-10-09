@@ -1,6 +1,6 @@
 [package]
-name = "aptos-executor-service"
-description = "Aptos executor service"
+name = "lumio-executor-service"
+description = "Lumio executor service"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -13,19 +13,19 @@ repository = { workspace = true }
 rust-version = { workspace = true }
 
 [dependencies]
-aptos-block-executor = { workspace = true }
-aptos-block-partitioner = { workspace = true }
-aptos-config = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-keygen = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-node-resource-metrics = { workspace = true }
-aptos-push-metrics =  { workspace = true }
-aptos-secure-net = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-types = { workspace = true }
-aptos-vm = { workspace = true }
+lumio-block-executor = { workspace = true }
+lumio-block-partitioner = { workspace = true }
+lumio-config = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-keygen = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-node-resource-metrics = { workspace = true }
+lumio-push-metrics =  { workspace = true }
+lumio-secure-net = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm = { workspace = true }
 bcs = { workspace = true }
 clap = { workspace = true }
 crossbeam-channel = { workspace = true }
@@ -39,6 +39,6 @@ serde = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
-aptos-language-e2e-tests = { workspace = true }
-aptos-transaction-simulation = { workspace = true }
-aptos-vm = { workspace = true }
+lumio-language-e2e-tests = { workspace = true }
+lumio-transaction-simulation = { workspace = true }
+lumio-vm = { workspace = true }

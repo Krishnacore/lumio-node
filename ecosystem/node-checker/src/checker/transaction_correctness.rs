@@ -7,7 +7,7 @@ use crate::{
     provider::{api_index::ApiIndexProvider, Provider, ProviderCollection},
 };
 use anyhow::Result;
-use aptos_rest_client::{aptos_api_types::TransactionData, Client as AptosRestClient};
+use lumio_rest_client::{lumio_api_types::TransactionData, Client as LumioRestClient};
 use serde::{Deserialize, Serialize};
 use std::cmp::{max, min};
 
@@ -32,7 +32,7 @@ impl TransactionCorrectnessChecker {
 
     /// Fetch a transaction by version and return it.
     async fn get_transaction_by_version(
-        client: &AptosRestClient,
+        client: &LumioRestClient,
         version: u64,
         node_name: &str,
     ) -> Result<TransactionData, CheckerError> {
@@ -55,7 +55,7 @@ impl TransactionCorrectnessChecker {
     /// as returned by the API.
     fn unwrap_accumulator_root_hash(
         transaction_data: &TransactionData,
-    ) -> Result<&aptos_crypto::HashValue, CheckerError> {
+    ) -> Result<&lumio_crypto::HashValue, CheckerError> {
         match transaction_data {
             TransactionData::OnChain(on_chain) => Ok(&on_chain.accumulator_root_hash),
             wildcard => Err(CheckerError::NonRetryableEndpointError(

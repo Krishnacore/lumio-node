@@ -18,11 +18,11 @@ use crate::{
     util::time_service::TimeService,
 };
 use anyhow::{bail, ensure, format_err, Context};
-use aptos_config::config::{
+use lumio_config::config::{
     ChainHealthBackoffValues, ExecutionBackpressureConfig, ExecutionBackpressureMetric,
     PipelineBackpressureValues,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::Block,
     block_data::BlockData,
     common::{Author, Payload, PayloadFilter, Round},
@@ -32,13 +32,13 @@ use aptos_consensus_types::{
     quorum_cert::QuorumCert,
     utils::PayloadTxnsSize,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_infallible::Mutex;
-use aptos_logger::{error, sample, sample::SampleRate, warn};
-use aptos_types::{
+use lumio_crypto::{hash::CryptoHash, HashValue};
+use lumio_infallible::Mutex;
+use lumio_logger::{error, sample, sample::SampleRate, warn};
+use lumio_types::{
     block_info::BlockInfo, on_chain_config::ValidatorTxnConfig, validator_txn::ValidatorTransaction,
 };
-use aptos_validator_transaction_pool as vtxn_pool;
+use lumio_validator_transaction_pool as vtxn_pool;
 use itertools::Itertools;
 use std::{
     collections::{BTreeMap, HashSet},

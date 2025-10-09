@@ -8,10 +8,10 @@ use crate::suites::{
         PROGRESS_THRESHOLD_20_6, RELIABLE_PROGRESS_THRESHOLD, SYSTEM_12_CORES_10GB_THRESHOLD,
     },
 };
-use aptos_forge::{
+use lumio_forge::{
     success_criteria::SuccessCriteria, EmitJobMode, EmitJobRequest, ForgeConfig, NetworkTest,
 };
-use aptos_testcases::{
+use lumio_testcases::{
     modifiers::{ExecutionDelayConfig, ExecutionDelayTest},
     multi_region_network_test::{
         MultiRegionNetworkEmulationConfig, MultiRegionNetworkEmulationTest,

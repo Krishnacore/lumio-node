@@ -14,11 +14,11 @@ use crate::{
         signing_phase::{CommitSignerProvider, SigningPhase, SigningRequest, SigningResponse},
     },
 };
-use aptos_bounded_executor::BoundedExecutor;
-use aptos_channels::aptos_channel::Receiver;
-use aptos_config::config::ConsensusObserverConfig;
-use aptos_consensus_types::common::Author;
-use aptos_types::{account_address::AccountAddress, epoch_state::EpochState};
+use lumio_bounded_executor::BoundedExecutor;
+use lumio_channels::lumio_channel::Receiver;
+use lumio_config::config::ConsensusObserverConfig;
+use lumio_consensus_types::common::Author;
+use lumio_types::{account_address::AccountAddress, epoch_state::EpochState};
 use futures::channel::mpsc::UnboundedReceiver;
 use std::sync::{
     atomic::{AtomicBool, AtomicU64},

@@ -4,12 +4,12 @@
 
 #![forbid(unsafe_code)]
 
-use aptos_config::network_id::PeerNetworkId;
-use aptos_network::{
+use lumio_config::network_id::PeerNetworkId;
+use lumio_network::{
     application::{interface::NetworkClientInterface, storage::PeersAndMetadata},
     protocols::network::RpcError,
 };
-use aptos_storage_service_types::{
+use lumio_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, StorageServiceError,
     StorageServiceMessage,
 };

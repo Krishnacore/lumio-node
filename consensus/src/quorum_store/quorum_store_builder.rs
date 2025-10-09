@@ -27,16 +27,16 @@ use crate::{
     },
     round_manager::VerifiedEvent,
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::config::{BatchTransactionFilterConfig, QuorumStoreConfig};
-use aptos_consensus_types::{
+use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+use lumio_config::config::{BatchTransactionFilterConfig, QuorumStoreConfig};
+use lumio_consensus_types::{
     common::Author, proof_of_store::ProofCache, request_response::GetPayloadCommand,
 };
-use aptos_crypto::bls12381::PrivateKey;
-use aptos_logger::prelude::*;
-use aptos_mempool::QuorumStoreRequest;
-use aptos_storage_interface::DbReader;
-use aptos_types::{
+use lumio_crypto::bls12381::PrivateKey;
+use lumio_logger::prelude::*;
+use lumio_mempool::QuorumStoreRequest;
+use lumio_storage_interface::DbReader;
+use lumio_types::{
     account_address::AccountAddress, validator_signer::ValidatorSigner,
     validator_verifier::ValidatorVerifier,
 };
@@ -55,7 +55,7 @@ impl QuorumStoreBuilder {
         consensus_publisher: Option<Arc<ConsensusPublisher>>,
     ) -> (
         Arc<dyn TPayloadManager>,
-        Option<aptos_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
+        Option<lumio_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
     ) {
         match self {
             QuorumStoreBuilder::DirectMempool(inner) => inner.init_payload_manager(),
@@ -69,7 +69,7 @@ impl QuorumStoreBuilder {
         self,
     ) -> Option<(
         Sender<CoordinatorCommand>,
-        aptos_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
+        lumio_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
     )> {
         match self {
             QuorumStoreBuilder::DirectMempool(inner) => {
@@ -104,7 +104,7 @@ impl DirectMempoolInnerBuilder {
         &mut self,
     ) -> (
         Arc<dyn TPayloadManager>,
-        Option<aptos_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
+        Option<lumio_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
     ) {
         (Arc::from(DirectMempoolPayloadManager::new()), None)
     }
@@ -129,7 +129,7 @@ pub struct InnerBuilder {
     consensus_to_quorum_store_receiver: Receiver<GetPayloadCommand>,
     quorum_store_to_mempool_sender: Sender<QuorumStoreRequest>,
     mempool_txn_pull_timeout_ms: u64,
-    aptos_db: Arc<dyn DbReader>,
+    lumio_db: Arc<dyn DbReader>,
     network_sender: NetworkSender,
     verifier: Arc<ValidatorVerifier>,
     proof_cache: ProofCache,
@@ -144,8 +144,8 @@ pub struct InnerBuilder {
     back_pressure_tx: tokio::sync::mpsc::Sender<BackPressure>,
     back_pressure_rx: Option<tokio::sync::mpsc::Receiver<BackPressure>>,
     quorum_store_storage: Arc<dyn QuorumStoreStorage>,
-    quorum_store_msg_tx: aptos_channel::Sender<AccountAddress, (Author, VerifiedEvent)>,
-    quorum_store_msg_rx: Option<aptos_channel::Receiver<AccountAddress, (Author, VerifiedEvent)>>,
+    quorum_store_msg_tx: lumio_channel::Sender<AccountAddress, (Author, VerifiedEvent)>,
+    quorum_store_msg_rx: Option<lumio_channel::Receiver<AccountAddress, (Author, VerifiedEvent)>>,
     remote_batch_coordinator_cmd_tx: Vec<tokio::sync::mpsc::Sender<BatchCoordinatorCommand>>,
     remote_batch_coordinator_cmd_rx: Vec<tokio::sync::mpsc::Receiver<BatchCoordinatorCommand>>,
     batch_store: Option<Arc<BatchStore>>,
@@ -165,7 +165,7 @@ impl InnerBuilder {
         consensus_to_quorum_store_receiver: Receiver<GetPayloadCommand>,
         quorum_store_to_mempool_sender: Sender<QuorumStoreRequest>,
         mempool_txn_pull_timeout_ms: u64,
-        aptos_db: Arc<dyn DbReader>,
+        lumio_db: Arc<dyn DbReader>,
         network_sender: NetworkSender,
         verifier: Arc<ValidatorVerifier>,
         proof_cache: ProofCache,
@@ -182,7 +182,7 @@ impl InnerBuilder {
             tokio::sync::mpsc::channel(config.channel_size);
         let (back_pressure_tx, back_pressure_rx) = tokio::sync::mpsc::channel(config.channel_size);
         let (quorum_store_msg_tx, quorum_store_msg_rx) =
-            aptos_channel::new::<AccountAddress, (Author, VerifiedEvent)>(
+            lumio_channel::new::<AccountAddress, (Author, VerifiedEvent)>(
                 QueueStyle::FIFO,
                 config.channel_size,
                 None,
@@ -205,7 +205,7 @@ impl InnerBuilder {
             consensus_to_quorum_store_receiver,
             quorum_store_to_mempool_sender,
             mempool_txn_pull_timeout_ms,
-            aptos_db,
+            lumio_db,
             network_sender,
             verifier,
             proof_cache,
@@ -235,7 +235,7 @@ impl InnerBuilder {
         let signer = ValidatorSigner::new(self.author, self.consensus_key.clone());
 
         let latest_ledger_info_with_sigs = self
-            .aptos_db
+            .lumio_db
             .get_latest_ledger_info()
             .expect("could not get latest ledger info");
         let last_committed_timestamp = latest_ledger_info_with_sigs.commit_info().timestamp_usecs();
@@ -274,7 +274,7 @@ impl InnerBuilder {
         mut self,
     ) -> (
         Sender<CoordinatorCommand>,
-        aptos_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
+        lumio_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
     ) {
         // TODO: parameter? bring back back-off?
         let interval = tokio::time::interval(Duration::from_millis(
@@ -393,12 +393,12 @@ impl InnerBuilder {
         let batch_store = self.batch_store.clone().unwrap();
         let epoch = self.epoch;
         let (batch_retrieval_tx, mut batch_retrieval_rx) =
-            aptos_channel::new::<AccountAddress, IncomingBatchRetrievalRequest>(
+            lumio_channel::new::<AccountAddress, IncomingBatchRetrievalRequest>(
                 QueueStyle::LIFO,
                 10,
                 Some(&counters::BATCH_RETRIEVAL_TASK_MSGS),
             );
-        let aptos_db_clone = self.aptos_db.clone();
+        let lumio_db_clone = self.lumio_db.clone();
         spawn_named!("batch_serve", async move {
             info!(epoch = epoch, "Batch retrieval task starts");
             while let Some(rpc_request) = batch_retrieval_rx.next().await {
@@ -409,7 +409,7 @@ impl InnerBuilder {
                     let batch: Batch = value.try_into().unwrap();
                     BatchResponse::Batch(batch)
                 } else {
-                    match aptos_db_clone.get_latest_ledger_info() {
+                    match lumio_db_clone.get_latest_ledger_info() {
                         Ok(ledger_info) => BatchResponse::NotFound(ledger_info),
                         Err(e) => {
                             let e = anyhow::Error::from(e);
@@ -440,7 +440,7 @@ impl InnerBuilder {
         consensus_publisher: Option<Arc<ConsensusPublisher>>,
     ) -> (
         Arc<dyn TPayloadManager>,
-        Option<aptos_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
+        Option<lumio_channel::Sender<AccountAddress, (Author, VerifiedEvent)>>,
     ) {
         let batch_reader = monitor!("qs_create_batch_store", self.create_batch_store());
 
@@ -462,7 +462,7 @@ impl InnerBuilder {
         self,
     ) -> (
         Sender<CoordinatorCommand>,
-        aptos_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
+        lumio_channel::Sender<AccountAddress, IncomingBatchRetrievalRequest>,
     ) {
         self.spawn_quorum_store()
     }

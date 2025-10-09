@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{error::PepperServiceError, utils};
-use aptos_keyless_pepper_common::{
+use lumio_keyless_pepper_common::{
     vuf::{bls12381_g1_bls::Bls12381G1Bls, VUF},
     PepperV0VufPubKey,
 };
-use aptos_logger::{info, warn};
+use lumio_logger::{info, warn};
 use ark_ec::CurveGroup;
 use ark_ff::PrimeField;
 use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};

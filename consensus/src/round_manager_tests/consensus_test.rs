@@ -15,8 +15,8 @@ use crate::{
     },
     test_utils::{consensus_runtime, timed_block_on, TreeInserter},
 };
-use aptos_config::config::ConsensusConfig;
-use aptos_consensus_types::{
+use lumio_config::config::ConsensusConfig;
+use lumio_consensus_types::{
     block::{
         block_test_utils::{certificate_for_genesis, gen_test_certificate},
         Block,
@@ -28,13 +28,13 @@ use aptos_consensus_types::{
     sync_info::SyncInfo,
     timeout_2chain::{TwoChainTimeout, TwoChainTimeoutWithPartialSignatures},
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::info;
-use aptos_network::{protocols::network::Event, ProtocolId};
-use aptos_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
-use aptos_secure_storage::Storage;
-use aptos_types::validator_verifier::generate_validator_verifier;
+use lumio_crypto::HashValue;
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::info;
+use lumio_network::{protocols::network::Event, ProtocolId};
+use lumio_safety_rules::{PersistentSafetyStorage, SafetyRulesManager};
+use lumio_secure_storage::Storage;
+use lumio_types::validator_verifier::generate_validator_verifier;
 use futures::{channel::oneshot, StreamExt};
 use std::{sync::Arc, time::Duration};
 use tokio::{runtime::Runtime, time::timeout};
@@ -1272,7 +1272,7 @@ fn safety_rules_crash() {
 
     fn reset_safety_rules(node: &mut NodeSetup) {
         let safety_storage = PersistentSafetyStorage::initialize(
-            Storage::from(aptos_secure_storage::InMemoryStorage::new()),
+            Storage::from(lumio_secure_storage::InMemoryStorage::new()),
             node.signer.author(),
             node.signer.private_key().clone(),
             node.round_manager.consensus_state().waypoint(),

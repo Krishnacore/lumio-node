@@ -13,9 +13,9 @@ use crate::{
         network::Event,
     },
 };
-use aptos_config::network_id::PeerNetworkId;
-use aptos_infallible::RwLock;
-use aptos_types::PeerId;
+use lumio_config::network_id::PeerNetworkId;
+use lumio_infallible::RwLock;
+use lumio_types::PeerId;
 use futures::{stream::FusedStream, Stream};
 use std::{
     collections::HashMap,

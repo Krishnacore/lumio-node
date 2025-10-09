@@ -3,14 +3,14 @@
 
 use super::types::MempoolSenderBucket;
 use crate::{counters, network::BroadcastPeerPriority};
-use aptos_config::{
+use lumio_config::{
     config::{MempoolConfig, NodeType},
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_infallible::RwLock;
-use aptos_logger::prelude::*;
-use aptos_peer_monitoring_service_types::PeerMonitoringMetadata;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use lumio_infallible::RwLock;
+use lumio_logger::prelude::*;
+use lumio_peer_monitoring_service_types::PeerMonitoringMetadata;
+use lumio_time_service::{TimeService, TimeServiceTrait};
 use itertools::Itertools;
 use std::{
     cmp::{max, min, Ordering},
@@ -560,14 +560,14 @@ fn compare_validator_distance(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_config::{
+    use lumio_config::{
         config::{MempoolConfig, NodeType},
         network_id::{NetworkId, PeerNetworkId},
     };
-    use aptos_peer_monitoring_service_types::{
+    use lumio_peer_monitoring_service_types::{
         response::NetworkInformationResponse, PeerMonitoringMetadata,
     };
-    use aptos_types::PeerId;
+    use lumio_types::PeerId;
     use core::cmp::Ordering;
     use std::collections::BTreeMap;
 

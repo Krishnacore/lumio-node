@@ -4,8 +4,8 @@
 
 use super::{ChainInfo, CoreContext, Test};
 use crate::{Result, TestReport};
-use aptos_rest_client::Client as RestClient;
-use aptos_sdk::types::LocalAccount;
+use lumio_rest_client::Client as RestClient;
+use lumio_sdk::types::LocalAccount;
 use reqwest::Url;
 
 /// The testing interface which defines a test written from the perspective of the Admin of the

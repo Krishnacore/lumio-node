@@ -11,11 +11,11 @@ use crate::{
     },
 };
 use anyhow::{bail, ensure};
-use aptos_consensus_types::common::Author;
-use aptos_enum_conversion_derive::EnumConversion;
-use aptos_network::{protocols::network::RpcError, ProtocolId};
-use aptos_reliable_broadcast::RBMessage;
-use aptos_types::epoch_state::EpochState;
+use lumio_consensus_types::common::Author;
+use lumio_enum_conversion_derive::EnumConversion;
+use lumio_network::{protocols::network::RpcError, ProtocolId};
+use lumio_reliable_broadcast::RBMessage;
+use lumio_types::epoch_state::EpochState;
 use bytes::Bytes;
 use futures_channel::oneshot;
 use serde::{Deserialize, Serialize};

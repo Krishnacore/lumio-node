@@ -4,10 +4,10 @@
 
 use crate::{Address, Bytecode, IdentifierWrapper, VerifyInput, VerifyInputWithRecursion};
 use anyhow::{bail, format_err};
-use aptos_resource_viewer::{
+use lumio_resource_viewer::{
     AnnotatedMoveClosure, AnnotatedMoveStruct, AnnotatedMoveValue, RawMoveStruct,
 };
-use aptos_types::{account_config::CORE_CODE_ADDRESS, event::EventKey, transaction::Module};
+use lumio_types::{account_config::CORE_CODE_ADDRESS, event::EventKey, transaction::Module};
 use move_binary_format::{
     access::ModuleAccess,
     file_format::{CompiledModule, CompiledScript, StructTypeParameter, Visibility},
@@ -1375,7 +1375,7 @@ pub fn verify_identifier(identifier: &str) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use aptos_types::account_address::AccountAddress;
+    use lumio_types::account_address::AccountAddress;
     use move_core_types::{
         ability::AbilitySet,
         identifier::Identifier,
@@ -1491,9 +1491,9 @@ mod tests {
         test_serialize_deserialize(
             MoveModuleId {
                 address: "0x1".parse().unwrap(),
-                name: "Aptos".parse().unwrap(),
+                name: "Lumio".parse().unwrap(),
             },
-            json!("0x1::Aptos"),
+            json!("0x1::Lumio"),
         );
     }
 
@@ -1520,16 +1520,16 @@ mod tests {
                 .to_string()
         );
         assert_eq!(
-            "Invalid Move module ID: Aptos::Aptos",
-            "Aptos::Aptos"
+            "Invalid Move module ID: Lumio::Lumio",
+            "Lumio::Lumio"
                 .parse::<MoveModuleId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid Move module ID: 0x1::Aptos::Aptos",
-            "0x1::Aptos::Aptos"
+            "Invalid Move module ID: 0x1::Lumio::Lumio",
+            "0x1::Lumio::Lumio"
                 .parse::<MoveModuleId>()
                 .err()
                 .unwrap()
@@ -1543,11 +1543,11 @@ mod tests {
             EntryFunctionId {
                 module: MoveModuleId {
                     address: "0x1".parse().unwrap(),
-                    name: "Aptos".parse().unwrap(),
+                    name: "Lumio".parse().unwrap(),
                 },
                 name: "Add".parse().unwrap(),
             },
-            json!("0x1::Aptos::Add"),
+            json!("0x1::Lumio::Add"),
         );
     }
 
@@ -1578,24 +1578,24 @@ mod tests {
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID Aptos::Aptos",
-            "Aptos::Aptos"
+            "Invalid entry function ID Lumio::Lumio",
+            "Lumio::Lumio"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID Aptos::Aptos::??",
-            "Aptos::Aptos::??"
+            "Invalid entry function ID Lumio::Lumio::??",
+            "Lumio::Lumio::??"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()
                 .to_string()
         );
         assert_eq!(
-            "Invalid entry function ID 0x1::Aptos::Aptos::Aptos",
-            "0x1::Aptos::Aptos::Aptos"
+            "Invalid entry function ID 0x1::Lumio::Lumio::Lumio",
+            "0x1::Lumio::Lumio::Lumio"
                 .parse::<EntryFunctionId>()
                 .err()
                 .unwrap()

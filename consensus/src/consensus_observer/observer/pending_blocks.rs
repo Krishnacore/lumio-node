@@ -9,10 +9,10 @@ use crate::consensus_observer::{
     network::observer_message::OrderedBlock,
     observer::{execution_pool::ObservedOrderedBlock, payload_store::BlockPayloadStore},
 };
-use aptos_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_crypto::HashValue;
-use aptos_logger::{error, info, warn};
-use aptos_types::block_info::Round;
+use lumio_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
+use lumio_crypto::HashValue;
+use lumio_logger::{error, info, warn};
+use lumio_types::block_info::Round;
 use std::{
     collections::{btree_map::Entry, BTreeMap},
     sync::Arc,
@@ -318,15 +318,15 @@ mod test {
         network::observer_message::{BlockPayload, BlockTransactionPayload},
         observer::payload_store::BlockPayloadStore,
     };
-    use aptos_consensus_types::{
+    use lumio_consensus_types::{
         block::Block,
         block_data::{BlockData, BlockType},
         pipelined_block::{OrderedBlockWindow, PipelinedBlock},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
-    use aptos_infallible::Mutex;
-    use aptos_types::{
+    use lumio_crypto::HashValue;
+    use lumio_infallible::Mutex;
+    use lumio_types::{
         aggregate_signature::AggregateSignature,
         block_info::BlockInfo,
         ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

@@ -4,7 +4,7 @@
 
 use crate::{models::transactions::Transaction, schema::signatures, util::standardize_address};
 use anyhow::{Context, Result};
-use aptos_api_types::{
+use lumio_api_types::{
     AbstractSignature as APIAbstractSignature, AccountSignature as APIAccountSignature,
     Ed25519Signature as APIEd25519Signature, FeePayerSignature as APIFeePayerSignature,
     MultiAgentSignature as APIMultiAgentSignature,
@@ -12,7 +12,7 @@ use aptos_api_types::{
     NoAccountSignature as APINoAccountSignature, SingleKeySignature as APISingleKeySignature,
     TransactionSignature as APITransactionSignature,
 };
-use aptos_bitvec::BitVec;
+use lumio_bitvec::BitVec;
 use field_count::FieldCount;
 use serde::{Deserialize, Serialize};
 

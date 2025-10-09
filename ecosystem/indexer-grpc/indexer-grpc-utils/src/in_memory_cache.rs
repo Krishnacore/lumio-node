@@ -3,7 +3,7 @@
 
 use crate::compression_util::{CacheEntry, StorageFormat};
 use anyhow::Context;
-use aptos_protos::transaction::v1::Transaction;
+use lumio_protos::transaction::v1::Transaction;
 use dashmap::DashMap;
 use itertools::Itertools;
 use prost::Message;

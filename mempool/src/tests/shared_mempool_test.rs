@@ -9,10 +9,10 @@ use crate::{
     tests::common::{batch_add_signed_txn, TestTransaction},
     QuorumStoreRequest,
 };
-use aptos_config::config::MempoolConfig;
-use aptos_consensus_types::common::RejectedTransactionSummary;
-use aptos_mempool_notifications::MempoolNotificationSender;
-use aptos_types::{
+use lumio_config::config::MempoolConfig;
+use lumio_consensus_types::common::RejectedTransactionSummary;
+use lumio_mempool_notifications::MempoolNotificationSender;
+use lumio_types::{
     transaction::{ReplayProtector, Transaction},
     vm_status::DiscardedVMStatus,
 };

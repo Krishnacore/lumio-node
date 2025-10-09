@@ -15,12 +15,12 @@ mod tests;
 mod utils;
 
 use anyhow::Result;
-use aptos_db::db_debugger;
-use aptos_logger::info;
+use lumio_db::db_debugger;
+use lumio_logger::info;
 use clap::Parser;
 
 #[derive(Parser)]
-#[clap(name = "Aptos db tool", author, disable_version_flag = true)]
+#[clap(name = "Lumio db tool", author, disable_version_flag = true)]
 pub enum DBTool {
     #[clap(subcommand)]
     Backup(backup::Command),

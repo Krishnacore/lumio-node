@@ -1,0 +1,38 @@
+[package]
+name = "lumio-move-debugger"
+version = "0.1.0"
+description = "A tool to replay transactions on chain and to execute transactions locally."
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-block-executor = { workspace = true }
+lumio-consensus = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-gas-profiling = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-rest-client = { workspace = true }
+lumio-types = { workspace = true }
+lumio-validator-interface = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-environment = { workspace = true }
+lumio-vm-logging = { workspace = true }
+lumio-vm-types = { workspace = true }
+bcs = { workspace = true }
+clap = { workspace = true }
+itertools = { workspace = true }
+regex = { workspace = true }
+reqwest = { workspace = true }
+tokio = { workspace = true }
+url = { workspace = true }
+
+[[bin]]
+name = "remote-gas-profiler"

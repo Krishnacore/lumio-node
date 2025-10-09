@@ -11,13 +11,13 @@ use crate::{
         create_vec_signed_transactions_with_gas,
     },
 };
-use aptos_config::config::QuorumStoreConfig;
-use aptos_consensus_types::{
+use lumio_config::config::QuorumStoreConfig;
+use lumio_consensus_types::{
     common::{TransactionInProgress, TransactionSummary},
     proof_of_store::SignedBatchInfo,
 };
-use aptos_mempool::{QuorumStoreRequest, QuorumStoreResponse};
-use aptos_types::{quorum_store::BatchId, transaction::SignedTransaction};
+use lumio_mempool::{QuorumStoreRequest, QuorumStoreResponse};
+use lumio_types::{quorum_store::BatchId, transaction::SignedTransaction};
 use futures::{
     channel::mpsc::{channel, Receiver},
     StreamExt,

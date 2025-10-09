@@ -7,8 +7,8 @@ use crate::{
     transaction_deduper::TransactionDeduper, transaction_shuffler::TransactionShuffler,
 };
 use anyhow::{anyhow, Result};
-use aptos_crypto::HashValue;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_types::{
     block_executor::config::BlockExecutorConfigFromOnchain, epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures, on_chain_config::OnChainConsensusConfig,
 };

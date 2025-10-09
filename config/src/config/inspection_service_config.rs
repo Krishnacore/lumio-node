@@ -8,7 +8,7 @@ use crate::{
     },
     utils,
 };
-use aptos_types::chain_id::ChainId;
+use lumio_types::chain_id::ChainId;
 use serde::{Deserialize, Serialize};
 use serde_yaml::Value;
 

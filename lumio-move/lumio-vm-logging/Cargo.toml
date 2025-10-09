@@ -1,0 +1,23 @@
+[package]
+name = "lumio-vm-logging"
+description = "Lumio VM speculative logging utility"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+lumio-crypto = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-speculative-state-helper = { workspace = true }
+lumio-types = { workspace = true }
+arc-swap = { workspace = true }
+once_cell = { workspace = true }
+serde = { workspace = true }

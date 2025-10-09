@@ -4,8 +4,8 @@
 use crate::pipeline::{
     execution_wait_phase::ExecutionWaitRequest, pipeline_phase::StatelessPipeline,
 };
-use aptos_consensus_types::pipelined_block::PipelinedBlock;
-use aptos_crypto::HashValue;
+use lumio_consensus_types::pipelined_block::PipelinedBlock;
+use lumio_crypto::HashValue;
 use async_trait::async_trait;
 use futures::FutureExt;
 use std::{
@@ -56,7 +56,7 @@ impl StatelessPipeline for ExecutionSchedulePhase {
             None => {
                 return ExecutionWaitRequest {
                     block_id: HashValue::zero(),
-                    fut: Box::pin(async { Err(aptos_executor_types::ExecutorError::EmptyBlocks) }),
+                    fut: Box::pin(async { Err(lumio_executor_types::ExecutorError::EmptyBlocks) }),
                 }
             },
         };

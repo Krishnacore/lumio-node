@@ -1,0 +1,101 @@
+[package]
+name = "lumio-node"
+description = "Aptos node"
+version = "1.36.3"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-admin-service = { workspace = true }
+lumio-api = { workspace = true }
+lumio-backup-service = { workspace = true }
+lumio-build-info = { workspace = true }
+lumio-cached-packages = { workspace = true }
+lumio-channels = { workspace = true }
+lumio-config = { workspace = true }
+lumio-consensus = { workspace = true }
+lumio-consensus-notifications = { workspace = true }
+lumio-crash-handler = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-data-client = { workspace = true }
+lumio-data-streaming-service = { workspace = true }
+lumio-db = { workspace = true }
+lumio-db-indexer = { workspace = true }
+lumio-dkg-runtime = { workspace = true }
+lumio-event-notifications = { workspace = true }
+lumio-executor = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-genesis = { workspace = true }
+lumio-indexer = { workspace = true, optional = true }
+lumio-indexer-grpc-fullnode = { workspace = true }
+lumio-indexer-grpc-table-info = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-inspection-service = { workspace = true }
+lumio-jwk-consensus = { workspace = true }
+lumio-logger = { workspace = true, features = ["node-identity"] }
+lumio-mempool = { workspace = true }
+lumio-mempool-notifications = { workspace = true }
+lumio-network = { workspace = true }
+lumio-network-benchmark = { workspace = true }
+lumio-network-builder = { workspace = true }
+lumio-node-identity = { workspace = true }
+lumio-peer-monitoring-service-client = { workspace = true }
+lumio-peer-monitoring-service-server = { workspace = true }
+lumio-peer-monitoring-service-types = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-state-sync-driver = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-storage-service-client = { workspace = true }
+lumio-storage-service-notifications = { workspace = true }
+lumio-storage-service-server = { workspace = true }
+lumio-storage-service-types = { workspace = true }
+lumio-telemetry = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-time-service = { workspace = true }
+lumio-types = { workspace = true }
+lumio-validator-transaction-pool = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-environment = { workspace = true }
+bcs = { workspace = true }
+clap = { workspace = true }
+either = { workspace = true }
+fail = { workspace = true }
+futures = { workspace = true }
+hex = { workspace = true }
+num_cpus = { workspace = true }
+rand = { workspace = true }
+rayon = { workspace = true }
+rlimit = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+tokio = { workspace = true }
+ureq = { workspace = true }
+url = { workspace = true }
+
+[target.'cfg(unix)'.dependencies]
+jemallocator = { workspace = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+rstack-self = { workspace = true }
+
+[features]
+assert-private-keys-not-cloneable = ["lumio-crypto/assert-private-keys-not-cloneable"]
+check-vm-features = []
+consensus-only-perf-test = ["lumio-executor/consensus-only-perf-test", "lumio-mempool/consensus-only-perf-test", "lumio-db/consensus-only-perf-test"]
+default = []
+failpoints = ["fail/failpoints", "lumio-consensus/failpoints", "lumio-executor/failpoints", "lumio-mempool/failpoints", "lumio-api/failpoints", "lumio-config/failpoints"]
+indexer = ["lumio-indexer"]
+tokio-console = ["lumio-logger/tokio-console", "lumio-config/tokio-console"]
+smoke-test = ["lumio-jwk-consensus/smoke-test", "lumio-dkg-runtime/smoke-test"]
+
+[package.metadata.cargo-machete]
+ignored = ["lumio-crypto"]

@@ -87,10 +87,10 @@ use crate::sparse_merkle::{
     updater::SubTreeUpdater,
     utils::get_state_shard_id,
 };
-use aptos_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
-use aptos_infallible::Mutex;
-use aptos_metrics_core::{IntGaugeVecHelper, TimerHelper};
-use aptos_types::{
+use lumio_crypto::{hash::SPARSE_MERKLE_PLACEHOLDER_HASH, HashValue};
+use lumio_infallible::Mutex;
+use lumio_metrics_core::{IntGaugeVecHelper, TimerHelper};
+use lumio_types::{
     nibble::{nibble_path::NibblePath, Nibble},
     proof::SparseMerkleProofExt,
     state_store::state_key::StateKey,

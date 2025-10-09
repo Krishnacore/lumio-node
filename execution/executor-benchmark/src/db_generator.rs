@@ -3,17 +3,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{add_accounts_impl, PipelineConfig};
-use aptos_config::{
+use lumio_config::{
     config::{
         PrunerConfig, RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS,
         DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD, NO_OP_STORAGE_PRUNER_CONFIG,
     },
     utils::get_genesis_txn,
 };
-use aptos_db::AptosDB;
-use aptos_executor::db_bootstrapper::{generate_waypoint, maybe_bootstrap};
-use aptos_storage_interface::DbReaderWriter;
-use aptos_types::{
+use lumio_db::LumioDB;
+use lumio_executor::db_bootstrapper::{generate_waypoint, maybe_bootstrap};
+use lumio_storage_interface::DbReaderWriter;
+use lumio_types::{
     jwks::{jwk::JWK, patch::IssuerJWK},
     keyless::{
         circuit_constants::TEST_GROTH16_SETUP,
@@ -22,7 +22,7 @@ use aptos_types::{
     },
     on_chain_config::Features,
 };
-use aptos_vm::{aptos_vm::AptosVMBlockExecutor, VMBlockExecutor};
+use lumio_vm::{lumio_vm::LumioVMBlockExecutor, VMBlockExecutor};
 use std::{fs, path::Path, sync::Arc};
 
 pub fn create_db_with_accounts<V>(
@@ -79,7 +79,7 @@ pub(crate) fn bootstrap_with_genesis(
     init_features: Features,
 ) {
     let (config, _genesis_key) =
-        aptos_genesis::test_utils::test_config_with_custom_onchain(Some(Arc::new(move |config| {
+        lumio_genesis::test_utils::test_config_with_custom_onchain(Some(Arc::new(move |config| {
             config.initial_features_override = Some(init_features.clone());
             config.initial_jwks = vec![IssuerJWK {
                 issuer: get_sample_iss(),
@@ -94,7 +94,7 @@ pub(crate) fn bootstrap_with_genesis(
     rocksdb_configs.state_merkle_db_config.max_open_files = -1;
     rocksdb_configs.enable_storage_sharding = enable_storage_sharding;
     let (_db, db_rw) = DbReaderWriter::wrap(
-        AptosDB::open(
+        LumioDB::open(
             StorageDirPaths::from_path(db_dir),
             false, /* readonly */
             NO_OP_STORAGE_PRUNER_CONFIG,
@@ -109,8 +109,8 @@ pub(crate) fn bootstrap_with_genesis(
 
     // Bootstrap db with genesis
     let waypoint =
-        generate_waypoint::<AptosVMBlockExecutor>(&db_rw, get_genesis_txn(&config).unwrap())
+        generate_waypoint::<LumioVMBlockExecutor>(&db_rw, get_genesis_txn(&config).unwrap())
             .unwrap();
-    maybe_bootstrap::<AptosVMBlockExecutor>(&db_rw, get_genesis_txn(&config).unwrap(), waypoint)
+    maybe_bootstrap::<LumioVMBlockExecutor>(&db_rw, get_genesis_txn(&config).unwrap(), waypoint)
         .unwrap();
 }

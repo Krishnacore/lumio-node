@@ -6,7 +6,7 @@ use crate::{
     common::Author, opt_block_data::OptBlockData, proof_of_store::ProofCache, sync_info::SyncInfo,
 };
 use anyhow::{ensure, Context, Result};
-use aptos_types::validator_verifier::ValidatorVerifier;
+use lumio_types::validator_verifier::ValidatorVerifier;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]

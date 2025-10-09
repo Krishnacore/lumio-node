@@ -1,0 +1,23 @@
+[package]
+name = "lumio-gas-calibration"
+version = "0.1.0"
+edition = "2021"
+license = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-abstract-gas-usage = { workspace = true }
+lumio-cached-packages = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-gas-algebra = { workspace = true }
+lumio-gas-schedule = { workspace = true }
+lumio-language-e2e-tests = { workspace = true }
+lumio-types = { workspace = true }
+bcs = { workspace = true }
+clap = { workspace = true }
+float-cmp = { workspace = true }
+move-binary-format = { workspace = true }
+move-core-types = { workspace = true }
+move-ir-compiler = { workspace = true }
+nalgebra = { workspace = true }
+walkdir = { workspace = true }

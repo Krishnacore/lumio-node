@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::application;
-use aptos_crypto::noise::NoiseError;
-use aptos_short_hex_str::ShortHexStr;
-use aptos_types::PeerId;
+use lumio_crypto::noise::NoiseError;
+use lumio_short_hex_str::ShortHexStr;
+use lumio_types::PeerId;
 use std::io;
 use thiserror::Error;
 

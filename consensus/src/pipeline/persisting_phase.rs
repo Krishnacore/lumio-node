@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{network::NetworkSender, pipeline::pipeline_phase::StatelessPipeline};
-use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
-use aptos_executor_types::ExecutorResult;
-use aptos_types::{epoch_change::EpochChangeProof, ledger_info::LedgerInfoWithSignatures};
+use lumio_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
+use lumio_executor_types::ExecutorResult;
+use lumio_types::{epoch_change::EpochChangeProof, ledger_info::LedgerInfoWithSignatures};
 use async_trait::async_trait;
 use std::{
     fmt::{Debug, Display, Formatter},

@@ -3,8 +3,8 @@
 
 use crate::tests::{mock, mock::MockClient, utils};
 use anyhow::format_err;
-use aptos_storage_interface::AptosDbError;
-use aptos_storage_service_types::{
+use lumio_storage_interface::LumioDbError;
+use lumio_storage_service_types::{
     responses::{DataResponse, StorageServiceResponse},
     StorageServiceError,
 };
@@ -74,7 +74,7 @@ async fn test_get_number_of_states_at_version_invalid() {
         .times(1)
         .with(eq(version))
         .returning(move |_| {
-            Err(AptosDbError::NotFound(
+            Err(LumioDbError::NotFound(
                 format_err!("Version does not exist!").to_string(),
             ))
         });

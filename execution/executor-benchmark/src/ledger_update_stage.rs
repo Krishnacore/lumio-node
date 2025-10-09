@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::pipeline::{CommitBlockMessage, LedgerUpdateMessage};
-use aptos_executor::block_executor::BlockExecutor;
-use aptos_executor_types::BlockExecutorTrait;
-use aptos_infallible::Mutex;
-use aptos_vm::VMBlockExecutor;
+use lumio_executor::block_executor::BlockExecutor;
+use lumio_executor_types::BlockExecutorTrait;
+use lumio_infallible::Mutex;
+use lumio_vm::VMBlockExecutor;
 use move_core_types::language_storage::StructTag;
 use std::{
     collections::BTreeMap,

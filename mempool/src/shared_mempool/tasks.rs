@@ -20,23 +20,23 @@ use crate::{
     QuorumStoreRequest, QuorumStoreResponse, SubmissionStatus,
 };
 use anyhow::Result;
-use aptos_config::{config::TransactionFilterConfig, network_id::PeerNetworkId};
-use aptos_consensus_types::common::RejectedTransactionSummary;
-use aptos_crypto::HashValue;
-use aptos_infallible::{Mutex, RwLock};
-use aptos_logger::prelude::*;
-use aptos_mempool_notifications::CommittedTransaction;
-use aptos_metrics_core::HistogramTimer;
-use aptos_network::application::interface::NetworkClientInterface;
-use aptos_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
-use aptos_types::{
+use lumio_config::{config::TransactionFilterConfig, network_id::PeerNetworkId};
+use lumio_consensus_types::common::RejectedTransactionSummary;
+use lumio_crypto::HashValue;
+use lumio_infallible::{Mutex, RwLock};
+use lumio_logger::prelude::*;
+use lumio_mempool_notifications::CommittedTransaction;
+use lumio_metrics_core::HistogramTimer;
+use lumio_network::application::interface::NetworkClientInterface;
+use lumio_storage_interface::state_store::state_view::db_state_view::LatestDbStateCheckpointView;
+use lumio_types::{
     account_address::AccountAddress,
     mempool_status::{MempoolStatus, MempoolStatusCode},
     on_chain_config::{OnChainConfigPayload, OnChainConfigProvider, OnChainConsensusConfig},
     transaction::{ReplayProtector, SignedTransaction},
     vm_status::{DiscardedVMStatus, StatusCode},
 };
-use aptos_vm_validator::vm_validator::{get_account_sequence_number, TransactionValidation};
+use lumio_vm_validator::vm_validator::{get_account_sequence_number, TransactionValidation};
 use futures::{channel::oneshot, stream::FuturesUnordered};
 use rayon::prelude::*;
 use std::{
@@ -662,7 +662,7 @@ pub(crate) fn process_quorum_store_request<NetworkClient, TransactionValidator>(
                     );
                     // gc before pulling block as extra protection against txns that may expire in consensus
                     // Note: this gc operation relies on the fact that consensus uses the system time to determine block timestamp
-                    let curr_time = aptos_infallible::duration_since_epoch();
+                    let curr_time = lumio_infallible::duration_since_epoch();
                     mempool.gc_by_expiration_time(curr_time);
                 }
 
@@ -797,9 +797,9 @@ pub(crate) async fn process_config_update<V, P>(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
-    use aptos_transaction_filters::transaction_filter::TransactionFilter;
-    use aptos_types::{
+    use lumio_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
+    use lumio_transaction_filters::transaction_filter::TransactionFilter;
+    use lumio_types::{
         chain_id::ChainId,
         transaction::{RawTransaction, Script, TransactionPayload},
     };

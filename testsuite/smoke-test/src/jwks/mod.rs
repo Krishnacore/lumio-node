@@ -8,14 +8,14 @@ mod jwk_consensus_per_key;
 mod jwk_consensus_provider_change_mind;
 
 use crate::smoke_test_environment::SwarmBuilder;
-use aptos::{
+use lumio::{
     common::types::{GasOptions, TransactionSummary},
     test::CliTestFramework,
 };
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::{debug, info};
-use aptos_rest_client::Client;
-use aptos_types::{
+use lumio_forge::{NodeExt, Swarm, SwarmExt};
+use lumio_logger::{debug, info};
+use lumio_rest_client::Client;
+use lumio_types::{
     jwks::{
         jwk::{JWKMoveStruct, JWK},
         unsupported::UnsupportedJWK,
@@ -34,13 +34,13 @@ pub async fn update_jwk_consensus_config(
     let script = match config {
         OnChainJWKConsensusConfig::Off => r#"
 script {
-    use aptos_framework::aptos_governance;
-    use aptos_framework::jwk_consensus_config;
+    use lumio_framework::lumio_governance;
+    use lumio_framework::jwk_consensus_config;
     fun main(core_resources: &signer) {
-        let framework = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+        let framework = lumio_governance::get_signer_testnet_only(core_resources, @0x1);
         let config = jwk_consensus_config::new_off();
         jwk_consensus_config::set_for_next_epoch(&framework, config);
-        aptos_governance::reconfigure(&framework);
+        lumio_governance::reconfigure(&framework);
     }
 }
 "#
@@ -60,17 +60,17 @@ script {
             format!(
                 r#"
 script {{
-    use aptos_framework::aptos_governance;
-    use aptos_framework::jwk_consensus_config;
+    use lumio_framework::lumio_governance;
+    use lumio_framework::jwk_consensus_config;
     use std::string::utf8;
 
     fun main(core_resources: &signer) {{
-        let framework = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+        let framework = lumio_governance::get_signer_testnet_only(core_resources, @0x1);
         let config = jwk_consensus_config::new_v1(vector[
             {provider_lines}
         ]);
         jwk_consensus_config::set_for_next_epoch(&framework, config);
-        aptos_governance::reconfigure(&framework);
+        lumio_governance::reconfigure(&framework);
     }}
 }}
 "#
@@ -101,7 +101,7 @@ async fn get_patched_jwks(rest_client: &Client) -> PatchedJWKs {
 #[tokio::test]
 async fn jwk_patching() {
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
-        .with_aptos()
+        .with_lumio()
         .build_with_cli(0)
         .await;
     let client = swarm.validators().next().unwrap().rest_client();
@@ -117,10 +117,10 @@ async fn jwk_patching() {
     info!("Insert a JWK.");
     let jwk_patch_script = r#"
 script {
-    use aptos_framework::jwks;
-    use aptos_framework::aptos_governance;
+    use lumio_framework::jwks;
+    use lumio_framework::lumio_governance;
     fun main(core_resources: &signer) {
-        let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
+        let framework_signer = lumio_governance::get_signer_testnet_only(core_resources, @0000000000000000000000000000000000000000000000000000000000000001);
         let alice_jwk_0 = jwks::new_unsupported_jwk(b"alice_jwk_id_0", b"alice_jwk_payload_0");
         let patches = vector[
             jwks::new_patch_remove_all(),

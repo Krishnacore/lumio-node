@@ -1,5 +1,5 @@
 [package]
-name = "aptos-state-sync-driver"
+name = "lumio-state-sync-driver"
 description = "The driver for state sync"
 version = "0.1.0"
 
@@ -14,23 +14,23 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-config = { workspace = true }
-aptos-consensus-notifications = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-data-client = { workspace = true }
-aptos-data-streaming-service = { workspace = true }
-aptos-event-notifications = { workspace = true }
-aptos-executor-types = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-mempool-notifications = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-schemadb = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-storage-service-notifications = { workspace = true }
-aptos-time-service = { workspace = true }
-aptos-types = { workspace = true }
+lumio-config = { workspace = true }
+lumio-consensus-notifications = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-data-client = { workspace = true }
+lumio-data-streaming-service = { workspace = true }
+lumio-event-notifications = { workspace = true }
+lumio-executor-types = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-mempool-notifications = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-schemadb = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-storage-service-notifications = { workspace = true }
+lumio-time-service = { workspace = true }
+lumio-types = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
 futures = { workspace = true }
@@ -42,19 +42,19 @@ tokio-stream = { workspace = true }
 
 [dev-dependencies]
 anyhow = { workspace = true }
-aptos-channels = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-db = { workspace = true }
-aptos-executor = { workspace = true }
-aptos-executor-test-helpers = { workspace = true }
-aptos-genesis = { workspace = true, features = ["testing"] }
-aptos-network = { workspace = true }
-aptos-storage-service-client = { workspace = true }
-aptos-storage-service-types = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-time-service = { workspace = true, features = ["async", "testing"] }
-aptos-vm = { workspace = true }
-aptos-vm-genesis = { workspace = true }
+lumio-channels = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-executor = { workspace = true }
+lumio-executor-test-helpers = { workspace = true }
+lumio-genesis = { workspace = true, features = ["testing"] }
+lumio-network = { workspace = true }
+lumio-storage-service-client = { workspace = true }
+lumio-storage-service-types = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-time-service = { workspace = true, features = ["async", "testing"] }
+lumio-vm = { workspace = true }
+lumio-vm-genesis = { workspace = true }
 async-trait = { workspace = true }
 bcs = { workspace = true }
 claims = { workspace = true }

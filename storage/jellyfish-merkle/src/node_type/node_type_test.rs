@@ -7,12 +7,12 @@ use super::{
     NodeKey,
 };
 use crate::{node_type::NodeType, test_helper::ValueBlob, LeafNode, StateKey, TreeReader};
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{CryptoHash, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_storage_interface::Result;
-use aptos_types::{
+use lumio_storage_interface::Result;
+use lumio_types::{
     nibble::{nibble_path::NibblePath, Nibble},
     proof::{definition::NodeInProof, SparseMerkleInternalNode, SparseMerkleLeafNode},
     transaction::Version,

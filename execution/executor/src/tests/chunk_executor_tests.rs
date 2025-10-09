@@ -13,11 +13,11 @@ use crate::{
         mock_vm::{encode_mint_transaction, MockVM},
     },
 };
-use aptos_crypto::HashValue;
-use aptos_db::AptosDB;
-use aptos_executor_types::{BlockExecutorTrait, ChunkExecutorTrait};
-use aptos_storage_interface::DbReaderWriter;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_db::LumioDB;
+use lumio_executor_types::{BlockExecutorTrait, ChunkExecutorTrait};
+use lumio_storage_interface::DbReaderWriter;
+use lumio_types::{
     ledger_info::LedgerInfoWithSignatures,
     test_helpers::transaction_test_helpers::{block, TEST_BLOCK_EXECUTOR_ONCHAIN_CONFIG},
     transaction::{TransactionListWithProofV2, Version},
@@ -25,17 +25,17 @@ use aptos_types::{
 use rand::Rng;
 
 pub struct TestExecutor {
-    _path: aptos_temppath::TempPath,
+    _path: lumio_temppath::TempPath,
     pub db: DbReaderWriter,
     pub executor: ChunkExecutor<MockVM>,
 }
 
 impl TestExecutor {
     pub fn new() -> TestExecutor {
-        let path = aptos_temppath::TempPath::new();
+        let path = lumio_temppath::TempPath::new();
         path.create_as_dir().unwrap();
-        let db = DbReaderWriter::new(AptosDB::new_for_test(path.path()));
-        let genesis = aptos_vm_genesis::test_genesis_transaction();
+        let db = DbReaderWriter::new(LumioDB::new_for_test(path.path()));
+        let genesis = lumio_vm_genesis::test_genesis_transaction();
         let waypoint = generate_waypoint::<MockVM>(&db, &genesis).unwrap();
         maybe_bootstrap::<MockVM>(&db, &genesis, waypoint).unwrap();
         let executor = ChunkExecutor::new(db.clone());
@@ -261,7 +261,7 @@ fn test_executor_execute_and_commit_chunk_local_result_mismatch() {
 #[cfg(feature = "consensus-only-perf-test")]
 #[test]
 fn test_executor_execute_and_commit_chunk_without_verify() {
-    use aptos_types::block_executor::config::BlockExecutorConfigFromOnchain;
+    use lumio_types::block_executor::config::BlockExecutorConfigFromOnchain;
 
     let first_batch_size = 10;
     let second_batch_size = 10;

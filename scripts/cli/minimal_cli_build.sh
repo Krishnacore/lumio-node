@@ -7,7 +7,7 @@ has_command() {
   command -v "$1" > /dev/null 2>&1
 }
 
-# This script is used to set up a minimal environment for building the Aptos CLI and other tools.
+# This script is used to set up a minimal environment for building the Lumio CLI and other tools.
 # The `dev_setup.sh` script is way too complex, and too hard to figure out what is actually happening.  This script
 # simplifies the process
 if has_command wget; then

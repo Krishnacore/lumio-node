@@ -1,0 +1,11 @@
+[package]
+name = "Event-example"
+version = "0.0.1"
+
+[addresses]
+std = "0x1"
+lumio_framework = "0x1"
+event = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }

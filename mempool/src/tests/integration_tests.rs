@@ -6,9 +6,9 @@ use crate::tests::{
     common::TestTransaction,
     test_framework::{test_transaction, MempoolNode, MempoolTestFrameworkBuilder},
 };
-use aptos_config::network_id::PeerNetworkId;
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use lumio_config::network_id::PeerNetworkId;
+use lumio_netcore::transport::ConnectionOrigin;
+use lumio_network::{
     testutils::{
         test_framework::TestFramework,
         test_node::{
@@ -19,7 +19,7 @@ use aptos_network::{
     transport::ConnectionMetadata,
     ProtocolId,
 };
-use aptos_types::transaction::ReplayProtector;
+use lumio_types::transaction::ReplayProtector;
 use once_cell::sync::Lazy;
 use std::time::Duration;
 

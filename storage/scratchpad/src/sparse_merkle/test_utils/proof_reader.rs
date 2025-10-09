@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::ProofRead;
-use aptos_crypto::HashValue;
-use aptos_types::proof::SparseMerkleProofExt;
+use lumio_crypto::HashValue;
+use lumio_types::proof::SparseMerkleProofExt;
 use std::collections::HashMap;
 
 #[derive(Default)]

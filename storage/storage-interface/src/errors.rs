@@ -2,14 +2,14 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! This module defines error types used by `AptosDB`.
-use aptos_types::state_store::errors::StateViewError;
+//! This module defines error types used by `LumioDB`.
+use lumio_types::state_store::errors::StateViewError;
 use std::sync::mpsc::RecvError;
 use thiserror::Error;
 
-/// This enum defines errors commonly used among `AptosDB` APIs.
+/// This enum defines errors commonly used among `LumioDB` APIs.
 #[derive(Clone, Debug, Error)]
-pub enum AptosDbError {
+pub enum LumioDbError {
     /// A requested item is not found.
     #[error("{0} not found.")]
     NotFound(String),
@@ -19,68 +19,68 @@ pub enum AptosDbError {
     #[error("Missing state root node at version {0}, probably pruned.")]
     MissingRootError(u64),
     /// Other non-classified error.
-    #[error("AptosDB Other Error: {0}")]
+    #[error("LumioDB Other Error: {0}")]
     Other(String),
-    #[error("AptosDB RocksDb Error: {0}")]
+    #[error("LumioDB RocksDb Error: {0}")]
     RocksDbIncompleteResult(String),
-    #[error("AptosDB RocksDB Error: {0}")]
+    #[error("LumioDB RocksDB Error: {0}")]
     OtherRocksDbError(String),
-    #[error("AptosDB bcs Error: {0}")]
+    #[error("LumioDB bcs Error: {0}")]
     BcsError(String),
-    #[error("AptosDB IO Error: {0}")]
+    #[error("LumioDB IO Error: {0}")]
     IoError(String),
-    #[error("AptosDB Recv Error: {0}")]
+    #[error("LumioDB Recv Error: {0}")]
     RecvError(String),
-    #[error("AptosDB ParseInt Error: {0}")]
+    #[error("LumioDB ParseInt Error: {0}")]
     ParseIntError(String),
 }
 
-impl From<anyhow::Error> for AptosDbError {
+impl From<anyhow::Error> for LumioDbError {
     fn from(error: anyhow::Error) -> Self {
         Self::Other(format!("{}", error))
     }
 }
 
-impl From<bcs::Error> for AptosDbError {
+impl From<bcs::Error> for LumioDbError {
     fn from(error: bcs::Error) -> Self {
         Self::BcsError(format!("{}", error))
     }
 }
 
-impl From<RecvError> for AptosDbError {
+impl From<RecvError> for LumioDbError {
     fn from(error: RecvError) -> Self {
         Self::RecvError(format!("{}", error))
     }
 }
 
-impl From<std::io::Error> for AptosDbError {
+impl From<std::io::Error> for LumioDbError {
     fn from(error: std::io::Error) -> Self {
         Self::IoError(format!("{}", error))
     }
 }
 
-impl From<std::num::ParseIntError> for AptosDbError {
+impl From<std::num::ParseIntError> for LumioDbError {
     fn from(error: std::num::ParseIntError) -> Self {
         Self::Other(format!("{}", error))
     }
 }
 
-impl From<AptosDbError> for StateViewError {
-    fn from(error: AptosDbError) -> Self {
+impl From<LumioDbError> for StateViewError {
+    fn from(error: LumioDbError) -> Self {
         match error {
-            AptosDbError::NotFound(msg) => StateViewError::NotFound(msg),
-            AptosDbError::Other(msg) => StateViewError::Other(msg),
+            LumioDbError::NotFound(msg) => StateViewError::NotFound(msg),
+            LumioDbError::Other(msg) => StateViewError::Other(msg),
             _ => StateViewError::Other(format!("{}", error)),
         }
     }
 }
 
-impl From<StateViewError> for AptosDbError {
+impl From<StateViewError> for LumioDbError {
     fn from(error: StateViewError) -> Self {
         match error {
-            StateViewError::NotFound(msg) => AptosDbError::NotFound(msg),
-            StateViewError::Other(msg) => AptosDbError::Other(msg),
-            StateViewError::BcsError(err) => AptosDbError::BcsError(err.to_string()),
+            StateViewError::NotFound(msg) => LumioDbError::NotFound(msg),
+            StateViewError::Other(msg) => LumioDbError::Other(msg),
+            StateViewError::BcsError(err) => LumioDbError::BcsError(err.to_string()),
         }
     }
 }

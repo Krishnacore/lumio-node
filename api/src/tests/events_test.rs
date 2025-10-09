@@ -4,7 +4,7 @@
 
 use super::new_test_context;
 use crate::tests::new_test_context_with_orderless_flags;
-use aptos_api_test_context::{current_function_name, TestContext};
+use lumio_api_test_context::{current_function_name, TestContext};
 use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
 use rstest::rstest;
 use serde_json::json;
@@ -211,7 +211,7 @@ async fn test_module_events(use_txn_payload_v2_format: bool, use_orderless_trans
     let named_addresses = vec![("event".to_string(), user_addr)];
     let txn = futures::executor::block_on(async move {
         let path = PathBuf::from(std::env!("CARGO_MANIFEST_DIR"))
-            .join("../aptos-move/move-examples/event");
+            .join("../lumio-move/move-examples/event");
         TestContext::build_package(path, named_addresses)
     });
     context.publish_package(&mut user, txn).await;
@@ -290,7 +290,7 @@ async fn test_get_events_by_struct_type_has_generic_type_parameter() {
     let path = format!(
         "/accounts/0x1/events/{}/coin",
         utf8_percent_encode(
-            "0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>",
+            "0x1::coin::CoinStore<0x1::lumio_coin::LumioCoin>",
             NON_ALPHANUMERIC,
         )
     );

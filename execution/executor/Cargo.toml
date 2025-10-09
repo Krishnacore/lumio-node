@@ -1,6 +1,6 @@
 [package]
-name = "aptos-executor"
-description = "Aptos executor"
+name = "lumio-executor"
+description = "Lumio executor"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,21 +14,21 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-block-executor = { workspace = true }
-aptos-consensus-types = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-drop-helper = { workspace = true }
-aptos-executor-service = { workspace = true }
-aptos-executor-types = { workspace = true }
-aptos-experimental-runtimes = { workspace = true }
-aptos-indexer-grpc-table-info = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-sdk = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-types = { workspace = true }
-aptos-vm = { workspace = true }
+lumio-block-executor = { workspace = true }
+lumio-consensus-types = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-drop-helper = { workspace = true }
+lumio-executor-service = { workspace = true }
+lumio-executor-types = { workspace = true }
+lumio-experimental-runtimes = { workspace = true }
+lumio-indexer-grpc-table-info = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-sdk = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm = { workspace = true }
 bcs = { workspace = true }
 bytes = { workspace = true }
 fail = { workspace = true }
@@ -39,16 +39,16 @@ rayon = { workspace = true }
 serde = { workspace = true }
 
 [dev-dependencies]
-aptos-cached-packages = { workspace = true }
-aptos-config = { workspace = true }
-aptos-db = { workspace = true }
-aptos-db-indexer = { workspace = true, features = ["fuzzing"] }
-aptos-executor-test-helpers = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-transaction-simulation = { workspace = true }
-aptos-types = { workspace = true, features = ["testing"] }
-aptos-vm-genesis = { workspace = true }
+lumio-cached-packages = { workspace = true }
+lumio-config = { workspace = true }
+lumio-db = { workspace = true }
+lumio-db-indexer = { workspace = true, features = ["fuzzing"] }
+lumio-executor-test-helpers = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-transaction-simulation = { workspace = true }
+lumio-types = { workspace = true, features = ["testing"] }
+lumio-vm-genesis = { workspace = true }
 arr_macro = { workspace = true }
 criterion = { workspace = true }
 proptest = { workspace = true }
@@ -56,8 +56,8 @@ rand = { workspace = true }
 
 [features]
 default = []
-fuzzing = ["aptos-consensus-types/fuzzing", "aptos-crypto/fuzzing", "aptos-types/fuzzing", "aptos-storage-interface/fuzzing"]
-failpoints = ["fail/failpoints", "aptos-vm/failpoints"]
+fuzzing = ["lumio-consensus-types/fuzzing", "lumio-crypto/fuzzing", "lumio-types/fuzzing", "lumio-storage-interface/fuzzing"]
+failpoints = ["fail/failpoints", "lumio-vm/failpoints"]
 consensus-only-perf-test = []
 
 [[bench]]

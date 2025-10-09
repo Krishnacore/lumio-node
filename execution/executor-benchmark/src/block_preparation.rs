@@ -5,12 +5,12 @@ use crate::{
     metrics::{NUM_TXNS, TIMER},
     pipeline::ExecuteBlockMessage,
 };
-use aptos_block_partitioner::{BlockPartitioner, PartitionerConfig};
-use aptos_crypto::HashValue;
-use aptos_experimental_runtimes::thread_manager::optimal_min_len;
-use aptos_logger::info;
-use aptos_metrics_core::{IntCounterVecHelper, TimerHelper};
-use aptos_types::{
+use lumio_block_partitioner::{BlockPartitioner, PartitionerConfig};
+use lumio_crypto::HashValue;
+use lumio_experimental_runtimes::thread_manager::optimal_min_len;
+use lumio_logger::info;
+use lumio_metrics_core::{IntCounterVecHelper, TimerHelper};
+use lumio_types::{
     block_executor::partitioner::{ExecutableBlock, ExecutableTransactions},
     transaction::{signature_verified_transaction::SignatureVerifiedTransaction, Transaction},
 };

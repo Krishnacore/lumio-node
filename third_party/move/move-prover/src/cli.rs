@@ -719,7 +719,7 @@ impl Options {
         if matches.get_flag("aptos") {
             options.backend.custom_natives = Some(CustomNativeOptions {
                 template_bytes: include_bytes!(
-                    "../../../../aptos-move/framework/src/aptos-natives.bpl"
+                    "../../../../lumio-move/framework/src/lumio-natives.bpl"
                 )
                 .to_vec(),
                 module_instance_names: options::custom_native_options(),

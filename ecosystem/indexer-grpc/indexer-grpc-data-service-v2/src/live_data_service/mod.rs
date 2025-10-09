@@ -12,8 +12,8 @@ use crate::{
     live_data_service::in_memory_cache::InMemoryCache,
     metrics::{COUNTER, TIMER},
 };
-use aptos_protos::indexer::v1::{GetTransactionsRequest, ProcessedRange, TransactionsResponse};
-use aptos_transaction_filter::BooleanTransactionFilter;
+use lumio_protos::indexer::v1::{GetTransactionsRequest, ProcessedRange, TransactionsResponse};
+use lumio_transaction_filter::BooleanTransactionFilter;
 use std::{sync::Arc, time::Duration};
 use tokio::sync::mpsc::{Receiver, Sender};
 use tonic::{Request, Status};

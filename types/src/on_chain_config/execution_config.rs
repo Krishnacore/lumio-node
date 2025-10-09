@@ -161,7 +161,7 @@ impl OnChainConfig for OnChainExecutionConfig {
 
     /// The Move resource is
     /// ```ignore
-    /// struct AptosExecutionConfig has copy, drop, store {
+    /// struct LumioExecutionConfig has copy, drop, store {
     ///    config: vector<u8>,
     /// }
     /// ```

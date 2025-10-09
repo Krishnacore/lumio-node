@@ -2,13 +2,13 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_network::{
+use lumio_config::network_id::{NetworkId, PeerNetworkId};
+use lumio_network::{
     application::interface::NetworkServiceEvents,
     protocols::network::{Event, RpcError},
     ProtocolId,
 };
-use aptos_storage_service_types::{
+use lumio_storage_service_types::{
     requests::StorageServiceRequest, responses::StorageServiceResponse, Result,
     StorageServiceMessage,
 };

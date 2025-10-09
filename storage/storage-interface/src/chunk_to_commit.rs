@@ -8,7 +8,7 @@ use crate::state_store::{
     state_view::cached_state_view::ShardedStateCache,
     state_with_summary::{LedgerStateWithSummary, StateWithSummary},
 };
-use aptos_types::transaction::{
+use lumio_types::transaction::{
     PersistedAuxiliaryInfo, Transaction, TransactionInfo, TransactionOutput, Version,
 };
 

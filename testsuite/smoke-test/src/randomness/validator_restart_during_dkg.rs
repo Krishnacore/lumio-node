@@ -6,10 +6,10 @@ use crate::{
     smoke_test_environment::SwarmBuilder,
     utils::get_on_chain_resource,
 };
-use aptos_forge::{NodeExt, SwarmExt};
-use aptos_logger::{debug, info};
-use aptos_rest_client::Client;
-use aptos_types::{dkg::DKGState, on_chain_config::OnChainRandomnessConfig};
+use lumio_forge::{NodeExt, SwarmExt};
+use lumio_logger::{debug, info};
+use lumio_rest_client::Client;
+use lumio_types::{dkg::DKGState, on_chain_config::OnChainRandomnessConfig};
 use futures::future::join_all;
 use std::{sync::Arc, time::Duration};
 
@@ -22,7 +22,7 @@ async fn validator_restart_during_dkg() {
     let num_validators_to_restart = 3;
     let mut swarm = SwarmBuilder::new_local(num_validators)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_lumio()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))
@@ -64,8 +64,8 @@ async fn validator_restart_during_dkg() {
             )
         })
         .collect::<Vec<_>>();
-    let aptos_results = join_all(tasks).await;
-    debug!("aptos_results={:?}", aptos_results);
+    let lumio_results = join_all(tasks).await;
+    debug!("lumio_results={:?}", lumio_results);
 
     info!("Restart nodes after they panic.");
     for (node_idx, node) in swarm

@@ -3,8 +3,8 @@
 #![allow(unused)]
 
 pub use super::prebuilt_packages::PreBuiltPackagesImpl;
-use aptos_framework::natives::code::{MoveOption, PackageMetadata};
-use aptos_sdk::{
+use lumio_framework::natives::code::{MoveOption, PackageMetadata};
+use lumio_sdk::{
     bcs,
     move_types::{
         account_address::AccountAddress, ident_str, identifier::Identifier,
@@ -15,7 +15,7 @@ use aptos_sdk::{
         transaction::{EntryFunction, Script, TransactionPayload},
     },
 };
-use aptos_transaction_generator_lib::{
+use lumio_transaction_generator_lib::{
     entry_point_trait::{
         get_payload, AutomaticArgs, EntryPointTrait, MultiSigConfig, PreBuiltPackages,
     },

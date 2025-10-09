@@ -13,14 +13,14 @@ use crate::{
     },
     tests::{utils, utils::initialize_logger},
 };
-use aptos_config::config::DataStreamingServiceConfig;
-use aptos_data_client::{
+use lumio_config::config::DataStreamingServiceConfig;
+use lumio_data_client::{
     global_summary::{GlobalDataSummary, OptimalChunkSizes},
     interface::ResponsePayload,
 };
-use aptos_id_generator::U64IdGenerator;
-use aptos_storage_service_types::responses::CompleteDataRange;
-use aptos_types::transaction::Version;
+use lumio_id_generator::U64IdGenerator;
+use lumio_storage_service_types::responses::CompleteDataRange;
+use lumio_types::transaction::Version;
 use claims::{assert_matches, assert_ok};
 use std::{cmp, sync::Arc};
 

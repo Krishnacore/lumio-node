@@ -9,7 +9,7 @@ use crate::{
     },
     transaction::Version,
 };
-use aptos_crypto::{hash::CryptoHash, HashValue};
+use lumio_crypto::{hash::CryptoHash, HashValue};
 #[cfg(any(test, feature = "fuzzing"))]
 use proptest::prelude::*;
 use StateSlot::*;

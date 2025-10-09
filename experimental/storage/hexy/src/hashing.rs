@@ -3,7 +3,7 @@
 
 use crate::ARITY;
 use anyhow::{ensure, Result};
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{CryptoHasher, HexyHasher},
     HashValue,
 };

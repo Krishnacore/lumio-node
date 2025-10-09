@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{ConsensusState, Error, SafetyRules, TSafetyRules};
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block_data::BlockData,
     order_vote::OrderVote,
     order_vote_proposal::OrderVoteProposal,
@@ -11,9 +11,9 @@ use aptos_consensus_types::{
     vote::Vote,
     vote_proposal::VoteProposal,
 };
-use aptos_crypto::bls12381;
-use aptos_infallible::RwLock;
-use aptos_types::{
+use lumio_crypto::bls12381;
+use lumio_infallible::RwLock;
+use lumio_types::{
     epoch_change::EpochChangeProof,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
 };

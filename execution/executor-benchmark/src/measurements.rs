@@ -2,15 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::metrics::TIMER;
-use aptos_block_executor::counters::{
+use lumio_block_executor::counters::{
     self as block_executor_counters, GasType, BLOCK_EXECUTOR_INNER_EXECUTE_BLOCK,
 };
-use aptos_executor::metrics::{
+use lumio_executor::metrics::{
     COMMIT_BLOCKS, GET_BLOCK_EXECUTION_OUTPUT_BY_EXECUTING, OTHER_TIMERS,
     PROCESSED_TXNS_OUTPUT_SIZE, UPDATE_LEDGER,
 };
-use aptos_logger::info;
-use aptos_metrics_core::Histogram;
+use lumio_logger::info;
+use lumio_metrics_core::Histogram;
 use move_core_types::language_storage::StructTag;
 use std::{
     collections::{BTreeMap, HashMap},

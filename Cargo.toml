@@ -6,103 +6,103 @@ members = [
     "api/openapi-spec-generator",
     "api/test-context",
     "api/types",
-    "aptos-move/aptos-abstract-gas-usage",
-    "aptos-move/aptos-aggregator",
-    "aptos-move/aptos-debugger",
-    "aptos-move/aptos-e2e-comparison-testing",
-    "aptos-move/aptos-gas-algebra",
-    "aptos-move/aptos-gas-calibration",
-    "aptos-move/aptos-gas-meter",
-    "aptos-move/aptos-gas-profiling",
-    "aptos-move/aptos-gas-schedule",
-    "aptos-move/aptos-gas-schedule-updator",
-    "aptos-move/aptos-memory-usage-tracker",
-    "aptos-move/aptos-native-interface",
-    "aptos-move/aptos-release-builder",
-    "aptos-move/aptos-resource-viewer",
-    "aptos-move/aptos-sdk-builder",
-    "aptos-move/aptos-transaction-benchmarks",
-    "aptos-move/aptos-transaction-simulation",
-    "aptos-move/aptos-transaction-simulation-session",
-    "aptos-move/aptos-transactional-test-harness",
-    "aptos-move/aptos-validator-interface",
-    "aptos-move/aptos-vm",
-    "aptos-move/aptos-vm-benchmarks",
-    "aptos-move/aptos-vm-environment",
-    "aptos-move/aptos-vm-logging",
-    "aptos-move/aptos-vm-profiling",
-    "aptos-move/aptos-vm-types",
-    "aptos-move/aptos-workspace-server",
-    "aptos-move/block-executor",
-    "aptos-move/e2e-benchmark",
-    "aptos-move/e2e-move-tests",
-    "aptos-move/e2e-tests",
-    "aptos-move/e2e-testsuite",
-    "aptos-move/framework",
-    "aptos-move/framework/cached-packages",
-    "aptos-move/framework/table-natives",
-    "aptos-move/move-examples",
-    "aptos-move/mvhashmap",
-    "aptos-move/package-builder",
-    "aptos-move/replay-benchmark",
-    "aptos-move/script-composer",
-    "aptos-move/vm-genesis",
-    "aptos-node",
+    "lumio-move/lumio-abstract-gas-usage",
+    "lumio-move/lumio-aggregator",
+    "lumio-move/lumio-debugger",
+    "lumio-move/lumio-e2e-comparison-testing",
+    "lumio-move/lumio-gas-algebra",
+    "lumio-move/lumio-gas-calibration",
+    "lumio-move/lumio-gas-meter",
+    "lumio-move/lumio-gas-profiling",
+    "lumio-move/lumio-gas-schedule",
+    "lumio-move/lumio-gas-schedule-updator",
+    "lumio-move/lumio-memory-usage-tracker",
+    "lumio-move/lumio-native-interface",
+    "lumio-move/lumio-release-builder",
+    "lumio-move/lumio-resource-viewer",
+    "lumio-move/lumio-sdk-builder",
+    "lumio-move/lumio-transaction-benchmarks",
+    "lumio-move/lumio-transaction-simulation",
+    "lumio-move/lumio-transaction-simulation-session",
+    "lumio-move/lumio-transactional-test-harness",
+    "lumio-move/lumio-validator-interface",
+    "lumio-move/lumio-vm",
+    "lumio-move/lumio-vm-benchmarks",
+    "lumio-move/lumio-vm-environment",
+    "lumio-move/lumio-vm-logging",
+    "lumio-move/lumio-vm-profiling",
+    "lumio-move/lumio-vm-types",
+    "lumio-move/lumio-workspace-server",
+    "lumio-move/block-executor",
+    "lumio-move/e2e-benchmark",
+    "lumio-move/e2e-move-tests",
+    "lumio-move/e2e-tests",
+    "lumio-move/e2e-testsuite",
+    "lumio-move/framework",
+    "lumio-move/framework/cached-packages",
+    "lumio-move/framework/table-natives",
+    "lumio-move/move-examples",
+    "lumio-move/mvhashmap",
+    "lumio-move/package-builder",
+    "lumio-move/replay-benchmark",
+    "lumio-move/script-composer",
+    "lumio-move/vm-genesis",
+    "lumio-node",
     "config",
     "config/global-constants",
     "consensus",
     "consensus/consensus-types",
     "consensus/safety-rules",
-    "crates/aptos",
-    "crates/aptos-admin-service",
-    "crates/aptos-api-tester",
-    "crates/aptos-bcs-utils",
-    "crates/aptos-bitvec",
-    "crates/aptos-build-info",
-    "crates/aptos-collections",
-    "crates/aptos-compression",
-    "crates/aptos-crypto",
-    "crates/aptos-crypto-derive",
-    "crates/aptos-debugger",
-    "crates/aptos-dkg",
-    "crates/aptos-drop-helper",
-    "crates/aptos-enum-conversion-derive",
-    "crates/aptos-faucet/cli",
-    "crates/aptos-faucet/core",
-    "crates/aptos-faucet/metrics-server",
-    "crates/aptos-faucet/service",
-    "crates/aptos-genesis",
-    "crates/aptos-github-client",
-    "crates/aptos-id-generator",
-    "crates/aptos-infallible",
-    "crates/aptos-inspection-service",
-    "crates/aptos-jwk-consensus",
-    "crates/aptos-keygen",
-    "crates/aptos-ledger",
-    "crates/aptos-localnet",
-    "crates/aptos-log-derive",
-    "crates/aptos-logger",
-    "crates/aptos-metrics-core",
-    "crates/aptos-network-checker",
-    "crates/aptos-node-identity",
-    "crates/aptos-openapi",
-    "crates/aptos-profiler",
-    "crates/aptos-proptest-helpers",
-    "crates/aptos-push-metrics",
-    "crates/aptos-rate-limiter",
-    "crates/aptos-rest-client",
-    "crates/aptos-retrier",
-    "crates/aptos-rosetta",
-    "crates/aptos-rosetta-cli",
-    "crates/aptos-runtimes",
-    "crates/aptos-speculative-state-helper",
-    "crates/aptos-system-utils",
-    "crates/aptos-telemetry",
-    "crates/aptos-telemetry-service",
-    "crates/aptos-temppath",
-    "crates/aptos-time-service",
-    "crates/aptos-transaction-filters",
-    "crates/aptos-warp-webserver",
+    "crates/lumio",
+    "crates/lumio-admin-service",
+    "crates/lumio-api-tester",
+    "crates/lumio-bcs-utils",
+    "crates/lumio-bitvec",
+    "crates/lumio-build-info",
+    "crates/lumio-collections",
+    "crates/lumio-compression",
+    "crates/lumio-crypto",
+    "crates/lumio-crypto-derive",
+    "crates/lumio-debugger",
+    "crates/lumio-dkg",
+    "crates/lumio-drop-helper",
+    "crates/lumio-enum-conversion-derive",
+    "crates/lumio-faucet/cli",
+    "crates/lumio-faucet/core",
+    "crates/lumio-faucet/metrics-server",
+    "crates/lumio-faucet/service",
+    "crates/lumio-genesis",
+    "crates/lumio-github-client",
+    "crates/lumio-id-generator",
+    "crates/lumio-infallible",
+    "crates/lumio-inspection-service",
+    "crates/lumio-jwk-consensus",
+    "crates/lumio-keygen",
+    "crates/lumio-ledger",
+    "crates/lumio-localnet",
+    "crates/lumio-log-derive",
+    "crates/lumio-logger",
+    "crates/lumio-metrics-core",
+    "crates/lumio-network-checker",
+    "crates/lumio-node-identity",
+    "crates/lumio-openapi",
+    "crates/lumio-profiler",
+    "crates/lumio-proptest-helpers",
+    "crates/lumio-push-metrics",
+    "crates/lumio-rate-limiter",
+    "crates/lumio-rest-client",
+    "crates/lumio-retrier",
+    "crates/lumio-rosetta",
+    "crates/lumio-rosetta-cli",
+    "crates/lumio-runtimes",
+    "crates/lumio-speculative-state-helper",
+    "crates/lumio-system-utils",
+    "crates/lumio-telemetry",
+    "crates/lumio-telemetry-service",
+    "crates/lumio-temppath",
+    "crates/lumio-time-service",
+    "crates/lumio-transaction-filters",
+    "crates/lumio-warp-webserver",
     "crates/bounded-executor",
     "crates/channel",
     "crates/crash-handler",
@@ -119,7 +119,7 @@ members = [
     "crates/transaction-generator-lib",
     "crates/transaction-workloads-lib",
     "crates/validator-transaction-pool",
-    "devtools/aptos-cargo-cli",
+    "devtools/lumio-cargo-cli",
     "dkg",
     "ecosystem/indexer-grpc/indexer-grpc-cache-worker",
     "ecosystem/indexer-grpc/indexer-grpc-data-service",
@@ -169,7 +169,7 @@ members = [
     "secure/net",
     "secure/storage",
     "secure/storage/vault",
-    "state-sync/aptos-data-client",
+    "state-sync/lumio-data-client",
     "state-sync/data-streaming-service",
     "state-sync/inter-component/consensus-notifications",
     "state-sync/inter-component/event-notifications",
@@ -180,7 +180,7 @@ members = [
     "state-sync/storage-service/server",
     "state-sync/storage-service/types",
     "storage/accumulator",
-    "storage/aptosdb",
+    "storage/lumiodb",
     "storage/backup/backup-cli",
     "storage/backup/backup-service",
     "storage/db-tool",
@@ -261,22 +261,22 @@ members = [
     "vm-validator",
 ]
 
-# NOTE: default-members is the complete list of binaries that form the "production Aptos codebase". These members should
+# NOTE: default-members is the complete list of binaries that form the "production Lumio codebase". These members should
 # never include crates that require fuzzing features or test features. These are the crates we want built with no extra
 # test-only code included.
 #
 # For more, see the "Conditional compilation for tests" section in documentation/coding_guidelines.md.
 default-members = [
-    "aptos-node",
+    "lumio-node",
     "consensus/safety-rules",
-    "crates/aptos",
-    "crates/aptos-debugger",
-    "crates/aptos-faucet/service",
-    "crates/aptos-keygen",
-    "crates/aptos-rate-limiter",
-    "crates/aptos-rosetta",
+    "crates/lumio",
+    "crates/lumio-debugger",
+    "crates/lumio-faucet/service",
+    "crates/lumio-keygen",
+    "crates/lumio-rate-limiter",
+    "crates/lumio-rosetta",
     "crates/transaction-emitter",
-    "aptos-move/framework",
+    "lumio-move/framework",
     "storage/backup/backup-cli",
     "ecosystem/node-checker",
 ]
@@ -284,9 +284,9 @@ default-members = [
 # All workspace members should inherit these keys
 # for package declarations.
 [workspace.package]
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+authors = ["Lumio Labs <opensource@lumiolabs.com>"]
 edition = "2021"
-homepage = "https://aptoslabs.com"
+homepage = "https://lumiolabs.com"
 license = "Apache-2.0"
 publish = false
 repository = "https://github.com/aptos-labs/aptos-core"
@@ -295,190 +295,190 @@ rust-version = "1.85"
 [workspace.dependencies]
 # Internal crate dependencies.
 # Please do not add any test features here: they should be declared by the individual crate.
-aptos = { path = "crates/aptos" }
-aptos-accumulator = { path = "storage/accumulator" }
-aptos-admin-service = { path = "crates/aptos-admin-service" }
-aptos-aggregator = { path = "aptos-move/aptos-aggregator" }
-aptos-api = { path = "api" }
-aptos-api-test-context = { path = "api/test-context" }
-aptos-api-types = { path = "api/types" }
-aptos-backup-cli = { path = "storage/backup/backup-cli" }
-aptos-backup-service = { path = "storage/backup/backup-service" }
-aptos-bcs-utils = { path = "crates/aptos-bcs-utils" }
-aptos-bounded-executor = { path = "crates/bounded-executor" }
-aptos-block-executor = { path = "aptos-move/block-executor" }
-aptos-bitvec = { path = "crates/aptos-bitvec" }
-aptos-build-info = { path = "crates/aptos-build-info" }
-aptos-cached-packages = { path = "aptos-move/framework/cached-packages" }
-aptos-channels = { path = "crates/channel" }
-aptos-cli-common = { path = "crates/aptos-cli-common" }
-aptos-collections = { path = "crates/aptos-collections" }
-aptos-compression = { path = "crates/aptos-compression" }
-aptos-consensus = { path = "consensus" }
-aptos-consensus-notifications = { path = "state-sync/inter-component/consensus-notifications" }
-aptos-consensus-types = { path = "consensus/consensus-types" }
-aptos-config = { path = "config" }
-aptos-crash-handler = { path = "crates/crash-handler" }
-aptos-crypto = { path = "crates/aptos-crypto" }
-aptos-crypto-derive = { path = "crates/aptos-crypto-derive" }
-aptos-data-client = { path = "state-sync/aptos-data-client" }
-aptos-data-streaming-service = { path = "state-sync/data-streaming-service" }
-aptos-db = { path = "storage/aptosdb" }
-aptos-db-indexer = { path = "storage/indexer" }
-aptos-db-indexer-schemas = { path = "storage/indexer_schemas" }
-aptos-db-tool = { path = "storage/db-tool" }
-aptos-debugger = { path = "crates/aptos-debugger" }
-aptos-dkg = { path = "crates/aptos-dkg" }
-aptos-dkg-runtime = { path = "dkg" }
-aptos-drop-helper = { path = "crates/aptos-drop-helper" }
-aptos-event-notifications = { path = "state-sync/inter-component/event-notifications" }
-aptos-executor = { path = "execution/executor" }
-aptos-block-partitioner = { path = "execution/block-partitioner" }
-aptos-enum-conversion-derive = { path = "crates/aptos-enum-conversion-derive" }
-aptos-executor-service = { path = "execution/executor-service" }
-aptos-executor-test-helpers = { path = "execution/executor-test-helpers" }
-aptos-executor-types = { path = "execution/executor-types" }
-aptos-experimental-hexy = { path = "experimental/storage/hexy" }
-aptos-experimental-bulk-txn-submit = { path = "experimental/bulk-txn-submit" }
-aptos-experimental-layered-map = { path = "experimental/storage/layered-map" }
-aptos-experimental-ptx-executor = { path = "experimental/execution/ptx-executor" }
-aptos-experimental-runtimes = { path = "experimental/runtimes" }
-aptos-faucet-cli = { path = "crates/aptos-faucet/cli" }
-aptos-faucet-core = { path = "crates/aptos-faucet/core" }
-aptos-faucet-service = { path = "crates/aptos-faucet/service" }
-aptos-faucet-metrics-server = { path = "crates/aptos-faucet/metrics-server" }
-aptos-fallible = { path = "crates/fallible" }
-aptos-forge = { path = "testsuite/forge" }
-aptos-framework = { path = "aptos-move/framework" }
+lumio = { path = "crates/lumio" }
+lumio-accumulator = { path = "storage/accumulator" }
+lumio-admin-service = { path = "crates/lumio-admin-service" }
+lumio-aggregator = { path = "lumio-move/lumio-aggregator" }
+lumio-api = { path = "api" }
+lumio-api-test-context = { path = "api/test-context" }
+lumio-api-types = { path = "api/types" }
+lumio-backup-cli = { path = "storage/backup/backup-cli" }
+lumio-backup-service = { path = "storage/backup/backup-service" }
+lumio-bcs-utils = { path = "crates/lumio-bcs-utils" }
+lumio-bounded-executor = { path = "crates/bounded-executor" }
+lumio-block-executor = { path = "lumio-move/block-executor" }
+lumio-bitvec = { path = "crates/lumio-bitvec" }
+lumio-build-info = { path = "crates/lumio-build-info" }
+lumio-cached-packages = { path = "lumio-move/framework/cached-packages" }
+lumio-channels = { path = "crates/channel" }
+lumio-cli-common = { path = "crates/lumio-cli-common" }
+lumio-collections = { path = "crates/lumio-collections" }
+lumio-compression = { path = "crates/lumio-compression" }
+lumio-consensus = { path = "consensus" }
+lumio-consensus-notifications = { path = "state-sync/inter-component/consensus-notifications" }
+lumio-consensus-types = { path = "consensus/consensus-types" }
+lumio-config = { path = "config" }
+lumio-crash-handler = { path = "crates/crash-handler" }
+lumio-crypto = { path = "crates/lumio-crypto" }
+lumio-crypto-derive = { path = "crates/lumio-crypto-derive" }
+lumio-data-client = { path = "state-sync/lumio-data-client" }
+lumio-data-streaming-service = { path = "state-sync/data-streaming-service" }
+lumio-db = { path = "storage/lumiodb" }
+lumio-db-indexer = { path = "storage/indexer" }
+lumio-db-indexer-schemas = { path = "storage/indexer_schemas" }
+lumio-db-tool = { path = "storage/db-tool" }
+lumio-debugger = { path = "crates/lumio-debugger" }
+lumio-dkg = { path = "crates/lumio-dkg" }
+lumio-dkg-runtime = { path = "dkg" }
+lumio-drop-helper = { path = "crates/lumio-drop-helper" }
+lumio-event-notifications = { path = "state-sync/inter-component/event-notifications" }
+lumio-executor = { path = "execution/executor" }
+lumio-block-partitioner = { path = "execution/block-partitioner" }
+lumio-enum-conversion-derive = { path = "crates/lumio-enum-conversion-derive" }
+lumio-executor-service = { path = "execution/executor-service" }
+lumio-executor-test-helpers = { path = "execution/executor-test-helpers" }
+lumio-executor-types = { path = "execution/executor-types" }
+lumio-experimental-hexy = { path = "experimental/storage/hexy" }
+lumio-experimental-bulk-txn-submit = { path = "experimental/bulk-txn-submit" }
+lumio-experimental-layered-map = { path = "experimental/storage/layered-map" }
+lumio-experimental-ptx-executor = { path = "experimental/execution/ptx-executor" }
+lumio-experimental-runtimes = { path = "experimental/runtimes" }
+lumio-faucet-cli = { path = "crates/lumio-faucet/cli" }
+lumio-faucet-core = { path = "crates/lumio-faucet/core" }
+lumio-faucet-service = { path = "crates/lumio-faucet/service" }
+lumio-faucet-metrics-server = { path = "crates/lumio-faucet/metrics-server" }
+lumio-fallible = { path = "crates/fallible" }
+lumio-forge = { path = "testsuite/forge" }
+lumio-framework = { path = "lumio-move/framework" }
 fuzzer = { path = "testsuite/fuzzer" }
-aptos-abstract-gas-usage = { path = "aptos-move/aptos-abstract-gas-usage" }
-aptos-gas-meter = { path = "aptos-move/aptos-gas-meter" }
-aptos-gas-algebra = { path = "aptos-move/aptos-gas-algebra" }
-aptos-gas-calibration = { path = "aptos-move/aptos-gas-calibration" }
-aptos-gas-profiling = { path = "aptos-move/aptos-gas-profiling" }
-aptos-gas-schedule = { path = "aptos-move/aptos-gas-schedule" }
-aptos-gas-schedule-updator = { path = "aptos-move/aptos-gas-schedule-updator" }
-aptos-genesis = { path = "crates/aptos-genesis" }
-aptos-github-client = { path = "crates/aptos-github-client" }
-aptos-global-constants = { path = "config/global-constants" }
-aptos-id-generator = { path = "crates/aptos-id-generator" }
-aptos-indexer = { path = "crates/indexer" }
-aptos-indexer-grpc-cache-worker = { path = "ecosystem/indexer-grpc/indexer-grpc-cache-worker" }
-aptos-indexer-grpc-data-service = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service" }
-aptos-indexer-grpc-data-service-v2 = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service-v2" }
-aptos-indexer-grpc-file-store = { path = "ecosystem/indexer-grpc/indexer-grpc-file-store" }
-aptos-indexer-grpc-file-checker = { path = "ecosystem/indexer-grpc/indexer-grpc-file-checker" }
-aptos-indexer-grpc-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-file-store-backfiller" }
-aptos-indexer-grpc-fullnode = { path = "ecosystem/indexer-grpc/indexer-grpc-fullnode" }
-aptos-indexer-grpc-in-memory-cache-benchmark = { path = "ecosystem/indexer-grpc/indexer-grpc-in-memory-cache-benchmark" }
-aptos-indexer-grpc-manager = { path = "ecosystem/indexer-grpc/indexer-grpc-manager" }
-aptos-indexer-grpc-table-info = { path = "ecosystem/indexer-grpc/indexer-grpc-table-info" }
-aptos-indexer-test-transactions = { path = "ecosystem/indexer-grpc/indexer-test-transactions" }
-aptos-indexer-grpc-utils = { path = "ecosystem/indexer-grpc/indexer-grpc-utils" }
-aptos-indexer-grpc-v2-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-v2-file-store-backfiller" }
-aptos-indexer-grpc-server-framework = { path = "ecosystem/indexer-grpc/indexer-grpc-server-framework" }
-aptos-indexer-transaction-generator = { path = "ecosystem/indexer-grpc/indexer-transaction-generator" }
-aptos-infallible = { path = "crates/aptos-infallible" }
-aptos-inspection-service = { path = "crates/aptos-inspection-service" }
-aptos-jellyfish-merkle = { path = "storage/jellyfish-merkle" }
-aptos-jwk-consensus = { path = "crates/aptos-jwk-consensus" }
-aptos-jwk-utils = { path = "crates/jwk-utils" }
-aptos-keygen = { path = "crates/aptos-keygen" }
-aptos-language-e2e-tests = { path = "aptos-move/e2e-tests" }
-aptos-ledger = { path = "crates/aptos-ledger" }
-aptos-localnet = { path = "crates/aptos-localnet" }
-aptos-log-derive = { path = "crates/aptos-log-derive" }
-aptos-logger = { path = "crates/aptos-logger" }
-aptos-memory-usage-tracker = { path = "aptos-move/aptos-memory-usage-tracker" }
-aptos-mempool = { path = "mempool" }
-aptos-mempool-notifications = { path = "state-sync/inter-component/mempool-notifications" }
-aptos-memsocket = { path = "network/memsocket" }
-aptos-metrics-core = { path = "crates/aptos-metrics-core" }
-aptos-move-debugger = { path = "aptos-move/aptos-debugger" }
-aptos-move-examples = { path = "aptos-move/move-examples" }
-aptos-move-e2e-benchmark = { path = "aptos-move/e2e-benchmark" }
-aptos-mvhashmap = { path = "aptos-move/mvhashmap" }
-aptos-native-interface = { path = "aptos-move/aptos-native-interface" }
-aptos-netcore = { path = "network/netcore" }
-aptos-network = { path = "network/framework" }
-aptos-network-benchmark = { path = "network/benchmark" }
-aptos-network-builder = { path = "network/builder" }
-aptos-network-checker = { path = "crates/aptos-network-checker" }
-aptos-network-discovery = { path = "network/discovery" }
-aptos-nft-metadata-crawler = { path = "ecosystem/nft-metadata-crawler" }
-aptos-node = { path = "aptos-node" }
-aptos-node-checker = { path = "ecosystem/node-checker" }
-aptos-node-identity = { path = "crates/aptos-node-identity" }
-aptos-node-resource-metrics = { path = "crates/node-resource-metrics" }
-aptos-num-variants = { path = "crates/num-variants" }
-aptos-openapi = { path = "crates/aptos-openapi" }
-aptos-package-builder = { path = "aptos-move/package-builder" }
-aptos-peer-monitoring-service-client = { path = "peer-monitoring-service/client" }
-aptos-peer-monitoring-service-server = { path = "peer-monitoring-service/server" }
-aptos-peer-monitoring-service-types = { path = "peer-monitoring-service/types" }
-aptos-keyless-common = { path = "keyless/common" }
-aptos-keyless-pepper-common = { path = "keyless/pepper/common" }
-aptos-keyless-pepper-service = { path = "keyless/pepper/service" }
-aptos-profiler = { path = "crates/aptos-profiler" }
-aptos-proptest-helpers = { path = "crates/aptos-proptest-helpers" }
-aptos-protos = { path = "protos/rust" }
-aptos-proxy = { path = "crates/proxy" }
-aptos-push-metrics = { path = "crates/aptos-push-metrics" }
-aptos-rate-limiter = { path = "crates/aptos-rate-limiter" }
-aptos-release-builder = { path = "aptos-move/aptos-release-builder" }
-aptos-reliable-broadcast = { path = "crates/reliable-broadcast" }
-aptos-replay-benchmark = { path = "aptos-move/replay-benchmark" }
-aptos-resource-viewer = { path = "aptos-move/aptos-resource-viewer" }
-aptos-rest-client = { path = "crates/aptos-rest-client" }
-aptos-retrier = { path = "crates/aptos-retrier" }
-aptos-rocksdb-options = { path = "storage/rocksdb-options" }
-aptos-rosetta = { path = "crates/aptos-rosetta" }
-aptos-runtimes = { path = "crates/aptos-runtimes" }
-aptos-safety-rules = { path = "consensus/safety-rules" }
-aptos-schemadb = { path = "storage/schemadb" }
-aptos-scratchpad = { path = "storage/scratchpad" }
-aptos-script-composer = { path = "aptos-move/script-composer" }
-aptos-sdk = { path = "sdk" }
-aptos-sdk-builder = { path = "aptos-move/aptos-sdk-builder" }
-aptos-secure-net = { path = "secure/net" }
-aptos-secure-storage = { path = "secure/storage" }
-aptos-short-hex-str = { path = "crates/short-hex-str" }
-aptos-speculative-state-helper = { path = "crates/aptos-speculative-state-helper" }
-aptos-state-sync-driver = { path = "state-sync/state-sync-driver" }
-aptos-storage-interface = { path = "storage/storage-interface" }
-aptos-storage-service-client = { path = "state-sync/storage-service/client" }
-aptos-storage-service-notifications = { path = "state-sync/inter-component/storage-service-notifications" }
-aptos-storage-service-types = { path = "state-sync/storage-service/types" }
-aptos-storage-service-server = { path = "state-sync/storage-service/server" }
-aptos-system-utils = { path = "crates/aptos-system-utils" }
-aptos-transaction-filter = { path = "ecosystem/indexer-grpc/transaction-filter" }
-aptos-transaction-filters = { path = "crates/aptos-transaction-filters" }
-aptos-telemetry = { path = "crates/aptos-telemetry" }
-aptos-telemetry-service = { path = "crates/aptos-telemetry-service" }
-aptos-temppath = { path = "crates/aptos-temppath" }
-aptos-testcases = { path = "testsuite/testcases" }
-aptos-time-service = { path = "crates/aptos-time-service", features = [
+lumio-abstract-gas-usage = { path = "lumio-move/lumio-abstract-gas-usage" }
+lumio-gas-meter = { path = "lumio-move/lumio-gas-meter" }
+lumio-gas-algebra = { path = "lumio-move/lumio-gas-algebra" }
+lumio-gas-calibration = { path = "lumio-move/lumio-gas-calibration" }
+lumio-gas-profiling = { path = "lumio-move/lumio-gas-profiling" }
+lumio-gas-schedule = { path = "lumio-move/lumio-gas-schedule" }
+lumio-gas-schedule-updator = { path = "lumio-move/lumio-gas-schedule-updator" }
+lumio-genesis = { path = "crates/lumio-genesis" }
+lumio-github-client = { path = "crates/lumio-github-client" }
+lumio-global-constants = { path = "config/global-constants" }
+lumio-id-generator = { path = "crates/lumio-id-generator" }
+lumio-indexer = { path = "crates/indexer" }
+lumio-indexer-grpc-cache-worker = { path = "ecosystem/indexer-grpc/indexer-grpc-cache-worker" }
+lumio-indexer-grpc-data-service = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service" }
+lumio-indexer-grpc-data-service-v2 = { path = "ecosystem/indexer-grpc/indexer-grpc-data-service-v2" }
+lumio-indexer-grpc-file-store = { path = "ecosystem/indexer-grpc/indexer-grpc-file-store" }
+lumio-indexer-grpc-file-checker = { path = "ecosystem/indexer-grpc/indexer-grpc-file-checker" }
+lumio-indexer-grpc-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-file-store-backfiller" }
+lumio-indexer-grpc-fullnode = { path = "ecosystem/indexer-grpc/indexer-grpc-fullnode" }
+lumio-indexer-grpc-in-memory-cache-benchmark = { path = "ecosystem/indexer-grpc/indexer-grpc-in-memory-cache-benchmark" }
+lumio-indexer-grpc-manager = { path = "ecosystem/indexer-grpc/indexer-grpc-manager" }
+lumio-indexer-grpc-table-info = { path = "ecosystem/indexer-grpc/indexer-grpc-table-info" }
+lumio-indexer-test-transactions = { path = "ecosystem/indexer-grpc/indexer-test-transactions" }
+lumio-indexer-grpc-utils = { path = "ecosystem/indexer-grpc/indexer-grpc-utils" }
+lumio-indexer-grpc-v2-file-store-backfiller = { path = "ecosystem/indexer-grpc/indexer-grpc-v2-file-store-backfiller" }
+lumio-indexer-grpc-server-framework = { path = "ecosystem/indexer-grpc/indexer-grpc-server-framework" }
+lumio-indexer-transaction-generator = { path = "ecosystem/indexer-grpc/indexer-transaction-generator" }
+lumio-infallible = { path = "crates/lumio-infallible" }
+lumio-inspection-service = { path = "crates/lumio-inspection-service" }
+lumio-jellyfish-merkle = { path = "storage/jellyfish-merkle" }
+lumio-jwk-consensus = { path = "crates/lumio-jwk-consensus" }
+lumio-jwk-utils = { path = "crates/jwk-utils" }
+lumio-keygen = { path = "crates/lumio-keygen" }
+lumio-language-e2e-tests = { path = "lumio-move/e2e-tests" }
+lumio-ledger = { path = "crates/lumio-ledger" }
+lumio-localnet = { path = "crates/lumio-localnet" }
+lumio-log-derive = { path = "crates/lumio-log-derive" }
+lumio-logger = { path = "crates/lumio-logger" }
+lumio-memory-usage-tracker = { path = "lumio-move/lumio-memory-usage-tracker" }
+lumio-mempool = { path = "mempool" }
+lumio-mempool-notifications = { path = "state-sync/inter-component/mempool-notifications" }
+lumio-memsocket = { path = "network/memsocket" }
+lumio-metrics-core = { path = "crates/lumio-metrics-core" }
+lumio-move-debugger = { path = "lumio-move/lumio-debugger" }
+lumio-move-examples = { path = "lumio-move/move-examples" }
+lumio-move-e2e-benchmark = { path = "lumio-move/e2e-benchmark" }
+lumio-mvhashmap = { path = "lumio-move/mvhashmap" }
+lumio-native-interface = { path = "lumio-move/lumio-native-interface" }
+lumio-netcore = { path = "network/netcore" }
+lumio-network = { path = "network/framework" }
+lumio-network-benchmark = { path = "network/benchmark" }
+lumio-network-builder = { path = "network/builder" }
+lumio-network-checker = { path = "crates/lumio-network-checker" }
+lumio-network-discovery = { path = "network/discovery" }
+lumio-nft-metadata-crawler = { path = "ecosystem/nft-metadata-crawler" }
+lumio-node = { path = "lumio-node" }
+lumio-node-checker = { path = "ecosystem/node-checker" }
+lumio-node-identity = { path = "crates/lumio-node-identity" }
+lumio-node-resource-metrics = { path = "crates/node-resource-metrics" }
+lumio-num-variants = { path = "crates/num-variants" }
+lumio-openapi = { path = "crates/lumio-openapi" }
+lumio-package-builder = { path = "lumio-move/package-builder" }
+lumio-peer-monitoring-service-client = { path = "peer-monitoring-service/client" }
+lumio-peer-monitoring-service-server = { path = "peer-monitoring-service/server" }
+lumio-peer-monitoring-service-types = { path = "peer-monitoring-service/types" }
+lumio-keyless-common = { path = "keyless/common" }
+lumio-keyless-pepper-common = { path = "keyless/pepper/common" }
+lumio-keyless-pepper-service = { path = "keyless/pepper/service" }
+lumio-profiler = { path = "crates/lumio-profiler" }
+lumio-proptest-helpers = { path = "crates/lumio-proptest-helpers" }
+lumio-protos = { path = "protos/rust" }
+lumio-proxy = { path = "crates/proxy" }
+lumio-push-metrics = { path = "crates/lumio-push-metrics" }
+lumio-rate-limiter = { path = "crates/lumio-rate-limiter" }
+lumio-release-builder = { path = "lumio-move/lumio-release-builder" }
+lumio-reliable-broadcast = { path = "crates/reliable-broadcast" }
+lumio-replay-benchmark = { path = "lumio-move/replay-benchmark" }
+lumio-resource-viewer = { path = "lumio-move/lumio-resource-viewer" }
+lumio-rest-client = { path = "crates/lumio-rest-client" }
+lumio-retrier = { path = "crates/lumio-retrier" }
+lumio-rocksdb-options = { path = "storage/rocksdb-options" }
+lumio-rosetta = { path = "crates/lumio-rosetta" }
+lumio-runtimes = { path = "crates/lumio-runtimes" }
+lumio-safety-rules = { path = "consensus/safety-rules" }
+lumio-schemadb = { path = "storage/schemadb" }
+lumio-scratchpad = { path = "storage/scratchpad" }
+lumio-script-composer = { path = "lumio-move/script-composer" }
+lumio-sdk = { path = "sdk" }
+lumio-sdk-builder = { path = "lumio-move/lumio-sdk-builder" }
+lumio-secure-net = { path = "secure/net" }
+lumio-secure-storage = { path = "secure/storage" }
+lumio-short-hex-str = { path = "crates/short-hex-str" }
+lumio-speculative-state-helper = { path = "crates/lumio-speculative-state-helper" }
+lumio-state-sync-driver = { path = "state-sync/state-sync-driver" }
+lumio-storage-interface = { path = "storage/storage-interface" }
+lumio-storage-service-client = { path = "state-sync/storage-service/client" }
+lumio-storage-service-notifications = { path = "state-sync/inter-component/storage-service-notifications" }
+lumio-storage-service-types = { path = "state-sync/storage-service/types" }
+lumio-storage-service-server = { path = "state-sync/storage-service/server" }
+lumio-system-utils = { path = "crates/lumio-system-utils" }
+lumio-transaction-filter = { path = "ecosystem/indexer-grpc/transaction-filter" }
+lumio-transaction-filters = { path = "crates/lumio-transaction-filters" }
+lumio-telemetry = { path = "crates/lumio-telemetry" }
+lumio-telemetry-service = { path = "crates/lumio-telemetry-service" }
+lumio-temppath = { path = "crates/lumio-temppath" }
+lumio-testcases = { path = "testsuite/testcases" }
+lumio-time-service = { path = "crates/lumio-time-service", features = [
     "async",
 ] }
-aptos-transaction-emitter-lib = { path = "crates/transaction-emitter-lib" }
-aptos-transaction-generator-lib = { path = "crates/transaction-generator-lib" }
-aptos-transaction-workloads-lib = { path = "crates/transaction-workloads-lib" }
-aptos-transaction-simulation = { path = "aptos-move/aptos-transaction-simulation" }
-aptos-transaction-simulation-session = { path = "aptos-move/aptos-transaction-simulation-session" }
-aptos-transactional-test-harness = { path = "aptos-move/aptos-transactional-test-harness" }
-aptos-types = { path = "types" }
-aptos-validator-interface = { path = "aptos-move/aptos-validator-interface" }
-aptos-validator-transaction-pool = { path = "crates/validator-transaction-pool" }
-aptos-vault-client = { path = "secure/storage/vault" }
-aptos-vm = { path = "aptos-move/aptos-vm" }
-aptos-vm-environment = { path = "aptos-move/aptos-vm-environment" }
-aptos-vm-logging = { path = "aptos-move/aptos-vm-logging" }
-aptos-vm-genesis = { path = "aptos-move/vm-genesis" }
-aptos-vm-types = { path = "aptos-move/aptos-vm-types" }
-aptos-vm-validator = { path = "vm-validator" }
-aptos-workspace-server = { path = "aptos-move/aptos-workspace-server" }
-aptos-warp-webserver = { path = "crates/aptos-warp-webserver" }
-aptos-cargo-cli = { path = "devtools/aptos-cargo-cli" }
+lumio-transaction-emitter-lib = { path = "crates/transaction-emitter-lib" }
+lumio-transaction-generator-lib = { path = "crates/transaction-generator-lib" }
+lumio-transaction-workloads-lib = { path = "crates/transaction-workloads-lib" }
+lumio-transaction-simulation = { path = "lumio-move/lumio-transaction-simulation" }
+lumio-transaction-simulation-session = { path = "lumio-move/lumio-transaction-simulation-session" }
+lumio-transactional-test-harness = { path = "lumio-move/lumio-transactional-test-harness" }
+lumio-types = { path = "types" }
+lumio-validator-interface = { path = "lumio-move/lumio-validator-interface" }
+lumio-validator-transaction-pool = { path = "crates/validator-transaction-pool" }
+lumio-vault-client = { path = "secure/storage/vault" }
+lumio-vm = { path = "lumio-move/lumio-vm" }
+lumio-vm-environment = { path = "lumio-move/lumio-vm-environment" }
+lumio-vm-logging = { path = "lumio-move/lumio-vm-logging" }
+lumio-vm-genesis = { path = "lumio-move/vm-genesis" }
+lumio-vm-types = { path = "lumio-move/lumio-vm-types" }
+lumio-vm-validator = { path = "vm-validator" }
+lumio-workspace-server = { path = "lumio-move/lumio-workspace-server" }
+lumio-warp-webserver = { path = "crates/lumio-warp-webserver" }
+lumio-cargo-cli = { path = "devtools/lumio-cargo-cli" }
 
 # External crate dependencies.
 # Please do not add any test features here: they should be declared by the individual crate.
@@ -879,8 +879,8 @@ move-prover-boogie-backend = { path = "third_party/move/move-prover/boogie-backe
 move-prover-bytecode-pipeline = { path = "third_party/move/move-prover/bytecode-pipeline" }
 move-prover-test-utils = { path = "third_party/move/move-prover/test-utils" }
 move-prover-lab = { path = "third_party/move/move-prover/lab" }
-aptos-move-stdlib = { path = "aptos-move/framework/move-stdlib" }
-aptos-table-natives = { path = "aptos-move/framework/table-natives" }
+lumio-move-stdlib = { path = "lumio-move/framework/move-stdlib" }
+lumio-table-natives = { path = "lumio-move/framework/table-natives" }
 move-resource-viewer = { path = "third_party/move/tools/move-resource-viewer" }
 move-stackless-bytecode = { path = "third_party/move/move-model/bytecode" }
 move-stackless-bytecode-test-utils = { path = "third_party/move/move-model/bytecode-test-utils" }
@@ -941,7 +941,7 @@ futures-io = { git = "https://github.com/aptos-labs/futures-rs", branch = "backp
 futures-task = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 futures-macro = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 
-# There is a circular dependency between aptos-core, aptos-indexer-processor-sdk, and aptos-indexer-processors-v2,
+# There is a circular dependency between lumio-core, aptos-indexer-processor-sdk, and lumio-indexer-processors-v2,
 # so we cannot simply change the version and package for `jemalloc-sys` in one repo without running into conflicts.
 # We have to keep this shim until everything uses the same jemalloc dependency.
 jemalloc-sys = { git = "https://github.com/aptos-labs/jemalloc-sys-shim", rev = "e0920246dd74303fab9a14b990768c6ac990a59b" }

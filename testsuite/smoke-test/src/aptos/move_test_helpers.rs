@@ -4,20 +4,20 @@
 //! Helpers for writing Move tests
 
 use anyhow::Result;
-use aptos_forge::AptosPublicInfo;
-use aptos_framework::{BuildOptions, BuiltPackage};
-use aptos_sdk::transaction_builder::TransactionFactory;
+use lumio_forge::LumioPublicInfo;
+use lumio_framework::{BuildOptions, BuiltPackage};
+use lumio_sdk::transaction_builder::TransactionFactory;
 use std::path::PathBuf;
 
 /// New style publishing via `code::publish_package`
 pub async fn publish_package(
-    info: &mut AptosPublicInfo,
+    info: &mut LumioPublicInfo,
     move_dir: PathBuf,
 ) -> Result<TransactionFactory> {
     let package = BuiltPackage::build(move_dir, BuildOptions::default())?;
     let blobs = package.extract_code();
     let metadata = package.extract_metadata()?;
-    let payload = aptos_cached_packages::aptos_stdlib::code_publish_package_txn(
+    let payload = lumio_cached_packages::lumio_stdlib::code_publish_package_txn(
         bcs::to_bytes(&metadata).expect("PackageMetadata has BCS"),
         blobs,
     );

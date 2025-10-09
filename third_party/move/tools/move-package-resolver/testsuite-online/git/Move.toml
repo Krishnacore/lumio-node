@@ -3,5 +3,5 @@ name = "Pack"
 version = "0.1.2"
 
 [dependencies]
-AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework", rev = "main", subdir = "aptos-framework" }
-MoveStdlib = { git = "https://github.com/aptos-labs/aptos-framework", rev = "main", subdir = "move-stdlib" }
+AptosFramework = { git = "https://github.com/aptos-labs/lumio-framework", rev = "main", subdir = "lumio-framework" }
+MoveStdlib = { git = "https://github.com/aptos-labs/lumio-framework", rev = "main", subdir = "move-stdlib" }

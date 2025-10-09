@@ -23,9 +23,9 @@ spec:
     spec:
       containers:
       - command:
-        - /usr/local/bin/aptos-node
+        - /usr/local/bin/lumio-node
         - -f
-        - /opt/aptos/etc/pfn.yaml
+        - /opt/lumio/etc/pfn.yaml
         image: pfn-image
         name: pfn-name-pfn
         ports:
@@ -38,19 +38,19 @@ spec:
             cpu: pfn-cpu
             memory: pfn-memory
         volumeMounts:
-        - mountPath: /opt/aptos/etc
-          name: aptos-config
-        - mountPath: /opt/aptos/genesis
+        - mountPath: /opt/lumio/etc
+          name: lumio-config
+        - mountPath: /opt/lumio/genesis
           name: genesis-config
-        - mountPath: /opt/aptos/data
-          name: aptos-data
+        - mountPath: /opt/lumio/data
+          name: lumio-data
       volumes:
       - configMap:
           name: pfn-name-pfn-configmap
-        name: aptos-config
+        name: lumio-config
       - configMap:
           name: genesis-artifiact-configmap-pangu
         name: genesis-config
-      - name: aptos-data
+      - name: lumio-data
         persistentVolumeClaim:
           claimName: pfn-name-pfn-pvc

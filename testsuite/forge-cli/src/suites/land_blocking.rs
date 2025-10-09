@@ -4,8 +4,8 @@
 
 use super::ungrouped::mixed_compatible_emit_job;
 use crate::{suites::realistic_environment::realistic_env_max_load_test, TestCommand};
-use aptos_forge::{success_criteria::SuccessCriteria, ForgeConfig};
-use aptos_testcases::{
+use lumio_forge::{success_criteria::SuccessCriteria, ForgeConfig};
+use lumio_testcases::{
     compatibility_test::SimpleValidatorUpgrade, framework_upgrade::FrameworkUpgrade,
 };
 use std::{num::NonZeroUsize, sync::Arc, time::Duration};

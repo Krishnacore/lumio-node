@@ -20,14 +20,14 @@ use crate::{
     },
     utils::OutputFallbackHandler,
 };
-use aptos_config::config::BootstrappingMode;
-use aptos_data_client::global_summary::GlobalDataSummary;
-use aptos_data_streaming_service::{
+use lumio_config::config::BootstrappingMode;
+use lumio_data_client::global_summary::GlobalDataSummary;
+use lumio_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_time_service::TimeService;
-use aptos_types::{
+use lumio_time_service::TimeService;
+use lumio_types::{
     transaction::{TransactionOutputListWithProofV2, Version},
     waypoint::Waypoint,
 };
@@ -1594,7 +1594,7 @@ fn create_bootstrapper(
     OutputFallbackHandler,
 ) {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    lumio_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);
@@ -1648,7 +1648,7 @@ fn create_bootstrapper_with_storage(
     expect_reset_executor: bool,
 ) -> Bootstrapper<MockMetadataStorage, MockStorageSynchronizer, MockStreamingClient> {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    lumio_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);

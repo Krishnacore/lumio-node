@@ -5,8 +5,8 @@ use crate::{
     in_mem::{base::HexyBase, view::HexyView},
     NodePosition,
 };
-use aptos_crypto::HashValue;
-use aptos_experimental_layered_map::MapLayer;
+use lumio_crypto::HashValue;
+use lumio_experimental_layered_map::MapLayer;
 use std::sync::Arc;
 
 #[derive(Clone)]

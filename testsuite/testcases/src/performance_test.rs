@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::NetworkLoadTest;
-use aptos_forge::{NetworkContextSynchronizer, NetworkTest, Result, Test};
+use lumio_forge::{NetworkContextSynchronizer, NetworkTest, Result, Test};
 use async_trait::async_trait;
 
 pub struct PerformanceBenchmark;

@@ -1,0 +1,23 @@
+[package]
+name = "lumio-gas-meter"
+description = "Gas meter implementation for the Lumio blockchain"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+lumio-gas-algebra = { workspace = true }
+lumio-gas-schedule = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm-types = { workspace = true }
+move-binary-format = { workspace = true }
+move-core-types = { workspace = true }
+move-vm-types = { workspace = true }

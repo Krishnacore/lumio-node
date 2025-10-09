@@ -9,16 +9,16 @@ use crate::{
     util::calculate_window_start_round,
 };
 use anyhow::{bail, ensure};
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::Block,
     pipelined_block::{OrderedBlockWindow, PipelinedBlock},
     quorum_cert::QuorumCert,
     timeout_2chain::TwoChainTimeoutCertificate,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
-use aptos_logger::prelude::*;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_logger::prelude::*;
+use lumio_types::{
     block_info::{BlockInfo, Round},
     ledger_info::LedgerInfoWithSignatures,
 };
@@ -28,7 +28,7 @@ use std::{
     sync::Arc,
 };
 
-/// This structure is a wrapper of [`ExecutedBlock`](aptos_consensus_types::pipelined_block::PipelinedBlock)
+/// This structure is a wrapper of [`ExecutedBlock`](lumio_consensus_types::pipelined_block::PipelinedBlock)
 /// that adds `children` field to know the parent-child relationship between blocks.
 struct LinkableBlock {
     /// Executed block that has raw block data and execution output.

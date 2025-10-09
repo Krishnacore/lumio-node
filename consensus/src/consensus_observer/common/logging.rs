@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::consensus_observer::common::error::Error;
-use aptos_config::network_id::PeerNetworkId;
-use aptos_logger::Schema;
+use lumio_config::network_id::PeerNetworkId;
+use lumio_logger::Schema;
 use serde::Serialize;
 
 #[derive(Schema)]

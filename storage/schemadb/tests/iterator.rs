@@ -3,13 +3,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_schemadb::{
+use lumio_schemadb::{
     define_schema,
     iterator::SchemaIterator,
     schema::{KeyCodec, Schema, SeekKeyCodec, ValueCodec},
     DB,
 };
-use aptos_storage_interface::AptosDbError;
+use lumio_storage_interface::LumioDbError;
 use byteorder::{BigEndian, ReadBytesExt, WriteBytesExt};
 use rocksdb::{ColumnFamilyDescriptor, SliceTransform, DEFAULT_COLUMN_FAMILY_NAME};
 
@@ -85,7 +85,7 @@ fn collect_incomplete(iter: &mut SchemaIterator<TestSchema>) -> Vec<u32> {
             Ok((_key, value)) => {
                 res_vec.push(value.0);
             },
-            Err(AptosDbError::RocksDbIncompleteResult(..)) => {
+            Err(LumioDbError::RocksDbIncompleteResult(..)) => {
                 return res_vec;
             },
             Err(e) => {
@@ -100,13 +100,13 @@ fn collect_incomplete(iter: &mut SchemaIterator<TestSchema>) -> Vec<u32> {
 const EMPTY: [u32; 0] = [];
 
 struct TestDB {
-    _tmpdir: aptos_temppath::TempPath,
+    _tmpdir: lumio_temppath::TempPath,
     db: DB,
 }
 
 impl TestDB {
     fn new() -> Self {
-        let tmpdir = aptos_temppath::TempPath::new();
+        let tmpdir = lumio_temppath::TempPath::new();
         let column_families = vec![DEFAULT_COLUMN_FAMILY_NAME, TestSchema::COLUMN_FAMILY_NAME];
         let mut db_opts = rocksdb::Options::default();
         db_opts.create_if_missing(true);
@@ -290,13 +290,13 @@ fn test_seek_for_prev_by_2prefix() {
 }
 
 struct TestDBWithPrefixExtractor {
-    _tmpdir: aptos_temppath::TempPath,
+    _tmpdir: lumio_temppath::TempPath,
     db: DB,
 }
 
 impl TestDBWithPrefixExtractor {
     fn new() -> Self {
-        let tmpdir = aptos_temppath::TempPath::new();
+        let tmpdir = lumio_temppath::TempPath::new();
         let mut db_opts = rocksdb::Options::default();
         db_opts.create_if_missing(true);
         db_opts.create_missing_column_families(true);

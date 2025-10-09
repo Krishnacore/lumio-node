@@ -1,0 +1,15 @@
+[package]
+name = "lumio-vm-benchmarks"
+version = "0.1.0"
+edition = "2021"
+license = { workspace = true }
+
+[dependencies]
+lumio-cached-packages = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-language-e2e-tests = { workspace = true }
+lumio-types = { workspace = true }
+bcs = { workspace = true }
+clap = { workspace = true }
+move-binary-format = { workspace = true }
+move-core-types = { workspace = true }

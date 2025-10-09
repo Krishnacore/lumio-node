@@ -7,7 +7,7 @@ use clap::Parser;
 #[test]
 fn test_various_cmd_parsing() {
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "restore",
         "oneoff",
         "epoch-ending",
@@ -19,7 +19,7 @@ fn test_various_cmd_parsing() {
         ".",
     ]);
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "backup",
         "oneoff",
         "transaction",
@@ -31,14 +31,14 @@ fn test_various_cmd_parsing() {
         ".",
     ]);
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "backup",
         "continuously",
         "--local-fs-dir",
         ".",
     ]);
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "debug",
         "state-tree",
         "get-snapshots",
@@ -46,9 +46,9 @@ fn test_various_cmd_parsing() {
         ".",
     ]);
 
-    run_cmd(&["aptos-db-tool", "backup", "verify", "--local-fs-dir", "."]);
+    run_cmd(&["lumio-db-tool", "backup", "verify", "--local-fs-dir", "."]);
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "replay-verify",
         "--target-db-dir",
         ".",
@@ -56,7 +56,7 @@ fn test_various_cmd_parsing() {
         ".",
     ]);
     run_cmd(&[
-        "aptos-db-tool",
+        "lumio-db-tool",
         "backup",
         "verify",
         "--local-fs-dir",
@@ -73,20 +73,20 @@ fn run_cmd(args: &[&str]) {
 #[cfg(test)]
 mod dbtool_tests {
     use crate::DBTool;
-    use aptos_backup_cli::{
+    use lumio_backup_cli::{
         coordinators::backup::BackupCompactor,
         metadata,
         metadata::{cache::MetadataCacheOpt, view::MetadataView},
         storage::{local_fs::LocalFs, BackupStorage},
         utils::test_utils::start_local_backup_service,
     };
-    use aptos_db::AptosDB;
-    use aptos_executor_test_helpers::integration_test_impl::{
+    use lumio_db::LumioDB;
+    use lumio_executor_test_helpers::integration_test_impl::{
         test_execution_with_storage_impl, test_execution_with_storage_impl_inner,
     };
-    use aptos_storage_interface::DbReader;
-    use aptos_temppath::TempPath;
-    use aptos_types::{
+    use lumio_storage_interface::DbReader;
+    use lumio_temppath::TempPath;
+    use lumio_types::{
         state_store::state_key::{inner::StateKeyTag::AccessPath, prefix::StateKeyPrefix},
         transaction::Version,
     };
@@ -126,7 +126,7 @@ mod dbtool_tests {
         // Backup the local_test DB
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -146,7 +146,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -166,7 +166,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -184,7 +184,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -201,7 +201,7 @@ mod dbtool_tests {
         .unwrap();
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -220,7 +220,7 @@ mod dbtool_tests {
         .unwrap();
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -286,19 +286,19 @@ mod dbtool_tests {
         old_db_dir: PathBuf,
         new_db_dir: PathBuf,
     ) -> (Runtime, String) {
-        use aptos_config::config::{
+        use lumio_config::config::{
             RocksdbConfigs, StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS_FOR_TEST,
             NO_OP_STORAGE_PRUNER_CONFIG,
         };
-        use aptos_db_indexer::utils::PrefixedStateValueIterator as IndexerPrefixedStateValueIterator;
-        use aptos_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
+        use lumio_db_indexer::utils::PrefixedStateValueIterator as IndexerPrefixedStateValueIterator;
+        use lumio_indexer_grpc_table_info::internal_indexer_db_service::InternalIndexerDBService;
         let db = test_execution_with_storage_impl_inner(false, old_db_dir.as_path());
         let (rt, port) = start_local_backup_service(Arc::clone(&db));
         let server_addr = format!(" http://localhost:{}", port);
         // Backup the local_test DB
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -318,7 +318,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -338,7 +338,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -356,7 +356,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -374,7 +374,7 @@ mod dbtool_tests {
 
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -391,7 +391,7 @@ mod dbtool_tests {
         .unwrap();
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -410,7 +410,7 @@ mod dbtool_tests {
         .unwrap();
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "backup",
                 "oneoff",
                 "--backup-service-address",
@@ -431,7 +431,7 @@ mod dbtool_tests {
         let start_string = format!("{}", start);
         let end_string = format!("{}", end);
         let mut restore_args = vec![
-            "aptos-db-tool".to_string(),
+            "lumio-db-tool".to_string(),
             "restore".to_string(),
             "bootstrap-db".to_string(),
             "--ledger-history-start-version".to_string(),
@@ -458,8 +458,8 @@ mod dbtool_tests {
         let internal_indexer_db =
             InternalIndexerDBService::get_indexer_db_for_restore(new_db_dir.as_path()).unwrap();
 
-        let aptos_db: Arc<dyn DbReader> = Arc::new(
-            AptosDB::open(
+        let lumio_db: Arc<dyn DbReader> = Arc::new(
+            LumioDB::open(
                 StorageDirPaths::from_path(new_db_dir),
                 false,
                 NO_OP_STORAGE_PRUNER_CONFIG,
@@ -482,7 +482,7 @@ mod dbtool_tests {
         };
 
         let new_iter = IndexerPrefixedStateValueIterator::new(
-            aptos_db.clone(),
+            lumio_db.clone(),
             internal_indexer_db.get_inner_db_ref(),
             StateKeyPrefix::new(AccessPath, b"".to_vec()),
             None,
@@ -506,10 +506,10 @@ mod dbtool_tests {
         old_keys.sort();
         assert_eq!(new_keys, old_keys);
 
-        let ledger_version = aptos_db.get_latest_ledger_info_version().unwrap();
+        let ledger_version = lumio_db.get_latest_ledger_info_version().unwrap();
         for ver in start..=ledger_version {
             let old_block_res = db.get_block_info_by_version(ver);
-            let new_block_res = aptos_db.get_block_info_by_version(ver);
+            let new_block_res = lumio_db.get_block_info_by_version(ver);
             let (old_block_version, old_block_height, _) = old_block_res.unwrap();
             let (new_block_version, new_block_height, _) = new_block_res.unwrap();
             assert_eq!(old_block_version, new_block_version);
@@ -578,7 +578,7 @@ mod dbtool_tests {
         // This only replays the txn from txn 17 to 18
         rt.block_on(
             DBTool::try_parse_from([
-                "aptos-db-tool",
+                "lumio-db-tool",
                 "restore",
                 "bootstrap-db",
                 "--ledger-history-start-version",

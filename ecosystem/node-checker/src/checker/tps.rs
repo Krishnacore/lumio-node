@@ -7,16 +7,16 @@ use crate::{
     provider::{api_index::ApiIndexProvider, Provider, ProviderCollection},
 };
 use anyhow::{Context, Result};
-use aptos_sdk::types::chain_id::ChainId;
-use aptos_transaction_emitter_lib::{
+use lumio_sdk::types::chain_id::ChainId;
+use lumio_transaction_emitter_lib::{
     emit_transactions_with_cluster, Cluster, ClusterArgs, CoinSourceArgs, EmitArgs,
 };
-use aptos_transaction_workloads_lib::args::EmitWorkloadArgs;
+use lumio_transaction_workloads_lib::args::EmitWorkloadArgs;
 use serde::{Deserialize, Serialize};
 use thiserror::Error as ThisError;
 
 const NODE_REQUIREMENTS_LINK: &str =
-    "https://aptos.dev/nodes/validator-node/operator/node-requirements";
+    "https://lumio.dev/nodes/validator-node/operator/node-requirements";
 
 #[derive(Debug, ThisError)]
 pub enum TpsCheckerError {

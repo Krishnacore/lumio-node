@@ -5,11 +5,11 @@ use crate::{
     genesis::enable_sync_only_mode, smoke_test_environment::SwarmBuilder,
     utils::get_on_chain_resource,
 };
-use aptos::common::types::GasOptions;
-use aptos_config::config::{OverrideNodeConfig, PersistableConfig};
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::{debug, info};
-use aptos_types::{on_chain_config::OnChainRandomnessConfig, randomness::PerBlockRandomness};
+use lumio::common::types::GasOptions;
+use lumio_config::config::{OverrideNodeConfig, PersistableConfig};
+use lumio_forge::{NodeExt, Swarm, SwarmExt};
+use lumio_logger::{debug, info};
+use lumio_types::{on_chain_config::OnChainRandomnessConfig, randomness::PerBlockRandomness};
 use std::{
     ops::Add,
     sync::Arc,
@@ -24,7 +24,7 @@ async fn randomness_stall_recovery() {
 
     let (mut swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(0) //TODO: revert back to 1 after invalid version bug is fixed
-        .with_aptos()
+        .with_lumio()
         .with_init_config(Arc::new(|_, conf, _| {
             conf.api.failpoints_enabled = true;
         }))
@@ -112,13 +112,13 @@ async fn randomness_stall_recovery() {
     info!("Bump on-chain conig seqnum to re-enable randomness.");
     let script = r#"
 script {
-    use aptos_framework::aptos_governance;
-    use aptos_framework::randomness_config_seqnum;
+    use lumio_framework::lumio_governance;
+    use lumio_framework::randomness_config_seqnum;
 
     fun main(core_resources: &signer) {
-        let framework_signer = aptos_governance::get_signer_testnet_only(core_resources, @0x1);
+        let framework_signer = lumio_governance::get_signer_testnet_only(core_resources, @0x1);
         randomness_config_seqnum::set_for_next_epoch(&framework_signer, 2);
-        aptos_governance::force_end_epoch(&framework_signer); // reconfigure() won't work at the moment.
+        lumio_governance::force_end_epoch(&framework_signer); // reconfigure() won't work at the moment.
     }
 }
     "#;

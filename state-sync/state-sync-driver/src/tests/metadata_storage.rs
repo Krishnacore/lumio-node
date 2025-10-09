@@ -8,8 +8,8 @@ use crate::{
     },
     tests::utils::{create_epoch_ending_ledger_info, create_ledger_info_at_version},
 };
-use aptos_schemadb::schema::fuzzing::assert_encode_decode;
-use aptos_temppath::TempPath;
+use lumio_schemadb::schema::fuzzing::assert_encode_decode;
+use lumio_temppath::TempPath;
 use claims::{assert_err, assert_none};
 
 #[test]

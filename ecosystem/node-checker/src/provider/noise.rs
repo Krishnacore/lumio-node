@@ -10,11 +10,11 @@ use super::{
     CommonProviderConfig,
 };
 use anyhow::Result;
-use aptos_network_checker::{
+use lumio_network_checker::{
     args::{CheckEndpointArgs, HandshakeArgs, NodeAddressArgs},
     check_endpoint::check_endpoint,
 };
-use aptos_sdk::types::{chain_id::ChainId, network_address::NetworkAddress};
+use lumio_sdk::types::{chain_id::ChainId, network_address::NetworkAddress};
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;

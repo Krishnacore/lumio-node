@@ -10,10 +10,10 @@ use crate::{
     DbReader,
 };
 use anyhow::Result;
-use aptos_crypto::{hash::CORRUPTION_SENTINEL, HashValue};
-use aptos_metrics_core::TimerHelper;
-use aptos_scratchpad::{ProofRead, SparseMerkleTree};
-use aptos_types::{proof::SparseMerkleProofExt, transaction::Version};
+use lumio_crypto::{hash::CORRUPTION_SENTINEL, HashValue};
+use lumio_metrics_core::TimerHelper;
+use lumio_scratchpad::{ProofRead, SparseMerkleTree};
+use lumio_types::{proof::SparseMerkleProofExt, transaction::Version};
 use derive_more::Deref;
 use itertools::Itertools;
 use rayon::prelude::*;

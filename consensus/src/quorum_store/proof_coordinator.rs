@@ -13,16 +13,16 @@ use crate::{
         utils::Timeouts,
     },
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     payload::TDataInfo,
     proof_of_store::{
         BatchInfo, ProofCache, ProofOfStore, SignedBatchInfo, SignedBatchInfoError,
         SignedBatchInfoMsg,
     },
 };
-use aptos_logger::prelude::*;
-use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::{
+use lumio_logger::prelude::*;
+use lumio_short_hex_str::AsShortHexStr;
+use lumio_types::{
     ledger_info::SignatureAggregator, validator_verifier::ValidatorVerifier, PeerId,
 };
 use std::{

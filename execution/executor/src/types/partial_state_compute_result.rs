@@ -4,11 +4,11 @@
 #![forbid(unsafe_code)]
 
 use anyhow::{Context, Result};
-use aptos_executor_types::{
+use lumio_executor_types::{
     execution_output::ExecutionOutput, state_checkpoint_output::StateCheckpointOutput,
     state_compute_result::StateComputeResult, LedgerUpdateOutput,
 };
-use aptos_storage_interface::{
+use lumio_storage_interface::{
     state_store::{state::LedgerState, state_summary::LedgerStateSummary},
     LedgerSummary,
 };

@@ -15,9 +15,9 @@ use crate::{
         RocksdbOpt, TrustedWaypointOpt,
     },
 };
-use aptos_db::{state_restore::StateSnapshotRestoreMode, AptosDB};
-use aptos_storage_interface::DbReader;
-use aptos_temppath::TempPath;
+use lumio_db::{state_restore::StateSnapshotRestoreMode, LumioDB};
+use lumio_storage_interface::DbReader;
+use lumio_temppath::TempPath;
 use std::{convert::TryInto, sync::Arc};
 use tokio::time::Duration;
 
@@ -101,7 +101,7 @@ fn end_to_end() {
     )
     .unwrap();
 
-    let tgt_db = AptosDB::new_readonly_for_test(&tgt_db_dir);
+    let tgt_db = LumioDB::new_readonly_for_test(&tgt_db_dir);
     assert_eq!(
         tgt_db
             .get_state_snapshot_before(version + 1) // We cannot use get_latest_snapshot() because it searches backward from the latest txn_info version

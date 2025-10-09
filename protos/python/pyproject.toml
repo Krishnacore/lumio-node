@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "aptos-protos"
+name = "lumio-protos"
 version = "1.1.2"
-description = "Code generated from protobuf definitions for the Aptos tech stack"
-authors = ["Aptos Labs <opensource@aptoslabs.com>"]
+description = "Code generated from protobuf definitions for the Lumio tech stack"
+authors = ["Lumio Labs <opensource@lumiolabs.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/aptos-labs/aptos-core"
-homepage = "https://github.com/aptos-labs/aptos-core/tree/main/protos/python"
-keywords = ["web3", "aptos", "blockchain", "indexer"]
-packages = [{include = "aptos_protos"}]
+repository = "https://github.com/lumio-labs/lumio-core"
+homepage = "https://github.com/lumio-labs/lumio-core/tree/main/protos/python"
+keywords = ["web3", "lumio", "blockchain", "indexer"]
+packages = [{include = "lumio_protos"}]
 
 [tool.poe.tasks]
 generate = "./generate.sh"

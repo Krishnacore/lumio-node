@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::Error;
-use aptos_config::network_id::PeerNetworkId;
-use aptos_logger::Schema;
-use aptos_storage_service_types::requests::StorageServiceRequest;
+use lumio_config::network_id::PeerNetworkId;
+use lumio_logger::Schema;
+use lumio_storage_service_types::requests::StorageServiceRequest;
 use serde::Serialize;
 
 #[derive(Schema)]

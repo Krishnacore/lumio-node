@@ -1,0 +1,11 @@
+[package]
+name = "package_manager"
+version = "1.0.0"
+upgrade_policy = "compatible"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+
+[addresses]
+deployer = "_"
+package = "_"

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_logger::info;
+use lumio_logger::info;
 use std::{
     sync::{
         atomic::{AtomicBool, AtomicI64, AtomicU64, AtomicUsize},

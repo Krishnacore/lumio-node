@@ -11,8 +11,8 @@ use crate::{
     storage::FileHandle,
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_infallible::duration_since_epoch;
-use aptos_types::transaction::Version;
+use lumio_infallible::duration_since_epoch;
+use lumio_types::transaction::Version;
 use itertools::Itertools;
 use std::{fmt, str::FromStr};
 

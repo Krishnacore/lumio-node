@@ -7,16 +7,16 @@ use super::{
 };
 use crate::{emitter::create_private_key_account_generator, EmitJobRequest};
 use anyhow::{anyhow, bail, format_err, Context, Result};
-use aptos_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
-use aptos_crypto::{ed25519::Ed25519PrivateKey, encoding_type::EncodingType};
-use aptos_sdk::{
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+use lumio_config::config::DEFAULT_MAX_SUBMIT_TRANSACTION_BATCH_SIZE;
+use lumio_crypto::{ed25519::Ed25519PrivateKey, encoding_type::EncodingType};
+use lumio_sdk::{
+    transaction_builder::{lumio_stdlib, TransactionFactory},
     types::{transaction::SignedTransaction, AccountKey, LocalAccount},
 };
-use aptos_transaction_generator_lib::{
+use lumio_transaction_generator_lib::{
     CounterState, ReliableTransactionSubmitter, RootAccountHandle,
 };
-use aptos_types::account_address::AccountAddress;
+use lumio_types::account_address::AccountAddress;
 use core::result::Result::{Err, Ok};
 use futures::{future::try_join_all, StreamExt};
 use log::{error, info};
@@ -130,7 +130,7 @@ impl SourceAccountManager<'_> {
         let txn = self
             .source_account
             .sign_with_transaction_builder(self.txn_factory.payload(
-                aptos_stdlib::aptos_coin_mint(self.source_account_address(), amount),
+                lumio_stdlib::lumio_coin_mint(self.source_account_address(), amount),
             ));
 
         if let Err(e) = txn_executor.execute_transactions(&[txn]).await {
@@ -515,13 +515,13 @@ pub fn create_and_fund_account_request(
     txn_factory: &TransactionFactory,
 ) -> SignedTransaction {
     creation_account.sign_with_transaction_builder(
-        txn_factory.payload(aptos_stdlib::aptos_account_transfer(address, amount)),
+        txn_factory.payload(lumio_stdlib::lumio_account_transfer(address, amount)),
     )
 }
 
 const CREATION_PARALLELISM: usize = 500;
 
-/// Copied from aptos crate, to not need to link it whole.
+/// Copied from lumio crate, to not need to link it whole.
 /// Prompts for confirmation until a yes or no is given explicitly
 pub fn prompt_yes(prompt: &str) -> bool {
     let mut result: Result<bool, ()> = Err(());

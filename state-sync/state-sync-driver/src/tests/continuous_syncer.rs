@@ -18,18 +18,18 @@ use crate::{
     },
     utils::OutputFallbackHandler,
 };
-use aptos_config::config::ContinuousSyncingMode;
-use aptos_consensus_notifications::{
+use lumio_config::config::ContinuousSyncingMode;
+use lumio_consensus_notifications::{
     ConsensusSyncDurationNotification, ConsensusSyncTargetNotification,
 };
-use aptos_data_streaming_service::{
+use lumio_data_streaming_service::{
     data_notification::{DataNotification, DataPayload, NotificationId},
     streaming_client::{NotificationAndFeedback, NotificationFeedback},
 };
-use aptos_infallible::Mutex;
-use aptos_storage_service_types::Epoch;
-use aptos_time_service::TimeService;
-use aptos_types::transaction::{
+use lumio_infallible::Mutex;
+use lumio_storage_service_types::Epoch;
+use lumio_time_service::TimeService;
+use lumio_types::transaction::{
     TransactionOutputListWithProof, TransactionOutputListWithProofV2, Version,
 };
 use claims::assert_matches;
@@ -796,7 +796,7 @@ fn create_continuous_syncer(
     OutputFallbackHandler,
 ) {
     // Initialize the logger for tests
-    aptos_logger::Logger::init_for_testing();
+    lumio_logger::Logger::init_for_testing();
 
     // Create the mock storage synchronizer
     let mock_storage_synchronizer = create_ready_storage_synchronizer(expect_reset_executor);

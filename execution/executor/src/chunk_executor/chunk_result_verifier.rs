@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{ensure, Result};
-use aptos_executor_types::LedgerUpdateOutput;
-use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
-use aptos_types::{
+use lumio_executor_types::LedgerUpdateOutput;
+use lumio_experimental_runtimes::thread_manager::THREAD_MANAGER;
+use lumio_types::{
     epoch_state::EpochState,
     ledger_info::LedgerInfoWithSignatures,
     proof::{accumulator::InMemoryTransactionAccumulator, TransactionInfoListWithProof},

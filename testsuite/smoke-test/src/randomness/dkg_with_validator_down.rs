@@ -5,8 +5,8 @@ use crate::{
     randomness::{decrypt_key_map, verify_dkg_transcript, wait_for_dkg_finish},
     smoke_test_environment::SwarmBuilder,
 };
-use aptos_forge::NodeExt;
-use aptos_types::on_chain_config::OnChainRandomnessConfig;
+use lumio_forge::NodeExt;
+use lumio_types::on_chain_config::OnChainRandomnessConfig;
 use std::sync::Arc;
 
 #[tokio::test]
@@ -17,7 +17,7 @@ async fn dkg_with_validator_down() {
 
     let mut swarm = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_lumio()
         .with_init_genesis_config(Arc::new(|conf| {
             conf.epoch_duration_secs = 10;
 

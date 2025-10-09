@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::pipeline::pipeline_phase::StatelessPipeline;
-use aptos_consensus_types::pipelined_block::PipelinedBlock;
-use aptos_crypto::bls12381;
-use aptos_safety_rules::Error;
-use aptos_types::ledger_info::{LedgerInfo, LedgerInfoWithSignatures};
+use lumio_consensus_types::pipelined_block::PipelinedBlock;
+use lumio_crypto::bls12381;
+use lumio_safety_rules::Error;
+use lumio_types::ledger_info::{LedgerInfo, LedgerInfoWithSignatures};
 use async_trait::async_trait;
 use std::{
     fmt::{Debug, Display, Formatter},

@@ -1,6 +1,6 @@
 [package]
-name = "aptos-config"
-description = "Aptos config"
+name = "lumio-config"
+description = "Lumio config"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,14 +14,14 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-global-constants = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-secure-storage = { workspace = true }
-aptos-short-hex-str = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-transaction-filters = { workspace = true }
-aptos-types = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-global-constants = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-secure-storage = { workspace = true }
+lumio-short-hex-str = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-transaction-filters = { workspace = true }
+lumio-types = { workspace = true }
 arr_macro = { workspace = true }
 bcs = { workspace = true }
 byteorder = { workspace = true }
@@ -41,14 +41,14 @@ thiserror = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]
-aptos-crypto = { workspace = true }
-aptos-types = { workspace = true, features = ["fuzzing"] }
+lumio-crypto = { workspace = true }
+lumio-types = { workspace = true, features = ["fuzzing"] }
 tempfile = { workspace = true }
 
 [features]
 default = []
 failpoints = []
-fuzzing = ["aptos-crypto/fuzzing", "aptos-types/fuzzing"]
+fuzzing = ["lumio-crypto/fuzzing", "lumio-types/fuzzing"]
 smoke-test = []
 testing = []
 tokio-console = []

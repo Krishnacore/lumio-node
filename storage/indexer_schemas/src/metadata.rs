@@ -1,8 +1,8 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::HashValue;
-use aptos_types::{state_store::state_storage_usage::StateStorageUsage, transaction::Version};
+use lumio_crypto::HashValue;
+use lumio_types::{state_store::state_storage_usage::StateStorageUsage, transaction::Version};
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Eq, Serialize)]

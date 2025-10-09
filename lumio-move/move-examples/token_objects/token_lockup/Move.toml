@@ -1,0 +1,10 @@
+[package]
+name = 'token_lockup'
+version = '1.0.0'
+
+[addresses]
+token_lockup = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioTokenObjects = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }

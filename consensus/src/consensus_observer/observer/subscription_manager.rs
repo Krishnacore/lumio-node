@@ -16,15 +16,15 @@ use crate::consensus_observer::{
     observer::{subscription::ConsensusObserverSubscription, subscription_utils},
     publisher::consensus_publisher::ConsensusPublisher,
 };
-use aptos_config::{
+use lumio_config::{
     config::ConsensusObserverConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_infallible::Mutex;
-use aptos_logger::{info, warn};
-use aptos_network::application::{interface::NetworkClient, metadata::PeerMetadata};
-use aptos_storage_interface::DbReader;
-use aptos_time_service::TimeService;
+use lumio_infallible::Mutex;
+use lumio_logger::{info, warn};
+use lumio_network::application::{interface::NetworkClient, metadata::PeerMetadata};
+use lumio_storage_interface::DbReader;
+use lumio_time_service::TimeService;
 use itertools::Itertools;
 use std::{collections::HashMap, sync::Arc};
 use strum::IntoEnumIterator;
@@ -432,17 +432,17 @@ fn update_total_subscription_metrics(active_subscription_peers: &[PeerNetworkId]
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_config::{config::PeerRole, network_id::NetworkId};
-    use aptos_netcore::transport::ConnectionOrigin;
-    use aptos_network::{
+    use lumio_config::{config::PeerRole, network_id::NetworkId};
+    use lumio_netcore::transport::ConnectionOrigin;
+    use lumio_network::{
         application::storage::PeersAndMetadata,
         protocols::wire::handshake::v1::{MessagingProtocolVersion, ProtocolId, ProtocolIdSet},
         transport::{ConnectionId, ConnectionMetadata},
     };
-    use aptos_peer_monitoring_service_types::{
+    use lumio_peer_monitoring_service_types::{
         response::NetworkInformationResponse, PeerMonitoringMetadata,
     };
-    use aptos_types::{network_address::NetworkAddress, transaction::Version, PeerId};
+    use lumio_types::{network_address::NetworkAddress, transaction::Version, PeerId};
     use claims::assert_matches;
     use maplit::hashmap;
     use mockall::mock;
@@ -452,7 +452,7 @@ mod test {
     mock! {
         pub DatabaseReader {}
         impl DbReader for DatabaseReader {
-            fn get_latest_ledger_info_version(&self) -> aptos_storage_interface::Result<Version>;
+            fn get_latest_ledger_info_version(&self) -> lumio_storage_interface::Result<Version>;
         }
     }
 
