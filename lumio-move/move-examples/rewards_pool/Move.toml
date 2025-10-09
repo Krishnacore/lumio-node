@@ -1,0 +1,9 @@
+[package]
+name = "Examples"
+version = "1.0.0"
+
+[addresses]
+rewards_pool = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }

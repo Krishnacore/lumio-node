@@ -12,7 +12,7 @@ use crate::{
     util::standardize_address,
 };
 use anyhow::Context;
-use aptos_api_types::{
+use lumio_api_types::{
     DeleteTableItem as APIDeleteTableItem, Transaction as APITransaction,
     WriteResource as APIWriteResource, WriteSetChange as APIWriteSetChange,
     WriteTableItem as APIWriteTableItem,
@@ -213,7 +213,7 @@ impl CurrentDelegatorBalance {
                     ) {
                         Ok(pool) => pool,
                         Err(_) => {
-                            aptos_logger::error!(
+                            lumio_logger::error!(
                                 transaction_version = txn_version,
                                 lookup_key = &inactive_pool_handle,
                                 "Failed to get staking pool address from inactive share handle. You probably should backfill db.",

@@ -5,7 +5,7 @@ use crate::{
     create_buffered_load, LoadDestination, NetworkLoadTest, COOLDOWN_DURATION_FRACTION,
     WARMUP_DURATION_FRACTION,
 };
-use aptos_forge::{
+use lumio_forge::{
     success_criteria::{SuccessCriteria, SuccessCriteriaChecker},
     EmitJobRequest, NetworkContextSynchronizer, NetworkTest, Result, Swarm, Test, TestReport,
 };

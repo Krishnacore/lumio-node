@@ -4,8 +4,8 @@
 use crate::{
     groth16_vk::OnChainGroth16VerificationKey, keyless_config::OnChainKeylessConfiguration, utils,
 };
-use aptos_infallible::RwLock;
-use aptos_logger::{info, warn};
+use lumio_infallible::RwLock;
+use lumio_logger::{info, warn};
 use serde::de::DeserializeOwned;
 use std::{sync::Arc, time::Duration};
 

@@ -3,13 +3,13 @@
 
 use crate::{monitor, quorum_store::counters};
 use anyhow::Result;
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     common::{Payload, PayloadFilter, TransactionInProgress, TransactionSummary},
     request_response::{GetPayloadCommand, GetPayloadResponse},
 };
-use aptos_logger::prelude::*;
-use aptos_mempool::{QuorumStoreRequest, QuorumStoreResponse};
-use aptos_types::transaction::SignedTransaction;
+use lumio_logger::prelude::*;
+use lumio_mempool::{QuorumStoreRequest, QuorumStoreResponse};
+use lumio_types::transaction::SignedTransaction;
 use futures::{
     channel::{
         mpsc::{Receiver, Sender},

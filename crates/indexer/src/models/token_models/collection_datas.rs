@@ -14,7 +14,7 @@ use crate::{
     schema::{collection_datas, current_collection_datas},
     util::standardize_address,
 };
-use aptos_api_types::WriteTableItem as APIWriteTableItem;
+use lumio_api_types::WriteTableItem as APIWriteTableItem;
 use bigdecimal::BigDecimal;
 use diesel::{prelude::*, ExpressionMethods};
 use field_count::FieldCount;
@@ -109,7 +109,7 @@ impl CollectionData {
                 None => match Self::get_collection_creator(conn, &table_handle) {
                     Ok(creator) => creator,
                     Err(_) => {
-                        aptos_logger::error!(
+                        lumio_logger::error!(
                             transaction_version = txn_version,
                             lookup_key = &table_handle,
                             "Failed to get collection creator for table handle. You probably should backfill db."

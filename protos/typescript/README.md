@@ -1,16 +1,16 @@
-# Aptos Protos
+# Lumio Protos
 
-This repository contains the protobuf definitions for the Aptos tech stack.
+This repository contains the protobuf definitions for the Lumio tech stack.
 
 ## Usage
 Import the generated code like this:
 ```typescript
-import { aptos } from "@aptos-labs/aptos-protos";
+import { lumio } from "@lumio-labs/lumio-protos";
 ```
 
 Then use it like this:
 ```typescript
-function parse(transaction: aptos.transaction.v1.Transaction) {
+function parse(transaction: lumio.transaction.v1.Transaction) {
   console.log(transaction)
 }
 ```

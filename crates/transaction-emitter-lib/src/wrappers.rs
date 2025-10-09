@@ -16,9 +16,9 @@ use crate::{
     CreateAccountsArgs,
 };
 use anyhow::{bail, Context, Result};
-use aptos_sdk::transaction_builder::TransactionFactory;
-use aptos_transaction_generator_lib::{AccountType, TransactionType};
-use aptos_types::{account_address::AccountAddress, keyless::test_utils::get_sample_esk};
+use lumio_sdk::transaction_builder::TransactionFactory;
+use lumio_transaction_generator_lib::{AccountType, TransactionType};
+use lumio_types::{account_address::AccountAddress, keyless::test_utils::get_sample_esk};
 use log::{error, info};
 use rand::{rngs::StdRng, SeedableRng};
 use std::{
@@ -92,7 +92,7 @@ pub async fn emit_transactions_with_cluster(
     let emitter = TxnEmitter::new(
         TransactionFactory::new(cluster.chain_id)
             .with_transaction_expiration_time(args.txn_expiration_time_secs)
-            .with_gas_unit_price(aptos_global_constants::GAS_UNIT_PRICE),
+            .with_gas_unit_price(lumio_global_constants::GAS_UNIT_PRICE),
         StdRng::from_entropy(),
         client,
     );

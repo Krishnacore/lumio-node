@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::config::NodeConfig;
-use aptos_crypto::_once_cell::sync::Lazy;
-use aptos_logger::prelude::*;
-use aptos_types::{
+use lumio_crypto::_once_cell::sync::Lazy;
+use lumio_logger::prelude::*;
+use lumio_types::{
     network_address::{NetworkAddress, Protocol},
     transaction::Transaction,
 };
@@ -102,14 +102,14 @@ fn try_bind(port: Option<u16>) -> ::std::io::Result<u16> {
 
 fn lock_path() -> String {
     format!(
-        "/tmp/aptos-port-counter.{}.lock",
+        "/tmp/lumio-port-counter.{}.lock",
         &NEXTEST_RUN_ID.clone().unwrap()
     )
 }
 
 fn counter_path() -> String {
     format!(
-        "/tmp/aptos-port-counter.{}",
+        "/tmp/lumio-port-counter.{}",
         &NEXTEST_RUN_ID.clone().unwrap()
     )
 }

@@ -6,18 +6,18 @@ use crate::{
     error::Error,
     logging::{LogEntry, LogSchema},
 };
-use aptos_consensus_notifications::{
+use lumio_consensus_notifications::{
     ConsensusCommitNotification, ConsensusNotification, ConsensusNotificationListener,
     ConsensusSyncDurationNotification, ConsensusSyncTargetNotification,
 };
-use aptos_data_streaming_service::data_notification::NotificationId;
-use aptos_event_notifications::{EventNotificationSender, EventSubscriptionService};
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_mempool_notifications::MempoolNotificationSender;
-use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{
+use lumio_data_streaming_service::data_notification::NotificationId;
+use lumio_event_notifications::{EventNotificationSender, EventSubscriptionService};
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_mempool_notifications::MempoolNotificationSender;
+use lumio_storage_service_notifications::StorageServiceNotificationSender;
+use lumio_time_service::{TimeService, TimeServiceTrait};
+use lumio_types::{
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,
     transaction::{Transaction, Version},
@@ -374,7 +374,7 @@ impl ConsensusNotificationHandler {
     ) -> Result<(), Error> {
         // Wrap the result in an error that consensus can process
         let result = result.map_err(|error| {
-            aptos_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
+            lumio_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
         });
 
         // Send the result
@@ -406,7 +406,7 @@ impl ConsensusNotificationHandler {
     ) -> Result<(), Error> {
         // Wrap the result in an error that consensus can process
         let result = result.map_err(|error| {
-            aptos_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
+            lumio_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
         });
 
         // Send the result
@@ -434,7 +434,7 @@ impl ConsensusNotificationHandler {
     ) -> Result<(), Error> {
         // Wrap the result in an error that consensus can process
         let result = result.map_err(|error| {
-            aptos_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
+            lumio_consensus_notifications::Error::UnexpectedErrorEncountered(format!("{:?}", error))
         });
 
         // Send the result

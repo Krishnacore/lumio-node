@@ -3,8 +3,8 @@
 use crate::{
     publishing::publish_util::PackageHandler, TransactionGenerator, TransactionGeneratorCreator,
 };
-use aptos_infallible::RwLock;
-use aptos_sdk::{
+use lumio_infallible::RwLock;
+use lumio_sdk::{
     transaction_builder::TransactionFactory,
     types::{transaction::SignedTransaction, LocalAccount},
 };

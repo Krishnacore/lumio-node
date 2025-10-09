@@ -4,33 +4,33 @@
 #[cfg(test)]
 use crate::{BlockPartitioner, Sender};
 #[cfg(test)]
-use aptos_crypto::hash::CryptoHash;
+use lumio_crypto::hash::CryptoHash;
 #[cfg(test)]
-use aptos_crypto::hash::TestOnlyHash;
+use lumio_crypto::hash::TestOnlyHash;
 #[cfg(test)]
-use aptos_crypto::HashValue;
-use aptos_crypto::{ed25519::ed25519_keys::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
+use lumio_crypto::HashValue;
+use lumio_crypto::{ed25519::ed25519_keys::Ed25519PrivateKey, PrivateKey, SigningKey, Uniform};
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::PartitionedTransactions;
+use lumio_types::block_executor::partitioner::PartitionedTransactions;
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::RoundId;
+use lumio_types::block_executor::partitioner::RoundId;
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::ShardId;
+use lumio_types::block_executor::partitioner::ShardId;
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::TransactionWithDependencies;
+use lumio_types::block_executor::partitioner::TransactionWithDependencies;
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::GLOBAL_ROUND_ID;
+use lumio_types::block_executor::partitioner::GLOBAL_ROUND_ID;
 #[cfg(test)]
-use aptos_types::block_executor::partitioner::GLOBAL_SHARD_ID;
+use lumio_types::block_executor::partitioner::GLOBAL_SHARD_ID;
 #[cfg(test)]
-use aptos_types::state_store::state_key::StateKey;
-use aptos_types::{
+use lumio_types::state_store::state_key::StateKey;
+use lumio_types::{
     chain_id::ChainId,
     transaction::{
         analyzed_transaction::AnalyzedTransaction, EntryFunction, RawTransaction,
         SignedTransaction, Transaction, TransactionPayload,
     },
-    AptosCoinType, CoinType,
+    LumioCoinType, CoinType,
 };
 use move_core_types::{
     account_address::AccountAddress, identifier::Identifier, language_storage::ModuleId,
@@ -85,7 +85,7 @@ pub fn create_signed_p2p_transaction(
         let transaction_payload = TransactionPayload::EntryFunction(EntryFunction::new(
             ModuleId::new(AccountAddress::ONE, Identifier::new("coin").unwrap()),
             Identifier::new("transfer").unwrap(),
-            vec![AptosCoinType::type_tag()],
+            vec![LumioCoinType::type_tag()],
             vec![
                 bcs::to_bytes(&receiver.account_address).unwrap(),
                 bcs::to_bytes(&1u64).unwrap(),

@@ -11,11 +11,11 @@ use crate::{
         ConsensusObserverPayloadManager, DirectMempoolPayloadManager, TPayloadManager,
     },
 };
-use aptos_config::config::NodeConfig;
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
-use aptos_infallible::Mutex;
-use aptos_logger::{error, info, warn};
-use aptos_types::{
+use lumio_config::config::NodeConfig;
+use lumio_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use lumio_infallible::Mutex;
+use lumio_logger::{error, info, warn};
+use lumio_types::{
     epoch_state::EpochState,
     on_chain_config::{
         OnChainConsensusConfig, OnChainExecutionConfig, OnChainRandomnessConfig,
@@ -84,7 +84,7 @@ impl ObserverEpochState {
     pub async fn wait_for_epoch_start(
         &mut self,
         block_payloads: Arc<
-            Mutex<BTreeMap<(u64, aptos_consensus_types::common::Round), BlockPayloadStatus>>,
+            Mutex<BTreeMap<(u64, lumio_consensus_types::common::Round), BlockPayloadStatus>>,
         >,
     ) -> (
         Arc<dyn TPayloadManager>,
@@ -221,8 +221,8 @@ async fn extract_on_chain_configs(
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-    use aptos_event_notifications::ReconfigNotification;
+    use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+    use lumio_event_notifications::ReconfigNotification;
 
     #[test]
     fn test_simple_epoch_state() {
@@ -251,11 +251,11 @@ mod test {
 
     /// Creates and returns a reconfig notifier and listener
     fn create_reconfig_notifier_and_listener() -> (
-        aptos_channel::Sender<(), ReconfigNotification<DbBackedOnChainConfig>>,
+        lumio_channel::Sender<(), ReconfigNotification<DbBackedOnChainConfig>>,
         ReconfigNotificationListener<DbBackedOnChainConfig>,
     ) {
         let (notification_sender, notification_receiver) =
-            aptos_channel::new(QueueStyle::LIFO, 1, None);
+            lumio_channel::new(QueueStyle::LIFO, 1, None);
         let reconfig_notification_listener = ReconfigNotificationListener {
             notification_receiver,
         };

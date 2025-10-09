@@ -21,8 +21,8 @@ use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::{collections::HashMap, fmt, fmt::Debug, str::FromStr, sync::Arc};
 
 mod approved_execution_hashes;
-mod aptos_features;
-mod aptos_version;
+mod lumio_features;
+mod lumio_version;
 mod chain_id;
 mod commit_history;
 mod consensus_config;
@@ -38,9 +38,9 @@ mod validator_set;
 
 pub use self::{
     approved_execution_hashes::ApprovedExecutionHashes,
-    aptos_features::*,
-    aptos_version::{
-        AptosVersion, APTOS_MAX_KNOWN_VERSION, APTOS_VERSION_2, APTOS_VERSION_3, APTOS_VERSION_4,
+    lumio_features::*,
+    lumio_version::{
+        LumioVersion, LUMIO_MAX_KNOWN_VERSION, LUMIO_VERSION_2, LUMIO_VERSION_3, LUMIO_VERSION_4,
     },
     commit_history::CommitHistoryResource,
     consensus_config::{

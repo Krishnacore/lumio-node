@@ -20,23 +20,23 @@ use crate::{
     utils,
     utils::{OutputFallbackHandler, PENDING_DATA_LOG_FREQ_SECS},
 };
-use aptos_config::config::{ConsensusObserverConfig, RoleType, StateSyncDriverConfig};
-use aptos_consensus_notifications::{
+use lumio_config::config::{ConsensusObserverConfig, RoleType, StateSyncDriverConfig};
+use lumio_consensus_notifications::{
     ConsensusCommitNotification, ConsensusNotification, ConsensusSyncDurationNotification,
     ConsensusSyncTargetNotification,
 };
-use aptos_data_client::interface::AptosDataClientInterface;
-use aptos_data_streaming_service::streaming_client::{
+use lumio_data_client::interface::LumioDataClientInterface;
+use lumio_data_streaming_service::streaming_client::{
     DataStreamingClient, NotificationAndFeedback, NotificationFeedback,
 };
-use aptos_event_notifications::EventSubscriptionService;
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_mempool_notifications::MempoolNotificationSender;
-use aptos_storage_interface::DbReader;
-use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_time_service::{TimeService, TimeServiceTrait};
-use aptos_types::{contract_event::ContractEvent, waypoint::Waypoint};
+use lumio_event_notifications::EventSubscriptionService;
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_mempool_notifications::MempoolNotificationSender;
+use lumio_storage_interface::DbReader;
+use lumio_storage_service_notifications::StorageServiceNotificationSender;
+use lumio_time_service::{TimeService, TimeServiceTrait};
+use lumio_types::{contract_event::ContractEvent, waypoint::Waypoint};
 use futures::StreamExt;
 use std::{sync::Arc, time::Instant};
 use tokio::{
@@ -106,7 +106,7 @@ pub struct StateSyncDriver<
     continuous_syncer: ContinuousSyncer<StorageSyncer, StreamingClient>,
 
     // The client for checking the global data summary of our peers
-    aptos_data_client: DataClient,
+    lumio_data_client: DataClient,
 
     // The configuration for the driver
     driver_configuration: DriverConfiguration,
@@ -137,7 +137,7 @@ pub struct StateSyncDriver<
 }
 
 impl<
-        DataClient: AptosDataClientInterface + Send + Clone + 'static,
+        DataClient: LumioDataClientInterface + Send + Clone + 'static,
         MempoolNotifier: MempoolNotificationSender,
         MetadataStorage: MetadataStorageInterface + Clone,
         StorageServiceNotifier: StorageServiceNotificationSender,
@@ -167,7 +167,7 @@ impl<
             StorageServiceNotifier,
         >,
         storage_synchronizer: StorageSyncer,
-        aptos_data_client: DataClient,
+        lumio_data_client: DataClient,
         streaming_client: StreamingClient,
         storage: Arc<dyn DbReader>,
         time_service: TimeService,
@@ -196,7 +196,7 @@ impl<
             commit_notification_listener,
             consensus_notification_handler,
             continuous_syncer,
-            aptos_data_client,
+            lumio_data_client,
             driver_configuration,
             error_notification_listener,
             event_subscription_service,
@@ -670,7 +670,7 @@ impl<
         self.update_executing_component_metrics();
 
         // Fetch the global data summary and verify we have active peers
-        let global_data_summary = self.aptos_data_client.get_global_data_summary();
+        let global_data_summary = self.lumio_data_client.get_global_data_summary();
         if global_data_summary.is_empty() {
             trace!(LogSchema::new(LogEntry::Driver).message(
                 "The global data summary is empty! It's likely that we have no active peers."

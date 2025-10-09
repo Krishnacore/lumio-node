@@ -16,12 +16,12 @@ use crate::{
         RocksdbOpt, TrustedWaypointOpt,
     },
 };
-use aptos_backup_service::start_backup_service;
-use aptos_config::utils::get_available_port;
-use aptos_db::AptosDB;
-use aptos_storage_interface::DbReader;
-use aptos_temppath::TempPath;
-use aptos_types::{
+use lumio_backup_service::start_backup_service;
+use lumio_config::utils::get_available_port;
+use lumio_db::LumioDB;
+use lumio_storage_interface::DbReader;
+use lumio_temppath::TempPath;
+use lumio_types::{
     aggregate_signature::AggregateSignature,
     ledger_info::LedgerInfoWithSignatures,
     proptest_types::{AccountInfoUniverse, LedgerInfoWithSignaturesGen},
@@ -108,7 +108,7 @@ fn end_to_end() {
         .map(|li| li.ledger_info().next_block_epoch())
         .unwrap_or(0);
 
-    let tgt_db = AptosDB::new_for_test(&tgt_db_dir);
+    let tgt_db = LumioDB::new_for_test(&tgt_db_dir);
     assert_eq!(
         tgt_db
             .get_epoch_ending_ledger_infos(0, target_version_next_block_epoch)

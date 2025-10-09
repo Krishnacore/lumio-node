@@ -9,11 +9,11 @@ use crate::consensus_observer::{
     },
     network::observer_message::{BlockPayload, OrderedBlock},
 };
-use aptos_config::config::ConsensusObserverConfig;
-use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
-use aptos_infallible::Mutex;
-use aptos_logger::{error, warn};
-use aptos_types::epoch_state::EpochState;
+use lumio_config::config::ConsensusObserverConfig;
+use lumio_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
+use lumio_infallible::Mutex;
+use lumio_logger::{error, warn};
+use lumio_types::epoch_state::EpochState;
 use std::{
     collections::{btree_map::Entry, BTreeMap},
     sync::Arc,
@@ -278,8 +278,8 @@ impl BlockPayloadStore {
 mod test {
     use super::*;
     use crate::consensus_observer::network::observer_message::BlockTransactionPayload;
-    use aptos_bitvec::BitVec;
-    use aptos_consensus_types::{
+    use lumio_bitvec::BitVec;
+    use lumio_consensus_types::{
         block::Block,
         block_data::{BlockData, BlockType},
         common::{Author, Payload, ProofWithData},
@@ -287,8 +287,8 @@ mod test {
         proof_of_store::{BatchInfo, ProofOfStore},
         quorum_cert::QuorumCert,
     };
-    use aptos_crypto::HashValue;
-    use aptos_types::{
+    use lumio_crypto::HashValue;
+    use lumio_types::{
         aggregate_signature::AggregateSignature,
         block_info::{BlockInfo, Round},
         ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

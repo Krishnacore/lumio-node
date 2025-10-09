@@ -2,20 +2,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_backup_cli::{
+use lumio_backup_cli::{
     coordinators::replay_verify::{ReplayError, ReplayVerifyCoordinator},
     metadata::cache::MetadataCacheOpt,
     storage::DBToolStorageOpt,
     utils::{ConcurrentDownloadsOpt, ReplayConcurrencyLevelOpt, RocksdbOpt, TrustedWaypointOpt},
 };
-use aptos_config::config::{
+use lumio_config::config::{
     StorageDirPaths, BUFFERED_STATE_TARGET_ITEMS, DEFAULT_MAX_NUM_NODES_PER_LRU_CACHE_SHARD,
     NO_OP_STORAGE_PRUNER_CONFIG,
 };
-use aptos_db::{get_restore_handler::GetRestoreHandler, AptosDB};
-use aptos_executor_types::VerifyExecutionMode;
-use aptos_logger::info;
-use aptos_types::transaction::Version;
+use lumio_db::{get_restore_handler::GetRestoreHandler, LumioDB};
+use lumio_executor_types::VerifyExecutionMode;
+use lumio_logger::info;
+use lumio_types::transaction::Version;
 use clap::Parser;
 use std::{path::PathBuf, process, sync::Arc};
 
@@ -61,7 +61,7 @@ pub struct Opt {
 
 impl Opt {
     pub async fn run(self) -> Result<()> {
-        let restore_handler = Arc::new(AptosDB::open_kv_only(
+        let restore_handler = Arc::new(LumioDB::open_kv_only(
             StorageDirPaths::from_path(self.db_dir),
             false,                       /* read_only */
             NO_OP_STORAGE_PRUNER_CONFIG, /* pruner config */

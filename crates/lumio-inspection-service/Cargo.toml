@@ -1,0 +1,39 @@
+[package]
+name = "lumio-inspection-service"
+description = "The Node Inspection Service"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-build-info = { workspace = true }
+lumio-config = { workspace = true }
+lumio-data-client = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-network = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-storage-service-client = { workspace = true }
+lumio-telemetry = { workspace = true }
+lumio-time-service = { workspace = true }
+futures = { workspace = true }
+hyper = { workspace = true }
+once_cell = { workspace = true }
+prometheus = { workspace = true }
+reqwest = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+lumio-time-service = { workspace = true, features = ["testing"] }
+assert_approx_eq = { workspace = true }
+rusty-fork = { workspace = true }

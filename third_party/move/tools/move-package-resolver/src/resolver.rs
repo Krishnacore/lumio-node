@@ -410,7 +410,7 @@ async fn resolve_dependency(
             remote_url = url;
             (identity, Some(&remote_url))
         },
-        PackageLocation::Aptos {
+        PackageLocation::Lumio {
             node_url,
             package_addr,
         } => {

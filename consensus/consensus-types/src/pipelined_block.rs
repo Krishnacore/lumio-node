@@ -12,13 +12,13 @@ use crate::{
     wrapped_ledger_info::WrappedLedgerInfo,
 };
 use anyhow::Error;
-use aptos_crypto::hash::{HashValue, ACCUMULATOR_PLACEHOLDER_HASH};
-use aptos_executor_types::{
+use lumio_crypto::hash::{HashValue, ACCUMULATOR_PLACEHOLDER_HASH};
+use lumio_executor_types::{
     state_compute_result::StateComputeResult, ExecutorError, ExecutorResult,
 };
-use aptos_infallible::Mutex;
-use aptos_logger::{error, info, warn};
-use aptos_types::{
+use lumio_infallible::Mutex;
+use lumio_logger::{error, info, warn};
+use lumio_types::{
     block_info::BlockInfo,
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,

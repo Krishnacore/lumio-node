@@ -6,16 +6,16 @@ use crate::{
     payload_client::{user::quorum_store_client::QuorumStoreClient, PayloadClient},
 };
 use anyhow::Result;
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::block_test_utils::random_payload, common::Payload,
     payload_pull_params::PayloadPullParameters, request_response::GetPayloadCommand,
 };
-use aptos_types::{
+use lumio_types::{
     transaction::{ExecutionStatus, TransactionStatus},
     validator_txn::ValidatorTransaction,
     vm_status::StatusCode,
 };
-use aptos_validator_transaction_pool as vtxn_pool;
+use lumio_validator_transaction_pool as vtxn_pool;
 use futures::channel::mpsc;
 use rand::Rng;
 

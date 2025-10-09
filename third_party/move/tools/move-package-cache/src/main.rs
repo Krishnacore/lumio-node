@@ -15,17 +15,17 @@ use url::Url;
 async fn main() -> Result<()> {
     let cache = PackageCache::new_with_listener("./data", DebugPackageCacheListener).unwrap();
 
-    let aptos_framework_url =
+    let lumio_framework_url =
         Url::from_str("https://github.com/aptos-labs/aptos-framework").unwrap();
 
     let oid = cache
-        .resolve_git_revision(&aptos_framework_url, "main")
+        .resolve_git_revision(&lumio_framework_url, "main")
         .await?;
-    cache.checkout_git_repo(&aptos_framework_url, oid).await?;
+    cache.checkout_git_repo(&lumio_framework_url, oid).await?;
 
     cache
         .fetch_on_chain_package(
-            &Url::from_str("https://fullnode.mainnet.aptoslabs.com").unwrap(),
+            &Url::from_str("https://fullnode.mainnet.lumiolabs.com").unwrap(),
             3022354983,
             AccountAddress::ONE,
             "MoveStdlib",

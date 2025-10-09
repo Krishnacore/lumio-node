@@ -17,21 +17,21 @@ pub trait CoinType {
     fn coin_info_address() -> AccountAddress;
 }
 
-static APTOS_COIN_TYPE: Lazy<TypeTag> = Lazy::new(|| {
+static LUMIO_COIN_TYPE: Lazy<TypeTag> = Lazy::new(|| {
     TypeTag::Struct(Box::new(StructTag {
         address: AccountAddress::ONE,
-        module: ident_str!("aptos_coin").to_owned(),
-        name: ident_str!("AptosCoin").to_owned(),
+        module: ident_str!("lumio_coin").to_owned(),
+        name: ident_str!("LumioCoin").to_owned(),
         type_args: vec![],
     }))
 });
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct AptosCoinType;
+pub struct LumioCoinType;
 
-impl CoinType for AptosCoinType {
+impl CoinType for LumioCoinType {
     fn type_tag() -> TypeTag {
-        APTOS_COIN_TYPE.clone()
+        LUMIO_COIN_TYPE.clone()
     }
 
     fn coin_info_address() -> AccountAddress {
@@ -39,9 +39,9 @@ impl CoinType for AptosCoinType {
     }
 }
 
-impl MoveStructType for AptosCoinType {
-    const MODULE_NAME: &'static IdentStr = ident_str!("aptos_coin");
-    const STRUCT_NAME: &'static IdentStr = ident_str!("AptosCoin");
+impl MoveStructType for LumioCoinType {
+    const MODULE_NAME: &'static IdentStr = ident_str!("lumio_coin");
+    const STRUCT_NAME: &'static IdentStr = ident_str!("LumioCoin");
 }
 
 pub static DUMMY_COIN_TYPE: Lazy<TypeTag> = Lazy::new(|| {

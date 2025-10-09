@@ -1,0 +1,8 @@
+apiVersion: v2
+name: lumio-node
+version: 1.0.0
+appVersion: 1.0.0
+description: Lumio blockchain node deployment
+home: https://lumiolabs.com/
+sources:
+- https://github.com/lumio-labs/lumio-core

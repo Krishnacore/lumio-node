@@ -18,11 +18,11 @@ use crate::{
     util::is_vtxn_expected,
 };
 use anyhow::{bail, ensure, Context};
-use aptos_config::config::DagPayloadConfig;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_infallible::Mutex;
-use aptos_logger::{debug, error};
-use aptos_types::{
+use lumio_config::config::DagPayloadConfig;
+use lumio_consensus_types::common::{Author, Round};
+use lumio_infallible::Mutex;
+use lumio_logger::{debug, error};
+use lumio_types::{
     epoch_state::EpochState,
     on_chain_config::{OnChainJWKConsensusConfig, OnChainRandomnessConfig, ValidatorTxnConfig},
     validator_signer::ValidatorSigner,

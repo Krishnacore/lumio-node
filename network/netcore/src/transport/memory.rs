@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::transport::Transport;
-use aptos_memsocket::{MemoryListener, MemorySocket};
-use aptos_types::{
+use lumio_memsocket::{MemoryListener, MemorySocket};
+use lumio_types::{
     network_address::{parse_memory, NetworkAddress, Protocol},
     PeerId,
 };
@@ -102,7 +102,7 @@ impl Stream for Listener {
 #[cfg(test)]
 mod test {
     use crate::transport::{memory::MemoryTransport, Transport};
-    use aptos_types::PeerId;
+    use lumio_types::PeerId;
     use futures::{
         executor::block_on,
         future::join,

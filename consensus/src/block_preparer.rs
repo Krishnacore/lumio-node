@@ -7,11 +7,11 @@ use crate::{
     transaction_deduper::TransactionDeduper,
     transaction_shuffler::TransactionShuffler,
 };
-use aptos_config::config::BlockTransactionFilterConfig;
-use aptos_consensus_types::{block::Block, quorum_cert::QuorumCert};
-use aptos_crypto::HashValue;
-use aptos_executor_types::ExecutorResult;
-use aptos_types::transaction::SignedTransaction;
+use lumio_config::config::BlockTransactionFilterConfig;
+use lumio_consensus_types::{block::Block, quorum_cert::QuorumCert};
+use lumio_crypto::HashValue;
+use lumio_executor_types::ExecutorResult;
+use lumio_types::transaction::SignedTransaction;
 use fail::fail_point;
 use futures::future::Shared;
 use move_core_types::account_address::AccountAddress;
@@ -45,7 +45,7 @@ impl BlockPreparer {
         block_qc_fut: Shared<impl Future<Output = Option<Arc<QuorumCert>>>>,
     ) -> ExecutorResult<(Vec<SignedTransaction>, Option<u64>)> {
         fail_point!("consensus::prepare_block", |_| {
-            use aptos_executor_types::ExecutorError;
+            use lumio_executor_types::ExecutorError;
             use std::{thread, time::Duration};
             thread::sleep(Duration::from_millis(10));
             Err(ExecutorError::CouldNotGetData)

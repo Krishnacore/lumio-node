@@ -4,9 +4,9 @@
 
 use crate::{vote_data::VoteData, wrapped_ledger_info::WrappedLedgerInfo};
 use anyhow::{ensure, Context};
-use aptos_bitvec::BitVec;
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_types::{
+use lumio_bitvec::BitVec;
+use lumio_crypto::{hash::CryptoHash, HashValue};
+use lumio_types::{
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

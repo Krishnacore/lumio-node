@@ -5,7 +5,7 @@ use crate::{
     common::{Author, Payload, Round},
     quorum_cert::QuorumCert,
 };
-use aptos_types::validator_txn::ValidatorTransaction;
+use lumio_types::validator_txn::ValidatorTransaction;
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq, Eq)]

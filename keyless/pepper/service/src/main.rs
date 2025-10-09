@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_keyless_pepper_service::{
+use lumio_keyless_pepper_service::{
     account_db::{init_account_db, ACCOUNT_RECOVERY_DB},
     account_managers::ACCOUNT_MANAGERS,
     cached_resources,
@@ -13,7 +13,7 @@ use aptos_keyless_pepper_service::{
     request_handler::DEFAULT_PEPPER_SERVICE_PORT,
     vuf_pub_key,
 };
-use aptos_logger::info;
+use lumio_logger::info;
 use hyper::{
     service::{make_service_fn, service_fn},
     Server,
@@ -23,7 +23,7 @@ use std::{convert::Infallible, net::SocketAddr, ops::Deref, sync::Arc};
 #[tokio::main]
 async fn main() {
     // Start the logger
-    aptos_logger::Logger::new().init();
+    lumio_logger::Logger::new().init();
     info!("Starting the Pepper service...");
 
     // Start the metrics server

@@ -2,12 +2,12 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::{
+use lumio_crypto::{
     traits::Uniform,
     x25519::{PrivateKey, PublicKey},
 };
-use aptos_network::protocols::wire::{handshake, messaging};
-use aptos_types::network_address as address;
+use lumio_network::protocols::wire::{handshake, messaging};
+use lumio_types::network_address as address;
 use rand::{rngs::StdRng, SeedableRng};
 use serde_reflection::{Registry, Result, Samples, Tracer, TracerConfig};
 use std::str::FromStr;
@@ -50,7 +50,7 @@ pub fn get_registry() -> Result<Registry> {
     tracer.trace_type::<messaging::v1::NotSupportedType>(&samples)?;
     tracer.trace_type::<handshake::v1::ProtocolId>(&samples)?;
     tracer.trace_type::<address::Protocol>(&samples)?;
-    tracer.trace_type::<aptos_config::network_id::NetworkId>(&samples)?;
+    tracer.trace_type::<lumio_config::network_id::NetworkId>(&samples)?;
 
     tracer.registry()
 }

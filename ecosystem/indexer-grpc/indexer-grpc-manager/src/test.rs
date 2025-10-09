@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::config::{CacheConfig, IndexerGrpcManagerConfig, ServiceConfig};
-use aptos_config::utils::get_available_port;
-use aptos_indexer_grpc_server_framework::RunnableConfig;
-use aptos_indexer_grpc_utils::{
+use lumio_config::utils::get_available_port;
+use lumio_indexer_grpc_server_framework::RunnableConfig;
+use lumio_indexer_grpc_utils::{
     config::IndexerGrpcFileStoreConfig,
     file_store_operator_v2::common::{FileStoreMetadata, METADATA_FILE_NAME},
 };

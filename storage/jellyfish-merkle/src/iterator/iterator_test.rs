@@ -8,9 +8,9 @@ use crate::{
     test_helper::{gen_value, plus_one},
     JellyfishMerkleTree,
 };
-use aptos_crypto::HashValue;
-use aptos_storage_interface::Result;
-use aptos_types::transaction::Version;
+use lumio_crypto::HashValue;
+use lumio_storage_interface::Result;
+use lumio_types::transaction::Version;
 use rand::{rngs::StdRng, SeedableRng};
 use std::{collections::BTreeMap, sync::Arc};
 

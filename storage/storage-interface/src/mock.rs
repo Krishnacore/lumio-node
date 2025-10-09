@@ -4,9 +4,9 @@
 
 //! This module provides mock dbreader for tests.
 
-use crate::{errors::AptosDbError, DbReader, DbWriter, Result};
-use aptos_crypto::HashValue;
-use aptos_types::{
+use crate::{errors::LumioDbError, DbReader, DbWriter, Result};
+use lumio_crypto::HashValue;
+use lumio_types::{
     proof::SparseMerkleProofExt,
     state_store::{
         state_key::{inner::StateKeyInner, StateKey},
@@ -41,7 +41,7 @@ impl DbReader for MockDbReaderWriter {
         match state_key.inner() {
             StateKeyInner::AccessPath(..) => Ok(None),
             StateKeyInner::Raw(raw_key) => Ok(Some(StateValue::from(raw_key.to_owned()))),
-            _ => Err(AptosDbError::Other(format!(
+            _ => Err(LumioDbError::Other(format!(
                 "Not supported state key type {:?}",
                 state_key
             ))),

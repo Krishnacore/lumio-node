@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::DbReader;
-use aptos_crypto::HashValue;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_types::{
     ledger_info::LedgerInfo,
     state_store::{
         errors::StateViewError, state_key::StateKey, state_slot::StateSlot,

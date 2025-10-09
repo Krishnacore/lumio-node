@@ -11,16 +11,16 @@ use crate::{
     tests::common::{self, TestTransaction},
     MempoolClientRequest, MempoolClientSender, MempoolSyncMsg, QuorumStoreRequest,
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::{
+use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+use lumio_config::{
     config::NodeConfig,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
-use aptos_id_generator::U32IdGenerator;
-use aptos_infallible::{Mutex, RwLock};
-use aptos_mempool_notifications::MempoolNotifier;
-use aptos_network::{
+use lumio_event_notifications::{ReconfigNotification, ReconfigNotificationListener};
+use lumio_id_generator::U32IdGenerator;
+use lumio_infallible::{Mutex, RwLock};
+use lumio_mempool_notifications::MempoolNotifier;
+use lumio_network::{
     application::{
         interface::{NetworkClient, NetworkServiceEvents},
         storage::PeersAndMetadata,
@@ -44,14 +44,14 @@ use aptos_network::{
     },
     ProtocolId,
 };
-use aptos_storage_interface::mock::MockDbReaderWriter;
-use aptos_types::{
+use lumio_storage_interface::mock::MockDbReaderWriter;
+use lumio_types::{
     account_address::AccountAddress,
     mempool_status::MempoolStatusCode,
     on_chain_config::{InMemoryOnChainConfig, OnChainConfigPayload},
     transaction::{ReplayProtector, SignedTransaction},
 };
-use aptos_vm_validator::mocks::mock_vm_validator::MockVMValidator;
+use lumio_vm_validator::mocks::mock_vm_validator::MockVMValidator;
 use futures::{channel::oneshot, SinkExt};
 use maplit::btreemap;
 use std::{collections::HashMap, hash::Hash, sync::Arc};
@@ -590,9 +590,9 @@ fn setup_network(
     InboundNetworkHandle,
     OutboundMessageReceiver,
 ) {
-    let (reqs_inbound_sender, reqs_inbound_receiver) = aptos_channel();
-    let (reqs_outbound_sender, reqs_outbound_receiver) = aptos_channel();
-    let (connection_outbound_sender, _connection_outbound_receiver) = aptos_channel();
+    let (reqs_inbound_sender, reqs_inbound_receiver) = lumio_channel();
+    let (reqs_outbound_sender, reqs_outbound_receiver) = lumio_channel();
+    let (connection_outbound_sender, _connection_outbound_receiver) = lumio_channel();
 
     // Create the network sender and events
     let network_sender = NetworkSender::new(
@@ -612,11 +612,11 @@ fn setup_network(
     )
 }
 
-/// A generic FIFO Aptos channel
-fn aptos_channel<K: Eq + Hash + Clone, T>(
-) -> (aptos_channel::Sender<K, T>, aptos_channel::Receiver<K, T>) {
+/// A generic FIFO Lumio channel
+fn lumio_channel<K: Eq + Hash + Clone, T>(
+) -> (lumio_channel::Sender<K, T>, lumio_channel::Receiver<K, T>) {
     static MAX_QUEUE_SIZE: usize = 8;
-    aptos_channel::new(QueueStyle::FIFO, MAX_QUEUE_SIZE, None)
+    lumio_channel::new(QueueStyle::FIFO, MAX_QUEUE_SIZE, None)
 }
 
 /// Creates a full [`SharedMempool`] and mocks all of the database information.
@@ -635,13 +635,13 @@ fn setup_mempool(
     let (ac_endpoint_sender, ac_endpoint_receiver) = mpsc_channel();
     let (quorum_store_sender, quorum_store_receiver) = mpsc_channel();
     let (mempool_notifier, mempool_listener) =
-        aptos_mempool_notifications::new_mempool_notifier_listener_pair(100);
+        lumio_mempool_notifications::new_mempool_notifier_listener_pair(100);
 
     let mempool = Arc::new(Mutex::new(CoreMempool::new(&config)));
     let vm_validator = Arc::new(RwLock::new(MockVMValidator));
     let db_ro = Arc::new(MockDbReaderWriter);
 
-    let (reconfig_sender, reconfig_events) = aptos_channel::new(QueueStyle::LIFO, 1, None);
+    let (reconfig_sender, reconfig_events) = lumio_channel::new(QueueStyle::LIFO, 1, None);
     let reconfig_event_subscriber = ReconfigNotificationListener {
         notification_receiver: reconfig_events,
     };

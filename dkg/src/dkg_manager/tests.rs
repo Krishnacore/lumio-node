@@ -8,12 +8,12 @@ use crate::{
     types::DKGTranscriptRequest,
     DKGMessage,
 };
-use aptos_crypto::{
+use lumio_crypto::{
     bls12381::{PrivateKey, PublicKey},
     Uniform,
 };
-use aptos_infallible::RwLock;
-use aptos_types::{
+use lumio_infallible::RwLock;
+use lumio_types::{
     dkg::{
         dummy_dkg::DummyDKG, DKGSessionMetadata, DKGStartEvent, DKGTrait, DKGTranscript,
         DKGTranscriptMetadata,
@@ -25,7 +25,7 @@ use aptos_types::{
         ValidatorConsensusInfo, ValidatorConsensusInfoMoveStruct, ValidatorVerifier,
     },
 };
-use aptos_validator_transaction_pool::{TransactionFilter, VTxnPoolState};
+use lumio_validator_transaction_pool::{TransactionFilter, VTxnPoolState};
 use move_core_types::account_address::AccountAddress;
 use std::{
     sync::Arc,

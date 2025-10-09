@@ -9,10 +9,10 @@ use crate::dag::{
     types::{CertifiedNode, DagSnapshotBitmask, Node},
     NodeId, Vote,
 };
-use aptos_consensus_types::common::Author;
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
-use aptos_types::{
+use lumio_consensus_types::common::Author;
+use lumio_crypto::HashValue;
+use lumio_infallible::Mutex;
+use lumio_types::{
     epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
     validator_signer::ValidatorSigner, validator_verifier::random_validator_verifier,
 };

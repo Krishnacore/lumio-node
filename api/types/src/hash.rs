@@ -11,15 +11,15 @@ use std::{
 
 /// A hex encoded 32-byte hash value
 #[derive(Debug, Clone, Copy, Eq, Hash, PartialEq, PartialOrd, Ord)]
-pub struct HashValue(pub aptos_crypto::hash::HashValue);
+pub struct HashValue(pub lumio_crypto::hash::HashValue);
 
-impl From<aptos_crypto::hash::HashValue> for HashValue {
-    fn from(val: aptos_crypto::hash::HashValue) -> Self {
+impl From<lumio_crypto::hash::HashValue> for HashValue {
+    fn from(val: lumio_crypto::hash::HashValue) -> Self {
         Self(val)
     }
 }
 
-impl From<HashValue> for aptos_crypto::hash::HashValue {
+impl From<HashValue> for lumio_crypto::hash::HashValue {
     fn from(val: HashValue) -> Self {
         val.0
     }
@@ -30,9 +30,9 @@ impl FromStr for HashValue {
 
     fn from_str(s: &str) -> anyhow::Result<Self, anyhow::Error> {
         if let Some(hex) = s.strip_prefix("0x") {
-            Ok(hex.parse::<aptos_crypto::hash::HashValue>()?.into())
+            Ok(hex.parse::<lumio_crypto::hash::HashValue>()?.into())
         } else {
-            Ok(s.parse::<aptos_crypto::hash::HashValue>()?.into())
+            Ok(s.parse::<lumio_crypto::hash::HashValue>()?.into())
         }
     }
 }
@@ -67,7 +67,7 @@ impl LowerHex for HashValue {
 
 impl HashValue {
     pub fn zero() -> Self {
-        Self(aptos_crypto::hash::HashValue::zero())
+        Self(lumio_crypto::hash::HashValue::zero())
     }
 }
 

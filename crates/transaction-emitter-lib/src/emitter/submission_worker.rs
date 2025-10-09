@@ -8,13 +8,13 @@ use crate::{
     },
     EmitModeParams,
 };
-use aptos_logger::{sample, sample::SampleRate};
-use aptos_rest_client::Client as RestClient;
-use aptos_sdk::{
+use lumio_logger::{sample, sample::SampleRate};
+use lumio_rest_client::Client as RestClient;
+use lumio_sdk::{
     move_types::account_address::AccountAddress,
     types::{transaction::SignedTransaction, vm_status::StatusCode, LocalAccount},
 };
-use aptos_transaction_generator_lib::TransactionGenerator;
+use lumio_transaction_generator_lib::TransactionGenerator;
 use core::{
     cmp::{max, min},
     result::Result::{Err, Ok},

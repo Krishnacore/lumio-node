@@ -4,11 +4,11 @@
 
 use crate::db_access::DbAccessUtil;
 use anyhow::Result;
-use aptos_storage_interface::{
+use lumio_storage_interface::{
     state_store::state_view::db_state_view::LatestDbStateCheckpointView, DbReaderWriter,
 };
-use aptos_transaction_generator_lib::{CounterState, ReliableTransactionSubmitter};
-use aptos_types::{
+use lumio_transaction_generator_lib::{CounterState, ReliableTransactionSubmitter};
+use lumio_types::{
     account_address::AccountAddress,
     account_config::AccountResource,
     state_store::MoveResourceExt,

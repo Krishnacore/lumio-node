@@ -22,7 +22,7 @@ use crate::{
     },
 };
 use anyhow::Result;
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{CryptoHash, DummyHasher},
     HashValue,
 };
@@ -218,7 +218,7 @@ impl StateKey {
         usize::from(self.crypto_hash_ref().nibble(0))
     }
 
-    pub fn is_aptos_code(&self) -> bool {
+    pub fn is_lumio_code(&self) -> bool {
         match self.inner() {
             StateKeyInner::AccessPath(access_path) => {
                 access_path.is_code()

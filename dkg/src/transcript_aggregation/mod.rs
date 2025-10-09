@@ -3,11 +3,11 @@
 
 use crate::{counters::DKG_STAGE_SECONDS, types::DKGTranscriptRequest, DKGMessage};
 use anyhow::{anyhow, ensure, Context};
-use aptos_consensus_types::common::Author;
-use aptos_infallible::{duration_since_epoch, Mutex};
-use aptos_logger::info;
-use aptos_reliable_broadcast::BroadcastStatus;
-use aptos_types::{
+use lumio_consensus_types::common::Author;
+use lumio_infallible::{duration_since_epoch, Mutex};
+use lumio_logger::info;
+use lumio_reliable_broadcast::BroadcastStatus;
+use lumio_types::{
     dkg::{DKGTrait, DKGTranscript},
     epoch_state::EpochState,
     validator_verifier::VerifyError,

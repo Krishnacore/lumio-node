@@ -1,0 +1,8 @@
+[package]
+name = "basic_coin"
+version = "0.0.0"
+
+[dependencies.LumioStdlib]
+git = 'https://github.com/lumio-labs/lumio-framework.git'
+rev = 'main'
+subdir = 'lumio-stdlib'

@@ -11,7 +11,7 @@ use crate::state_store::{
     state_value::{PersistedStateValueMetadata, StateValue, StateValueMetadata},
 };
 use anyhow::{bail, ensure, Result};
-use aptos_crypto_derive::{BCSCryptoHash, CryptoHasher};
+use lumio_crypto_derive::{BCSCryptoHash, CryptoHasher};
 use ark_std::iterable::Iterable;
 use bytes::Bytes;
 use itertools::{EitherOrBoth, Itertools};

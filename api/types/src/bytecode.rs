@@ -9,8 +9,8 @@ use crate::{
     },
     MoveFunction, MoveStructTag, MoveType,
 };
-use aptos_types::vm::module_metadata::prelude::*;
-use aptos_vm::determine_is_view;
+use lumio_types::vm::module_metadata::prelude::*;
+use lumio_vm::determine_is_view;
 use move_binary_format::{
     access::{ModuleAccess, ScriptAccess},
     file_format::{

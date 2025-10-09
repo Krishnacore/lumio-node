@@ -1,0 +1,49 @@
+[package]
+name = "lumio-telemetry"
+description = "Lumio utilities to collect observability data from a node and send it to a remote destination"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-api = { workspace = true }
+lumio-config = { workspace = true }
+lumio-consensus = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-mempool = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-network = { workspace = true }
+lumio-node-resource-metrics = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-state-sync-driver = { workspace = true }
+lumio-telemetry-service = { workspace = true }
+lumio-types = { workspace = true }
+flate2 = { workspace = true }
+futures = { workspace = true }
+once_cell = { workspace = true }
+prometheus = { workspace = true }
+rand = { workspace = true }
+rand_core = { workspace = true }
+reqwest = { workspace = true }
+reqwest-middleware = { workspace = true }
+reqwest-retry = { workspace = true }
+serde_json = { workspace = true }
+sysinfo = { workspace = true }
+tokio = { workspace = true }
+tokio-stream = { workspace = true }
+url = { workspace = true }
+uuid = { workspace = true }
+
+[dev-dependencies]
+httpmock = { workspace = true }

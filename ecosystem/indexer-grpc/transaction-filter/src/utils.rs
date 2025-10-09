@@ -5,7 +5,7 @@
 const ZEROS: &str = "0000000000000000000000000000000000000000000000000000000000000000";
 
 /// Converts a "0x" prefixed address to display format (short for special addresses, long for all other addresses):
-/// https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-40.md#display-format
+/// https://github.com/lumio-foundation/AIPs/blob/main/aips/aip-40.md#display-format
 #[inline]
 pub fn standardize_address(address: &str) -> String {
     // Remove "0x" prefix if it exists

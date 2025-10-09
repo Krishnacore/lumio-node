@@ -4,14 +4,14 @@
 use crate::quorum_store::{
     proof_manager::ProofManager, tests::batch_store_test::batch_store_for_test,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     common::{Payload, PayloadFilter},
     proof_of_store::{BatchInfo, ProofOfStore},
     request_response::{GetPayloadCommand, GetPayloadRequest, GetPayloadResponse},
     utils::PayloadTxnsSize,
 };
-use aptos_crypto::HashValue;
-use aptos_types::{aggregate_signature::AggregateSignature, quorum_store::BatchId, PeerId};
+use lumio_crypto::HashValue;
+use lumio_types::{aggregate_signature::AggregateSignature, quorum_store::BatchId, PeerId};
 use futures::channel::oneshot;
 use std::{cmp::max, collections::HashSet};
 
@@ -61,7 +61,7 @@ async fn get_proposal(
         max_inline_txns: PayloadTxnsSize::new(max(max_txns / 2, 1), 100000),
         filter: PayloadFilter::InQuorumStore(filter_set),
         callback: callback_tx,
-        block_timestamp: aptos_infallible::duration_since_epoch(),
+        block_timestamp: lumio_infallible::duration_since_epoch(),
         return_non_full: true,
         maybe_optqs_payload_pull_params: None,
     });

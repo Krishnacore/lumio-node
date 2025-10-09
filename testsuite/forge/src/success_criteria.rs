@@ -10,9 +10,9 @@ use crate::{
     Swarm, SwarmExt, TestReport,
 };
 use anyhow::{bail, Context};
-use aptos::node::analyze::{analyze_validators::AnalyzeValidators, fetch_metadata::FetchMetadata};
-use aptos_logger::info as aptos_logger_info;
-use aptos_transaction_emitter_lib::{TxnStats, TxnStatsRate};
+use lumio::node::analyze::{analyze_validators::AnalyzeValidators, fetch_metadata::FetchMetadata};
+use lumio_logger::info as lumio_logger_info;
+use lumio_transaction_emitter_lib::{TxnStats, TxnStatsRate};
 use log::info;
 use prometheus_http_query::response::Sample;
 use serde_json::json;
@@ -578,7 +578,7 @@ impl SuccessCriteriaChecker {
             chain_progress_threshold.max_epoch_no_progress_secs,
         );
 
-        aptos_logger_info!(
+        lumio_logger_info!(
             max_non_epoch_round_gap = gap_info.non_epoch_round_gap.max_gap,
             max_epoch_round_gap = gap_info.epoch_round_gap.max_gap,
             max_non_epoch_time_gap = gap_info.non_epoch_time_gap.max_gap,

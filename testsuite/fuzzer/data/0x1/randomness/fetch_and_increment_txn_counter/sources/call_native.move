@@ -1,5 +1,5 @@
 module poc::fetch_and_increment_txn_counter {
-    use aptos_framework::randomness;
+    use lumio_framework::randomness;
 
 
     #[lint::allow_unsafe_randomness]

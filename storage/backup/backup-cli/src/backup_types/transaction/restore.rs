@@ -25,13 +25,13 @@ use crate::{
     },
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_db::backup::restore_handler::RestoreHandler;
-use aptos_executor::chunk_executor::ChunkExecutor;
-use aptos_executor_types::{ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode};
-use aptos_logger::prelude::*;
-use aptos_metrics_core::TimerHelper;
-use aptos_storage_interface::DbReaderWriter;
-use aptos_types::{
+use lumio_db::backup::restore_handler::RestoreHandler;
+use lumio_executor::chunk_executor::ChunkExecutor;
+use lumio_executor_types::{ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode};
+use lumio_logger::prelude::*;
+use lumio_metrics_core::TimerHelper;
+use lumio_storage_interface::DbReaderWriter;
+use lumio_types::{
     contract_event::ContractEvent,
     ledger_info::LedgerInfoWithSignatures,
     proof::{TransactionAccumulatorRangeProof, TransactionInfoListWithProof},
@@ -41,7 +41,7 @@ use aptos_types::{
     },
     write_set::WriteSet,
 };
-use aptos_vm::{aptos_vm::AptosVMBlockExecutor, AptosVM};
+use lumio_vm::{lumio_vm::LumioVMBlockExecutor, LumioVM};
 use clap::Parser;
 use futures::{
     future,
@@ -316,7 +316,7 @@ impl TransactionRestoreBatchController {
                 self.output_transaction_analysis.is_none(),
                 "Bug: requested to output transaction output sizing info in restore mode.",
             );
-            AptosVM::set_concurrency_level_once(self.global_opt.replay_concurrency_level);
+            LumioVM::set_concurrency_level_once(self.global_opt.replay_concurrency_level);
 
             let kv_only = self.replay_from_version.is_some_and(|(_, k)| k);
             let txns_to_execute_stream = self
@@ -440,7 +440,7 @@ impl TransactionRestoreBatchController {
             >,
         >,
     > {
-        // get the next expected transaction version of the current aptos db from txn_info CF
+        // get the next expected transaction version of the current lumio db from txn_info CF
         let next_expected_version = self
             .global_opt
             .run_mode
@@ -654,8 +654,8 @@ impl TransactionRestoreBatchController {
         let (first_version, _) = self.replay_from_version.unwrap();
         restore_handler.reset_state_store();
         let replay_start = Instant::now();
-        let db = DbReaderWriter::from_arc(Arc::clone(&restore_handler.aptosdb));
-        let chunk_replayer = Arc::new(ChunkExecutor::<AptosVMBlockExecutor>::new(db));
+        let db = DbReaderWriter::from_arc(Arc::clone(&restore_handler.lumiodb));
+        let chunk_replayer = Arc::new(ChunkExecutor::<LumioVMBlockExecutor>::new(db));
         let ledger_update_stream = txns_to_execute_stream
             .try_chunks(BATCH_SIZE)
             .err_into::<anyhow::Error>()

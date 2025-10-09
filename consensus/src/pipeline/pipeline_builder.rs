@@ -12,8 +12,8 @@ use crate::{
     IntGaugeGuard,
 };
 use anyhow::anyhow;
-use aptos_consensus_notifications::ConsensusNotificationSender;
-use aptos_consensus_types::{
+use lumio_consensus_notifications::ConsensusNotificationSender;
+use lumio_consensus_types::{
     block::Block,
     common::Round,
     pipeline::commit_vote::CommitVote,
@@ -26,13 +26,13 @@ use aptos_consensus_types::{
     quorum_cert::QuorumCert,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::HashValue;
-use aptos_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
-use aptos_experimental_runtimes::thread_manager::optimal_min_len;
-use aptos_infallible::Mutex;
-use aptos_logger::{error, info, trace, warn};
-use aptos_storage_interface::state_store::state_view::cached_state_view::CachedStateView;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_executor_types::{state_compute_result::StateComputeResult, BlockExecutorTrait};
+use lumio_experimental_runtimes::thread_manager::optimal_min_len;
+use lumio_infallible::Mutex;
+use lumio_logger::{error, info, trace, warn};
+use lumio_storage_interface::state_store::state_view::cached_state_view::CachedStateView;
+use lumio_types::{
     account_config::randomness_event::RANDOMNESS_GENERATED_EVENT_MOVE_TYPE_TAG,
     block_executor::config::BlockExecutorConfigFromOnchain,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
@@ -47,7 +47,7 @@ use aptos_types::{
     validator_signer::ValidatorSigner,
     vm::module_metadata::get_randomness_annotation_for_entry_function,
 };
-use aptos_vm_validator::vm_validator::ValidationState;
+use lumio_vm_validator::vm_validator::ValidationState;
 use futures::FutureExt;
 use move_core_types::account_address::AccountAddress;
 use move_vm_runtime::ModuleStorage;

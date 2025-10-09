@@ -11,18 +11,18 @@ use crate::{
     },
     QuorumStoreRequest,
 };
-use aptos_config::config::{NodeConfig, NodeType};
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
-use aptos_infallible::{Mutex, RwLock};
-use aptos_logger::Level;
-use aptos_mempool_notifications::MempoolNotificationListener;
-use aptos_network::application::{
+use lumio_config::config::{NodeConfig, NodeType};
+use lumio_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use lumio_infallible::{Mutex, RwLock};
+use lumio_logger::Level;
+use lumio_mempool_notifications::MempoolNotificationListener;
+use lumio_network::application::{
     interface::{NetworkClient, NetworkServiceEvents},
     storage::PeersAndMetadata,
 };
-use aptos_storage_interface::DbReader;
-use aptos_types::on_chain_config::OnChainConfigProvider;
-use aptos_vm_validator::vm_validator::{PooledVMValidator, TransactionValidation};
+use lumio_storage_interface::DbReader;
+use lumio_types::on_chain_config::OnChainConfigProvider;
+use lumio_vm_validator::vm_validator::{PooledVMValidator, TransactionValidation};
 use futures::channel::mpsc::{Receiver, UnboundedSender};
 use std::sync::Arc;
 use tokio::runtime::{Handle, Runtime};
@@ -81,7 +81,7 @@ pub(crate) fn start_shared_mempool<TransactionValidator, ConfigProvider>(
         config.mempool.system_transaction_gc_interval_ms,
     ));
 
-    if aptos_logger::enabled!(Level::Trace) {
+    if lumio_logger::enabled!(Level::Trace) {
         executor.spawn(snapshot_job(
             mempool,
             config.mempool.mempool_snapshot_interval_secs,
@@ -100,7 +100,7 @@ pub fn bootstrap(
     mempool_reconfig_events: ReconfigNotificationListener<DbBackedOnChainConfig>,
     peers_and_metadata: Arc<PeersAndMetadata>,
 ) -> Runtime {
-    let runtime = aptos_runtimes::spawn_named_runtime("shared-mem".into(), None);
+    let runtime = lumio_runtimes::spawn_named_runtime("shared-mem".into(), None);
     let mempool = Arc::new(Mutex::new(CoreMempool::new(config)));
     let vm_validator = Arc::new(RwLock::new(PooledVMValidator::new(
         Arc::clone(&db),

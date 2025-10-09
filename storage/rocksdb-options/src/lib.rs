@@ -1,11 +1,11 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_config::config::{RocksDBStatsLevel, RocksdbConfig};
+use lumio_config::config::{RocksDBStatsLevel, RocksdbConfig};
 use rocksdb::{statistics::StatsLevel, Options};
 
 // TODO: Clean this up. It is currently separated into its own crate
-// to avoid circular dependencies, because it depends on aptos-config (which
+// to avoid circular dependencies, because it depends on lumio-config (which
 // is widely used).
 
 fn convert_stats_level(level: RocksDBStatsLevel) -> StatsLevel {

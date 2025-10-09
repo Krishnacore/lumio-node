@@ -8,7 +8,7 @@ use crate::{
     response::{BasicResponse, BasicResponseStatus, BasicResultWith404},
     ApiTags,
 };
-use aptos_api_types::{BcsBlock, Block, LedgerInfo};
+use lumio_api_types::{BcsBlock, Block, LedgerInfo};
 use poem_openapi::{
     param::{Path, Query},
     OpenApi,

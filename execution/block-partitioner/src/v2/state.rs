@@ -14,8 +14,8 @@ use crate::{
     },
     Sender,
 };
-use aptos_metrics_core::TimerHelper;
-use aptos_types::{
+use lumio_metrics_core::TimerHelper;
+use lumio_types::{
     block_executor::partitioner::{
         CrossShardDependencies, RoundId, ShardId, ShardedTxnIndex, SubBlock,
         TransactionWithDependencies,

@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{config::GRPC_MANAGER, data_manager::DataManager};
-use aptos_indexer_grpc_utils::status_page::{get_throughput_from_samples, render_status_page, Tab};
-use aptos_protos::{
+use lumio_indexer_grpc_utils::status_page::{get_throughput_from_samples, render_status_page, Tab};
+use lumio_protos::{
     indexer::v1::{FullnodeInfo, HistoricalDataServiceInfo, LiveDataServiceInfo, StreamInfo},
     util::timestamp::Timestamp,
 };

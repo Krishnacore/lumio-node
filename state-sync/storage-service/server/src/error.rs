@@ -28,8 +28,8 @@ impl Error {
     }
 }
 
-impl From<aptos_storage_service_types::responses::Error> for Error {
-    fn from(error: aptos_storage_service_types::responses::Error) -> Self {
+impl From<lumio_storage_service_types::responses::Error> for Error {
+    fn from(error: lumio_storage_service_types::responses::Error) -> Self {
         Error::UnexpectedErrorEncountered(error.to_string())
     }
 }
@@ -40,8 +40,8 @@ impl From<anyhow::Error> for Error {
     }
 }
 
-impl From<aptos_storage_interface::AptosDbError> for Error {
-    fn from(error: aptos_storage_interface::AptosDbError) -> Self {
+impl From<lumio_storage_interface::LumioDbError> for Error {
+    fn from(error: lumio_storage_interface::LumioDbError) -> Self {
         Error::StorageErrorEncountered(error.to_string())
     }
 }

@@ -7,10 +7,10 @@ use crate::{
     utils::error_notes::ErrorNotes,
 };
 use anyhow::Result;
-use aptos_crypto::HashValue;
-use aptos_db::backup::backup_handler::DbState;
-use aptos_metrics_core::{IntCounterVecHelper, TimerHelper};
-use aptos_types::transaction::Version;
+use lumio_crypto::HashValue;
+use lumio_db::backup::backup_handler::DbState;
+use lumio_metrics_core::{IntCounterVecHelper, TimerHelper};
+use lumio_types::transaction::Version;
 use clap::Parser;
 use futures::TryStreamExt;
 use tokio::{
@@ -25,7 +25,7 @@ pub struct BackupServiceClientOpt {
     #[clap(
         long = "backup-service-address",
         default_value = "http://localhost:6186",
-        help = "Backup service address. By default a Aptos Node runs the backup service serving \
+        help = "Backup service address. By default a Lumio Node runs the backup service serving \
         on tcp port 6186 to localhost only."
     )]
     pub address: String,

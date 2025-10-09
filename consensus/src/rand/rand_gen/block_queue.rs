@@ -5,9 +5,9 @@ use crate::{
     block_storage::tracing::{observe_block, BlockStage},
     pipeline::buffer_manager::OrderedBlocks,
 };
-use aptos_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
-use aptos_reliable_broadcast::DropGuard;
-use aptos_types::randomness::{FullRandMetadata, Randomness};
+use lumio_consensus_types::{common::Round, pipelined_block::PipelinedBlock};
+use lumio_reliable_broadcast::DropGuard;
+use lumio_types::randomness::{FullRandMetadata, Randomness};
 use std::{
     collections::{BTreeMap, HashMap},
     sync::Arc,
@@ -161,7 +161,7 @@ mod tests {
         block_queue::{BlockQueue, QueueItem},
         test_utils::create_ordered_blocks,
     };
-    use aptos_types::randomness::Randomness;
+    use lumio_types::randomness::Randomness;
     use std::collections::HashSet;
 
     #[test]

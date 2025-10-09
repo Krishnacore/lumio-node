@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::tests::{mock, mock::MockClient, utils};
-use aptos_config::config::StorageServiceConfig;
-use aptos_crypto::hash::HashValue;
-use aptos_types::{
+use lumio_config::config::StorageServiceConfig;
+use lumio_crypto::hash::HashValue;
+use lumio_types::{
     proof::definition::SparseMerkleRangeProof, state_store::state_value::StateValueChunkWithProof,
 };
 use mockall::{

@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::error::QuorumStoreError;
-use aptos_consensus_types::{common::Payload, payload_pull_params::PayloadPullParameters};
-use aptos_types::validator_txn::ValidatorTransaction;
-use aptos_validator_transaction_pool::TransactionFilter;
+use lumio_consensus_types::{common::Payload, payload_pull_params::PayloadPullParameters};
+use lumio_types::validator_txn::ValidatorTransaction;
+use lumio_validator_transaction_pool::TransactionFilter;
 
 pub mod mixed;
 pub mod user;

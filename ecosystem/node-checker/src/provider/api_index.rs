@@ -7,7 +7,7 @@ use super::{
     CommonProviderConfig,
 };
 use anyhow::Result;
-use aptos_rest_client::{aptos_api_types::IndexResponse, Client};
+use lumio_rest_client::{lumio_api_types::IndexResponse, Client};
 use async_trait::async_trait;
 use futures::TryFutureExt;
 use serde::{Deserialize, Serialize};

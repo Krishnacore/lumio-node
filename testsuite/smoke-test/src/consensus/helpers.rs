@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::txn_emitter::generate_traffic;
-use aptos_forge::{NodeExt, Swarm, TransactionType};
-use aptos_types::PeerId;
+use lumio_forge::{NodeExt, Swarm, TransactionType};
+use lumio_types::PeerId;
 use std::time::Duration;
 
 pub async fn generate_traffic_and_assert_committed(

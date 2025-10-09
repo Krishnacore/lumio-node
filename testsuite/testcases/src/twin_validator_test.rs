@@ -3,8 +3,8 @@
 
 use crate::NetworkLoadTest;
 use anyhow::Context;
-use aptos_forge::{NetworkContextSynchronizer, NetworkTest, NodeExt, Test};
-use aptos_sdk::move_types::account_address::AccountAddress;
+use lumio_forge::{NetworkContextSynchronizer, NetworkTest, NodeExt, Test};
+use lumio_sdk::move_types::account_address::AccountAddress;
 use async_trait::async_trait;
 use std::{
     ops::DerefMut,

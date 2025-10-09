@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_crypto::{
+use lumio_crypto::{
     bls12381,
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     hash::{CryptoHasher as _, TestOnlyHasher},
@@ -9,8 +9,8 @@ use aptos_crypto::{
     secp256k1_ecdsa, secp256r1_ecdsa,
     traits::{SigningKey, Uniform},
 };
-use aptos_crypto_derive::{BCSCryptoHash, CryptoHasher};
-use aptos_types::{
+use lumio_crypto_derive::{BCSCryptoHash, CryptoHasher};
+use lumio_types::{
     access_path::{AccessPath, Path},
     account_config::{CoinStoreResource, DepositEvent, WithdrawEvent},
     block_metadata_ext::BlockMetadataExt,
@@ -23,7 +23,7 @@ use aptos_types::{
     },
     validator_txn::ValidatorTransaction,
     vm_status::AbortLocation,
-    write_set, AptosCoinType,
+    write_set, LumioCoinType,
 };
 use move_core_types::language_storage;
 use rand::{rngs::StdRng, SeedableRng};
@@ -37,7 +37,7 @@ pub fn output_file() -> Option<&'static str> {
 
 /// This aims at signing canonically serializable BCS data
 #[derive(CryptoHasher, BCSCryptoHash, Serialize, Deserialize)]
-struct TestAptosCrypto(String);
+struct TestLumioCrypto(String);
 
 /// Record sample values for crypto types used by transactions.
 fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()> {
@@ -45,7 +45,7 @@ fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()>
     hasher.update(b"Test message");
     let hashed_message = hasher.finish();
 
-    let message = TestAptosCrypto("Hello, World".to_string());
+    let message = TestLumioCrypto("Hello, World".to_string());
 
     let mut rng: StdRng = SeedableRng::from_seed([0; 32]);
     let private_key = Ed25519PrivateKey::generate(&mut rng);
@@ -59,7 +59,7 @@ fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()>
     tracer.trace_value::<MultiEd25519Signature>(samples, &signature.clone().into())?;
 
     let secp256k1_private_key = secp256k1_ecdsa::PrivateKey::generate(&mut rng);
-    let secp256k1_public_key = aptos_crypto::PrivateKey::public_key(&secp256k1_private_key);
+    let secp256k1_public_key = lumio_crypto::PrivateKey::public_key(&secp256k1_private_key);
     let secp256k1_signature = secp256k1_private_key.sign(&message).unwrap();
     tracer.trace_value(samples, &secp256k1_private_key)?;
     tracer.trace_value(samples, &secp256k1_public_key)?;
@@ -67,7 +67,7 @@ fn trace_crypto_values(tracer: &mut Tracer, samples: &mut Samples) -> Result<()>
 
     let secp256r1_ecdsa_private_key = secp256r1_ecdsa::PrivateKey::generate(&mut rng);
     let secp256r1_ecdsa_public_key =
-        aptos_crypto::PrivateKey::public_key(&secp256r1_ecdsa_private_key);
+        lumio_crypto::PrivateKey::public_key(&secp256r1_ecdsa_private_key);
     let secp256r1_ecdsa_signature = secp256r1_ecdsa_private_key.sign(&message).unwrap();
     tracer.trace_value(samples, &secp256r1_ecdsa_private_key)?;
     tracer.trace_value(samples, &secp256r1_ecdsa_public_key)?;
@@ -120,7 +120,7 @@ pub fn get_registry() -> Result<Registry> {
     tracer.trace_type::<transaction::authenticator::AnyPublicKey>(&samples)?;
     tracer.trace_type::<transaction::authenticator::AnySignature>(&samples)?;
     tracer.trace_type::<transaction::webauthn::AssertionSignature>(&samples)?;
-    tracer.trace_type::<aptos_types::keyless::EphemeralCertificate>(&samples)?;
+    tracer.trace_type::<lumio_types::keyless::EphemeralCertificate>(&samples)?;
     tracer.trace_type::<transaction::authenticator::AbstractAuthenticationData>(&samples)?;
     tracer.trace_type::<transaction::authenticator::AbstractAuthenticator>(&samples)?;
 
@@ -133,11 +133,11 @@ pub fn get_registry() -> Result<Registry> {
     tracer.trace_type::<Path>(&samples)?;
 
     // api types
-    tracer.trace_type::<aptos_api_types::TransactionData>(&samples)?;
-    tracer.trace_type::<aptos_api_types::TransactionOnChainData>(&samples)?;
+    tracer.trace_type::<lumio_api_types::TransactionData>(&samples)?;
+    tracer.trace_type::<lumio_api_types::TransactionOnChainData>(&samples)?;
 
     // output types
-    tracer.trace_type::<CoinStoreResource<AptosCoinType>>(&samples)?;
+    tracer.trace_type::<CoinStoreResource<LumioCoinType>>(&samples)?;
 
     // aliases within StructTag
     tracer.ignore_aliases("StructTag", &["type_params"])?;

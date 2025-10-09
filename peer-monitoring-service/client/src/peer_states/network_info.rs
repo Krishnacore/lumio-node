@@ -6,19 +6,19 @@ use crate::{
     peer_states::{key_value::StateValueInterface, request_tracker::RequestTracker},
     Error, LogEntry, LogEvent, LogSchema,
 };
-use aptos_config::{
+use lumio_config::{
     config::{BaseConfig, NetworkMonitoringConfig, NodeConfig, RoleType},
     network_id::PeerNetworkId,
 };
-use aptos_infallible::RwLock;
-use aptos_logger::warn;
-use aptos_network::application::metadata::PeerMetadata;
-use aptos_peer_monitoring_service_types::{
+use lumio_infallible::RwLock;
+use lumio_logger::warn;
+use lumio_network::application::metadata::PeerMetadata;
+use lumio_peer_monitoring_service_types::{
     request::PeerMonitoringServiceRequest,
     response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     MAX_DISTANCE_FROM_VALIDATORS,
 };
-use aptos_time_service::TimeService;
+use lumio_time_service::TimeService;
 use std::{
     fmt,
     fmt::{Display, Formatter},
@@ -207,22 +207,22 @@ impl Display for NetworkInfoState {
 #[cfg(test)]
 mod test {
     use crate::peer_states::{key_value::StateValueInterface, network_info::NetworkInfoState};
-    use aptos_config::{
+    use lumio_config::{
         config::{BaseConfig, NodeConfig, PeerRole, RoleType},
         network_id::{NetworkId, PeerNetworkId},
     };
-    use aptos_netcore::transport::ConnectionOrigin;
-    use aptos_network::{
+    use lumio_netcore::transport::ConnectionOrigin;
+    use lumio_network::{
         application::metadata::PeerMetadata,
         protocols::wire::handshake::v1::{MessagingProtocolVersion, ProtocolIdSet},
         transport::{ConnectionId, ConnectionMetadata},
     };
-    use aptos_peer_monitoring_service_types::{
+    use lumio_peer_monitoring_service_types::{
         request::PeerMonitoringServiceRequest,
         response::{NetworkInformationResponse, PeerMonitoringServiceResponse},
     };
-    use aptos_time_service::TimeService;
-    use aptos_types::{network_address::NetworkAddress, PeerId};
+    use lumio_time_service::TimeService;
+    use lumio_types::{network_address::NetworkAddress, PeerId};
     use std::str::FromStr;
 
     // Useful test constants

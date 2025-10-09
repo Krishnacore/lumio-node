@@ -1,6 +1,6 @@
 [package]
-name = "aptos-mempool"
-description = "Aptos mempool for consuming incoming transactions"
+name = "lumio-mempool"
+description = "Lumio mempool for consuming incoming transactions"
 version = "0.1.0"
 
 # Workspace inherited keys
@@ -14,26 +14,26 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-bounded-executor = { workspace = true }
-aptos-channels = { workspace = true }
-aptos-config = { workspace = true }
-aptos-consensus-types = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-event-notifications = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-mempool-notifications = { workspace = true }
-aptos-metrics-core = { workspace = true }
-aptos-netcore = { workspace = true }
-aptos-network = { workspace = true }
-aptos-peer-monitoring-service-types = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-short-hex-str = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-time-service = { workspace = true }
-aptos-transaction-filters = { workspace = true }
-aptos-types = { workspace = true }
-aptos-vm-validator = { workspace = true }
+lumio-bounded-executor = { workspace = true }
+lumio-channels = { workspace = true }
+lumio-config = { workspace = true }
+lumio-consensus-types = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-event-notifications = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-mempool-notifications = { workspace = true }
+lumio-metrics-core = { workspace = true }
+lumio-netcore = { workspace = true }
+lumio-network = { workspace = true }
+lumio-peer-monitoring-service-types = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-short-hex-str = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-time-service = { workspace = true }
+lumio-transaction-filters = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm-validator = { workspace = true }
 bcs = { workspace = true }
 fail = { workspace = true }
 futures = { workspace = true }
@@ -50,18 +50,18 @@ tokio = { workspace = true }
 tokio-stream = { workspace = true }
 
 [dev-dependencies]
-aptos-compression = { workspace = true }
-aptos-config = { workspace = true }
-aptos-id-generator = { workspace = true }
-aptos-network = { workspace = true, features = ["fuzzing"] }
-aptos-storage-interface = { workspace = true, features = ["fuzzing"] }
-aptos-time-service = { workspace = true, features = ["testing"] }
-aptos-transaction-filters = { workspace = true, features = ["fuzzing"] }
+lumio-compression = { workspace = true }
+lumio-config = { workspace = true }
+lumio-id-generator = { workspace = true }
+lumio-network = { workspace = true, features = ["fuzzing"] }
+lumio-storage-interface = { workspace = true, features = ["fuzzing"] }
+lumio-time-service = { workspace = true, features = ["testing"] }
+lumio-transaction-filters = { workspace = true, features = ["fuzzing"] }
 enum_dispatch = { workspace = true }
 proptest = { workspace = true }
 
 [features]
 default = []
-failpoints = ["fail/failpoints", "aptos-vm-validator/failpoints"]
-fuzzing = ["proptest", "aptos-types/fuzzing", "aptos-storage-interface/fuzzing", "aptos-config/fuzzing"]
+failpoints = ["fail/failpoints", "lumio-vm-validator/failpoints"]
+fuzzing = ["proptest", "lumio-types/fuzzing", "lumio-storage-interface/fuzzing", "lumio-config/fuzzing"]
 consensus-only-perf-test = []

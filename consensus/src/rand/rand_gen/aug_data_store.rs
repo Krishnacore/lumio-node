@@ -9,9 +9,9 @@ use crate::rand::rand_gen::{
     },
 };
 use anyhow::ensure;
-use aptos_consensus_types::common::Author;
-use aptos_logger::error;
-use aptos_types::validator_signer::ValidatorSigner;
+use lumio_consensus_types::common::Author;
+use lumio_logger::error;
+use lumio_types::validator_signer::ValidatorSigner;
 use std::{collections::HashMap, sync::Arc};
 
 pub struct AugDataStore<D> {

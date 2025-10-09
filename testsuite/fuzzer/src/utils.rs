@@ -9,8 +9,8 @@ pub mod cli {
         Authenticator, ExecVariant, FundAmount, RunnableState, RunnableStateWithOperations,
         UserAccount,
     };
-    use aptos_framework::{BuildOptions, BuiltPackage};
-    use aptos_types::{
+    use lumio_framework::{BuildOptions, BuiltPackage};
+    use lumio_types::{
         account_address::AccountAddress,
         transaction::{EntryFunction, Script, TransactionPayload},
     };
@@ -705,8 +705,8 @@ pub mod cli {
 
         // Process Move projects recursively from common test directories
         let move_test_dirs = vec![
-            //"../../aptos-move/move-examples",
-            //"../../aptos-move/e2e-move-tests",
+            //"../../lumio-move/move-examples",
+            //"../../lumio-move/e2e-move-tests",
         ];
 
         for test_dir in move_test_dirs {

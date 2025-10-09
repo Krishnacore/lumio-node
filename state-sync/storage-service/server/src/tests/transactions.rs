@@ -6,8 +6,8 @@ use crate::tests::{
     mock::{MockClient, MockDatabaseReader},
     utils,
 };
-use aptos_config::config::StorageServiceConfig;
-use aptos_storage_service_types::{responses::DataResponse, StorageServiceError};
+use lumio_config::config::StorageServiceConfig;
+use lumio_storage_service_types::{responses::DataResponse, StorageServiceError};
 use claims::assert_matches;
 use std::cmp::min;
 

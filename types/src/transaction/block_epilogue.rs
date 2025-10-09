@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::state_store::{state_key::StateKey, state_slot::StateSlot};
-use aptos_crypto::HashValue;
+use lumio_crypto::HashValue;
 #[cfg(any(test, feature = "fuzzing"))]
 use proptest::prelude::*;
 #[cfg(any(test, feature = "fuzzing"))]

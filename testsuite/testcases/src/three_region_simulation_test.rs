@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{LoadDestination, NetworkLoadTest};
-use aptos_forge::{
+use lumio_forge::{
     GroupNetworkBandwidth, GroupNetworkDelay, NetworkContext, NetworkContextSynchronizer,
     NetworkTest, SwarmChaos, SwarmNetworkBandwidth, SwarmNetworkDelay, Test,
 };
-use aptos_types::account_address::AccountAddress;
+use lumio_types::account_address::AccountAddress;
 use async_trait::async_trait;
 use log::info;
 

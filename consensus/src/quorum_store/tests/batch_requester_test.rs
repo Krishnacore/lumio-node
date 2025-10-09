@@ -9,13 +9,13 @@ use crate::{
     },
     test_utils::create_vec_signed_transactions,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     common::Author,
     proof_of_store::{ProofOfStore, SignedBatchInfo},
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_infallible::Mutex;
+use lumio_types::{
     aggregate_signature::PartialSignatures,
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

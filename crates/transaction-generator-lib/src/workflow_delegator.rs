@@ -11,8 +11,8 @@ use crate::{
     ObjectPool, ReliableTransactionSubmitter, RootAccountHandle, TransactionGenerator,
     TransactionGeneratorCreator, WorkflowProgress,
 };
-use aptos_logger::{sample, sample::SampleRate};
-use aptos_sdk::{
+use lumio_logger::{sample, sample::SampleRate};
+use lumio_sdk::{
     transaction_builder::TransactionFactory,
     types::{transaction::SignedTransaction, LocalAccount},
 };

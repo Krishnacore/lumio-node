@@ -7,8 +7,8 @@ pub mod view;
 
 use crate::storage::{FileHandle, ShellSafeName, TextLine};
 use anyhow::{ensure, Result};
-use aptos_crypto::HashValue;
-use aptos_types::transaction::Version;
+use lumio_crypto::HashValue;
+use lumio_types::transaction::Version;
 use serde::{Deserialize, Serialize};
 use std::{cmp::Ordering, collections::HashMap, convert::TryInto};
 

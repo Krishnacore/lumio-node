@@ -5,8 +5,8 @@
 //
 // To update this code, run `testsuite/benchmark-workloads/generate.py`.
 
-use aptos_sdk::bcs;
-use aptos_transaction_generator_lib::{
+use lumio_sdk::bcs;
+use lumio_transaction_generator_lib::{
     entry_point_trait::PreBuiltPackages, publishing::prebuild_packages::PrebuiltPackagesBundle,
 };
 use once_cell::sync::Lazy;

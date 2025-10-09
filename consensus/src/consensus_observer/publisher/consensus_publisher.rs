@@ -15,11 +15,11 @@ use crate::consensus_observer::{
         },
     },
 };
-use aptos_channels::aptos_channel::Receiver;
-use aptos_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_infallible::RwLock;
-use aptos_logger::{error, info, warn};
-use aptos_network::application::interface::NetworkClient;
+use lumio_channels::lumio_channel::Receiver;
+use lumio_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
+use lumio_infallible::RwLock;
+use lumio_logger::{error, info, warn};
+use lumio_network::application::interface::NetworkClient;
 use futures::StreamExt;
 use futures_channel::mpsc;
 use std::{collections::HashSet, sync::Arc, time::Duration};
@@ -355,13 +355,13 @@ mod test {
     use crate::consensus_observer::network::{
         network_events::ResponseSender, observer_message::BlockTransactionPayload,
     };
-    use aptos_config::network_id::NetworkId;
-    use aptos_crypto::HashValue;
-    use aptos_network::{
+    use lumio_config::network_id::NetworkId;
+    use lumio_crypto::HashValue;
+    use lumio_network::{
         application::{metadata::ConnectionState, storage::PeersAndMetadata},
         transport::ConnectionMetadata,
     };
-    use aptos_types::{
+    use lumio_types::{
         aggregate_signature::AggregateSignature,
         block_info::BlockInfo,
         ledger_info::{LedgerInfo, LedgerInfoWithSignatures},

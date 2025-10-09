@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{constants::IndexerGrpcRequestMetadata, timestamp_to_iso, timestamp_to_unixtime};
-use aptos_metrics_core::{register_gauge_vec, register_int_gauge_vec, GaugeVec, IntGaugeVec};
-use aptos_protos::util::timestamp::Timestamp;
+use lumio_metrics_core::{register_gauge_vec, register_int_gauge_vec, GaugeVec, IntGaugeVec};
+use lumio_protos::util::timestamp::Timestamp;
 use once_cell::sync::Lazy;
 use prometheus::{register_int_counter_vec, IntCounterVec};
 
@@ -58,7 +58,7 @@ pub enum IndexerGrpcStep {
     TableInfoProcessedBatch,
     // [Indexer Table Info] Processed transactions from fullnode
     TableInfoProcessed,
-    // [Indexer Indices] Processed transactions from AptosDB
+    // [Indexer Indices] Processed transactions from LumioDB
     InternalIndexerDBProcessed,
 }
 

@@ -1,5 +1,5 @@
-resource "digitalocean_kubernetes_cluster" "aptos" {
-  name    = "aptos-${terraform.workspace}"
+resource "digitalocean_kubernetes_cluster" "lumio" {
+  name    = "lumio-${terraform.workspace}"
   region  = var.region
   version = "1.22.8-do.1"
 
@@ -9,4 +9,3 @@ resource "digitalocean_kubernetes_cluster" "aptos" {
     node_count = var.num_fullnodes
     tags       = ["fullnodes"]
   }
-}

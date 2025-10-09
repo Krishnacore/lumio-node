@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::state_store::state_view::hot_state_view::HotStateView;
-use aptos_experimental_layered_map::LayeredMap;
-use aptos_types::state_store::{
+use lumio_experimental_layered_map::LayeredMap;
+use lumio_types::state_store::{
     hot_state::THotStateSlot, state_key::StateKey, state_slot::StateSlot,
 };
 use std::{collections::HashMap, num::NonZeroUsize, sync::Arc};
@@ -224,8 +224,8 @@ impl<'a, 'b> Iterator for Iter<'a, 'b> {
 mod tests {
     use super::HotStateLRU;
     use crate::state_store::state_view::hot_state_view::HotStateView;
-    use aptos_experimental_layered_map::{LayeredMap, MapLayer};
-    use aptos_types::{
+    use lumio_experimental_layered_map::{LayeredMap, MapLayer};
+    use lumio_types::{
         state_store::{
             hot_state::LRUEntry, state_key::StateKey, state_slot::StateSlot,
             state_value::StateValue,

@@ -1,0 +1,8 @@
+[package]
+name = "too_large_test"
+version = "0.0.0"
+
+[dependencies]
+LumioFramework = { local = "../../../../../framework/lumio-framework" }
+LumioStdlib = { local = "../../../../../framework/lumio-stdlib" }
+MoveStdlib = { local = "../../../../../framework/move-stdlib" }

@@ -13,17 +13,17 @@ use crate::{
     },
     utils,
 };
-use aptos_config::config::StateSyncDriverConfig;
-use aptos_data_streaming_service::data_notification::NotificationId;
-use aptos_event_notifications::EventSubscriptionService;
-use aptos_executor_types::{ChunkCommitNotification, ChunkExecutorTrait};
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_mempool_notifications::MempoolNotificationSender;
-use aptos_metrics_core::HistogramTimer;
-use aptos_storage_interface::{DbReader, DbReaderWriter, StateSnapshotReceiver};
-use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_types::{
+use lumio_config::config::StateSyncDriverConfig;
+use lumio_data_streaming_service::data_notification::NotificationId;
+use lumio_event_notifications::EventSubscriptionService;
+use lumio_executor_types::{ChunkCommitNotification, ChunkExecutorTrait};
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_mempool_notifications::MempoolNotificationSender;
+use lumio_metrics_core::HistogramTimer;
+use lumio_storage_interface::{DbReader, DbReaderWriter, StateSnapshotReceiver};
+use lumio_storage_service_notifications::StorageServiceNotificationSender;
+use lumio_types::{
     ledger_info::LedgerInfoWithSignatures,
     state_store::{
         state_key::StateKey,

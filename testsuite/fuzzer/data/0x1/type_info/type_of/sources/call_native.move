@@ -1,6 +1,6 @@
 module poc::type_of {
-   use aptos_std::type_info;
-   use aptos_std::table::Table;
+   use lumio_std::type_info;
+   use lumio_std::table::Table;
 
 
    struct TestStruct has copy, drop, store {

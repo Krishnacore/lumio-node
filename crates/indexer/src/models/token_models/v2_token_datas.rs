@@ -16,7 +16,7 @@ use crate::{
     util::standardize_address,
 };
 use anyhow::Context;
-use aptos_api_types::{WriteResource as APIWriteResource, WriteTableItem as APIWriteTableItem};
+use lumio_api_types::{WriteResource as APIWriteResource, WriteTableItem as APIWriteTableItem};
 use bigdecimal::{BigDecimal, Zero};
 use diesel::{prelude::*, sql_query, sql_types::Text};
 use field_count::FieldCount;
@@ -222,7 +222,7 @@ impl TokenDataV2 {
                     },
                 )));
             } else {
-                aptos_logger::warn!(
+                lumio_logger::warn!(
                     transaction_version = txn_version,
                     key_type = table_item_data.key_type,
                     key = table_item_data.key,

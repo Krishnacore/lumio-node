@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::ungrouped::changing_working_quorum_test_helper;
-use aptos_config::config::{BootstrappingMode, ContinuousSyncingMode, StateSyncConfig};
-use aptos_forge::{
+use lumio_config::config::{BootstrappingMode, ContinuousSyncingMode, StateSyncConfig};
+use lumio_forge::{
     args::TransactionTypeArg, success_criteria::SuccessCriteria, EmitJobMode, EmitJobRequest,
     ForgeConfig,
 };
-use aptos_testcases::{
+use lumio_testcases::{
     consensus_reliability_tests::ChangingWorkingQuorumTest,
     state_sync_performance::{
         StateSyncFullnodeFastSyncPerformance, StateSyncFullnodePerformance,

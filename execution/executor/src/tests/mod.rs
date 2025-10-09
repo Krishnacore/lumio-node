@@ -7,16 +7,16 @@ use crate::{
     db_bootstrapper::{generate_waypoint, maybe_bootstrap},
     workflow::{do_get_execution_output::DoGetExecutionOutput, ApplyExecutionOutput},
 };
-use aptos_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
-use aptos_db::AptosDB;
-use aptos_executor_types::{
+use lumio_crypto::{ed25519::Ed25519PrivateKey, HashValue, PrivateKey, SigningKey, Uniform};
+use lumio_db::LumioDB;
+use lumio_executor_types::{
     BlockExecutorTrait, ChunkExecutorTrait, TransactionReplayer, VerifyExecutionMode,
 };
-use aptos_storage_interface::{
+use lumio_storage_interface::{
     state_store::state_view::cached_state_view::CachedStateView, DbReaderWriter, LedgerSummary,
     Result,
 };
-use aptos_types::{
+use lumio_types::{
     account_address::AccountAddress,
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
@@ -71,17 +71,17 @@ fn execute_and_commit_block(
 }
 
 struct TestExecutor {
-    _path: aptos_temppath::TempPath,
+    _path: lumio_temppath::TempPath,
     db: DbReaderWriter,
     executor: BlockExecutor<MockVM>,
 }
 
 impl TestExecutor {
     fn new() -> TestExecutor {
-        let path = aptos_temppath::TempPath::new();
+        let path = lumio_temppath::TempPath::new();
         path.create_as_dir().unwrap();
-        let db = DbReaderWriter::new(AptosDB::new_for_test(path.path()));
-        let genesis = aptos_vm_genesis::test_genesis_transaction();
+        let db = DbReaderWriter::new(LumioDB::new_for_test(path.path()));
+        let genesis = lumio_vm_genesis::test_genesis_transaction();
         let waypoint = generate_waypoint::<MockVM>(&db, &genesis).unwrap();
         maybe_bootstrap::<MockVM>(&db, &genesis, waypoint).unwrap();
         let executor = BlockExecutor::new(db.clone());

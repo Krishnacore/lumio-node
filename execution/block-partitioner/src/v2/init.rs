@@ -8,7 +8,7 @@ use crate::{
         state::PartitionState, types::OriginalTxnIdx, PartitionerV2,
     },
 };
-use aptos_metrics_core::TimerHelper;
+use lumio_metrics_core::TimerHelper;
 use rayon::{iter::ParallelIterator, prelude::IntoParallelIterator};
 use std::sync::RwLock;
 

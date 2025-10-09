@@ -7,13 +7,13 @@ use crate::{
     NetworkLoadTest,
 };
 use anyhow::Error;
-use aptos_config::config::{NodeConfig, OverrideNodeConfig};
-use aptos_forge::{
+use lumio_config::config::{NodeConfig, OverrideNodeConfig};
+use lumio_forge::{
     NetworkContext, NetworkContextSynchronizer, NetworkTest, OverrideNodeConfigFn, Result, Swarm,
     SwarmChaos, SwarmCpuStress, SwarmNetEm, Test,
 };
-use aptos_sdk::move_types::account_address::AccountAddress;
-use aptos_types::PeerId;
+use lumio_sdk::move_types::account_address::AccountAddress;
+use lumio_types::PeerId;
 use async_trait::async_trait;
 use itertools::{EitherOrBoth, Itertools};
 use log::info;

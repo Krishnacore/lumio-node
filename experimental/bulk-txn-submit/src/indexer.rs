@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_logger::warn;
-use aptos_sdk::types::chain_id::ChainId;
+use lumio_logger::warn;
+use lumio_sdk::types::chain_id::ChainId;
 use chrono::{DateTime, NaiveDateTime, TimeZone, Utc};
 use serde::{Deserialize, Serialize};
 use std::sync::{atomic::AtomicI64, Arc};
@@ -23,11 +23,11 @@ struct ProcessorStatus {
 
 fn indexer_status_url(chain_id: ChainId) -> &'static str {
     if chain_id.is_mainnet() {
-        "https://indexer.mainnet.aptoslabs.com/api/rest/get_latest_processor_status"
+        "https://indexer.mainnet.lumiolabs.com/api/rest/get_latest_processor_status"
     } else if chain_id.is_testnet() {
-        "https://indexer-testnet.staging.gcp.aptosdev.com/api/rest/get_latest_processor_status"
+        "https://indexer-testnet.staging.gcp.lumiodev.com/api/rest/get_latest_processor_status"
     } else {
-        "https://indexer-devnet.staging.gcp.aptosdev.com/api/rest/get_latest_processor_status"
+        "https://indexer-devnet.staging.gcp.lumiodev.com/api/rest/get_latest_processor_status"
     }
 }
 

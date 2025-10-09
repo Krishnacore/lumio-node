@@ -4,8 +4,8 @@
 
 use crate::{block::Block, common::Author, proof_of_store::ProofCache, sync_info::SyncInfo};
 use anyhow::{anyhow, ensure, format_err, Context, Result};
-use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::validator_verifier::ValidatorVerifier;
+use lumio_short_hex_str::AsShortHexStr;
+use lumio_types::validator_verifier::ValidatorVerifier;
 use serde::{Deserialize, Serialize};
 use std::fmt;
 

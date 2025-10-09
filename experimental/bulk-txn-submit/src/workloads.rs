@@ -3,10 +3,10 @@
 
 use crate::event_lookup::get_deposit_dst;
 use anyhow::{anyhow, Result};
-use aptos_sdk::{
+use lumio_sdk::{
     move_types::account_address::AccountAddress,
-    rest_client::aptos_api_types::TransactionOnChainData,
-    transaction_builder::{aptos_stdlib, TransactionFactory},
+    rest_client::lumio_api_types::TransactionOnChainData,
+    transaction_builder::{lumio_stdlib, TransactionFactory},
     types::{
         serde_helper::bcs_utils::bcs_size_of_byte_array,
         transaction::{SignedTransaction, TransactionPayload},
@@ -136,7 +136,7 @@ impl SignedTransactionBuilder<AccountAddress> for TransferAptSignedTransactionBu
         txn_factory: &TransactionFactory,
     ) -> SignedTransaction {
         account.sign_with_transaction_builder(txn_factory.payload(
-            aptos_stdlib::aptos_coin_transfer(*data, self.amount_to_send),
+            lumio_stdlib::lumio_coin_transfer(*data, self.amount_to_send),
         ))
     }
 
@@ -171,7 +171,7 @@ impl SignedTransactionBuilder<AccountAddress> for CreateAndTransferAptSignedTran
         txn_factory: &TransactionFactory,
     ) -> SignedTransaction {
         account.sign_with_transaction_builder(txn_factory.payload(
-            aptos_stdlib::aptos_account_transfer(*data, self.amount_to_send),
+            lumio_stdlib::lumio_account_transfer(*data, self.amount_to_send),
         ))
     }
 

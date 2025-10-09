@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{PeerMonitorState, PeerMonitoringServiceClient, StreamExt};
-use aptos_channels::{aptos_channel, aptos_channel::Receiver, message_queues::QueueStyle};
-use aptos_config::{
+use lumio_channels::{lumio_channel, lumio_channel::Receiver, message_queues::QueueStyle};
+use lumio_config::{
     config::PeerRole,
     network_id::{NetworkId, PeerNetworkId},
 };
-use aptos_netcore::transport::ConnectionOrigin;
-use aptos_network::{
+use lumio_netcore::transport::ConnectionOrigin;
+use lumio_network::{
     application::{interface::NetworkClient, metadata::ConnectionState, storage::PeersAndMetadata},
     peer_manager::{ConnectionRequestSender, PeerManagerRequest, PeerManagerRequestSender},
     protocols::{
@@ -17,17 +17,17 @@ use aptos_network::{
     },
     transport::ConnectionMetadata,
 };
-use aptos_peer_monitoring_service_server::network::{NetworkRequest, ResponseSender};
-use aptos_peer_monitoring_service_types::PeerMonitoringServiceMessage;
-use aptos_time_service::TimeService;
-use aptos_types::account_address::{AccountAddress as PeerId, AccountAddress};
+use lumio_peer_monitoring_service_server::network::{NetworkRequest, ResponseSender};
+use lumio_peer_monitoring_service_types::PeerMonitoringServiceMessage;
+use lumio_time_service::TimeService;
+use lumio_types::account_address::{AccountAddress as PeerId, AccountAddress};
 use futures::FutureExt;
 use std::{collections::HashMap, sync::Arc};
 
 /// A simple mock of the peer monitoring server for test purposes
 pub struct MockMonitoringServer {
     peer_manager_request_receivers:
-        HashMap<NetworkId, aptos_channel::Receiver<(PeerId, ProtocolId), PeerManagerRequest>>,
+        HashMap<NetworkId, lumio_channel::Receiver<(PeerId, ProtocolId), PeerManagerRequest>>,
     peers_and_metadata: Arc<PeersAndMetadata>,
 }
 
@@ -41,14 +41,14 @@ impl MockMonitoringServer {
         TimeService,
     ) {
         // Setup the test logger (if it hasn't already been initialized)
-        ::aptos_logger::Logger::init_for_testing();
+        ::lumio_logger::Logger::init_for_testing();
 
         // Setup the request channels and the network sender for each network
         let mut network_senders = HashMap::new();
         let mut peer_manager_request_receivers = HashMap::new();
         for network_id in &all_network_ids {
             // Create the channels and network sender
-            let queue_config = aptos_channel::Config::new(10).queue_style(QueueStyle::FIFO);
+            let queue_config = lumio_channel::Config::new(10).queue_style(QueueStyle::FIFO);
             let (peer_manager_request_sender, peer_manager_request_receiver) = queue_config.build();
             let (connection_request_sender, _connection_request_receiver) = queue_config.build();
             let network_sender = NetworkSender::new(

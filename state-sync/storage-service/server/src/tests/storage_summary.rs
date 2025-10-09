@@ -10,10 +10,10 @@ use crate::{
         utils,
     },
 };
-use aptos_channels::{aptos_channel, message_queues::QueueStyle};
-use aptos_config::config::StorageServiceConfig;
-use aptos_storage_service_notifications::StorageServiceNotificationSender;
-use aptos_storage_service_types::{
+use lumio_channels::{lumio_channel, message_queues::QueueStyle};
+use lumio_config::config::StorageServiceConfig;
+use lumio_storage_service_notifications::StorageServiceNotificationSender;
+use lumio_storage_service_types::{
     requests::DataRequest,
     responses::{
         CompleteDataRange, DataResponse, DataSummary, ProtocolMetadata, StorageServerSummary,
@@ -21,8 +21,8 @@ use aptos_storage_service_types::{
     },
     StorageServiceError,
 };
-use aptos_time_service::TimeService;
-use aptos_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
+use lumio_time_service::TimeService;
+use lumio_types::{ledger_info::LedgerInfoWithSignatures, transaction::Version};
 use arc_swap::ArcSwap;
 use futures::StreamExt;
 use std::{ops::Deref, sync::Arc, time::Duration};
@@ -60,7 +60,7 @@ async fn test_refresh_cached_storage_summary() {
 
     // Create the cached summary update notifier
     let (cached_summary_update_notifier, mut cached_summary_update_listener) =
-        aptos_channel::new(QueueStyle::FIFO, 1, None);
+        lumio_channel::new(QueueStyle::FIFO, 1, None);
 
     // Refresh the storage summary cache
     refresh_cached_storage_summary(

@@ -8,7 +8,7 @@ datatest_stable::harness!(
     parse_framework_manifests,
     {
         Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../aptos-move/framework")
+            .join("../../../../lumio-move/framework")
             .display()
     },
     r"\bMove\.toml$"

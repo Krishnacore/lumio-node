@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::quorum_store::counters;
-use aptos_consensus_types::common::Author;
-use aptos_infallible::duration_since_epoch;
-use aptos_short_hex_str::AsShortHexStr;
+use lumio_consensus_types::common::Author;
+use lumio_infallible::duration_since_epoch;
+use lumio_short_hex_str::AsShortHexStr;
 use std::time::Duration;
 
 pub struct BatchStage;

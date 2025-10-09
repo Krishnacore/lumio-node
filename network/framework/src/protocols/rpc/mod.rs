@@ -2,7 +2,7 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-//! Implementation of the unary RPC protocol as per [AptosNet wire protocol v1].
+//! Implementation of the unary RPC protocol as per [LumioNet wire protocol v1].
 //!
 //! ## Design:
 //!
@@ -41,7 +41,7 @@
 //! We limit the number of pending inbound and outbound RPC tasks to ensure that
 //! resource usage is bounded.
 //!
-//! [AptosNet wire protocol v1]: https://github.com/aptos-labs/aptos-core/blob/main/specifications/network/messaging-v1.md
+//! [LumioNet wire protocol v1]: https://github.com/lumio-labs/lumio-core/blob/main/specifications/network/messaging-v1.md
 //! [`Peer`]: crate::peer::Peer
 
 use crate::{
@@ -58,13 +58,13 @@ use crate::{
     ProtocolId,
 };
 use anyhow::anyhow;
-use aptos_channels::aptos_channel;
-use aptos_config::network_id::NetworkContext;
-use aptos_id_generator::{IdGenerator, U32IdGenerator};
-use aptos_logger::prelude::*;
-use aptos_short_hex_str::AsShortHexStr;
-use aptos_time_service::{timeout, TimeService, TimeServiceTrait};
-use aptos_types::PeerId;
+use lumio_channels::lumio_channel;
+use lumio_config::network_id::NetworkContext;
+use lumio_id_generator::{IdGenerator, U32IdGenerator};
+use lumio_logger::prelude::*;
+use lumio_short_hex_str::AsShortHexStr;
+use lumio_time_service::{timeout, TimeService, TimeServiceTrait};
+use lumio_types::PeerId;
 use bytes::Bytes;
 use error::RpcError;
 use futures::{
@@ -205,7 +205,7 @@ impl InboundRpcs {
     /// Handle a new inbound `RpcRequest` message off the wire.
     pub fn handle_inbound_request(
         &mut self,
-        peer_notifs_tx: &aptos_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>,
+        peer_notifs_tx: &lumio_channel::Sender<(PeerId, ProtocolId), ReceivedMessage>,
         mut request: ReceivedMessage,
     ) -> Result<(), RpcError> {
         let network_context = &self.network_context;
@@ -324,7 +324,7 @@ impl InboundRpcs {
     /// the outbound write queue.
     pub fn send_outbound_response(
         &mut self,
-        write_reqs_tx: &mut aptos_channel::Sender<(), NetworkMessage>,
+        write_reqs_tx: &mut lumio_channel::Sender<(), NetworkMessage>,
         maybe_response: Result<(RpcResponse, ProtocolId), RpcError>,
     ) -> Result<(), RpcError> {
         let network_context = &self.network_context;
@@ -434,7 +434,7 @@ impl OutboundRpcs {
     pub fn handle_outbound_request(
         &mut self,
         request: OutboundRpcRequest,
-        write_reqs_tx: &mut aptos_channel::Sender<(), NetworkMessage>,
+        write_reqs_tx: &mut lumio_channel::Sender<(), NetworkMessage>,
     ) -> Result<(), RpcError> {
         let network_context = &self.network_context;
         let peer_id = &self.remote_peer_id;

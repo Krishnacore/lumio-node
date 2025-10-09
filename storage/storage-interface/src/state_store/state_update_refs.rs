@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{metrics::TIMER, state_store::versioned_state_value::StateUpdateRef};
-use aptos_logger::{sample, sample::SampleRate, warn};
-use aptos_metrics_core::TimerHelper;
-use aptos_types::{
+use lumio_logger::{sample, sample::SampleRate, warn};
+use lumio_metrics_core::TimerHelper;
+use lumio_types::{
     state_store::{state_key::StateKey, NUM_STATE_SHARDS},
     transaction::Version,
     write_set::{BaseStateOp, WriteSet},
@@ -293,7 +293,7 @@ impl<'kv> StateUpdateRefs<'kv> {
 #[cfg(test)]
 mod tests {
     use super::{BatchedStateUpdateRefs, StateUpdateRefs};
-    use aptos_types::{
+    use lumio_types::{
         state_store::{state_key::StateKey, state_value::StateValueMetadata},
         transaction::Version,
         write_set::{WriteOp, WriteSet, WriteSetMut},

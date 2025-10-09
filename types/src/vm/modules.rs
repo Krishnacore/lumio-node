@@ -9,7 +9,7 @@ use move_vm_types::{
 };
 
 /// Additional data stored alongside deserialized or verified modules.
-pub struct AptosModuleExtension {
+pub struct LumioModuleExtension {
     /// Serialized representation of the module.
     bytes: Bytes,
     /// Module's hash.
@@ -19,7 +19,7 @@ pub struct AptosModuleExtension {
     state_value_metadata: StateValueMetadata,
 }
 
-impl AptosModuleExtension {
+impl LumioModuleExtension {
     /// Creates new extension based on [StateValue].
     pub fn new(state_value: StateValue) -> Self {
         let (state_value_metadata, bytes) = state_value.unpack();
@@ -37,13 +37,13 @@ impl AptosModuleExtension {
     }
 }
 
-impl WithBytes for AptosModuleExtension {
+impl WithBytes for LumioModuleExtension {
     fn bytes(&self) -> &Bytes {
         &self.bytes
     }
 }
 
-impl WithHash for AptosModuleExtension {
+impl WithHash for LumioModuleExtension {
     fn hash(&self) -> &[u8; 32] {
         &self.hash
     }

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::transaction::Version;
-use aptos_crypto::HashValue;
+use lumio_crypto::HashValue;
 
 /// Specifies the kind of transactions for the block executor.
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]

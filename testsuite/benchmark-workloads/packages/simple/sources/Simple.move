@@ -6,10 +6,10 @@ module 0xABCD::simple {
     use std::signer;
     use std::string::{Self, String, utf8};
     use std::vector;
-    use aptos_framework::event::{Self, EventHandle};
-    use aptos_framework::account;
-    use aptos_framework::code;
-    use aptos_std::table::{Self, Table};
+    use lumio_framework::event::{Self, EventHandle};
+    use lumio_framework::account;
+    use lumio_framework::code;
+    use lumio_std::table::{Self, Table};
 
     // Through the constant pool it will be possible to change this
     // constant to be as big or as small as desired.

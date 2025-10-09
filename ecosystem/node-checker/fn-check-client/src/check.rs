@@ -6,9 +6,9 @@
 //! VFN information on chain or PFN information from a file, and has converted
 //! it into a common format that these functions can ingest.
 
-use aptos_logger::{debug, info};
-use aptos_node_checker_lib::CheckSummary;
-use aptos_sdk::{
+use lumio_logger::{debug, info};
+use lumio_node_checker_lib::CheckSummary;
+use lumio_sdk::{
     crypto::{x25519, ValidCryptoMaterialStringExt},
     types::account_address::AccountAddress,
 };

@@ -1,0 +1,10 @@
+[package]
+name = "aggregator_examples"
+version = "0.0.0"
+
+[addresses]
+aggregator_examples = "0xCAFE"
+
+[dependencies]
+LumioStdlib = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-stdlib", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }

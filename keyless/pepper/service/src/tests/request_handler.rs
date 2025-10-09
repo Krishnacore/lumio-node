@@ -12,8 +12,8 @@ use crate::{
     },
     tests::utils,
 };
-use aptos_infallible::Mutex;
-use aptos_types::jwks::rsa::SECURE_TEST_RSA_JWK;
+use lumio_infallible::Mutex;
+use lumio_types::jwks::rsa::SECURE_TEST_RSA_JWK;
 use hyper::{
     header::{
         ACCESS_CONTROL_ALLOW_HEADERS, ACCESS_CONTROL_ALLOW_METHODS, ACCESS_CONTROL_ALLOW_ORIGIN,

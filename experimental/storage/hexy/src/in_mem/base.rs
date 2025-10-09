@@ -3,9 +3,9 @@
 
 use crate::{metrics::TIMER, NodePosition, ARITY};
 use anyhow::{ensure, Result};
-use aptos_crypto::{hash::HOT_STATE_PLACE_HOLDER_HASH, HashValue};
-use aptos_experimental_layered_map::LayeredMap;
-use aptos_metrics_core::TimerHelper;
+use lumio_crypto::{hash::HOT_STATE_PLACE_HOLDER_HASH, HashValue};
+use lumio_experimental_layered_map::LayeredMap;
+use lumio_metrics_core::TimerHelper;
 use std::{
     cell::UnsafeCell,
     sync::{atomic, atomic::Ordering},

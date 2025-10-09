@@ -9,11 +9,11 @@ use crate::{
         types::{BatchRequest, BatchResponse, PersistedValue},
     },
 };
-use aptos_crypto::HashValue;
-use aptos_executor_types::*;
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_types::{transaction::SignedTransaction, validator_verifier::ValidatorVerifier, PeerId};
+use lumio_crypto::HashValue;
+use lumio_executor_types::*;
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_types::{transaction::SignedTransaction, validator_verifier::ValidatorVerifier, PeerId};
 use futures::{stream::FuturesUnordered, StreamExt};
 use rand::Rng;
 use std::{collections::BTreeSet, sync::Arc, time::Duration};

@@ -303,2223 +303,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos"
-version = "7.8.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-backup-cli",
- "aptos-bitvec",
- "aptos-build-info",
- "aptos-cached-packages",
- "aptos-cli-common",
- "aptos-config",
- "aptos-crypto",
- "aptos-faucet-core",
- "aptos-framework",
- "aptos-gas-profiling",
- "aptos-gas-schedule",
- "aptos-genesis",
- "aptos-github-client",
- "aptos-global-constants",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-processor-sdk",
- "aptos-keygen",
- "aptos-ledger",
- "aptos-localnet",
- "aptos-logger",
- "aptos-move-debugger",
- "aptos-network-checker",
- "aptos-node",
- "aptos-rest-client",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-telemetry",
- "aptos-temppath",
- "aptos-transaction-simulation",
- "aptos-transaction-simulation-session",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-genesis",
- "aptos-vm-logging",
- "aptos-vm-types",
- "aptos-workspace-server",
- "async-trait",
- "backoff",
- "base64 0.13.1",
- "bcs 0.1.4",
- "bollard",
- "chrono",
- "clap 4.5.21",
- "clap_complete",
- "colored",
- "dashmap 7.0.0-rc2",
- "diesel",
- "diesel-async",
- "dirs 5.0.1",
- "futures",
- "hex",
- "indoc",
- "itertools 0.13.0",
- "legacy-move-compiler",
- "maplit",
- "move-asm",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-cli",
- "move-command-line-common",
- "move-compiler-v2",
- "move-core-types",
- "move-coverage",
- "move-decompiler",
- "move-disassembler",
- "move-ir-types",
- "move-linter",
- "move-model",
- "move-package",
- "move-prover-boogie-backend",
- "move-symbol-pool",
- "move-unit-test",
- "move-vm-runtime",
- "open",
- "pathsearch",
- "poem",
- "processor",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.23",
- "self_update",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "set_env",
- "shadow-rs",
- "tempfile",
- "thiserror",
- "tikv-jemallocator",
- "tokio",
- "toml 0.7.8",
- "tracing",
- "tracing-subscriber 0.3.18",
- "url",
-]
-
-[[package]]
-name = "aptos-abstract-gas-usage"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-gas-schedule",
- "aptos-vm-types",
- "move-binary-format",
-]
-
-[[package]]
-name = "aptos-accumulator"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-types",
- "proptest",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-admin-service"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-consensus",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-logger",
- "aptos-mempool",
- "aptos-runtimes",
- "aptos-storage-interface",
- "aptos-system-utils 0.1.0",
- "aptos-types",
- "bcs 0.1.4",
- "futures-channel",
- "http 0.2.11",
- "hyper 0.14.28",
- "sha256",
- "tikv-jemalloc-ctl",
- "tikv-jemalloc-sys",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-aggregator"
-version = "0.1.0"
-dependencies = [
- "aptos-types",
- "bcs 0.1.4",
- "claims",
- "move-binary-format",
- "move-core-types",
- "move-vm-types",
- "once_cell",
- "test-case",
-]
-
-[[package]]
-name = "aptos-api"
-version = "0.2.0"
-dependencies = [
- "anyhow",
- "aptos-api-test-context",
- "aptos-api-types",
- "aptos-bcs-utils",
- "aptos-build-info",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-meter",
- "aptos-gas-schedule",
- "aptos-global-constants",
- "aptos-logger",
- "aptos-mempool",
- "aptos-metrics-core",
- "aptos-move-stdlib",
- "aptos-proptest-helpers",
- "aptos-runtimes",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-transaction-filters",
- "aptos-types",
- "aptos-vm",
- "bcs 0.1.4",
- "bytes",
- "fail",
- "futures",
- "hex",
- "itertools 0.13.0",
- "mime",
- "mini-moka",
- "move-core-types",
- "move-package",
- "num_cpus",
- "once_cell",
- "passkey-types",
- "paste",
- "percent-encoding",
- "poem",
- "poem-openapi",
- "proptest",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.23",
- "rstest",
- "serde",
- "serde_json",
- "tokio",
- "warp",
-]
-
-[[package]]
-name = "aptos-api-test-context"
-version = "0.2.0"
-dependencies = [
- "aptos-api",
- "aptos-api-types",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor",
- "aptos-executor-types",
- "aptos-framework",
- "aptos-genesis",
- "aptos-indexer-grpc-table-info",
- "aptos-mempool",
- "aptos-mempool-notifications",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-logging",
- "aptos-vm-validator",
- "bcs 0.1.4",
- "bytes",
- "goldenfile",
- "hyper 0.14.28",
- "rand 0.7.3",
- "regex",
- "serde_json",
- "tokio",
- "warp",
- "warp-reverse-proxy",
-]
-
-[[package]]
-name = "aptos-api-tester"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-cached-packages",
- "aptos-framework",
- "aptos-logger",
- "aptos-push-metrics",
- "aptos-rest-client",
- "aptos-sdk",
- "aptos-types",
- "futures",
- "move-core-types",
- "once_cell",
- "prometheus",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-api-types"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-crypto",
- "aptos-logger",
- "aptos-openapi",
- "aptos-resource-viewer",
- "aptos-storage-interface",
- "aptos-types",
- "aptos-vm",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "hex",
- "indoc",
- "move-binary-format",
- "move-core-types",
- "once_cell",
- "poem",
- "poem-openapi",
- "poem-openapi-derive",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "aptos-backup-cli"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-backup-service",
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-db-indexer-schemas",
- "aptos-executor",
- "aptos-executor-test-helpers",
- "aptos-executor-types",
- "aptos-indexer-grpc-table-info",
- "aptos-infallible",
- "aptos-jellyfish-merkle",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-proptest-helpers",
- "aptos-push-metrics",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "clap 4.5.21",
- "csv",
- "futures",
- "itertools 0.13.0",
- "move-binary-format",
- "move-bytecode-verifier",
- "num_cpus",
- "once_cell",
- "pin-project 1.1.3",
- "proptest",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror",
- "tokio",
- "tokio-io-timeout",
- "tokio-stream",
- "tokio-util 0.7.10",
- "warp",
-]
-
-[[package]]
-name = "aptos-backup-service"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-runtimes",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "bcs 0.1.4",
- "bytes",
- "hyper 0.14.28",
- "once_cell",
- "reqwest 0.11.23",
- "serde",
- "tokio",
- "tokio-stream",
- "warp",
-]
-
-[[package]]
-name = "aptos-bcs-utils"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "hex",
-]
-
-[[package]]
-name = "aptos-bitvec"
-version = "0.1.0"
-dependencies = [
- "bcs 0.1.4",
- "proptest",
- "proptest-derive",
- "serde",
- "serde_bytes",
- "serde_json",
-]
-
-[[package]]
-name = "aptos-block-executor"
-version = "0.1.0"
-dependencies = [
- "ambassador",
- "anyhow",
- "aptos-aggregator",
- "aptos-crypto",
- "aptos-drop-helper",
- "aptos-gas-schedule",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-mvhashmap",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "arc-swap",
- "bcs 0.1.4",
- "bytes",
- "cfg-if",
- "claims",
- "concurrent-queue",
- "criterion",
- "crossbeam",
- "derivative",
- "fail",
- "hashbrown 0.14.3",
- "itertools 0.13.0",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "num_cpus",
- "once_cell",
- "parking_lot 0.12.1",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "test-case",
-]
-
-[[package]]
-name = "aptos-block-partitioner"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "criterion",
- "dashmap 7.0.0-rc2",
- "itertools 0.13.0",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
- "rayon",
- "serde",
- "tikv-jemallocator",
-]
-
-[[package]]
-name = "aptos-bounded-executor"
-version = "0.1.0"
-dependencies = [
- "futures",
- "rustversion",
- "tokio",
-]
-
-[[package]]
-name = "aptos-build-info"
-version = "0.1.0"
-dependencies = [
- "shadow-rs",
-]
-
-[[package]]
-name = "aptos-cached-packages"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-framework",
- "aptos-package-builder",
- "aptos-types",
- "bcs 0.1.4",
- "move-core-types",
- "once_cell",
- "proptest",
- "proptest-derive",
-]
-
-[[package]]
-name = "aptos-cargo-cli"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "camino",
- "chrono",
- "clap 4.5.21",
- "clap-verbosity-flag",
- "determinator",
- "env_logger",
- "guppy",
- "log",
- "reqwest 0.11.23",
- "url",
-]
-
-[[package]]
-name = "aptos-channels"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-infallible",
- "aptos-metrics-core",
- "aptos-types",
- "futures",
- "tokio",
-]
-
-[[package]]
-name = "aptos-cli-common"
-version = "1.0.0"
-dependencies = [
- "anstyle",
- "clap 4.5.21",
- "clap_complete",
-]
-
-[[package]]
-name = "aptos-collections"
-version = "0.1.0"
-
-[[package]]
-name = "aptos-comparison-testing"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-block-executor",
- "aptos-framework",
- "aptos-language-e2e-tests",
- "aptos-rest-client",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-validator-interface",
- "aptos-vm",
- "bcs 0.1.4",
- "clap 4.5.21",
- "futures",
- "itertools 0.13.0",
- "legacy-move-compiler",
- "move-binary-format",
- "move-core-types",
- "move-model",
- "move-package",
- "rocksdb",
- "serde",
- "tempfile",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-compression"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-types",
- "bcs 0.1.4",
- "lz4",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-config"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-global-constants",
- "aptos-logger",
- "aptos-secure-storage",
- "aptos-short-hex-str",
- "aptos-temppath",
- "aptos-transaction-filters",
- "aptos-types",
- "arr_macro",
- "bcs 0.1.4",
- "byteorder",
- "cfg-if",
- "get_if_addrs",
- "maplit",
- "num_cpus",
- "poem-openapi",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "serde_merge",
- "serde_yaml 0.8.26",
- "strum 0.27.1",
- "strum_macros 0.27.1",
- "tempfile",
- "thiserror",
- "url",
-]
-
-[[package]]
-name = "aptos-consensus"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bitvec",
- "aptos-bounded-executor",
- "aptos-cached-packages",
- "aptos-channels",
- "aptos-collections",
- "aptos-config",
- "aptos-consensus-notifications",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-dkg",
- "aptos-enum-conversion-derive",
- "aptos-event-notifications",
- "aptos-executor",
- "aptos-executor-test-helpers",
- "aptos-executor-types",
- "aptos-experimental-runtimes",
- "aptos-fallible",
- "aptos-infallible",
- "aptos-keygen",
- "aptos-logger",
- "aptos-mempool",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-peer-monitoring-service-types",
- "aptos-reliable-broadcast",
- "aptos-runtimes",
- "aptos-safety-rules",
- "aptos-schemadb",
- "aptos-secure-storage",
- "aptos-short-hex-str",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-transaction-filters",
- "aptos-types",
- "aptos-validator-transaction-pool",
- "aptos-vm",
- "aptos-vm-validator",
- "async-trait",
- "bcs 0.1.4",
- "byteorder",
- "bytes",
- "chrono",
- "claims",
- "clap 4.5.21",
- "dashmap 7.0.0-rc2",
- "enum_dispatch",
- "fail",
- "futures",
- "futures-channel",
- "hex",
- "itertools 0.13.0",
- "lru",
- "maplit",
- "mini-moka",
- "mirai-annotations",
- "mockall 0.11.4",
- "move-core-types",
- "move-vm-runtime",
- "num-derive",
- "num-traits",
- "once_cell",
- "ordered-float 3.9.2",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "scopeguard",
- "serde",
- "serde_bytes",
- "serde_json",
- "sha3 0.9.1",
- "strum 0.27.1",
- "strum_macros 0.27.1",
- "tempfile",
- "thiserror",
- "tokio",
- "tokio-retry",
- "tokio-stream",
-]
-
-[[package]]
-name = "aptos-consensus-notifications"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-runtimes",
- "aptos-types",
- "async-trait",
- "claims",
- "futures",
- "move-core-types",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-consensus-types"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bitvec",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-executor-types",
- "aptos-infallible",
- "aptos-logger",
- "aptos-short-hex-str",
- "aptos-types",
- "bcs 0.1.4",
- "derivative",
- "fail",
- "futures",
- "itertools 0.13.0",
- "mini-moka",
- "mirai-annotations",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rayon",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-crash-handler"
-version = "0.1.0"
-dependencies = [
- "aptos-logger",
- "backtrace",
- "move-core-types",
- "serde",
- "toml 0.7.8",
-]
-
-[[package]]
-name = "aptos-crypto"
-version = "0.0.3"
-dependencies = [
- "aes-gcm",
- "anyhow",
- "aptos-crypto-derive",
- "arbitrary",
- "ark-bls12-381",
- "ark-bn254",
- "ark-ec",
- "ark-ff",
- "ark-groth16",
- "ark-serialize",
- "ark-std",
- "base64 0.13.1",
- "bcs 0.1.4",
- "bitvec 1.0.1",
- "blake2",
- "blake2-rfc",
- "blst",
- "bulletproofs",
- "byteorder",
- "bytes",
- "criterion",
- "curve25519-dalek 3.2.0",
- "curve25519-dalek-ng",
- "digest 0.9.0",
- "ed25519-dalek 1.0.1",
- "ff",
- "hex",
- "hkdf 0.10.0",
- "libsecp256k1",
- "merlin",
- "more-asserts",
- "neptune",
- "num-bigint 0.3.3",
- "num-integer",
- "once_cell",
- "p256",
- "poseidon-ark",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "ring 0.16.20",
- "serde",
- "serde-name",
- "serde_bytes",
- "serde_json",
- "sha2 0.10.8",
- "sha2 0.9.9",
- "sha3 0.9.1",
- "signature 2.2.0",
- "static_assertions",
- "thiserror",
- "tiny-keccak",
- "trybuild",
- "typenum",
- "x25519-dalek",
-]
-
-[[package]]
-name = "aptos-crypto-derive"
-version = "0.0.3"
-dependencies = [
- "anyhow",
- "proc-macro2",
- "quote",
- "syn 1.0.109",
-]
-
-[[package]]
-name = "aptos-data-client"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-peer-monitoring-service-types",
- "aptos-storage-interface",
- "aptos-storage-service-client",
- "aptos-storage-service-server",
- "aptos-storage-service-types",
- "aptos-time-service",
- "aptos-types",
- "arc-swap",
- "async-trait",
- "bcs 0.1.4",
- "claims",
- "dashmap 7.0.0-rc2",
- "futures",
- "itertools 0.13.0",
- "maplit",
- "mockall 0.11.4",
- "ordered-float 3.9.2",
- "rand 0.8.5",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-data-streaming-service"
-version = "0.1.0"
-dependencies = [
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-data-client",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-storage-service-types",
- "aptos-time-service",
- "aptos-types",
- "arc-swap",
- "async-trait",
- "claims",
- "enum_dispatch",
- "futures",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror",
- "tokio",
- "tokio-stream",
-]
-
-[[package]]
-name = "aptos-db"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-accumulator",
- "aptos-block-executor",
- "aptos-config",
- "aptos-crypto",
- "aptos-db-indexer",
- "aptos-db-indexer-schemas",
- "aptos-executor-types",
- "aptos-experimental-runtimes",
- "aptos-infallible",
- "aptos-jellyfish-merkle",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-proptest-helpers",
- "aptos-resource-viewer",
- "aptos-rocksdb-options",
- "aptos-schemadb",
- "aptos-scratchpad",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "arc-swap",
- "arr_macro",
- "bcs 0.1.4",
- "byteorder",
- "claims",
- "clap 4.5.21",
- "crossbeam-channel",
- "dashmap 7.0.0-rc2",
- "either",
- "hex",
- "indicatif 0.15.0",
- "itertools 0.13.0",
- "lru",
- "move-core-types",
- "once_cell",
- "ouroboros",
- "owo-colors",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "serde",
- "static_assertions",
- "status-line",
- "tokio",
-]
-
-[[package]]
-name = "aptos-db-indexer"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-db-indexer-schemas",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-proptest-helpers",
- "aptos-resource-viewer",
- "aptos-rocksdb-options",
- "aptos-schemadb",
- "aptos-storage-interface",
- "aptos-types",
- "bcs 0.1.4",
- "bytes",
- "dashmap 7.0.0-rc2",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-db-indexer-schemas"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-proptest-helpers",
- "aptos-schemadb",
- "aptos-storage-interface",
- "aptos-types",
- "bcs 0.1.4",
- "byteorder",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "serde",
-]
-
-[[package]]
-name = "aptos-db-tool"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-backup-cli",
- "aptos-backup-service",
- "aptos-block-executor",
- "aptos-config",
- "aptos-db",
- "aptos-db-indexer",
- "aptos-executor",
- "aptos-executor-test-helpers",
- "aptos-executor-types",
- "aptos-indexer-grpc-table-info",
- "aptos-logger",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "bcs 0.1.4",
- "clap 4.5.21",
- "itertools 0.13.0",
- "rayon",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-debugger"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-consensus",
- "aptos-db-tool",
- "aptos-logger",
- "aptos-move-debugger",
- "aptos-push-metrics",
- "clap 4.5.21",
- "tikv-jemallocator",
- "tokio",
-]
-
-[[package]]
-name = "aptos-dkg"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-runtimes",
- "bcs 0.1.4",
- "blst",
- "blstrs",
- "criterion",
- "ff",
- "group",
- "hex",
- "merlin",
- "more-asserts",
- "num-bigint 0.3.3",
- "num-integer",
- "num-traits",
- "num_cpus",
- "once_cell",
- "pairing",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "rayon",
- "serde",
- "serde_bytes",
- "sha3 0.9.1",
- "static_assertions",
-]
-
-[[package]]
-name = "aptos-dkg-runtime"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bounded-executor",
- "aptos-channels",
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-enum-conversion-derive",
- "aptos-event-notifications",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-reliable-broadcast",
- "aptos-runtimes",
- "aptos-safety-rules",
- "aptos-time-service",
- "aptos-types",
- "aptos-validator-transaction-pool",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "fail",
- "futures",
- "futures-channel",
- "futures-util",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "tokio",
- "tokio-retry",
-]
-
-[[package]]
-name = "aptos-drop-helper"
-version = "0.1.0"
-dependencies = [
- "aptos-infallible",
- "aptos-metrics-core",
- "once_cell",
- "rayon",
- "threadpool",
-]
-
-[[package]]
-name = "aptos-dynamic-transaction-composer"
-version = "0.1.4"
-dependencies = [
- "anyhow",
- "aptos-types",
- "bcs 0.1.4",
- "e2e-move-tests",
- "getrandom 0.2.11",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-core-types",
- "serde",
- "serde_bytes",
- "wasm-bindgen",
- "wasm-bindgen-futures",
-]
-
-[[package]]
-name = "aptos-enum-conversion-derive"
-version = "0.0.3"
-dependencies = [
- "anyhow",
- "quote",
- "syn 1.0.109",
- "trybuild",
-]
-
-[[package]]
-name = "aptos-event-notifications"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-channels",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor-test-helpers",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
- "bcs 0.1.4",
- "claims",
- "futures",
- "move-binary-format",
- "move-core-types",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-executor"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-block-executor",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-db",
- "aptos-db-indexer",
- "aptos-drop-helper",
- "aptos-executor-service",
- "aptos-executor-test-helpers",
- "aptos-executor-types",
- "aptos-experimental-runtimes",
- "aptos-indexer-grpc-table-info",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
- "arr_macro",
- "bcs 0.1.4",
- "bytes",
- "criterion",
- "fail",
- "itertools 0.13.0",
- "move-core-types",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rayon",
- "serde",
-]
-
-[[package]]
-name = "aptos-executor-benchmark"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-aggregator",
- "aptos-block-executor",
- "aptos-block-partitioner",
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor",
- "aptos-executor-service",
- "aptos-executor-types",
- "aptos-experimental-ptx-executor",
- "aptos-experimental-runtimes",
- "aptos-genesis",
- "aptos-infallible",
- "aptos-jellyfish-merkle",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-mvhashmap",
- "aptos-node-resource-metrics",
- "aptos-profiler 0.1.0",
- "aptos-push-metrics",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "chrono",
- "clap 4.5.21",
- "dashmap 7.0.0-rc2",
- "derivative",
- "indicatif 0.15.0",
- "itertools 0.13.0",
- "move-core-types",
- "move-vm-types",
- "num_cpus",
- "once_cell",
- "rand 0.7.3",
- "rayon",
- "serde",
- "thread_local",
- "tikv-jemallocator",
- "tokio",
- "toml 0.7.8",
-]
-
-[[package]]
-name = "aptos-executor-service"
-version = "0.1.0"
-dependencies = [
- "aptos-block-executor",
- "aptos-block-partitioner",
- "aptos-config",
- "aptos-infallible",
- "aptos-keygen",
- "aptos-language-e2e-tests",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-node-resource-metrics",
- "aptos-push-metrics",
- "aptos-secure-net",
- "aptos-storage-interface",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "bcs 0.1.4",
- "clap 4.5.21",
- "crossbeam-channel",
- "ctrlc",
- "dashmap 7.0.0-rc2",
- "itertools 0.13.0",
- "num_cpus",
- "once_cell",
- "rayon",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-executor-test-helpers"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor",
- "aptos-executor-types",
- "aptos-sdk",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
- "move-core-types",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-executor-types"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-drop-helper",
- "aptos-infallible",
- "aptos-metrics-core",
- "aptos-scratchpad",
- "aptos-secure-net",
- "aptos-storage-interface",
- "aptos-types",
- "bcs 0.1.4",
- "criterion",
- "derive_more 0.99.17",
- "itertools 0.13.0",
- "once_cell",
- "ouroboros",
- "rayon",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-experimental-bulk-txn-submit"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-logger",
- "aptos-sdk",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-generator-lib",
- "bcs 0.1.4",
- "chrono",
- "clap 4.5.21",
- "futures",
- "rand 0.7.3",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-experimental-hexy"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-experimental-layered-map",
- "aptos-infallible",
- "aptos-metrics-core",
- "criterion",
- "itertools 0.13.0",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "tikv-jemallocator",
-]
-
-[[package]]
-name = "aptos-experimental-layered-map"
-version = "0.1.0"
-dependencies = [
- "ahash 0.8.11",
- "anyhow",
- "aptos-crypto",
- "aptos-drop-helper",
- "aptos-infallible",
- "aptos-metrics-core",
- "aptos-schemadb",
- "aptos-temppath",
- "bitvec 1.0.1",
- "criterion",
- "itertools 0.13.0",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rocksdb",
- "tikv-jemallocator",
-]
-
-[[package]]
-name = "aptos-experimental-ptx-executor"
-version = "0.1.0"
-dependencies = [
- "aptos-block-executor",
- "aptos-experimental-runtimes",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "hashbrown 0.14.3",
- "move-core-types",
- "once_cell",
- "rayon",
-]
-
-[[package]]
-name = "aptos-experimental-runtimes"
-version = "0.1.0"
-dependencies = [
- "aptos-runtimes",
- "core_affinity",
- "libc",
- "num_cpus",
- "once_cell",
- "rayon",
-]
-
-[[package]]
-name = "aptos-fallible"
-version = "0.1.0"
-dependencies = [
- "thiserror",
-]
-
-[[package]]
-name = "aptos-faucet-cli"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-faucet-core",
- "aptos-logger",
- "aptos-sdk",
- "clap 4.5.21",
- "tokio",
-]
-
-[[package]]
-name = "aptos-faucet-core"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-faucet-metrics-server",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-sdk",
- "async-trait",
- "captcha",
- "clap 4.5.21",
- "deadpool-redis",
- "enum_dispatch",
- "firebase-token",
- "futures",
- "hex",
- "ipnet",
- "iprange",
- "lru",
- "once_cell",
- "poem",
- "poem-openapi",
- "rand 0.7.3",
- "redis",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "tokio",
-]
-
-[[package]]
-name = "aptos-faucet-metrics-server"
-version = "2.0.0"
-dependencies = [
- "anyhow",
- "aptos-logger",
- "aptos-metrics-core",
- "once_cell",
- "poem",
- "prometheus",
- "serde",
-]
-
-[[package]]
-name = "aptos-faucet-service"
-version = "2.0.1"
-dependencies = [
- "anyhow",
- "aptos-faucet-core",
- "aptos-logger",
- "clap 4.5.21",
- "tokio",
-]
-
-[[package]]
-name = "aptos-fn-check-client"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-logger",
- "aptos-node-checker",
- "aptos-sdk",
- "clap 4.5.21",
- "env_logger",
- "futures",
- "gcp-bigquery-client",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-forge"
-version = "0.0.0"
-dependencies = [
- "again",
- "anyhow",
- "aptos",
- "aptos-cached-packages",
- "aptos-cli-common",
- "aptos-config",
- "aptos-db",
- "aptos-framework",
- "aptos-genesis",
- "aptos-global-constants",
- "aptos-infallible",
- "aptos-inspection-service",
- "aptos-logger",
- "aptos-rest-client",
- "aptos-retrier",
- "aptos-runtimes",
- "aptos-sdk",
- "aptos-short-hex-str",
- "aptos-state-sync-driver",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
- "async-trait",
- "chrono",
- "clap 4.5.21",
- "either",
- "futures",
- "hex",
- "hyper 0.14.28",
- "itertools 0.13.0",
- "json-patch",
- "k8s-openapi",
- "kube",
- "log",
- "num_cpus",
- "once_cell",
- "prometheus-http-query",
- "quick-junit",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "serde_merge",
- "serde_yaml 0.8.26",
- "sugars",
- "tempfile",
- "termcolor",
- "thiserror",
- "tokio",
- "url",
- "uuid 1.11.0",
-]
-
-[[package]]
-name = "aptos-forge-cli"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-forge",
- "aptos-global-constants",
- "aptos-logger",
- "aptos-rest-client",
- "aptos-sdk",
- "aptos-testcases",
- "async-trait",
- "chrono",
- "clap 4.5.21",
- "env_logger",
- "futures",
- "once_cell",
- "rand 0.7.3",
- "random_word",
- "reqwest 0.11.23",
- "serde_json",
- "serde_yaml 0.8.26",
- "sugars",
- "tikv-jemallocator",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-framework"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-aggregator",
- "aptos-crypto",
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-gas-schedule",
- "aptos-move-stdlib",
- "aptos-native-interface",
- "aptos-sdk-builder",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-types",
- "ark-bls12-381",
- "ark-bn254",
- "ark-ec",
- "ark-ff",
- "ark-serialize",
- "ark-std",
- "bcs 0.1.4",
- "better_any",
- "blake2-rfc",
- "bulletproofs",
- "byteorder",
- "claims",
- "clap 4.5.21",
- "codespan-reporting",
- "curve25519-dalek-ng",
- "either",
- "flate2",
- "hex",
- "itertools 0.13.0",
- "legacy-move-compiler",
- "libsecp256k1",
- "log",
- "merlin",
- "move-binary-format",
- "move-cli",
- "move-command-line-common",
- "move-compiler-v2",
- "move-core-types",
- "move-docgen",
- "move-model",
- "move-package",
- "move-prover",
- "move-prover-boogie-backend",
- "move-prover-bytecode-pipeline",
- "move-prover-lab",
- "move-stackless-bytecode",
- "move-unit-test",
- "move-vm-runtime",
- "move-vm-types",
- "num-traits",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "ripemd",
- "serde",
- "serde_bytes",
- "sha2 0.10.8",
- "sha2 0.9.9",
- "sha3 0.9.1",
- "siphasher",
- "smallvec",
- "tempfile",
- "tiny-keccak",
- "toml 0.7.8",
-]
-
-[[package]]
-name = "aptos-gas-algebra"
-version = "0.0.1"
-dependencies = [
- "either",
- "move-core-types",
-]
-
-[[package]]
-name = "aptos-gas-calibration"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-abstract-gas-usage",
- "aptos-cached-packages",
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-language-e2e-tests",
- "aptos-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "float-cmp",
- "move-binary-format",
- "move-core-types",
- "move-ir-compiler",
- "nalgebra",
- "walkdir",
-]
-
-[[package]]
-name = "aptos-gas-meter"
-version = "0.1.0"
-dependencies = [
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-logger",
- "aptos-types",
- "aptos-vm-types",
- "move-binary-format",
- "move-core-types",
- "move-vm-types",
-]
-
-[[package]]
-name = "aptos-gas-profiling"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-gas-schedule",
- "aptos-types",
- "aptos-vm-types",
- "handlebars",
- "inferno",
- "move-binary-format",
- "move-core-types",
- "move-vm-types",
- "regex",
- "serde_json",
- "smallvec",
-]
-
-[[package]]
-name = "aptos-gas-schedule"
-version = "0.1.0"
-dependencies = [
- "aptos-gas-algebra",
- "aptos-global-constants",
- "move-core-types",
- "move-vm-types",
- "paste",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-gas-schedule-updator"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-framework",
- "aptos-gas-schedule",
- "aptos-package-builder",
- "aptos-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "move-core-types",
- "move-model",
- "tempfile",
-]
-
-[[package]]
-name = "aptos-genesis"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor",
- "aptos-framework",
- "aptos-keygen",
- "aptos-logger",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
- "bcs 0.1.4",
- "rand 0.7.3",
- "serde",
- "serde_yaml 0.8.26",
-]
-
-[[package]]
-name = "aptos-github-client"
-version = "0.1.0"
-dependencies = [
- "aptos-proxy",
- "base64 0.13.1",
- "serde",
- "serde_json",
- "thiserror",
- "ureq",
-]
-
-[[package]]
-name = "aptos-global-constants"
-version = "0.1.0"
-
-[[package]]
-name = "aptos-id-generator"
-version = "0.1.0"
-
-[[package]]
-name = "aptos-indexer"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-api-test-context",
- "aptos-api-types",
- "aptos-bitvec",
- "aptos-config",
- "aptos-logger",
- "aptos-mempool",
- "aptos-metrics-core",
- "aptos-runtimes",
- "aptos-storage-interface",
- "aptos-types",
- "async-trait",
- "bcs 0.1.4",
- "bigdecimal",
- "chrono",
- "diesel",
- "diesel_migrations",
- "field_count",
- "futures",
- "hex",
- "once_cell",
- "serde",
- "serde_json",
- "sha2 0.9.9",
- "tokio",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-cache-worker"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
- "aptos-protos 1.3.1",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "futures-core",
- "once_cell",
- "prost 0.13.4",
- "redis",
- "reqwest 0.11.23",
- "serde",
- "tempfile",
- "tikv-jemallocator",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-data-service"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
- "aptos-protos 1.3.1",
- "aptos-transaction-filter 0.1.0",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "once_cell",
- "prost 0.13.4",
- "redis",
- "rstest",
- "serde",
- "serde_json",
- "tikv-jemallocator",
- "tokio",
- "tokio-stream",
- "tonic 0.12.3",
- "tonic-reflection",
- "tracing",
- "uuid 1.11.0",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-data-service-v2"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "aptos-protos 1.3.1",
- "aptos-transaction-filter 0.1.0",
- "async-trait",
- "build_html",
- "clap 4.5.21",
- "dashmap 7.0.0-rc2",
- "futures",
- "once_cell",
- "prost 0.13.4",
- "rand 0.7.3",
- "serde",
- "tikv-jemallocator",
- "tokio",
- "tokio-scoped",
- "tokio-stream",
- "tonic 0.12.3",
- "tonic-reflection",
- "tracing",
- "uuid 1.11.0",
- "warp",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-file-checker"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "async-trait",
- "clap 4.5.21",
- "cloud-storage",
- "once_cell",
- "serde",
- "serde_json",
- "tikv-jemallocator",
- "tokio",
- "tracing",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-file-store"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "once_cell",
- "redis",
- "serde",
- "tikv-jemallocator",
- "tokio",
- "tracing",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-file-store-backfiller"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-protos 1.3.1",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "serde",
- "serde_json",
- "tikv-jemallocator",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-fullnode"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-api-test-context",
- "aptos-api-types",
- "aptos-bitvec",
- "aptos-config",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor",
- "aptos-executor-types",
- "aptos-framework",
- "aptos-genesis",
- "aptos-global-constants",
- "aptos-indexer-grpc-utils",
- "aptos-logger",
- "aptos-mempool",
- "aptos-mempool-notifications",
- "aptos-metrics-core",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
- "aptos-proptest-helpers",
- "aptos-protos 1.3.1",
- "aptos-runtimes",
- "aptos-sdk",
- "aptos-secure-storage",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-validator",
- "bcs 0.1.4",
- "bytes",
- "chrono",
- "futures",
- "goldenfile",
- "hex",
- "hyper 0.14.28",
- "itertools 0.13.0",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
- "regex",
- "serde",
- "serde_json",
- "tokio",
- "tokio-stream",
- "tonic 0.12.3",
- "tonic-reflection",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-in-memory-cache-benchmark"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-utils",
- "aptos-protos 1.3.1",
- "futures",
- "lazy_static",
- "once_cell",
- "redis",
- "redis-test",
- "tikv-jemallocator",
- "tokio",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-manager"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-metrics-core",
- "aptos-protos 1.3.1",
- "async-trait",
- "build_html",
- "clap 4.5.21",
- "dashmap 7.0.0-rc2",
- "futures",
- "once_cell",
- "prost 0.13.4",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "tikv-jemallocator",
- "tokio",
- "tokio-scoped",
- "tonic 0.12.3",
- "tracing",
- "warp",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-server-framework"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-metrics-core",
- "aptos-system-utils 0.1.0",
- "async-trait",
- "backtrace",
- "clap 4.5.21",
- "figment",
- "prometheus",
- "serde",
- "tempfile",
- "tokio",
- "toml 0.7.8",
- "tracing",
- "tracing-subscriber 0.3.18",
- "warp",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-table-info"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-api-types",
- "aptos-config",
- "aptos-db-indexer",
- "aptos-indexer-grpc-fullnode",
- "aptos-indexer-grpc-utils",
- "aptos-logger",
- "aptos-mempool",
- "aptos-metrics-core",
- "aptos-runtimes",
- "aptos-storage-interface",
- "aptos-types",
- "flate2",
- "futures",
- "google-cloud-storage",
- "hyper 0.14.28",
- "itertools 0.13.0",
- "once_cell",
- "rocksdb",
- "serde",
- "serde_json",
- "tar",
- "tempfile",
- "tokio",
- "tokio-stream",
- "tokio-util 0.7.10",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-utils"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-metrics-core",
- "aptos-protos 1.3.1",
- "aptos-transaction-filter 0.1.0",
- "async-trait",
- "backoff",
- "base64 0.13.1",
- "build_html",
- "bytesize",
- "chrono",
- "cloud-storage",
- "dashmap 7.0.0-rc2",
- "futures",
- "itertools 0.13.0",
- "lz4",
- "once_cell",
- "prometheus",
- "prost 0.13.4",
- "redis",
- "redis-test",
- "ripemd",
- "serde",
- "serde_json",
- "tokio",
- "tokio-util 0.7.10",
- "tonic 0.12.3",
- "tracing",
- "url",
- "warp",
-]
-
-[[package]]
-name = "aptos-indexer-grpc-v2-file-store-backfiller"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-indexer-grpc-utils",
- "aptos-protos 1.3.1",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "serde",
- "serde_json",
- "tikv-jemallocator",
- "tokio",
- "tokio-scoped",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
 name = "aptos-indexer-processor-sdk"
 version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
@@ -2527,8 +310,8 @@ dependencies = [
  "ahash 0.8.11",
  "anyhow",
  "aptos-indexer-transaction-stream",
- "aptos-protos 1.3.1 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
- "aptos-system-utils 0.1.0 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
+ "aptos-protos",
+ "aptos-system-utils",
  "async-trait",
  "autometrics",
  "axum 0.7.5",
@@ -2572,47 +355,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-indexer-test-transactions"
-version = "1.0.0"
-dependencies = [
- "aptos-protos 1.3.1",
- "serde_json",
-]
-
-[[package]]
-name = "aptos-indexer-transaction-generator"
-version = "1.0.0"
-dependencies = [
- "anyhow",
- "aptos",
- "aptos-config",
- "aptos-faucet-core",
- "aptos-indexer-grpc-utils",
- "aptos-protos 1.3.1",
- "clap 4.5.21",
- "futures",
- "itertools 0.13.0",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "tempfile",
- "tokio",
- "tokio-stream",
- "toml 0.7.8",
- "tonic 0.12.3",
- "url",
-]
-
-[[package]]
 name = "aptos-indexer-transaction-stream"
 version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
 dependencies = [
  "anyhow",
  "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2)",
- "aptos-protos 1.3.1 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
- "aptos-transaction-filter 0.1.0 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
+ "aptos-protos",
+ "aptos-transaction-filter",
  "chrono",
  "futures-util",
  "once_cell",
@@ -2624,500 +374,6 @@ dependencies = [
  "tonic 0.12.3",
  "tracing",
  "url",
-]
-
-[[package]]
-name = "aptos-infallible"
-version = "0.1.0"
-
-[[package]]
-name = "aptos-inspection-service"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-build-info",
- "aptos-config",
- "aptos-data-client",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-runtimes",
- "aptos-storage-interface",
- "aptos-storage-service-client",
- "aptos-telemetry",
- "aptos-time-service",
- "assert_approx_eq",
- "futures",
- "hyper 0.14.28",
- "once_cell",
- "prometheus",
- "reqwest 0.11.23",
- "rusty-fork",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-jellyfish-merkle"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-db",
- "aptos-experimental-runtimes",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-storage-interface",
- "aptos-types",
- "arr_macro",
- "bcs 0.1.4",
- "byteorder",
- "itertools 0.13.0",
- "num-derive",
- "num-traits",
- "once_cell",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-jwk-consensus"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bitvec",
- "aptos-bounded-executor",
- "aptos-channels",
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-enum-conversion-derive",
- "aptos-event-notifications",
- "aptos-infallible",
- "aptos-jwk-utils",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-reliable-broadcast",
- "aptos-runtimes",
- "aptos-safety-rules",
- "aptos-time-service",
- "aptos-types",
- "aptos-validator-transaction-pool",
- "async-trait",
- "bytes",
- "futures",
- "futures-channel",
- "futures-util",
- "move-core-types",
- "once_cell",
- "serde",
- "tokio",
- "tokio-retry",
-]
-
-[[package]]
-name = "aptos-jwk-utils"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-types",
- "http 0.2.11",
- "move-core-types",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-keygen"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-types",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-keyless-pepper-common"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-dkg",
- "aptos-types",
- "ark-bls12-381",
- "ark-ec",
- "ark-ff",
- "ark-serialize",
- "ark-std",
- "bcs 0.1.4",
- "blstrs",
- "derivation-path",
- "ed25519-dalek 1.0.1",
- "hex",
- "hmac 0.12.1",
- "jsonwebtoken 8.3.0",
- "once_cell",
- "rand 0.7.3",
- "regex",
- "serde",
- "serde-big-array",
- "sha2 0.10.8",
-]
-
-[[package]]
-name = "aptos-keyless-pepper-example-client-rust"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-infallible",
- "aptos-keyless-pepper-common",
- "aptos-types",
- "ark-bls12-381",
- "ark-serialize",
- "bcs 0.1.4",
- "clap 4.5.21",
- "firestore",
- "hex",
- "rand 0.7.3",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
-name = "aptos-keyless-pepper-service"
-version = "0.1.0"
-dependencies = [
- "aes-gcm",
- "anyhow",
- "aptos-build-info",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-inspection-service",
- "aptos-keyless-pepper-common",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-types",
- "ark-bls12-381",
- "ark-bn254",
- "ark-ec",
- "ark-ff",
- "ark-groth16",
- "ark-serialize",
- "bcs 0.1.4",
- "firestore",
- "hex",
- "hyper 0.14.28",
- "jsonwebtoken 8.3.0",
- "jwt",
- "once_cell",
- "rand 0.7.3",
- "regex",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "sha3 0.9.1",
- "thiserror",
- "tokio",
- "uuid 1.11.0",
-]
-
-[[package]]
-name = "aptos-language-e2e-tests"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-abstract-gas-usage",
- "aptos-bitvec",
- "aptos-block-executor",
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-gas-profiling",
- "aptos-gas-schedule",
- "aptos-keygen",
- "aptos-proptest-helpers",
- "aptos-rest-client",
- "aptos-temppath",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-validator-interface",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-genesis",
- "aptos-vm-logging",
- "aptos-vm-types",
- "bcs 0.1.4",
- "bytes",
- "goldenfile",
- "move-binary-format",
- "move-command-line-common",
- "move-core-types",
- "move-ir-compiler",
- "move-model",
- "move-vm-runtime",
- "move-vm-types",
- "num_cpus",
- "once_cell",
- "petgraph 0.5.1",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "serde",
-]
-
-[[package]]
-name = "aptos-ledger"
-version = "0.2.0"
-dependencies = [
- "aptos-crypto",
- "aptos-types",
- "hex",
- "ledger-apdu",
- "ledger-transport-hid",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-localnet"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-indexer-grpc-utils",
- "aptos-protos 1.3.1",
- "aptos-rest-client",
- "bollard",
- "diesel",
- "diesel-async",
- "dirs 5.0.1",
- "futures",
- "processor",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "version-compare",
-]
-
-[[package]]
-name = "aptos-log-derive"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
-]
-
-[[package]]
-name = "aptos-logger"
-version = "0.1.0"
-dependencies = [
- "aptos-infallible",
- "aptos-log-derive",
- "aptos-node-identity",
- "backtrace",
- "chrono",
- "console-subscriber",
- "erased-serde",
- "futures",
- "hostname",
- "once_cell",
- "pretty_assertions",
- "prometheus",
- "serde",
- "serde_json",
- "strum 0.27.1",
- "strum_macros 0.27.1",
- "tokio",
- "tracing",
- "tracing-subscriber 0.3.18",
-]
-
-[[package]]
-name = "aptos-memory-usage-tracker"
-version = "0.1.0"
-dependencies = [
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-types",
- "move-binary-format",
- "move-core-types",
- "move-vm-types",
-]
-
-[[package]]
-name = "aptos-mempool"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bounded-executor",
- "aptos-channels",
- "aptos-compression",
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-event-notifications",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-logger",
- "aptos-mempool-notifications",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-peer-monitoring-service-types",
- "aptos-runtimes",
- "aptos-short-hex-str",
- "aptos-storage-interface",
- "aptos-time-service",
- "aptos-transaction-filters",
- "aptos-types",
- "aptos-vm-validator",
- "bcs 0.1.4",
- "enum_dispatch",
- "fail",
- "futures",
- "itertools 0.13.0",
- "maplit",
- "num_cpus",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rayon",
- "serde",
- "thiserror",
- "tokio",
- "tokio-stream",
-]
-
-[[package]]
-name = "aptos-mempool-notifications"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-types",
- "async-trait",
- "claims",
- "futures",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-memsocket"
-version = "0.1.0"
-dependencies = [
- "aptos-infallible",
- "bytes",
- "futures",
- "once_cell",
-]
-
-[[package]]
-name = "aptos-metrics-core"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "claims",
- "once_cell",
- "paste",
- "prometheus",
-]
-
-[[package]]
-name = "aptos-move-debugger"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-block-executor",
- "aptos-consensus",
- "aptos-crypto",
- "aptos-gas-profiling",
- "aptos-logger",
- "aptos-rest-client",
- "aptos-types",
- "aptos-validator-interface",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "itertools 0.13.0",
- "regex",
- "reqwest 0.11.23",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-move-e2e-benchmark"
-version = "0.1.0"
-dependencies = [
- "aptos-language-e2e-tests",
- "aptos-logger",
- "aptos-transaction-generator-lib",
- "aptos-transaction-workloads-lib",
- "aptos-types",
- "clap 4.5.21",
- "rand 0.7.3",
- "serde_json",
-]
-
-[[package]]
-name = "aptos-move-examples"
-version = "0.1.0"
-dependencies = [
- "aptos-framework",
- "aptos-gas-schedule",
- "aptos-types",
- "aptos-vm",
- "clap 4.5.21",
- "move-cli",
- "move-model",
- "move-package",
- "move-prover",
- "move-unit-test",
- "move-vm-runtime",
- "tempfile",
-]
-
-[[package]]
-name = "aptos-move-stdlib"
-version = "0.1.1"
-dependencies = [
- "aptos-gas-schedule",
- "aptos-native-interface",
- "aptos-types",
- "bcs 0.1.4",
- "dir-diff",
- "file_diff",
- "move-cli",
- "move-core-types",
- "move-package",
- "move-unit-test",
- "move-vm-runtime",
- "move-vm-types",
- "sha2 0.9.9",
- "sha3 0.9.1",
- "smallvec",
- "tempfile",
 ]
 
 [[package]]
@@ -3137,487 +393,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-mvhashmap"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-aggregator",
- "aptos-infallible",
- "aptos-types",
- "aptos-vm-types",
- "bytes",
- "claims",
- "concurrent-queue",
- "crossbeam",
- "dashmap 7.0.0-rc2",
- "equivalent",
- "fail",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "num_cpus",
- "proptest",
- "proptest-derive",
- "rayon",
- "serde",
- "test-case",
-]
-
-[[package]]
-name = "aptos-native-interface"
-version = "0.1.0"
-dependencies = [
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-types",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "smallvec",
-]
-
-[[package]]
-name = "aptos-netcore"
-version = "0.1.0"
-dependencies = [
- "aptos-memsocket",
- "aptos-proxy",
- "aptos-types",
- "bytes",
- "futures",
- "pin-project 1.1.3",
- "serde",
- "tokio",
- "tokio-util 0.7.10",
- "url",
-]
-
-[[package]]
-name = "aptos-network"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bitvec",
- "aptos-channels",
- "aptos-compression",
- "aptos-config",
- "aptos-crypto",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-logger",
- "aptos-memsocket",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-num-variants",
- "aptos-peer-monitoring-service-types",
- "aptos-proptest-helpers",
- "aptos-short-hex-str",
- "aptos-time-service",
- "aptos-types",
- "arc-swap",
- "async-trait",
- "bcs 0.1.4",
- "bytes",
- "futures",
- "futures-util",
- "hex",
- "itertools 0.13.0",
- "maplit",
- "once_cell",
- "ordered-float 3.9.2",
- "pin-project 1.1.3",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rand 0.8.5",
- "rand_core 0.5.1",
- "serde",
- "serde_bytes",
- "serde_json",
- "thiserror",
- "tokio",
- "tokio-retry",
- "tokio-stream",
- "tokio-util 0.7.10",
-]
-
-[[package]]
-name = "aptos-network-benchmark"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-time-service",
- "aptos-types",
- "async-channel 1.9.0",
- "bytes",
- "futures",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "tokio",
-]
-
-[[package]]
-name = "aptos-network-builder"
-version = "0.1.0"
-dependencies = [
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-event-notifications",
- "aptos-logger",
- "aptos-netcore",
- "aptos-network",
- "aptos-network-discovery",
- "aptos-time-service",
- "aptos-types",
- "bcs 0.1.4",
- "futures",
- "maplit",
- "rand 0.7.3",
- "serde",
- "tokio",
-]
-
-[[package]]
-name = "aptos-network-checker"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-crypto",
- "aptos-logger",
- "aptos-network",
- "aptos-types",
- "clap 4.5.21",
- "futures",
- "serde",
- "tokio",
-]
-
-[[package]]
-name = "aptos-network-discovery"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-event-notifications",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-rest-client",
- "aptos-short-hex-str",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-types",
- "bcs 0.1.4",
- "futures",
- "once_cell",
- "rand 0.7.3",
- "serde_yaml 0.8.26",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-nft-metadata-crawler"
-version = "0.1.0"
-dependencies = [
- "ahash 0.8.11",
- "anyhow",
- "aptos-indexer-grpc-server-framework",
- "aptos-metrics-core",
- "async-trait",
- "axum 0.7.5",
- "backoff",
- "bytes",
- "chrono",
- "clap 4.5.21",
- "diesel",
- "diesel_migrations",
- "enum_dispatch",
- "field_count",
- "futures",
- "google-cloud-storage",
- "image",
- "once_cell",
- "rayon",
- "regex",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "sha256",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-node"
-version = "1.36.3"
-dependencies = [
- "anyhow",
- "aptos-admin-service",
- "aptos-api",
- "aptos-backup-service",
- "aptos-build-info",
- "aptos-cached-packages",
- "aptos-channels",
- "aptos-config",
- "aptos-consensus",
- "aptos-consensus-notifications",
- "aptos-crash-handler",
- "aptos-crypto",
- "aptos-data-client",
- "aptos-data-streaming-service",
- "aptos-db",
- "aptos-db-indexer",
- "aptos-dkg-runtime",
- "aptos-event-notifications",
- "aptos-executor",
- "aptos-framework",
- "aptos-genesis",
- "aptos-indexer",
- "aptos-indexer-grpc-fullnode",
- "aptos-indexer-grpc-table-info",
- "aptos-infallible",
- "aptos-inspection-service",
- "aptos-jwk-consensus",
- "aptos-logger",
- "aptos-mempool",
- "aptos-mempool-notifications",
- "aptos-network",
- "aptos-network-benchmark",
- "aptos-network-builder",
- "aptos-node-identity",
- "aptos-peer-monitoring-service-client",
- "aptos-peer-monitoring-service-server",
- "aptos-peer-monitoring-service-types",
- "aptos-runtimes",
- "aptos-state-sync-driver",
- "aptos-storage-interface",
- "aptos-storage-service-client",
- "aptos-storage-service-notifications",
- "aptos-storage-service-server",
- "aptos-storage-service-types",
- "aptos-telemetry",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-types",
- "aptos-validator-transaction-pool",
- "aptos-vm",
- "aptos-vm-environment",
- "bcs 0.1.4",
- "clap 4.5.21",
- "either",
- "fail",
- "futures",
- "hex",
- "num_cpus",
- "rand 0.7.3",
- "rayon",
- "rlimit",
- "rstack-self",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "tikv-jemallocator",
- "tokio",
- "ureq",
- "url",
-]
-
-[[package]]
-name = "aptos-node-checker"
-version = "0.1.1"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-crypto",
- "aptos-logger",
- "aptos-network-checker",
- "aptos-rest-client",
- "aptos-sdk",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-workloads-lib",
- "async-trait",
- "clap 4.5.21",
- "futures",
- "once_cell",
- "poem",
- "poem-openapi",
- "prometheus-parse",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-node-identity"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-types",
- "claims",
- "once_cell",
-]
-
-[[package]]
-name = "aptos-node-resource-metrics"
-version = "0.1.0"
-dependencies = [
- "aptos-build-info",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "cfg-if",
- "once_cell",
- "procfs",
- "prometheus",
- "rlimit",
- "sysinfo",
-]
-
-[[package]]
-name = "aptos-num-variants"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
-]
-
-[[package]]
-name = "aptos-openapi"
-version = "0.1.0"
-dependencies = [
- "percent-encoding",
- "poem",
- "poem-openapi",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "aptos-openapi-spec-generator"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-config",
- "aptos-mempool",
- "aptos-storage-interface",
- "aptos-types",
- "clap 4.5.21",
-]
-
-[[package]]
-name = "aptos-package-builder"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-framework",
- "itertools 0.13.0",
- "move-command-line-common",
- "move-package",
- "tempfile",
-]
-
-[[package]]
-name = "aptos-peer-monitoring-service-client"
-version = "0.1.0"
-dependencies = [
- "aptos-build-info",
- "aptos-channels",
- "aptos-config",
- "aptos-id-generator",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-peer-monitoring-service-server",
- "aptos-peer-monitoring-service-types",
- "aptos-time-service",
- "aptos-types",
- "bcs 0.1.4",
- "enum_dispatch",
- "futures",
- "maplit",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tokio-stream",
-]
-
-[[package]]
-name = "aptos-peer-monitoring-service-server"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bounded-executor",
- "aptos-build-info",
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-peer-monitoring-service-types",
- "aptos-storage-interface",
- "aptos-time-service",
- "aptos-types",
- "bcs 0.1.4",
- "bytes",
- "claims",
- "futures",
- "maplit",
- "mockall 0.11.4",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-peer-monitoring-service-types"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-types",
- "bcs 0.1.4",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-profiler"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "pprof",
- "regex",
- "tikv-jemalloc-sys",
-]
-
-[[package]]
 name = "aptos-profiler"
 version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
@@ -3631,25 +406,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-proptest-helpers"
-version = "0.1.0"
-dependencies = [
- "crossbeam",
- "proptest",
- "proptest-derive",
-]
-
-[[package]]
-name = "aptos-protos"
-version = "1.3.1"
-dependencies = [
- "pbjson",
- "prost 0.13.4",
- "serde",
- "tonic 0.12.3",
-]
-
-[[package]]
 name = "aptos-protos"
 version = "1.3.1"
 source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
@@ -3661,586 +417,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-proxy"
-version = "0.1.0"
-dependencies = [
- "ipnet",
-]
-
-[[package]]
-name = "aptos-push-metrics"
-version = "0.1.0"
-dependencies = [
- "aptos-logger",
- "aptos-metrics-core",
- "rand 0.7.3",
- "ureq",
- "url",
-]
-
-[[package]]
-name = "aptos-rate-limiter"
-version = "0.1.0"
-dependencies = [
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "futures",
- "pin-project 1.1.3",
- "tokio",
- "tokio-util 0.7.10",
-]
-
-[[package]]
-name = "aptos-release-builder"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos",
- "aptos-build-info",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-profiling",
- "aptos-gas-schedule",
- "aptos-gas-schedule-updator",
- "aptos-genesis",
- "aptos-infallible",
- "aptos-keygen",
- "aptos-language-e2e-tests",
- "aptos-move-debugger",
- "aptos-rest-client",
- "aptos-temppath",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "futures",
- "git2 0.16.1",
- "handlebars",
- "hex",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-core-types",
- "move-model",
- "move-vm-runtime",
- "move-vm-types",
- "once_cell",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "sha3 0.9.1",
- "strum 0.27.1",
- "strum_macros 0.27.1",
- "tokio",
- "url",
- "walkdir",
-]
-
-[[package]]
-name = "aptos-reliable-broadcast"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bounded-executor",
- "aptos-consensus-types",
- "aptos-enum-conversion-derive",
- "aptos-infallible",
- "aptos-logger",
- "aptos-time-service",
- "aptos-types",
- "async-trait",
- "bytes",
- "claims",
- "futures",
- "futures-channel",
- "tokio",
- "tokio-retry",
-]
-
-[[package]]
-name = "aptos-replay-benchmark"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-block-executor",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-schedule",
- "aptos-logger",
- "aptos-move-debugger",
- "aptos-push-metrics",
- "aptos-rest-client",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "bcs 0.1.4",
- "claims",
- "clap 4.5.21",
- "colored",
- "move-core-types",
- "parking_lot 0.12.1",
- "rand 0.7.3",
- "serde",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-resource-viewer"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "move-binary-format",
- "move-bytecode-utils",
- "move-core-types",
- "move-resource-viewer",
-]
-
-[[package]]
-name = "aptos-rest-client"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-logger",
- "aptos-types",
- "bcs 0.1.4",
- "bytes",
- "clap 4.5.21",
- "hex",
- "move-core-types",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-retrier"
-version = "0.1.0"
-dependencies = [
- "aptos-logger",
- "tokio",
-]
-
-[[package]]
-name = "aptos-rocksdb-options"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "rocksdb",
-]
-
-[[package]]
-name = "aptos-rosetta"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-crypto",
- "aptos-global-constants",
- "aptos-logger",
- "aptos-node",
- "aptos-rest-client",
- "aptos-runtimes",
- "aptos-sdk",
- "aptos-types",
- "aptos-warp-webserver",
- "bcs 0.1.4",
- "clap 4.5.21",
- "futures",
- "hex",
- "itertools 0.13.0",
- "move-core-types",
- "once_cell",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
- "url",
- "warp",
-]
-
-[[package]]
-name = "aptos-rosetta-cli"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos",
- "aptos-logger",
- "aptos-rosetta",
- "aptos-types",
- "clap 4.5.21",
- "serde",
- "serde_json",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-runtimes"
-version = "0.1.0"
-dependencies = [
- "rayon",
- "tokio",
-]
-
-[[package]]
-name = "aptos-safety-rules"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-global-constants",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-proptest-helpers",
- "aptos-secure-net",
- "aptos-secure-storage",
- "aptos-types",
- "aptos-vault-client",
- "claims",
- "criterion",
- "hex",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rusty-fork",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-schemadb"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-drop-helper",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-storage-interface",
- "aptos-temppath",
- "byteorder",
- "dunce",
- "proptest",
- "rand 0.7.3",
- "rocksdb",
-]
-
-[[package]]
-name = "aptos-scratchpad"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-drop-helper",
- "aptos-infallible",
- "aptos-metrics-core",
- "aptos-types",
- "aptos-vm",
- "bitvec 1.0.1",
- "criterion",
- "dashmap 7.0.0-rc2",
- "itertools 0.13.0",
- "once_cell",
- "proptest",
- "rand 0.7.3",
- "rayon",
- "thiserror",
- "tikv-jemallocator",
-]
-
-[[package]]
-name = "aptos-sdk"
-version = "0.0.3"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-global-constants",
- "aptos-ledger",
- "aptos-rest-client",
- "aptos-types",
- "base64 0.13.1",
- "bcs 0.1.4",
- "ed25519-dalek-bip32",
- "hex",
- "lazy_static",
- "move-core-types",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tiny-bip39",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-sdk-builder"
-version = "0.2.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-framework",
- "aptos-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "heck 0.4.1",
- "move-core-types",
- "once_cell",
- "serde-generate",
- "serde-reflection",
- "serde_yaml 0.8.26",
- "tempfile",
- "textwrap 0.15.2",
- "which",
-]
-
-[[package]]
-name = "aptos-secure-net"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-protos 1.3.1",
- "bcs 0.1.4",
- "crossbeam-channel",
- "once_cell",
- "serde",
- "thiserror",
- "tokio",
- "tonic 0.12.3",
- "tonic-reflection",
-]
-
-[[package]]
-name = "aptos-secure-storage"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-infallible",
- "aptos-logger",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-vault-client",
- "base64 0.13.1",
- "bcs 0.1.4",
- "chrono",
- "enum_dispatch",
- "rand 0.7.3",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-short-hex-str"
-version = "0.1.0"
-dependencies = [
- "hex",
- "mirai-annotations",
- "proptest",
- "serde",
- "static_assertions",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-speculative-state-helper"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-infallible",
- "claims",
- "crossbeam",
- "parking_lot 0.12.1",
- "proptest",
- "proptest-derive",
- "rayon",
-]
-
-[[package]]
-name = "aptos-state-sync-driver"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-channels",
- "aptos-config",
- "aptos-consensus-notifications",
- "aptos-crypto",
- "aptos-data-client",
- "aptos-data-streaming-service",
- "aptos-db",
- "aptos-event-notifications",
- "aptos-executor",
- "aptos-executor-test-helpers",
- "aptos-executor-types",
- "aptos-genesis",
- "aptos-infallible",
- "aptos-logger",
- "aptos-mempool-notifications",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-runtimes",
- "aptos-schemadb",
- "aptos-storage-interface",
- "aptos-storage-service-client",
- "aptos-storage-service-notifications",
- "aptos-storage-service-types",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
- "async-trait",
- "bcs 0.1.4",
- "claims",
- "futures",
- "mockall 0.11.4",
- "move-core-types",
- "ntest",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror",
- "tokio",
- "tokio-stream",
-]
-
-[[package]]
-name = "aptos-storage-interface"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-experimental-layered-map",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-scratchpad",
- "aptos-secure-net",
- "aptos-types",
- "arr_macro",
- "bcs 0.1.4",
- "bytes",
- "dashmap 7.0.0-rc2",
- "derive_more 0.99.17",
- "itertools 0.13.0",
- "lru",
- "once_cell",
- "parking_lot 0.12.1",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "rayon",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-storage-service-client"
-version = "0.1.0"
-dependencies = [
- "aptos-config",
- "aptos-network",
- "aptos-storage-service-types",
- "thiserror",
-]
-
-[[package]]
-name = "aptos-storage-service-notifications"
-version = "0.1.0"
-dependencies = [
- "aptos-channels",
- "aptos-crypto",
- "async-trait",
- "claims",
- "futures",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-storage-service-server"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-bitvec",
- "aptos-channels",
- "aptos-config",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-netcore",
- "aptos-network",
- "aptos-storage-interface",
- "aptos-storage-service-notifications",
- "aptos-storage-service-types",
- "aptos-time-service",
- "aptos-types",
- "arc-swap",
- "bcs 0.1.4",
- "bytes",
- "claims",
- "dashmap 7.0.0-rc2",
- "futures",
- "itertools 0.13.0",
- "maplit",
- "mini-moka",
- "mockall 0.11.4",
- "once_cell",
- "rand 0.7.3",
- "serde",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "aptos-storage-service-types"
-version = "0.1.0"
-dependencies = [
- "aptos-compression",
- "aptos-config",
- "aptos-crypto",
- "aptos-time-service",
- "aptos-types",
- "bcs 0.1.4",
- "claims",
- "num-traits",
- "proptest",
- "rand 0.7.3",
- "serde",
- "thiserror",
-]
-
-[[package]]
 name = "aptos-system-utils"
 version = "0.1.0"
+source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
 dependencies = [
  "anyhow",
- "aptos-profiler 0.1.0",
+ "aptos-profiler",
  "async-mutex",
  "http 0.2.11",
  "hyper 0.14.28",
@@ -4255,269 +437,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-system-utils"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
-dependencies = [
- "anyhow",
- "aptos-profiler 0.1.0 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
- "async-mutex",
- "http 0.2.11",
- "hyper 0.14.28",
- "lazy_static",
- "mime",
- "pprof",
- "regex",
- "rstack-self",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-table-natives"
-version = "0.1.0"
-dependencies = [
- "aptos-gas-schedule",
- "aptos-native-interface",
- "better_any",
- "bytes",
- "move-binary-format",
- "move-core-types",
- "move-table-extension",
- "move-vm-runtime",
- "move-vm-types",
- "sha3 0.9.1",
- "smallvec",
-]
-
-[[package]]
-name = "aptos-telemetry"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api",
- "aptos-config",
- "aptos-consensus",
- "aptos-crypto",
- "aptos-db",
- "aptos-infallible",
- "aptos-logger",
- "aptos-mempool",
- "aptos-metrics-core",
- "aptos-network",
- "aptos-node-resource-metrics",
- "aptos-runtimes",
- "aptos-state-sync-driver",
- "aptos-telemetry-service",
- "aptos-types",
- "flate2",
- "futures",
- "httpmock",
- "once_cell",
- "prometheus",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.23",
- "reqwest-middleware",
- "reqwest-retry",
- "serde_json",
- "sysinfo",
- "tokio",
- "tokio-stream",
- "url",
- "uuid 1.11.0",
-]
-
-[[package]]
-name = "aptos-telemetry-service"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-config",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-rest-client",
- "aptos-types",
- "base64 0.13.1",
- "bcs 0.1.4",
- "chrono",
- "claims",
- "clap 4.5.21",
- "debug-ignore",
- "flate2",
- "futures",
- "gcp-bigquery-client",
- "httpmock",
- "jsonwebtoken 8.3.0",
- "once_cell",
- "prometheus",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.23",
- "reqwest-middleware",
- "reqwest-retry",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror",
- "tokio",
- "tracing",
- "url",
- "uuid 1.11.0",
- "warp",
-]
-
-[[package]]
-name = "aptos-temppath"
-version = "0.1.0"
-dependencies = [
- "hex",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-testcases"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos",
- "aptos-config",
- "aptos-forge",
- "aptos-global-constants",
- "aptos-keygen",
- "aptos-logger",
- "aptos-release-builder",
- "aptos-rest-client",
- "aptos-runtimes",
- "aptos-sdk",
- "aptos-temppath",
- "aptos-types",
- "assert_approx_eq",
- "async-trait",
- "bcs 0.1.4",
- "csv",
- "futures",
- "hex",
- "itertools 0.13.0",
- "log",
- "rand 0.7.3",
- "reqwest 0.11.23",
- "tokio",
-]
-
-[[package]]
-name = "aptos-time-service"
-version = "0.1.0"
-dependencies = [
- "aptos-infallible",
- "enum_dispatch",
- "futures",
- "pin-project 1.1.3",
- "thiserror",
- "tokio",
- "tokio-test",
-]
-
-[[package]]
-name = "aptos-transaction-benchmarks"
-version = "0.1.0"
-dependencies = [
- "aptos-bitvec",
- "aptos-block-executor",
- "aptos-block-partitioner",
- "aptos-crypto",
- "aptos-language-e2e-tests",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-node-resource-metrics",
- "aptos-push-metrics",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-logging",
- "clap 4.5.21",
- "criterion",
- "criterion-cpu-time",
- "num_cpus",
- "proptest",
-]
-
-[[package]]
-name = "aptos-transaction-emitter"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-global-constants",
- "aptos-logger",
- "aptos-sdk",
- "aptos-transaction-emitter-lib",
- "aptos-transaction-workloads-lib",
- "clap 4.5.21",
- "futures",
- "rand 0.7.3",
- "tokio",
-]
-
-[[package]]
-name = "aptos-transaction-emitter-lib"
-version = "0.0.0"
-dependencies = [
- "again",
- "anyhow",
- "aptos-config",
- "aptos-crypto",
- "aptos-global-constants",
- "aptos-infallible",
- "aptos-logger",
- "aptos-rest-client",
- "aptos-sdk",
- "aptos-transaction-generator-lib",
- "aptos-types",
- "async-trait",
- "base64 0.13.1",
- "clap 4.5.21",
- "futures",
- "hex",
- "itertools 0.13.0",
- "log",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "reqwest 0.11.23",
- "serde",
- "serde_json",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-transaction-filter"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-protos 1.3.1",
- "derivative",
- "derive_builder",
- "lz4",
- "memchr",
- "once_cell",
- "prost 0.13.4",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror",
-]
-
-[[package]]
 name = "aptos-transaction-filter"
 version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
 dependencies = [
  "anyhow",
- "aptos-protos 1.3.1 (git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686)",
+ "aptos-protos",
  "derivative",
  "derive_builder",
  "memchr",
@@ -4527,519 +452,6 @@ dependencies = [
  "serde_json",
  "serde_yaml 0.8.26",
  "thiserror",
-]
-
-[[package]]
-name = "aptos-transaction-filters"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-types",
- "move-core-types",
- "rand 0.7.3",
- "serde",
- "serde_yaml 0.8.26",
-]
-
-[[package]]
-name = "aptos-transaction-generator-lib"
-version = "0.0.0"
-dependencies = [
- "anyhow",
- "aptos-framework",
- "aptos-infallible",
- "aptos-logger",
- "aptos-sdk",
- "async-trait",
- "clap 4.5.21",
- "log",
- "move-binary-format",
- "move-core-types",
- "move-package",
- "once_cell",
- "rand 0.7.3",
- "serde",
-]
-
-[[package]]
-name = "aptos-transaction-simulation"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-crypto",
- "aptos-keygen",
- "aptos-types",
- "aptos-vm-genesis",
- "bcs 0.1.4",
- "bytes",
- "move-binary-format",
- "move-core-types",
- "once_cell",
- "parking_lot 0.12.1",
- "proptest",
- "serde",
-]
-
-[[package]]
-name = "aptos-transaction-simulation-session"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-resource-viewer",
- "aptos-rest-client",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-validator-interface",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "bcs 0.1.4",
- "hex",
- "move-core-types",
- "serde",
- "serde_json",
- "tempfile",
- "tokio",
- "url",
-]
-
-[[package]]
-name = "aptos-transaction-workloads-lib"
-version = "0.0.0"
-dependencies = [
- "aptos-framework",
- "aptos-sdk",
- "aptos-transaction-generator-lib",
- "async-trait",
- "clap 4.5.21",
- "move-binary-format",
- "once_cell",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "serde",
-]
-
-[[package]]
-name = "aptos-transactional-test-harness"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-block-executor",
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-schedule",
- "aptos-resource-viewer",
- "aptos-storage-interface",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-genesis",
- "aptos-vm-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "codespan-reporting",
- "datatest-stable",
- "hex",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-compiler-v2",
- "move-core-types",
- "move-model",
- "move-symbol-pool",
- "move-transactional-test-runner",
- "move-vm-runtime",
- "move-vm-types",
- "once_cell",
- "serde_json",
- "tempfile",
-]
-
-[[package]]
-name = "aptos-types"
-version = "0.0.3"
-dependencies = [
- "ahash 0.8.11",
- "anyhow",
- "aptos-bitvec",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-dkg",
- "aptos-infallible",
- "aptos-proptest-helpers",
- "arbitrary",
- "ark-bn254",
- "ark-ec",
- "ark-ff",
- "ark-groth16",
- "ark-relations",
- "ark-serialize",
- "ark-std",
- "async-trait",
- "base64 0.13.1",
- "bcs 0.1.4",
- "bytes",
- "chrono",
- "chrono-tz 0.10.1",
- "ciborium",
- "claims",
- "coset",
- "criterion",
- "dashmap 7.0.0-rc2",
- "derivative",
- "fixed",
- "fxhash",
- "hashbrown 0.14.3",
- "hex",
- "itertools 0.13.0",
- "jsonwebtoken 8.3.0",
- "lru",
- "move-binary-format",
- "move-core-types",
- "move-model",
- "move-table-extension",
- "move-vm-types",
- "num-bigint 0.3.3",
- "num-derive",
- "num-traits",
- "once_cell",
- "p256",
- "passkey-authenticator",
- "passkey-client",
- "passkey-types",
- "poem-openapi",
- "poem-openapi-derive",
- "proptest",
- "proptest-derive",
- "quick_cache",
- "rand 0.7.3",
- "rapidhash",
- "rayon",
- "ref-cast",
- "reqwest 0.11.23",
- "ring 0.16.20",
- "rsa 0.9.6",
- "serde",
- "serde-big-array",
- "serde_bytes",
- "serde_json",
- "serde_with",
- "serde_yaml 0.8.26",
- "strum 0.27.1",
- "strum_macros 0.27.1",
- "thiserror",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-validator-interface"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-config",
- "aptos-db",
- "aptos-framework",
- "aptos-rest-client",
- "aptos-storage-interface",
- "aptos-types",
- "async-recursion",
- "async-trait",
- "bcs 0.1.4",
- "lru",
- "move-core-types",
- "tokio",
-]
-
-[[package]]
-name = "aptos-validator-transaction-pool"
-version = "0.1.0"
-dependencies = [
- "aptos-channels",
- "aptos-crypto",
- "aptos-infallible",
- "aptos-types",
- "futures-util",
- "tokio",
-]
-
-[[package]]
-name = "aptos-vault-client"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-proptest-helpers",
- "aptos-types",
- "base64 0.13.1",
- "chrono",
- "native-tls",
- "once_cell",
- "proptest",
- "serde",
- "serde_json",
- "thiserror",
- "ureq",
-]
-
-[[package]]
-name = "aptos-vm"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-aggregator",
- "aptos-block-executor",
- "aptos-block-partitioner",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-experimental-runtimes",
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-meter",
- "aptos-gas-schedule",
- "aptos-keygen",
- "aptos-language-e2e-tests",
- "aptos-logger",
- "aptos-memory-usage-tracker",
- "aptos-metrics-core",
- "aptos-mvhashmap",
- "aptos-native-interface",
- "aptos-table-natives",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm-environment",
- "aptos-vm-logging",
- "aptos-vm-types",
- "ark-bn254",
- "ark-groth16",
- "bcs 0.1.4",
- "bytes",
- "claims",
- "crossbeam-channel",
- "derive_more 0.99.17",
- "fail",
- "futures",
- "hex",
- "itertools 0.13.0",
- "move-binary-format",
- "move-core-types",
- "move-unit-test",
- "move-vm-metrics",
- "move-vm-runtime",
- "move-vm-types",
- "num_cpus",
- "once_cell",
- "ouroboros",
- "parking_lot 0.12.1",
- "proptest",
- "rand 0.7.3",
- "rand_core 0.5.1",
- "rayon",
- "serde",
- "test-case",
-]
-
-[[package]]
-name = "aptos-vm-benchmarks"
-version = "0.1.0"
-dependencies = [
- "aptos-cached-packages",
- "aptos-framework",
- "aptos-language-e2e-tests",
- "aptos-types",
- "bcs 0.1.4",
- "clap 4.5.21",
- "move-binary-format",
- "move-core-types",
-]
-
-[[package]]
-name = "aptos-vm-environment"
-version = "0.0.1"
-dependencies = [
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-move-stdlib",
- "aptos-native-interface",
- "aptos-table-natives",
- "aptos-types",
- "aptos-vm-types",
- "bcs 0.1.4",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "once_cell",
- "serde",
- "sha3 0.9.1",
-]
-
-[[package]]
-name = "aptos-vm-genesis"
-version = "0.1.0"
-dependencies = [
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-schedule",
- "aptos-proptest-helpers",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-types",
- "bcs 0.1.4",
- "bytes",
- "claims",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "once_cell",
- "proptest",
- "proptest-derive",
- "rand 0.7.3",
- "serde",
-]
-
-[[package]]
-name = "aptos-vm-logging"
-version = "0.1.0"
-dependencies = [
- "aptos-crypto",
- "aptos-logger",
- "aptos-metrics-core",
- "aptos-speculative-state-helper",
- "aptos-types",
- "arc-swap",
- "once_cell",
- "serde",
-]
-
-[[package]]
-name = "aptos-vm-profiling"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-block-executor",
- "aptos-cached-packages",
- "aptos-gas-schedule",
- "aptos-move-stdlib",
- "aptos-native-interface",
- "aptos-table-natives",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "bcs 0.1.4",
- "clap 4.5.21",
- "glob",
- "move-binary-format",
- "move-core-types",
- "move-ir-compiler",
- "move-vm-runtime",
- "move-vm-test-utils",
- "move-vm-types",
- "once_cell",
- "smallvec",
-]
-
-[[package]]
-name = "aptos-vm-types"
-version = "0.0.1"
-dependencies = [
- "ambassador",
- "anyhow",
- "aptos-aggregator",
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "bcs 0.1.4",
- "bytes",
- "claims",
- "either",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "rand 0.7.3",
- "serde",
- "test-case",
-]
-
-[[package]]
-name = "aptos-vm-validator"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-db",
- "aptos-executor-test-helpers",
- "aptos-gas-schedule",
- "aptos-logger",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-genesis",
- "aptos-vm-logging",
- "fail",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
- "move-vm-types",
- "rand 0.7.3",
-]
-
-[[package]]
-name = "aptos-warp-webserver"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-api-types",
- "aptos-config",
- "aptos-logger",
- "bcs 0.1.4",
- "hyper 0.14.28",
- "serde",
- "serde_json",
- "warp",
-]
-
-[[package]]
-name = "aptos-workspace-server"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-faucet-core",
- "aptos-indexer-processor-sdk",
- "aptos-localnet",
- "aptos-node",
- "aptos-types",
- "bollard",
- "clap 4.5.21",
- "diesel",
- "diesel-async",
- "futures",
- "maplit",
- "processor",
- "rand 0.7.3",
- "tempfile",
- "tokio",
- "tokio-util 0.7.10",
- "url",
- "uuid 1.11.0",
 ]
 
 [[package]]
@@ -8150,25 +3562,25 @@ name = "e2e-move-tests"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-profiling",
- "aptos-gas-schedule",
- "aptos-language-e2e-tests",
- "aptos-package-builder",
- "aptos-rest-client",
- "aptos-transaction-generator-lib",
- "aptos-transaction-simulation",
- "aptos-transaction-workloads-lib",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
- "aptos-vm-types",
  "bcs 0.1.4",
  "claims",
  "hex",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-profiling",
+ "lumio-gas-schedule",
+ "lumio-language-e2e-tests",
+ "lumio-package-builder",
+ "lumio-rest-client",
+ "lumio-transaction-generator-lib",
+ "lumio-transaction-simulation",
+ "lumio-transaction-workloads-lib",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-types",
  "move-binary-format",
  "move-core-types",
  "move-model",
@@ -9295,9 +4707,6 @@ dependencies = [
 name = "fuzzer"
 version = "0.1.0"
 dependencies = [
- "aptos-framework",
- "aptos-language-e2e-tests",
- "aptos-types",
  "arbitrary",
  "base64 0.21.7",
  "bcs 0.1.4",
@@ -9305,6 +4714,9 @@ dependencies = [
  "csv",
  "dearbitrary",
  "hex",
+ "lumio-framework",
+ "lumio-language-e2e-tests",
+ "lumio-types",
  "move-binary-format",
  "move-core-types",
  "move-model",
@@ -9318,20 +4730,20 @@ dependencies = [
 name = "fuzzer-fuzz"
 version = "0.0.0"
 dependencies = [
- "aptos-cached-packages",
- "aptos-consensus",
- "aptos-crypto",
- "aptos-framework",
- "aptos-language-e2e-tests",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-environment",
  "arbitrary",
  "base64 0.13.1",
  "bcs 0.1.4",
  "fuzzer",
  "libfuzzer-sys",
+ "lumio-cached-packages",
+ "lumio-consensus",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-language-e2e-tests",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
  "move-binary-format",
  "move-bytecode-verifier",
  "move-core-types",
@@ -9414,16 +4826,16 @@ dependencies = [
 name = "generate-format"
 version = "0.1.0"
 dependencies = [
- "aptos-api-types",
- "aptos-config",
- "aptos-consensus",
- "aptos-consensus-types",
- "aptos-crypto",
- "aptos-crypto-derive",
- "aptos-network",
- "aptos-types",
  "bcs 0.1.4",
  "clap 4.5.21",
+ "lumio-api-types",
+ "lumio-config",
+ "lumio-consensus",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-network",
+ "lumio-types",
  "move-core-types",
  "rand 0.7.3",
  "serde",
@@ -11190,18 +6602,18 @@ dependencies = [
 name = "language-e2e-testsuite"
 version = "0.1.0"
 dependencies = [
- "aptos-cached-packages",
- "aptos-crypto",
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-language-e2e-tests",
- "aptos-logger",
- "aptos-transaction-simulation",
- "aptos-types",
- "aptos-vm",
- "aptos-vm-genesis",
  "claims",
  "fail",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-language-e2e-tests",
+ "lumio-logger",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
  "move-binary-format",
  "move-bytecode-verifier",
  "move-core-types",
@@ -11540,6 +6952,4594 @@ version = "0.16.0"
 source = "git+https://github.com/aptos-labs/lru-rs?rev=d16747e8b119c48315a1c76669f962456d06dfe7#d16747e8b119c48315a1c76669f962456d06dfe7"
 dependencies = [
  "hashbrown 0.15.3",
+]
+
+[[package]]
+name = "lumio"
+version = "7.8.0"
+dependencies = [
+ "anyhow",
+ "aptos-indexer-processor-sdk",
+ "async-trait",
+ "backoff",
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "bollard",
+ "chrono",
+ "clap 4.5.21",
+ "clap_complete",
+ "colored",
+ "dashmap 7.0.0-rc2",
+ "diesel",
+ "diesel-async",
+ "dirs 5.0.1",
+ "futures",
+ "hex",
+ "indoc",
+ "itertools 0.13.0",
+ "legacy-move-compiler",
+ "lumio-api-types",
+ "lumio-backup-cli",
+ "lumio-bitvec",
+ "lumio-build-info",
+ "lumio-cached-packages",
+ "lumio-cli-common",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-faucet-core",
+ "lumio-framework",
+ "lumio-gas-profiling",
+ "lumio-gas-schedule",
+ "lumio-genesis",
+ "lumio-github-client",
+ "lumio-global-constants",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-keygen",
+ "lumio-ledger",
+ "lumio-localnet",
+ "lumio-logger",
+ "lumio-move-debugger",
+ "lumio-network-checker",
+ "lumio-node",
+ "lumio-rest-client",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-telemetry",
+ "lumio-temppath",
+ "lumio-transaction-simulation",
+ "lumio-transaction-simulation-session",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-genesis",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "lumio-workspace-server",
+ "maplit",
+ "move-asm",
+ "move-binary-format",
+ "move-bytecode-source-map",
+ "move-cli",
+ "move-command-line-common",
+ "move-compiler-v2",
+ "move-core-types",
+ "move-coverage",
+ "move-decompiler",
+ "move-disassembler",
+ "move-ir-types",
+ "move-linter",
+ "move-model",
+ "move-package",
+ "move-prover-boogie-backend",
+ "move-symbol-pool",
+ "move-unit-test",
+ "move-vm-runtime",
+ "open",
+ "pathsearch",
+ "poem",
+ "processor",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.23",
+ "self_update",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "set_env",
+ "shadow-rs",
+ "tempfile",
+ "thiserror",
+ "tikv-jemallocator",
+ "tokio",
+ "toml 0.7.8",
+ "tracing",
+ "tracing-subscriber 0.3.18",
+ "url",
+]
+
+[[package]]
+name = "lumio-abstract-gas-usage"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-gas-schedule",
+ "lumio-vm-types",
+ "move-binary-format",
+]
+
+[[package]]
+name = "lumio-accumulator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "lumio-crypto",
+ "lumio-types",
+ "proptest",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-admin-service"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "futures-channel",
+ "http 0.2.11",
+ "hyper 0.14.28",
+ "lumio-config",
+ "lumio-consensus",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-runtimes",
+ "lumio-storage-interface",
+ "lumio-system-utils",
+ "lumio-types",
+ "sha256",
+ "tikv-jemalloc-ctl",
+ "tikv-jemalloc-sys",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-aggregator"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "claims",
+ "lumio-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-types",
+ "once_cell",
+ "test-case",
+]
+
+[[package]]
+name = "lumio-api"
+version = "0.2.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "fail",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "lumio-api-test-context",
+ "lumio-api-types",
+ "lumio-bcs-utils",
+ "lumio-build-info",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-meter",
+ "lumio-gas-schedule",
+ "lumio-global-constants",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-metrics-core",
+ "lumio-move-stdlib",
+ "lumio-proptest-helpers",
+ "lumio-runtimes",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-transaction-filters",
+ "lumio-types",
+ "lumio-vm",
+ "mime",
+ "mini-moka",
+ "move-core-types",
+ "move-package",
+ "num_cpus",
+ "once_cell",
+ "passkey-types",
+ "paste",
+ "percent-encoding",
+ "poem",
+ "poem-openapi",
+ "proptest",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.23",
+ "rstest",
+ "serde",
+ "serde_json",
+ "tokio",
+ "warp",
+]
+
+[[package]]
+name = "lumio-api-test-context"
+version = "0.2.0"
+dependencies = [
+ "bcs 0.1.4",
+ "bytes",
+ "goldenfile",
+ "hyper 0.14.28",
+ "lumio-api",
+ "lumio-api-types",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor",
+ "lumio-executor-types",
+ "lumio-framework",
+ "lumio-genesis",
+ "lumio-indexer-grpc-table-info",
+ "lumio-mempool",
+ "lumio-mempool-notifications",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-logging",
+ "lumio-vm-validator",
+ "rand 0.7.3",
+ "regex",
+ "serde_json",
+ "tokio",
+ "warp",
+ "warp-reverse-proxy",
+]
+
+[[package]]
+name = "lumio-api-tester"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "futures",
+ "lumio-api-types",
+ "lumio-cached-packages",
+ "lumio-framework",
+ "lumio-logger",
+ "lumio-push-metrics",
+ "lumio-rest-client",
+ "lumio-sdk",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "prometheus",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-api-types"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "hex",
+ "indoc",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-openapi",
+ "lumio-resource-viewer",
+ "lumio-storage-interface",
+ "lumio-types",
+ "lumio-vm",
+ "move-binary-format",
+ "move-core-types",
+ "once_cell",
+ "poem",
+ "poem-openapi",
+ "poem-openapi-derive",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "lumio-backup-cli"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "clap 4.5.21",
+ "csv",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-backup-service",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-db-indexer-schemas",
+ "lumio-executor",
+ "lumio-executor-test-helpers",
+ "lumio-executor-types",
+ "lumio-indexer-grpc-table-info",
+ "lumio-infallible",
+ "lumio-jellyfish-merkle",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-proptest-helpers",
+ "lumio-push-metrics",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "move-binary-format",
+ "move-bytecode-verifier",
+ "num_cpus",
+ "once_cell",
+ "pin-project 1.1.3",
+ "proptest",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "thiserror",
+ "tokio",
+ "tokio-io-timeout",
+ "tokio-stream",
+ "tokio-util 0.7.10",
+ "warp",
+]
+
+[[package]]
+name = "lumio-backup-service"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "bytes",
+ "hyper 0.14.28",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-runtimes",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "once_cell",
+ "reqwest 0.11.23",
+ "serde",
+ "tokio",
+ "tokio-stream",
+ "warp",
+]
+
+[[package]]
+name = "lumio-bcs-utils"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "hex",
+]
+
+[[package]]
+name = "lumio-bitvec"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "proptest",
+ "proptest-derive",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+]
+
+[[package]]
+name = "lumio-block-executor"
+version = "0.1.0"
+dependencies = [
+ "ambassador",
+ "anyhow",
+ "arc-swap",
+ "bcs 0.1.4",
+ "bytes",
+ "cfg-if",
+ "claims",
+ "concurrent-queue",
+ "criterion",
+ "crossbeam",
+ "derivative",
+ "fail",
+ "hashbrown 0.14.3",
+ "itertools 0.13.0",
+ "lumio-aggregator",
+ "lumio-crypto",
+ "lumio-drop-helper",
+ "lumio-gas-schedule",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-mvhashmap",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "num_cpus",
+ "once_cell",
+ "parking_lot 0.12.1",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "test-case",
+]
+
+[[package]]
+name = "lumio-block-partitioner"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "criterion",
+ "dashmap 7.0.0-rc2",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "tikv-jemallocator",
+]
+
+[[package]]
+name = "lumio-bounded-executor"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "rustversion",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-build-info"
+version = "0.1.0"
+dependencies = [
+ "shadow-rs",
+]
+
+[[package]]
+name = "lumio-cached-packages"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "lumio-framework",
+ "lumio-package-builder",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "proptest",
+ "proptest-derive",
+]
+
+[[package]]
+name = "lumio-cargo-cli"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "camino",
+ "chrono",
+ "clap 4.5.21",
+ "clap-verbosity-flag",
+ "determinator",
+ "env_logger",
+ "guppy",
+ "log",
+ "reqwest 0.11.23",
+ "url",
+]
+
+[[package]]
+name = "lumio-channels"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "futures",
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "lumio-types",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-cli-common"
+version = "1.0.0"
+dependencies = [
+ "anstyle",
+ "clap 4.5.21",
+ "clap_complete",
+]
+
+[[package]]
+name = "lumio-collections"
+version = "0.1.0"
+
+[[package]]
+name = "lumio-comparison-testing"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "futures",
+ "itertools 0.13.0",
+ "legacy-move-compiler",
+ "lumio-block-executor",
+ "lumio-framework",
+ "lumio-language-e2e-tests",
+ "lumio-rest-client",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-validator-interface",
+ "lumio-vm",
+ "move-binary-format",
+ "move-core-types",
+ "move-model",
+ "move-package",
+ "rocksdb",
+ "serde",
+ "tempfile",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-compression"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-types",
+ "lz4",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-config"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arr_macro",
+ "bcs 0.1.4",
+ "byteorder",
+ "cfg-if",
+ "get_if_addrs",
+ "lumio-crypto",
+ "lumio-global-constants",
+ "lumio-logger",
+ "lumio-secure-storage",
+ "lumio-short-hex-str",
+ "lumio-temppath",
+ "lumio-transaction-filters",
+ "lumio-types",
+ "maplit",
+ "num_cpus",
+ "poem-openapi",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "serde_merge",
+ "serde_yaml 0.8.26",
+ "strum 0.27.1",
+ "strum_macros 0.27.1",
+ "tempfile",
+ "thiserror",
+ "url",
+]
+
+[[package]]
+name = "lumio-consensus"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "byteorder",
+ "bytes",
+ "chrono",
+ "claims",
+ "clap 4.5.21",
+ "dashmap 7.0.0-rc2",
+ "enum_dispatch",
+ "fail",
+ "futures",
+ "futures-channel",
+ "hex",
+ "itertools 0.13.0",
+ "lru",
+ "lumio-bitvec",
+ "lumio-bounded-executor",
+ "lumio-cached-packages",
+ "lumio-channels",
+ "lumio-collections",
+ "lumio-config",
+ "lumio-consensus-notifications",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-dkg",
+ "lumio-enum-conversion-derive",
+ "lumio-event-notifications",
+ "lumio-executor",
+ "lumio-executor-test-helpers",
+ "lumio-executor-types",
+ "lumio-experimental-runtimes",
+ "lumio-fallible",
+ "lumio-infallible",
+ "lumio-keygen",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-peer-monitoring-service-types",
+ "lumio-reliable-broadcast",
+ "lumio-runtimes",
+ "lumio-safety-rules",
+ "lumio-schemadb",
+ "lumio-secure-storage",
+ "lumio-short-hex-str",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-transaction-filters",
+ "lumio-types",
+ "lumio-validator-transaction-pool",
+ "lumio-vm",
+ "lumio-vm-validator",
+ "maplit",
+ "mini-moka",
+ "mirai-annotations",
+ "mockall 0.11.4",
+ "move-core-types",
+ "move-vm-runtime",
+ "num-derive",
+ "num-traits",
+ "once_cell",
+ "ordered-float 3.9.2",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "scopeguard",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+ "sha3 0.9.1",
+ "strum 0.27.1",
+ "strum_macros 0.27.1",
+ "tempfile",
+ "thiserror",
+ "tokio",
+ "tokio-retry",
+ "tokio-stream",
+]
+
+[[package]]
+name = "lumio-consensus-notifications"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "claims",
+ "futures",
+ "lumio-crypto",
+ "lumio-runtimes",
+ "lumio-types",
+ "move-core-types",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-consensus-types"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "derivative",
+ "fail",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-bitvec",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-executor-types",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-short-hex-str",
+ "lumio-types",
+ "mini-moka",
+ "mirai-annotations",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-crash-handler"
+version = "0.1.0"
+dependencies = [
+ "backtrace",
+ "lumio-logger",
+ "move-core-types",
+ "serde",
+ "toml 0.7.8",
+]
+
+[[package]]
+name = "lumio-crypto"
+version = "0.0.3"
+dependencies = [
+ "aes-gcm",
+ "anyhow",
+ "arbitrary",
+ "ark-bls12-381",
+ "ark-bn254",
+ "ark-ec",
+ "ark-ff",
+ "ark-groth16",
+ "ark-serialize",
+ "ark-std",
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "bitvec 1.0.1",
+ "blake2",
+ "blake2-rfc",
+ "blst",
+ "bulletproofs",
+ "byteorder",
+ "bytes",
+ "criterion",
+ "curve25519-dalek 3.2.0",
+ "curve25519-dalek-ng",
+ "digest 0.9.0",
+ "ed25519-dalek 1.0.1",
+ "ff",
+ "hex",
+ "hkdf 0.10.0",
+ "libsecp256k1",
+ "lumio-crypto-derive",
+ "merlin",
+ "more-asserts",
+ "neptune",
+ "num-bigint 0.3.3",
+ "num-integer",
+ "once_cell",
+ "p256",
+ "poseidon-ark",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "ring 0.16.20",
+ "serde",
+ "serde-name",
+ "serde_bytes",
+ "serde_json",
+ "sha2 0.10.8",
+ "sha2 0.9.9",
+ "sha3 0.9.1",
+ "signature 2.2.0",
+ "static_assertions",
+ "thiserror",
+ "tiny-keccak",
+ "trybuild",
+ "typenum",
+ "x25519-dalek",
+]
+
+[[package]]
+name = "lumio-crypto-derive"
+version = "0.0.3"
+dependencies = [
+ "anyhow",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "lumio-data-client"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "async-trait",
+ "bcs 0.1.4",
+ "claims",
+ "dashmap 7.0.0-rc2",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-peer-monitoring-service-types",
+ "lumio-storage-interface",
+ "lumio-storage-service-client",
+ "lumio-storage-service-server",
+ "lumio-storage-service-types",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "mockall 0.11.4",
+ "ordered-float 3.9.2",
+ "rand 0.8.5",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-data-streaming-service"
+version = "0.1.0"
+dependencies = [
+ "arc-swap",
+ "async-trait",
+ "claims",
+ "enum_dispatch",
+ "futures",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-data-client",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-storage-service-types",
+ "lumio-time-service",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+ "tokio",
+ "tokio-stream",
+]
+
+[[package]]
+name = "lumio-db"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "arr_macro",
+ "bcs 0.1.4",
+ "byteorder",
+ "claims",
+ "clap 4.5.21",
+ "crossbeam-channel",
+ "dashmap 7.0.0-rc2",
+ "either",
+ "hex",
+ "indicatif 0.15.0",
+ "itertools 0.13.0",
+ "lru",
+ "lumio-accumulator",
+ "lumio-block-executor",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db-indexer",
+ "lumio-db-indexer-schemas",
+ "lumio-executor-types",
+ "lumio-experimental-runtimes",
+ "lumio-infallible",
+ "lumio-jellyfish-merkle",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-proptest-helpers",
+ "lumio-resource-viewer",
+ "lumio-rocksdb-options",
+ "lumio-schemadb",
+ "lumio-scratchpad",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "ouroboros",
+ "owo-colors",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "static_assertions",
+ "status-line",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-db-indexer"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "dashmap 7.0.0-rc2",
+ "lumio-config",
+ "lumio-db-indexer-schemas",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-proptest-helpers",
+ "lumio-resource-viewer",
+ "lumio-rocksdb-options",
+ "lumio-schemadb",
+ "lumio-storage-interface",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-db-indexer-schemas"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "byteorder",
+ "lumio-crypto",
+ "lumio-proptest-helpers",
+ "lumio-schemadb",
+ "lumio-storage-interface",
+ "lumio-types",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "serde",
+]
+
+[[package]]
+name = "lumio-db-tool"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "itertools 0.13.0",
+ "lumio-backup-cli",
+ "lumio-backup-service",
+ "lumio-block-executor",
+ "lumio-config",
+ "lumio-db",
+ "lumio-db-indexer",
+ "lumio-executor",
+ "lumio-executor-test-helpers",
+ "lumio-executor-types",
+ "lumio-indexer-grpc-table-info",
+ "lumio-logger",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "rayon",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-debugger"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "lumio-consensus",
+ "lumio-db-tool",
+ "lumio-logger",
+ "lumio-move-debugger",
+ "lumio-push-metrics",
+ "tikv-jemallocator",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-dkg"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "blst",
+ "blstrs",
+ "criterion",
+ "ff",
+ "group",
+ "hex",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-runtimes",
+ "merlin",
+ "more-asserts",
+ "num-bigint 0.3.3",
+ "num-integer",
+ "num-traits",
+ "num_cpus",
+ "once_cell",
+ "pairing",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "rayon",
+ "serde",
+ "serde_bytes",
+ "sha3 0.9.1",
+ "static_assertions",
+]
+
+[[package]]
+name = "lumio-dkg-runtime"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "fail",
+ "futures",
+ "futures-channel",
+ "futures-util",
+ "lumio-bounded-executor",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-enum-conversion-derive",
+ "lumio-event-notifications",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-reliable-broadcast",
+ "lumio-runtimes",
+ "lumio-safety-rules",
+ "lumio-time-service",
+ "lumio-types",
+ "lumio-validator-transaction-pool",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "tokio",
+ "tokio-retry",
+]
+
+[[package]]
+name = "lumio-drop-helper"
+version = "0.1.0"
+dependencies = [
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "once_cell",
+ "rayon",
+ "threadpool",
+]
+
+[[package]]
+name = "lumio-dynamic-transaction-composer"
+version = "0.1.4"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "e2e-move-tests",
+ "getrandom 0.2.11",
+ "lumio-types",
+ "move-binary-format",
+ "move-bytecode-verifier",
+ "move-core-types",
+ "serde",
+ "serde_bytes",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+]
+
+[[package]]
+name = "lumio-enum-conversion-derive"
+version = "0.0.3"
+dependencies = [
+ "anyhow",
+ "quote",
+ "syn 1.0.109",
+ "trybuild",
+]
+
+[[package]]
+name = "lumio-event-notifications"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "claims",
+ "futures",
+ "lumio-channels",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor-test-helpers",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
+ "move-binary-format",
+ "move-core-types",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-executor"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arr_macro",
+ "bcs 0.1.4",
+ "bytes",
+ "criterion",
+ "fail",
+ "itertools 0.13.0",
+ "lumio-block-executor",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-db-indexer",
+ "lumio-drop-helper",
+ "lumio-executor-service",
+ "lumio-executor-test-helpers",
+ "lumio-executor-types",
+ "lumio-experimental-runtimes",
+ "lumio-indexer-grpc-table-info",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
+ "move-core-types",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+]
+
+[[package]]
+name = "lumio-executor-benchmark"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "chrono",
+ "clap 4.5.21",
+ "dashmap 7.0.0-rc2",
+ "derivative",
+ "indicatif 0.15.0",
+ "itertools 0.13.0",
+ "lumio-aggregator",
+ "lumio-block-executor",
+ "lumio-block-partitioner",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor",
+ "lumio-executor-service",
+ "lumio-executor-types",
+ "lumio-experimental-ptx-executor",
+ "lumio-experimental-runtimes",
+ "lumio-genesis",
+ "lumio-infallible",
+ "lumio-jellyfish-merkle",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-mvhashmap",
+ "lumio-node-resource-metrics",
+ "lumio-profiler",
+ "lumio-push-metrics",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-transaction-generator-lib",
+ "lumio-transaction-workloads-lib",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-core-types",
+ "move-vm-types",
+ "num_cpus",
+ "once_cell",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "thread_local",
+ "tikv-jemallocator",
+ "tokio",
+ "toml 0.7.8",
+]
+
+[[package]]
+name = "lumio-executor-service"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "crossbeam-channel",
+ "ctrlc",
+ "dashmap 7.0.0-rc2",
+ "itertools 0.13.0",
+ "lumio-block-executor",
+ "lumio-block-partitioner",
+ "lumio-config",
+ "lumio-infallible",
+ "lumio-keygen",
+ "lumio-language-e2e-tests",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-node-resource-metrics",
+ "lumio-push-metrics",
+ "lumio-secure-net",
+ "lumio-storage-interface",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "num_cpus",
+ "once_cell",
+ "rayon",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-executor-test-helpers"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor",
+ "lumio-executor-types",
+ "lumio-sdk",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
+ "move-core-types",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-executor-types"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "criterion",
+ "derive_more 0.99.17",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-drop-helper",
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "lumio-scratchpad",
+ "lumio-secure-net",
+ "lumio-storage-interface",
+ "lumio-types",
+ "once_cell",
+ "ouroboros",
+ "rayon",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-experimental-bulk-txn-submit"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "chrono",
+ "clap 4.5.21",
+ "futures",
+ "lumio-config",
+ "lumio-logger",
+ "lumio-sdk",
+ "lumio-transaction-emitter-lib",
+ "lumio-transaction-generator-lib",
+ "rand 0.7.3",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-experimental-hexy"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "criterion",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-experimental-layered-map",
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "tikv-jemallocator",
+]
+
+[[package]]
+name = "lumio-experimental-layered-map"
+version = "0.1.0"
+dependencies = [
+ "ahash 0.8.11",
+ "anyhow",
+ "bitvec 1.0.1",
+ "criterion",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-drop-helper",
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "lumio-schemadb",
+ "lumio-temppath",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rocksdb",
+ "tikv-jemallocator",
+]
+
+[[package]]
+name = "lumio-experimental-ptx-executor"
+version = "0.1.0"
+dependencies = [
+ "hashbrown 0.14.3",
+ "lumio-block-executor",
+ "lumio-experimental-runtimes",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-core-types",
+ "once_cell",
+ "rayon",
+]
+
+[[package]]
+name = "lumio-experimental-runtimes"
+version = "0.1.0"
+dependencies = [
+ "core_affinity",
+ "libc",
+ "lumio-runtimes",
+ "num_cpus",
+ "once_cell",
+ "rayon",
+]
+
+[[package]]
+name = "lumio-fallible"
+version = "0.1.0"
+dependencies = [
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-faucet-cli"
+version = "2.0.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "lumio-faucet-core",
+ "lumio-logger",
+ "lumio-sdk",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-faucet-core"
+version = "2.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "captcha",
+ "clap 4.5.21",
+ "deadpool-redis",
+ "enum_dispatch",
+ "firebase-token",
+ "futures",
+ "hex",
+ "ipnet",
+ "iprange",
+ "lru",
+ "lumio-config",
+ "lumio-faucet-metrics-server",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-sdk",
+ "once_cell",
+ "poem",
+ "poem-openapi",
+ "rand 0.7.3",
+ "redis",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-faucet-metrics-server"
+version = "2.0.0"
+dependencies = [
+ "anyhow",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "once_cell",
+ "poem",
+ "prometheus",
+ "serde",
+]
+
+[[package]]
+name = "lumio-faucet-service"
+version = "2.0.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "lumio-faucet-core",
+ "lumio-logger",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-fn-check-client"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "env_logger",
+ "futures",
+ "gcp-bigquery-client",
+ "lumio-logger",
+ "lumio-node-checker",
+ "lumio-sdk",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-forge"
+version = "0.0.0"
+dependencies = [
+ "again",
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "clap 4.5.21",
+ "either",
+ "futures",
+ "hex",
+ "hyper 0.14.28",
+ "itertools 0.13.0",
+ "json-patch",
+ "k8s-openapi",
+ "kube",
+ "log",
+ "lumio",
+ "lumio-cached-packages",
+ "lumio-cli-common",
+ "lumio-config",
+ "lumio-db",
+ "lumio-framework",
+ "lumio-genesis",
+ "lumio-global-constants",
+ "lumio-infallible",
+ "lumio-inspection-service",
+ "lumio-logger",
+ "lumio-rest-client",
+ "lumio-retrier",
+ "lumio-runtimes",
+ "lumio-sdk",
+ "lumio-short-hex-str",
+ "lumio-state-sync-driver",
+ "lumio-transaction-emitter-lib",
+ "lumio-transaction-generator-lib",
+ "lumio-transaction-workloads-lib",
+ "num_cpus",
+ "once_cell",
+ "prometheus-http-query",
+ "quick-junit",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "serde_merge",
+ "serde_yaml 0.8.26",
+ "sugars",
+ "tempfile",
+ "termcolor",
+ "thiserror",
+ "tokio",
+ "url",
+ "uuid 1.11.0",
+]
+
+[[package]]
+name = "lumio-forge-cli"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "chrono",
+ "clap 4.5.21",
+ "env_logger",
+ "futures",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-forge",
+ "lumio-global-constants",
+ "lumio-logger",
+ "lumio-rest-client",
+ "lumio-sdk",
+ "lumio-testcases",
+ "once_cell",
+ "rand 0.7.3",
+ "random_word",
+ "reqwest 0.11.23",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "sugars",
+ "tikv-jemallocator",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-framework"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "ark-bls12-381",
+ "ark-bn254",
+ "ark-ec",
+ "ark-ff",
+ "ark-serialize",
+ "ark-std",
+ "bcs 0.1.4",
+ "better_any",
+ "blake2-rfc",
+ "bulletproofs",
+ "byteorder",
+ "claims",
+ "clap 4.5.21",
+ "codespan-reporting",
+ "curve25519-dalek-ng",
+ "either",
+ "flate2",
+ "hex",
+ "itertools 0.13.0",
+ "legacy-move-compiler",
+ "libsecp256k1",
+ "log",
+ "lumio-aggregator",
+ "lumio-crypto",
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-gas-schedule",
+ "lumio-move-stdlib",
+ "lumio-native-interface",
+ "lumio-sdk-builder",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-types",
+ "merlin",
+ "move-binary-format",
+ "move-cli",
+ "move-command-line-common",
+ "move-compiler-v2",
+ "move-core-types",
+ "move-docgen",
+ "move-model",
+ "move-package",
+ "move-prover",
+ "move-prover-boogie-backend",
+ "move-prover-bytecode-pipeline",
+ "move-prover-lab",
+ "move-stackless-bytecode",
+ "move-unit-test",
+ "move-vm-runtime",
+ "move-vm-types",
+ "num-traits",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "ripemd",
+ "serde",
+ "serde_bytes",
+ "sha2 0.10.8",
+ "sha2 0.9.9",
+ "sha3 0.9.1",
+ "siphasher",
+ "smallvec",
+ "tempfile",
+ "tiny-keccak",
+ "toml 0.7.8",
+]
+
+[[package]]
+name = "lumio-gas-algebra"
+version = "0.0.1"
+dependencies = [
+ "either",
+ "move-core-types",
+]
+
+[[package]]
+name = "lumio-gas-calibration"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "float-cmp",
+ "lumio-abstract-gas-usage",
+ "lumio-cached-packages",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-language-e2e-tests",
+ "lumio-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-ir-compiler",
+ "nalgebra",
+ "walkdir",
+]
+
+[[package]]
+name = "lumio-gas-meter"
+version = "0.1.0"
+dependencies = [
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-logger",
+ "lumio-types",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-types",
+]
+
+[[package]]
+name = "lumio-gas-profiling"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "handlebars",
+ "inferno",
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-gas-schedule",
+ "lumio-types",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-types",
+ "regex",
+ "serde_json",
+ "smallvec",
+]
+
+[[package]]
+name = "lumio-gas-schedule"
+version = "0.1.0"
+dependencies = [
+ "lumio-gas-algebra",
+ "lumio-global-constants",
+ "move-core-types",
+ "move-vm-types",
+ "paste",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-gas-schedule-updator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "lumio-framework",
+ "lumio-gas-schedule",
+ "lumio-package-builder",
+ "lumio-types",
+ "move-core-types",
+ "move-model",
+ "tempfile",
+]
+
+[[package]]
+name = "lumio-genesis"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor",
+ "lumio-framework",
+ "lumio-keygen",
+ "lumio-logger",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
+ "rand 0.7.3",
+ "serde",
+ "serde_yaml 0.8.26",
+]
+
+[[package]]
+name = "lumio-github-client"
+version = "0.1.0"
+dependencies = [
+ "base64 0.13.1",
+ "lumio-proxy",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "ureq",
+]
+
+[[package]]
+name = "lumio-global-constants"
+version = "0.1.0"
+
+[[package]]
+name = "lumio-id-generator"
+version = "0.1.0"
+
+[[package]]
+name = "lumio-indexer"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "bigdecimal",
+ "chrono",
+ "diesel",
+ "diesel_migrations",
+ "field_count",
+ "futures",
+ "hex",
+ "lumio-api",
+ "lumio-api-test-context",
+ "lumio-api-types",
+ "lumio-bitvec",
+ "lumio-config",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-metrics-core",
+ "lumio-runtimes",
+ "lumio-storage-interface",
+ "lumio-types",
+ "once_cell",
+ "serde",
+ "serde_json",
+ "sha2 0.9.9",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-cache-worker"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "futures-core",
+ "lumio-config",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "once_cell",
+ "prost 0.13.4",
+ "redis",
+ "reqwest 0.11.23",
+ "serde",
+ "tempfile",
+ "tikv-jemallocator",
+ "tokio",
+ "tonic 0.12.3",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-data-service"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "lumio-transaction-filter",
+ "once_cell",
+ "prost 0.13.4",
+ "redis",
+ "rstest",
+ "serde",
+ "serde_json",
+ "tikv-jemallocator",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-reflection",
+ "tracing",
+ "uuid 1.11.0",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-data-service-v2"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "build_html",
+ "clap 4.5.21",
+ "dashmap 7.0.0-rc2",
+ "futures",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "lumio-transaction-filter",
+ "once_cell",
+ "prost 0.13.4",
+ "rand 0.7.3",
+ "serde",
+ "tikv-jemallocator",
+ "tokio",
+ "tokio-scoped",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-reflection",
+ "tracing",
+ "uuid 1.11.0",
+ "warp",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-file-checker"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap 4.5.21",
+ "cloud-storage",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "once_cell",
+ "serde",
+ "serde_json",
+ "tikv-jemallocator",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-file-store"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "once_cell",
+ "redis",
+ "serde",
+ "tikv-jemallocator",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-file-store-backfiller"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-protos",
+ "serde",
+ "serde_json",
+ "tikv-jemallocator",
+ "tokio",
+ "tonic 0.12.3",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-fullnode"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
+ "bcs 0.1.4",
+ "bytes",
+ "chrono",
+ "futures",
+ "goldenfile",
+ "hex",
+ "hyper 0.14.28",
+ "itertools 0.13.0",
+ "lumio-api",
+ "lumio-api-test-context",
+ "lumio-api-types",
+ "lumio-bitvec",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor",
+ "lumio-executor-types",
+ "lumio-framework",
+ "lumio-genesis",
+ "lumio-global-constants",
+ "lumio-indexer-grpc-utils",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-mempool-notifications",
+ "lumio-metrics-core",
+ "lumio-proptest-helpers",
+ "lumio-protos",
+ "lumio-runtimes",
+ "lumio-sdk",
+ "lumio-secure-storage",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-validator",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+ "regex",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tokio-stream",
+ "tonic 0.12.3",
+ "tonic-reflection",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-in-memory-cache-benchmark"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "futures",
+ "lazy_static",
+ "lumio-indexer-grpc-utils",
+ "lumio-protos",
+ "once_cell",
+ "redis",
+ "redis-test",
+ "tikv-jemallocator",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-manager"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "build_html",
+ "clap 4.5.21",
+ "dashmap 7.0.0-rc2",
+ "futures",
+ "lumio-config",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "once_cell",
+ "prost 0.13.4",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "tikv-jemallocator",
+ "tokio",
+ "tokio-scoped",
+ "tonic 0.12.3",
+ "tracing",
+ "warp",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-server-framework"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "backtrace",
+ "clap 4.5.21",
+ "figment",
+ "lumio-metrics-core",
+ "lumio-system-utils",
+ "prometheus",
+ "serde",
+ "tempfile",
+ "tokio",
+ "toml 0.7.8",
+ "tracing",
+ "tracing-subscriber 0.3.18",
+ "warp",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-table-info"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "flate2",
+ "futures",
+ "google-cloud-storage",
+ "hyper 0.14.28",
+ "itertools 0.13.0",
+ "lumio-api",
+ "lumio-api-types",
+ "lumio-config",
+ "lumio-db-indexer",
+ "lumio-indexer-grpc-fullnode",
+ "lumio-indexer-grpc-utils",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-metrics-core",
+ "lumio-runtimes",
+ "lumio-storage-interface",
+ "lumio-types",
+ "once_cell",
+ "rocksdb",
+ "serde",
+ "serde_json",
+ "tar",
+ "tempfile",
+ "tokio",
+ "tokio-stream",
+ "tokio-util 0.7.10",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-utils"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "backoff",
+ "base64 0.13.1",
+ "build_html",
+ "bytesize",
+ "chrono",
+ "cloud-storage",
+ "dashmap 7.0.0-rc2",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "lumio-transaction-filter",
+ "lz4",
+ "once_cell",
+ "prometheus",
+ "prost 0.13.4",
+ "redis",
+ "redis-test",
+ "ripemd",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tokio-util 0.7.10",
+ "tonic 0.12.3",
+ "tracing",
+ "url",
+ "warp",
+]
+
+[[package]]
+name = "lumio-indexer-grpc-v2-file-store-backfiller"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-grpc-utils",
+ "lumio-protos",
+ "serde",
+ "serde_json",
+ "tikv-jemallocator",
+ "tokio",
+ "tokio-scoped",
+ "tonic 0.12.3",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-indexer-test-transactions"
+version = "1.0.0"
+dependencies = [
+ "lumio-protos",
+ "serde_json",
+]
+
+[[package]]
+name = "lumio-indexer-transaction-generator"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "futures",
+ "itertools 0.13.0",
+ "lumio",
+ "lumio-config",
+ "lumio-faucet-core",
+ "lumio-indexer-grpc-utils",
+ "lumio-protos",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "tempfile",
+ "tokio",
+ "tokio-stream",
+ "toml 0.7.8",
+ "tonic 0.12.3",
+ "url",
+]
+
+[[package]]
+name = "lumio-infallible"
+version = "0.1.0"
+
+[[package]]
+name = "lumio-inspection-service"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "assert_approx_eq",
+ "futures",
+ "hyper 0.14.28",
+ "lumio-build-info",
+ "lumio-config",
+ "lumio-data-client",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-runtimes",
+ "lumio-storage-interface",
+ "lumio-storage-service-client",
+ "lumio-telemetry",
+ "lumio-time-service",
+ "once_cell",
+ "prometheus",
+ "reqwest 0.11.23",
+ "rusty-fork",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-jellyfish-merkle"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arr_macro",
+ "bcs 0.1.4",
+ "byteorder",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-db",
+ "lumio-experimental-runtimes",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-storage-interface",
+ "lumio-types",
+ "num-derive",
+ "num-traits",
+ "once_cell",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-jwk-consensus"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bytes",
+ "futures",
+ "futures-channel",
+ "futures-util",
+ "lumio-bitvec",
+ "lumio-bounded-executor",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-enum-conversion-derive",
+ "lumio-event-notifications",
+ "lumio-infallible",
+ "lumio-jwk-utils",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-reliable-broadcast",
+ "lumio-runtimes",
+ "lumio-safety-rules",
+ "lumio-time-service",
+ "lumio-types",
+ "lumio-validator-transaction-pool",
+ "move-core-types",
+ "once_cell",
+ "serde",
+ "tokio",
+ "tokio-retry",
+]
+
+[[package]]
+name = "lumio-jwk-utils"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "http 0.2.11",
+ "lumio-types",
+ "move-core-types",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-keygen"
+version = "0.1.0"
+dependencies = [
+ "lumio-crypto",
+ "lumio-types",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-keyless-pepper-common"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "ark-bls12-381",
+ "ark-ec",
+ "ark-ff",
+ "ark-serialize",
+ "ark-std",
+ "bcs 0.1.4",
+ "blstrs",
+ "derivation-path",
+ "ed25519-dalek 1.0.1",
+ "hex",
+ "hmac 0.12.1",
+ "jsonwebtoken 8.3.0",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-dkg",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "regex",
+ "serde",
+ "serde-big-array",
+ "sha2 0.10.8",
+]
+
+[[package]]
+name = "lumio-keyless-pepper-example-client-rust"
+version = "0.1.0"
+dependencies = [
+ "ark-bls12-381",
+ "ark-serialize",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "firestore",
+ "hex",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-keyless-pepper-common",
+ "lumio-types",
+ "rand 0.7.3",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-keyless-pepper-service"
+version = "0.1.0"
+dependencies = [
+ "aes-gcm",
+ "anyhow",
+ "ark-bls12-381",
+ "ark-bn254",
+ "ark-ec",
+ "ark-ff",
+ "ark-groth16",
+ "ark-serialize",
+ "bcs 0.1.4",
+ "firestore",
+ "hex",
+ "hyper 0.14.28",
+ "jsonwebtoken 8.3.0",
+ "jwt",
+ "lumio-build-info",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-inspection-service",
+ "lumio-keyless-pepper-common",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "regex",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "sha3 0.9.1",
+ "thiserror",
+ "tokio",
+ "uuid 1.11.0",
+]
+
+[[package]]
+name = "lumio-language-e2e-tests"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "goldenfile",
+ "lumio-abstract-gas-usage",
+ "lumio-bitvec",
+ "lumio-block-executor",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-gas-profiling",
+ "lumio-gas-schedule",
+ "lumio-keygen",
+ "lumio-proptest-helpers",
+ "lumio-rest-client",
+ "lumio-temppath",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-validator-interface",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-genesis",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-command-line-common",
+ "move-core-types",
+ "move-ir-compiler",
+ "move-model",
+ "move-vm-runtime",
+ "move-vm-types",
+ "num_cpus",
+ "once_cell",
+ "petgraph 0.5.1",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+]
+
+[[package]]
+name = "lumio-ledger"
+version = "0.2.0"
+dependencies = [
+ "hex",
+ "ledger-apdu",
+ "ledger-transport-hid",
+ "lumio-crypto",
+ "lumio-types",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-localnet"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bollard",
+ "diesel",
+ "diesel-async",
+ "dirs 5.0.1",
+ "futures",
+ "lumio-indexer-grpc-utils",
+ "lumio-protos",
+ "lumio-rest-client",
+ "processor",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tonic 0.12.3",
+ "tracing",
+ "version-compare",
+]
+
+[[package]]
+name = "lumio-log-derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "lumio-logger"
+version = "0.1.0"
+dependencies = [
+ "backtrace",
+ "chrono",
+ "console-subscriber",
+ "erased-serde",
+ "futures",
+ "hostname",
+ "lumio-infallible",
+ "lumio-log-derive",
+ "lumio-node-identity",
+ "once_cell",
+ "pretty_assertions",
+ "prometheus",
+ "serde",
+ "serde_json",
+ "strum 0.27.1",
+ "strum_macros 0.27.1",
+ "tokio",
+ "tracing",
+ "tracing-subscriber 0.3.18",
+]
+
+[[package]]
+name = "lumio-memory-usage-tracker"
+version = "0.1.0"
+dependencies = [
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-types",
+]
+
+[[package]]
+name = "lumio-mempool"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "enum_dispatch",
+ "fail",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-bounded-executor",
+ "lumio-channels",
+ "lumio-compression",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-event-notifications",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-mempool-notifications",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-peer-monitoring-service-types",
+ "lumio-runtimes",
+ "lumio-short-hex-str",
+ "lumio-storage-interface",
+ "lumio-time-service",
+ "lumio-transaction-filters",
+ "lumio-types",
+ "lumio-vm-validator",
+ "maplit",
+ "num_cpus",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "thiserror",
+ "tokio",
+ "tokio-stream",
+]
+
+[[package]]
+name = "lumio-mempool-notifications"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "claims",
+ "futures",
+ "lumio-crypto",
+ "lumio-types",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-memsocket"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "futures",
+ "lumio-infallible",
+ "once_cell",
+]
+
+[[package]]
+name = "lumio-metrics-core"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "claims",
+ "once_cell",
+ "paste",
+ "prometheus",
+]
+
+[[package]]
+name = "lumio-move-debugger"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "itertools 0.13.0",
+ "lumio-block-executor",
+ "lumio-consensus",
+ "lumio-crypto",
+ "lumio-gas-profiling",
+ "lumio-logger",
+ "lumio-rest-client",
+ "lumio-types",
+ "lumio-validator-interface",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "regex",
+ "reqwest 0.11.23",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-move-e2e-benchmark"
+version = "0.1.0"
+dependencies = [
+ "clap 4.5.21",
+ "lumio-language-e2e-tests",
+ "lumio-logger",
+ "lumio-transaction-generator-lib",
+ "lumio-transaction-workloads-lib",
+ "lumio-types",
+ "rand 0.7.3",
+ "serde_json",
+]
+
+[[package]]
+name = "lumio-move-examples"
+version = "0.1.0"
+dependencies = [
+ "clap 4.5.21",
+ "lumio-framework",
+ "lumio-gas-schedule",
+ "lumio-types",
+ "lumio-vm",
+ "move-cli",
+ "move-model",
+ "move-package",
+ "move-prover",
+ "move-unit-test",
+ "move-vm-runtime",
+ "tempfile",
+]
+
+[[package]]
+name = "lumio-move-stdlib"
+version = "0.1.1"
+dependencies = [
+ "bcs 0.1.4",
+ "dir-diff",
+ "file_diff",
+ "lumio-gas-schedule",
+ "lumio-native-interface",
+ "lumio-types",
+ "move-cli",
+ "move-core-types",
+ "move-package",
+ "move-unit-test",
+ "move-vm-runtime",
+ "move-vm-types",
+ "sha2 0.9.9",
+ "sha3 0.9.1",
+ "smallvec",
+ "tempfile",
+]
+
+[[package]]
+name = "lumio-mvhashmap"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bytes",
+ "claims",
+ "concurrent-queue",
+ "crossbeam",
+ "dashmap 7.0.0-rc2",
+ "equivalent",
+ "fail",
+ "lumio-aggregator",
+ "lumio-infallible",
+ "lumio-types",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "num_cpus",
+ "proptest",
+ "proptest-derive",
+ "rayon",
+ "serde",
+ "test-case",
+]
+
+[[package]]
+name = "lumio-native-interface"
+version = "0.1.0"
+dependencies = [
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "smallvec",
+]
+
+[[package]]
+name = "lumio-netcore"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "futures",
+ "lumio-memsocket",
+ "lumio-proxy",
+ "lumio-types",
+ "pin-project 1.1.3",
+ "serde",
+ "tokio",
+ "tokio-util 0.7.10",
+ "url",
+]
+
+[[package]]
+name = "lumio-network"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "async-trait",
+ "bcs 0.1.4",
+ "bytes",
+ "futures",
+ "futures-util",
+ "hex",
+ "itertools 0.13.0",
+ "lumio-bitvec",
+ "lumio-channels",
+ "lumio-compression",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-memsocket",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-num-variants",
+ "lumio-peer-monitoring-service-types",
+ "lumio-proptest-helpers",
+ "lumio-short-hex-str",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "once_cell",
+ "ordered-float 3.9.2",
+ "pin-project 1.1.3",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rand 0.8.5",
+ "rand_core 0.5.1",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "tokio-retry",
+ "tokio-stream",
+ "tokio-util 0.7.10",
+]
+
+[[package]]
+name = "lumio-network-benchmark"
+version = "0.1.0"
+dependencies = [
+ "async-channel 1.9.0",
+ "bytes",
+ "futures",
+ "lumio-config",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-time-service",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-network-builder"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "futures",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-event-notifications",
+ "lumio-logger",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-network-discovery",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "rand 0.7.3",
+ "serde",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-network-checker"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "futures",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-network",
+ "lumio-types",
+ "serde",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-network-discovery"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "futures",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-event-notifications",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-rest-client",
+ "lumio-short-hex-str",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "serde_yaml 0.8.26",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-nft-metadata-crawler"
+version = "0.1.0"
+dependencies = [
+ "ahash 0.8.11",
+ "anyhow",
+ "async-trait",
+ "axum 0.7.5",
+ "backoff",
+ "bytes",
+ "chrono",
+ "clap 4.5.21",
+ "diesel",
+ "diesel_migrations",
+ "enum_dispatch",
+ "field_count",
+ "futures",
+ "google-cloud-storage",
+ "image",
+ "lumio-indexer-grpc-server-framework",
+ "lumio-metrics-core",
+ "once_cell",
+ "rayon",
+ "regex",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "sha256",
+ "tokio",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-node"
+version = "1.36.3"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "either",
+ "fail",
+ "futures",
+ "hex",
+ "lumio-admin-service",
+ "lumio-api",
+ "lumio-backup-service",
+ "lumio-build-info",
+ "lumio-cached-packages",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-consensus",
+ "lumio-consensus-notifications",
+ "lumio-crash-handler",
+ "lumio-crypto",
+ "lumio-data-client",
+ "lumio-data-streaming-service",
+ "lumio-db",
+ "lumio-db-indexer",
+ "lumio-dkg-runtime",
+ "lumio-event-notifications",
+ "lumio-executor",
+ "lumio-framework",
+ "lumio-genesis",
+ "lumio-indexer",
+ "lumio-indexer-grpc-fullnode",
+ "lumio-indexer-grpc-table-info",
+ "lumio-infallible",
+ "lumio-inspection-service",
+ "lumio-jwk-consensus",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-mempool-notifications",
+ "lumio-network",
+ "lumio-network-benchmark",
+ "lumio-network-builder",
+ "lumio-node-identity",
+ "lumio-peer-monitoring-service-client",
+ "lumio-peer-monitoring-service-server",
+ "lumio-peer-monitoring-service-types",
+ "lumio-runtimes",
+ "lumio-state-sync-driver",
+ "lumio-storage-interface",
+ "lumio-storage-service-client",
+ "lumio-storage-service-notifications",
+ "lumio-storage-service-server",
+ "lumio-storage-service-types",
+ "lumio-telemetry",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-types",
+ "lumio-validator-transaction-pool",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "num_cpus",
+ "rand 0.7.3",
+ "rayon",
+ "rlimit",
+ "rstack-self",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "tikv-jemallocator",
+ "tokio",
+ "ureq",
+ "url",
+]
+
+[[package]]
+name = "lumio-node-checker"
+version = "0.1.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap 4.5.21",
+ "futures",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-network-checker",
+ "lumio-rest-client",
+ "lumio-sdk",
+ "lumio-transaction-emitter-lib",
+ "lumio-transaction-workloads-lib",
+ "once_cell",
+ "poem",
+ "poem-openapi",
+ "prometheus-parse",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "thiserror",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-node-identity"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "claims",
+ "lumio-types",
+ "once_cell",
+]
+
+[[package]]
+name = "lumio-node-resource-metrics"
+version = "0.1.0"
+dependencies = [
+ "cfg-if",
+ "lumio-build-info",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "once_cell",
+ "procfs",
+ "prometheus",
+ "rlimit",
+ "sysinfo",
+]
+
+[[package]]
+name = "lumio-num-variants"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "lumio-openapi"
+version = "0.1.0"
+dependencies = [
+ "percent-encoding",
+ "poem",
+ "poem-openapi",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "lumio-openapi-spec-generator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "lumio-api",
+ "lumio-config",
+ "lumio-mempool",
+ "lumio-storage-interface",
+ "lumio-types",
+]
+
+[[package]]
+name = "lumio-package-builder"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "itertools 0.13.0",
+ "lumio-framework",
+ "move-command-line-common",
+ "move-package",
+ "tempfile",
+]
+
+[[package]]
+name = "lumio-peer-monitoring-service-client"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "enum_dispatch",
+ "futures",
+ "lumio-build-info",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-id-generator",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-peer-monitoring-service-server",
+ "lumio-peer-monitoring-service-types",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "tokio-stream",
+]
+
+[[package]]
+name = "lumio-peer-monitoring-service-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "claims",
+ "futures",
+ "lumio-bounded-executor",
+ "lumio-build-info",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-peer-monitoring-service-types",
+ "lumio-storage-interface",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "mockall 0.11.4",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-peer-monitoring-service-types"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "lumio-config",
+ "lumio-types",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-profiler"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "pprof",
+ "regex",
+ "tikv-jemalloc-sys",
+]
+
+[[package]]
+name = "lumio-proptest-helpers"
+version = "0.1.0"
+dependencies = [
+ "crossbeam",
+ "proptest",
+ "proptest-derive",
+]
+
+[[package]]
+name = "lumio-protos"
+version = "1.3.1"
+dependencies = [
+ "pbjson",
+ "prost 0.13.4",
+ "serde",
+ "tonic 0.12.3",
+]
+
+[[package]]
+name = "lumio-proxy"
+version = "0.1.0"
+dependencies = [
+ "ipnet",
+]
+
+[[package]]
+name = "lumio-push-metrics"
+version = "0.1.0"
+dependencies = [
+ "lumio-logger",
+ "lumio-metrics-core",
+ "rand 0.7.3",
+ "ureq",
+ "url",
+]
+
+[[package]]
+name = "lumio-rate-limiter"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "pin-project 1.1.3",
+ "tokio",
+ "tokio-util 0.7.10",
+]
+
+[[package]]
+name = "lumio-release-builder"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "futures",
+ "git2 0.16.1",
+ "handlebars",
+ "hex",
+ "lumio",
+ "lumio-build-info",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-profiling",
+ "lumio-gas-schedule",
+ "lumio-gas-schedule-updator",
+ "lumio-genesis",
+ "lumio-infallible",
+ "lumio-keygen",
+ "lumio-language-e2e-tests",
+ "lumio-move-debugger",
+ "lumio-rest-client",
+ "lumio-temppath",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-bytecode-verifier",
+ "move-core-types",
+ "move-model",
+ "move-vm-runtime",
+ "move-vm-types",
+ "once_cell",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "sha3 0.9.1",
+ "strum 0.27.1",
+ "strum_macros 0.27.1",
+ "tokio",
+ "url",
+ "walkdir",
+]
+
+[[package]]
+name = "lumio-reliable-broadcast"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bytes",
+ "claims",
+ "futures",
+ "futures-channel",
+ "lumio-bounded-executor",
+ "lumio-consensus-types",
+ "lumio-enum-conversion-derive",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-time-service",
+ "lumio-types",
+ "tokio",
+ "tokio-retry",
+]
+
+[[package]]
+name = "lumio-replay-benchmark"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "claims",
+ "clap 4.5.21",
+ "colored",
+ "lumio-block-executor",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-schedule",
+ "lumio-logger",
+ "lumio-move-debugger",
+ "lumio-push-metrics",
+ "lumio-rest-client",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "move-core-types",
+ "parking_lot 0.12.1",
+ "rand 0.7.3",
+ "serde",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-resource-viewer"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "move-binary-format",
+ "move-bytecode-utils",
+ "move-core-types",
+ "move-resource-viewer",
+]
+
+[[package]]
+name = "lumio-rest-client"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "clap 4.5.21",
+ "hex",
+ "lumio-api-types",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-types",
+ "move-core-types",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-retrier"
+version = "0.1.0"
+dependencies = [
+ "lumio-logger",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-rocksdb-options"
+version = "0.1.0"
+dependencies = [
+ "lumio-config",
+ "rocksdb",
+]
+
+[[package]]
+name = "lumio-rosetta"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-global-constants",
+ "lumio-logger",
+ "lumio-node",
+ "lumio-rest-client",
+ "lumio-runtimes",
+ "lumio-sdk",
+ "lumio-types",
+ "lumio-warp-webserver",
+ "move-core-types",
+ "once_cell",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+ "url",
+ "warp",
+]
+
+[[package]]
+name = "lumio-rosetta-cli"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "lumio",
+ "lumio-logger",
+ "lumio-rosetta",
+ "lumio-types",
+ "serde",
+ "serde_json",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-runtimes"
+version = "0.1.0"
+dependencies = [
+ "rayon",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-safety-rules"
+version = "0.1.0"
+dependencies = [
+ "claims",
+ "criterion",
+ "hex",
+ "lumio-config",
+ "lumio-consensus-types",
+ "lumio-crypto",
+ "lumio-global-constants",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-proptest-helpers",
+ "lumio-secure-net",
+ "lumio-secure-storage",
+ "lumio-types",
+ "lumio-vault-client",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rusty-fork",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-schemadb"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "dunce",
+ "lumio-drop-helper",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "proptest",
+ "rand 0.7.3",
+ "rocksdb",
+]
+
+[[package]]
+name = "lumio-scratchpad"
+version = "0.1.0"
+dependencies = [
+ "bitvec 1.0.1",
+ "criterion",
+ "dashmap 7.0.0-rc2",
+ "itertools 0.13.0",
+ "lumio-crypto",
+ "lumio-drop-helper",
+ "lumio-infallible",
+ "lumio-metrics-core",
+ "lumio-types",
+ "lumio-vm",
+ "once_cell",
+ "proptest",
+ "rand 0.7.3",
+ "rayon",
+ "thiserror",
+ "tikv-jemallocator",
+]
+
+[[package]]
+name = "lumio-sdk"
+version = "0.0.3"
+dependencies = [
+ "anyhow",
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "ed25519-dalek-bip32",
+ "hex",
+ "lazy_static",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-global-constants",
+ "lumio-ledger",
+ "lumio-rest-client",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tiny-bip39",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-sdk-builder"
+version = "0.2.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "heck 0.4.1",
+ "lumio-cached-packages",
+ "lumio-framework",
+ "lumio-types",
+ "move-core-types",
+ "once_cell",
+ "serde-generate",
+ "serde-reflection",
+ "serde_yaml 0.8.26",
+ "tempfile",
+ "textwrap 0.15.2",
+ "which",
+]
+
+[[package]]
+name = "lumio-secure-net"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "crossbeam-channel",
+ "lumio-config",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-protos",
+ "once_cell",
+ "serde",
+ "thiserror",
+ "tokio",
+ "tonic 0.12.3",
+ "tonic-reflection",
+]
+
+[[package]]
+name = "lumio-secure-storage"
+version = "0.1.0"
+dependencies = [
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "chrono",
+ "enum_dispatch",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-vault-client",
+ "rand 0.7.3",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-short-hex-str"
+version = "0.1.0"
+dependencies = [
+ "hex",
+ "mirai-annotations",
+ "proptest",
+ "serde",
+ "static_assertions",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-speculative-state-helper"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "claims",
+ "crossbeam",
+ "lumio-infallible",
+ "parking_lot 0.12.1",
+ "proptest",
+ "proptest-derive",
+ "rayon",
+]
+
+[[package]]
+name = "lumio-state-sync-driver"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "bcs 0.1.4",
+ "claims",
+ "futures",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-consensus-notifications",
+ "lumio-crypto",
+ "lumio-data-client",
+ "lumio-data-streaming-service",
+ "lumio-db",
+ "lumio-event-notifications",
+ "lumio-executor",
+ "lumio-executor-test-helpers",
+ "lumio-executor-types",
+ "lumio-genesis",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-mempool-notifications",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-runtimes",
+ "lumio-schemadb",
+ "lumio-storage-interface",
+ "lumio-storage-service-client",
+ "lumio-storage-service-notifications",
+ "lumio-storage-service-types",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-genesis",
+ "mockall 0.11.4",
+ "move-core-types",
+ "ntest",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+ "tokio",
+ "tokio-stream",
+]
+
+[[package]]
+name = "lumio-storage-interface"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arr_macro",
+ "bcs 0.1.4",
+ "bytes",
+ "dashmap 7.0.0-rc2",
+ "derive_more 0.99.17",
+ "itertools 0.13.0",
+ "lru",
+ "lumio-crypto",
+ "lumio-experimental-layered-map",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-scratchpad",
+ "lumio-secure-net",
+ "lumio-types",
+ "once_cell",
+ "parking_lot 0.12.1",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "rayon",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-storage-service-client"
+version = "0.1.0"
+dependencies = [
+ "lumio-config",
+ "lumio-network",
+ "lumio-storage-service-types",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-storage-service-notifications"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "claims",
+ "futures",
+ "lumio-channels",
+ "lumio-crypto",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-storage-service-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "bcs 0.1.4",
+ "bytes",
+ "claims",
+ "dashmap 7.0.0-rc2",
+ "futures",
+ "itertools 0.13.0",
+ "lumio-bitvec",
+ "lumio-channels",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-netcore",
+ "lumio-network",
+ "lumio-storage-interface",
+ "lumio-storage-service-notifications",
+ "lumio-storage-service-types",
+ "lumio-time-service",
+ "lumio-types",
+ "maplit",
+ "mini-moka",
+ "mockall 0.11.4",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-storage-service-types"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "claims",
+ "lumio-compression",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-time-service",
+ "lumio-types",
+ "num-traits",
+ "proptest",
+ "rand 0.7.3",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-system-utils"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-mutex",
+ "http 0.2.11",
+ "hyper 0.14.28",
+ "lazy_static",
+ "lumio-profiler",
+ "mime",
+ "pprof",
+ "regex",
+ "rstack-self",
+ "tokio",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-table-natives"
+version = "0.1.0"
+dependencies = [
+ "better_any",
+ "bytes",
+ "lumio-gas-schedule",
+ "lumio-native-interface",
+ "move-binary-format",
+ "move-core-types",
+ "move-table-extension",
+ "move-vm-runtime",
+ "move-vm-types",
+ "sha3 0.9.1",
+ "smallvec",
+]
+
+[[package]]
+name = "lumio-telemetry"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "flate2",
+ "futures",
+ "httpmock",
+ "lumio-api",
+ "lumio-config",
+ "lumio-consensus",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-mempool",
+ "lumio-metrics-core",
+ "lumio-network",
+ "lumio-node-resource-metrics",
+ "lumio-runtimes",
+ "lumio-state-sync-driver",
+ "lumio-telemetry-service",
+ "lumio-types",
+ "once_cell",
+ "prometheus",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.23",
+ "reqwest-middleware",
+ "reqwest-retry",
+ "serde_json",
+ "sysinfo",
+ "tokio",
+ "tokio-stream",
+ "url",
+ "uuid 1.11.0",
+]
+
+[[package]]
+name = "lumio-telemetry-service"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "chrono",
+ "claims",
+ "clap 4.5.21",
+ "debug-ignore",
+ "flate2",
+ "futures",
+ "gcp-bigquery-client",
+ "httpmock",
+ "jsonwebtoken 8.3.0",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-rest-client",
+ "lumio-types",
+ "once_cell",
+ "prometheus",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.23",
+ "reqwest-middleware",
+ "reqwest-retry",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "url",
+ "uuid 1.11.0",
+ "warp",
+]
+
+[[package]]
+name = "lumio-temppath"
+version = "0.1.0"
+dependencies = [
+ "hex",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-testcases"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "assert_approx_eq",
+ "async-trait",
+ "bcs 0.1.4",
+ "csv",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "log",
+ "lumio",
+ "lumio-config",
+ "lumio-forge",
+ "lumio-global-constants",
+ "lumio-keygen",
+ "lumio-logger",
+ "lumio-release-builder",
+ "lumio-rest-client",
+ "lumio-runtimes",
+ "lumio-sdk",
+ "lumio-temppath",
+ "lumio-types",
+ "rand 0.7.3",
+ "reqwest 0.11.23",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-time-service"
+version = "0.1.0"
+dependencies = [
+ "enum_dispatch",
+ "futures",
+ "lumio-infallible",
+ "pin-project 1.1.3",
+ "thiserror",
+ "tokio",
+ "tokio-test",
+]
+
+[[package]]
+name = "lumio-transaction-benchmarks"
+version = "0.1.0"
+dependencies = [
+ "clap 4.5.21",
+ "criterion",
+ "criterion-cpu-time",
+ "lumio-bitvec",
+ "lumio-block-executor",
+ "lumio-block-partitioner",
+ "lumio-crypto",
+ "lumio-language-e2e-tests",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-node-resource-metrics",
+ "lumio-push-metrics",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-logging",
+ "num_cpus",
+ "proptest",
+]
+
+[[package]]
+name = "lumio-transaction-emitter"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.21",
+ "futures",
+ "lumio-global-constants",
+ "lumio-logger",
+ "lumio-sdk",
+ "lumio-transaction-emitter-lib",
+ "lumio-transaction-workloads-lib",
+ "rand 0.7.3",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-transaction-emitter-lib"
+version = "0.0.0"
+dependencies = [
+ "again",
+ "anyhow",
+ "async-trait",
+ "base64 0.13.1",
+ "clap 4.5.21",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "log",
+ "lumio-config",
+ "lumio-crypto",
+ "lumio-global-constants",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-rest-client",
+ "lumio-sdk",
+ "lumio-transaction-generator-lib",
+ "lumio-types",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "reqwest 0.11.23",
+ "serde",
+ "serde_json",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-transaction-filter"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "derivative",
+ "derive_builder",
+ "lumio-protos",
+ "lz4",
+ "memchr",
+ "once_cell",
+ "prost 0.13.4",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-transaction-filters"
+version = "0.1.0"
+dependencies = [
+ "lumio-crypto",
+ "lumio-types",
+ "move-core-types",
+ "rand 0.7.3",
+ "serde",
+ "serde_yaml 0.8.26",
+]
+
+[[package]]
+name = "lumio-transaction-generator-lib"
+version = "0.0.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap 4.5.21",
+ "log",
+ "lumio-framework",
+ "lumio-infallible",
+ "lumio-logger",
+ "lumio-sdk",
+ "move-binary-format",
+ "move-core-types",
+ "move-package",
+ "once_cell",
+ "rand 0.7.3",
+ "serde",
+]
+
+[[package]]
+name = "lumio-transaction-simulation"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "lumio-crypto",
+ "lumio-keygen",
+ "lumio-types",
+ "lumio-vm-genesis",
+ "move-binary-format",
+ "move-core-types",
+ "once_cell",
+ "parking_lot 0.12.1",
+ "proptest",
+ "serde",
+]
+
+[[package]]
+name = "lumio-transaction-simulation-session"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "hex",
+ "lumio-api-types",
+ "lumio-resource-viewer",
+ "lumio-rest-client",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-validator-interface",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-core-types",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tokio",
+ "url",
+]
+
+[[package]]
+name = "lumio-transaction-workloads-lib"
+version = "0.0.0"
+dependencies = [
+ "async-trait",
+ "clap 4.5.21",
+ "lumio-framework",
+ "lumio-sdk",
+ "lumio-transaction-generator-lib",
+ "move-binary-format",
+ "once_cell",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "serde",
+]
+
+[[package]]
+name = "lumio-transactional-test-harness"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "codespan-reporting",
+ "datatest-stable",
+ "hex",
+ "lumio-api-types",
+ "lumio-block-executor",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-schedule",
+ "lumio-resource-viewer",
+ "lumio-storage-interface",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-genesis",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-bytecode-verifier",
+ "move-command-line-common",
+ "move-compiler-v2",
+ "move-core-types",
+ "move-model",
+ "move-symbol-pool",
+ "move-transactional-test-runner",
+ "move-vm-runtime",
+ "move-vm-types",
+ "once_cell",
+ "serde_json",
+ "tempfile",
+]
+
+[[package]]
+name = "lumio-types"
+version = "0.0.3"
+dependencies = [
+ "ahash 0.8.11",
+ "anyhow",
+ "arbitrary",
+ "ark-bn254",
+ "ark-ec",
+ "ark-ff",
+ "ark-groth16",
+ "ark-relations",
+ "ark-serialize",
+ "ark-std",
+ "async-trait",
+ "base64 0.13.1",
+ "bcs 0.1.4",
+ "bytes",
+ "chrono",
+ "chrono-tz 0.10.1",
+ "ciborium",
+ "claims",
+ "coset",
+ "criterion",
+ "dashmap 7.0.0-rc2",
+ "derivative",
+ "fixed",
+ "fxhash",
+ "hashbrown 0.14.3",
+ "hex",
+ "itertools 0.13.0",
+ "jsonwebtoken 8.3.0",
+ "lru",
+ "lumio-bitvec",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-dkg",
+ "lumio-infallible",
+ "lumio-proptest-helpers",
+ "move-binary-format",
+ "move-core-types",
+ "move-model",
+ "move-table-extension",
+ "move-vm-types",
+ "num-bigint 0.3.3",
+ "num-derive",
+ "num-traits",
+ "once_cell",
+ "p256",
+ "passkey-authenticator",
+ "passkey-client",
+ "passkey-types",
+ "poem-openapi",
+ "poem-openapi-derive",
+ "proptest",
+ "proptest-derive",
+ "quick_cache",
+ "rand 0.7.3",
+ "rapidhash",
+ "rayon",
+ "ref-cast",
+ "reqwest 0.11.23",
+ "ring 0.16.20",
+ "rsa 0.9.6",
+ "serde",
+ "serde-big-array",
+ "serde_bytes",
+ "serde_json",
+ "serde_with",
+ "serde_yaml 0.8.26",
+ "strum 0.27.1",
+ "strum_macros 0.27.1",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-validator-interface"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-recursion",
+ "async-trait",
+ "bcs 0.1.4",
+ "lru",
+ "lumio-api-types",
+ "lumio-config",
+ "lumio-db",
+ "lumio-framework",
+ "lumio-rest-client",
+ "lumio-storage-interface",
+ "lumio-types",
+ "move-core-types",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-validator-transaction-pool"
+version = "0.1.0"
+dependencies = [
+ "futures-util",
+ "lumio-channels",
+ "lumio-crypto",
+ "lumio-infallible",
+ "lumio-types",
+ "tokio",
+]
+
+[[package]]
+name = "lumio-vault-client"
+version = "0.1.0"
+dependencies = [
+ "base64 0.13.1",
+ "chrono",
+ "lumio-crypto",
+ "lumio-proptest-helpers",
+ "lumio-types",
+ "native-tls",
+ "once_cell",
+ "proptest",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "ureq",
+]
+
+[[package]]
+name = "lumio-vm"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "ark-bn254",
+ "ark-groth16",
+ "bcs 0.1.4",
+ "bytes",
+ "claims",
+ "crossbeam-channel",
+ "derive_more 0.99.17",
+ "fail",
+ "futures",
+ "hex",
+ "itertools 0.13.0",
+ "lumio-aggregator",
+ "lumio-block-executor",
+ "lumio-block-partitioner",
+ "lumio-crypto",
+ "lumio-crypto-derive",
+ "lumio-experimental-runtimes",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-meter",
+ "lumio-gas-schedule",
+ "lumio-keygen",
+ "lumio-language-e2e-tests",
+ "lumio-logger",
+ "lumio-memory-usage-tracker",
+ "lumio-metrics-core",
+ "lumio-mvhashmap",
+ "lumio-native-interface",
+ "lumio-table-natives",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm-environment",
+ "lumio-vm-logging",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-unit-test",
+ "move-vm-metrics",
+ "move-vm-runtime",
+ "move-vm-types",
+ "num_cpus",
+ "once_cell",
+ "ouroboros",
+ "parking_lot 0.12.1",
+ "proptest",
+ "rand 0.7.3",
+ "rand_core 0.5.1",
+ "rayon",
+ "serde",
+ "test-case",
+]
+
+[[package]]
+name = "lumio-vm-benchmarks"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "lumio-cached-packages",
+ "lumio-framework",
+ "lumio-language-e2e-tests",
+ "lumio-types",
+ "move-binary-format",
+ "move-core-types",
+]
+
+[[package]]
+name = "lumio-vm-environment"
+version = "0.0.1"
+dependencies = [
+ "bcs 0.1.4",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-move-stdlib",
+ "lumio-native-interface",
+ "lumio-table-natives",
+ "lumio-types",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-bytecode-verifier",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "once_cell",
+ "serde",
+ "sha3 0.9.1",
+]
+
+[[package]]
+name = "lumio-vm-genesis"
+version = "0.1.0"
+dependencies = [
+ "bcs 0.1.4",
+ "bytes",
+ "claims",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-framework",
+ "lumio-gas-schedule",
+ "lumio-proptest-helpers",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-types",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "once_cell",
+ "proptest",
+ "proptest-derive",
+ "rand 0.7.3",
+ "serde",
+]
+
+[[package]]
+name = "lumio-vm-logging"
+version = "0.1.0"
+dependencies = [
+ "arc-swap",
+ "lumio-crypto",
+ "lumio-logger",
+ "lumio-metrics-core",
+ "lumio-speculative-state-helper",
+ "lumio-types",
+ "once_cell",
+ "serde",
+]
+
+[[package]]
+name = "lumio-vm-profiling"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "clap 4.5.21",
+ "glob",
+ "lumio-block-executor",
+ "lumio-cached-packages",
+ "lumio-gas-schedule",
+ "lumio-move-stdlib",
+ "lumio-native-interface",
+ "lumio-table-natives",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "move-binary-format",
+ "move-core-types",
+ "move-ir-compiler",
+ "move-vm-runtime",
+ "move-vm-test-utils",
+ "move-vm-types",
+ "once_cell",
+ "smallvec",
+]
+
+[[package]]
+name = "lumio-vm-types"
+version = "0.0.1"
+dependencies = [
+ "ambassador",
+ "anyhow",
+ "bcs 0.1.4",
+ "bytes",
+ "claims",
+ "either",
+ "lumio-aggregator",
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-transaction-simulation",
+ "lumio-types",
+ "lumio-vm",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "rand 0.7.3",
+ "serde",
+ "test-case",
+]
+
+[[package]]
+name = "lumio-vm-validator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "fail",
+ "lumio-cached-packages",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-executor-test-helpers",
+ "lumio-gas-schedule",
+ "lumio-logger",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-types",
+ "lumio-vm",
+ "lumio-vm-environment",
+ "lumio-vm-genesis",
+ "lumio-vm-logging",
+ "move-binary-format",
+ "move-core-types",
+ "move-vm-runtime",
+ "move-vm-types",
+ "rand 0.7.3",
+]
+
+[[package]]
+name = "lumio-warp-webserver"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bcs 0.1.4",
+ "hyper 0.14.28",
+ "lumio-api-types",
+ "lumio-config",
+ "lumio-logger",
+ "serde",
+ "serde_json",
+ "warp",
+]
+
+[[package]]
+name = "lumio-workspace-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "aptos-indexer-processor-sdk",
+ "bollard",
+ "clap 4.5.21",
+ "diesel",
+ "diesel-async",
+ "futures",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-faucet-core",
+ "lumio-localnet",
+ "lumio-node",
+ "lumio-types",
+ "maplit",
+ "processor",
+ "rand 0.7.3",
+ "tempfile",
+ "tokio",
+ "tokio-util 0.7.10",
+ "url",
+ "uuid 1.11.0",
 ]
 
 [[package]]
@@ -12399,12 +12399,12 @@ name = "move-package-cache"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-framework",
- "aptos-rest-client",
  "fs2",
  "futures",
  "git2 0.16.1",
  "hex",
+ "lumio-framework",
+ "lumio-rest-client",
  "move-core-types",
  "percent-encoding",
  "tempfile",
@@ -12432,10 +12432,10 @@ name = "move-package-resolver"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-rest-client",
  "datatest-stable",
  "either",
  "git2 0.16.1",
+ "lumio-rest-client",
  "move-core-types",
  "move-package-cache",
  "move-package-manifest",
@@ -12663,7 +12663,6 @@ name = "move-transactional-test-runner"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-framework",
  "arbitrary",
  "bcs 0.1.4",
  "clap 4.5.21",
@@ -12672,6 +12671,7 @@ dependencies = [
  "difference",
  "either",
  "legacy-move-compiler",
+ "lumio-framework",
  "move-asm",
  "move-binary-format",
  "move-bytecode-source-map",
@@ -13588,8 +13588,8 @@ name = "package-generator"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-transaction-generator-lib",
  "clap 4.5.21",
+ "lumio-transaction-generator-lib",
 ]
 
 [[package]]
@@ -17022,45 +17022,6 @@ name = "smoke-test"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos",
- "aptos-api-types",
- "aptos-backup-cli",
- "aptos-bitvec",
- "aptos-cached-packages",
- "aptos-config",
- "aptos-consensus",
- "aptos-crypto",
- "aptos-db",
- "aptos-db-indexer",
- "aptos-db-indexer-schemas",
- "aptos-dkg",
- "aptos-faucet-core",
- "aptos-forge",
- "aptos-framework",
- "aptos-gas-algebra",
- "aptos-gas-schedule",
- "aptos-genesis",
- "aptos-global-constants",
- "aptos-indexer",
- "aptos-indexer-grpc-table-info",
- "aptos-infallible",
- "aptos-inspection-service",
- "aptos-keygen",
- "aptos-logger",
- "aptos-move-debugger",
- "aptos-release-builder",
- "aptos-rest-client",
- "aptos-rosetta",
- "aptos-schemadb",
- "aptos-sdk",
- "aptos-secure-storage",
- "aptos-storage-interface",
- "aptos-temppath",
- "aptos-time-service",
- "aptos-transaction-filters",
- "aptos-types",
- "aptos-vault-client",
- "aptos-vm",
  "base64 0.13.1",
  "bcs 0.1.4",
  "diesel",
@@ -17070,6 +17031,45 @@ dependencies = [
  "hex",
  "hyper 0.14.28",
  "itertools 0.13.0",
+ "lumio",
+ "lumio-api-types",
+ "lumio-backup-cli",
+ "lumio-bitvec",
+ "lumio-cached-packages",
+ "lumio-config",
+ "lumio-consensus",
+ "lumio-crypto",
+ "lumio-db",
+ "lumio-db-indexer",
+ "lumio-db-indexer-schemas",
+ "lumio-dkg",
+ "lumio-faucet-core",
+ "lumio-forge",
+ "lumio-framework",
+ "lumio-gas-algebra",
+ "lumio-gas-schedule",
+ "lumio-genesis",
+ "lumio-global-constants",
+ "lumio-indexer",
+ "lumio-indexer-grpc-table-info",
+ "lumio-infallible",
+ "lumio-inspection-service",
+ "lumio-keygen",
+ "lumio-logger",
+ "lumio-move-debugger",
+ "lumio-release-builder",
+ "lumio-rest-client",
+ "lumio-rosetta",
+ "lumio-schemadb",
+ "lumio-sdk",
+ "lumio-secure-storage",
+ "lumio-storage-interface",
+ "lumio-temppath",
+ "lumio-time-service",
+ "lumio-transaction-filters",
+ "lumio-types",
+ "lumio-vault-client",
+ "lumio-vm",
  "move-binary-format",
  "move-core-types",
  "num_cpus",

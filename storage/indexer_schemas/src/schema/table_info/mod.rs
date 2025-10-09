@@ -11,11 +11,11 @@
 
 use crate::schema::TABLE_INFO_CF_NAME;
 use anyhow::Result;
-use aptos_schemadb::{
+use lumio_schemadb::{
     define_pub_schema,
     schema::{KeyCodec, ValueCodec},
 };
-use aptos_types::state_store::table::{TableHandle, TableInfo};
+use lumio_types::state_store::table::{TableHandle, TableInfo};
 
 define_pub_schema!(TableInfoSchema, TableHandle, TableInfo, TABLE_INFO_CF_NAME);
 

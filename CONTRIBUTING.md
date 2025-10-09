@@ -1,30 +1,30 @@
 ---
 id: contributing
-title: Contributing to Aptos Core
+title: Contributing to Lumio Core
 ---
 
 # Contributing
 
-Our goal is to make contributing to Aptos Core easy and transparent. See [Aptos Community](https://aptos.dev/community) for full details. This page describes [our development process](#our-development-process).
+Our goal is to make contributing to Lumio Core easy and transparent. See [Lumio Community](https://lumio.dev/community) for full details. This page describes [our development process](#our-development-process).
 
-## Aptos Core
+## Lumio Core
 
-To contribute to the Aptos Core implementation, first start with the proper development copy.
-You may want to use the GitHub interface to fork [aptos-core](https://github.com/aptos-labs/aptos-core) and check out your fork.
-For development environment setup and first build, see [Building Aptos From Source](https://aptos.dev/guides/building-from-source)
+To contribute to the Lumio Core implementation, first start with the proper development copy.
+You may want to use the GitHub interface to fork [lumio-core](https://github.com/lumio-labs/lumio-core) and check out your fork.
+For development environment setup and first build, see [Building Lumio From Source](https://lumio.dev/guides/building-from-source)
 
 ## Our Development Process
 
 ### Code Style, Hints, and Testing
 
-Refer to our Coding Guidelines for the [Move](https://aptos.dev/move/book/coding-conventions/) and [Rust](./RUST_CODING_STYLE.md) programming languages for detailed guidance about how to contribute to the project.
+Refer to our Coding Guidelines for the [Move](https://lumio.dev/move/book/coding-conventions/) and [Rust](./RUST_CODING_STYLE.md) programming languages for detailed guidance about how to contribute to the project.
 
-Also, please ensure you follow our [Secure Coding Guidelines](./RUST_SECURE_CODING.md) to contribute to Aptos securely. 
+Also, please ensure you follow our [Secure Coding Guidelines](./RUST_SECURE_CODING.md) to contribute to Lumio securely. 
 
 
 ### Documentation
 
-Aptos Core's developer website is also open source (the code can be found in this [repository](https://github.com/aptos-labs/developer-docs).  It is built using [Docusaurus](https://docusaurus.io/):
+Lumio Core's developer website is also open source (the code can be found in this [repository](https://github.com/lumio-labs/developer-docs).  It is built using [Docusaurus](https://docusaurus.io/):
 
 If you know Markdown, you can already contribute!
 
@@ -106,4 +106,4 @@ It is important that the project history is bisect-able so that when regressions
 
 ## Issues
 
-Aptos Core uses [GitHub issues](https://github.com/aptos-labs/aptos-core/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.
+Lumio Core uses [GitHub issues](https://github.com/lumio-labs/lumio-core/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.

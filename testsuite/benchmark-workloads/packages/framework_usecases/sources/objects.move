@@ -3,9 +3,9 @@ module 0xABCD::objects {
     use std::error;
     use std::signer;
     use std::vector;
-    use aptos_framework::object;
+    use lumio_framework::object;
 
-    #[resource_group_member(group = aptos_framework::object::ObjectGroup)]
+    #[resource_group_member(group = lumio_framework::object::ObjectGroup)]
     struct AdditionalData has key {
         data: vector<u8>,
     }

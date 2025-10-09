@@ -15,11 +15,11 @@ use crate::{
         RocksdbOpt, TrustedWaypointOpt,
     },
 };
-use aptos_db::AptosDB;
-use aptos_executor_types::VerifyExecutionMode;
-use aptos_storage_interface::DbReader;
-use aptos_temppath::TempPath;
-use aptos_types::transaction::Version;
+use lumio_db::LumioDB;
+use lumio_executor_types::VerifyExecutionMode;
+use lumio_storage_interface::DbReader;
+use lumio_temppath::TempPath;
+use lumio_types::transaction::Version;
 use itertools::zip_eq;
 use std::{convert::TryInto, mem::size_of, sync::Arc};
 use tokio::time::Duration;
@@ -125,7 +125,7 @@ fn end_to_end() {
     // We don't write down any ledger infos when recovering transactions. State-sync needs to take
     // care of it before running consensus. The latest transactions are deemed "synced" instead of
     // "committed" most likely.
-    let tgt_db = AptosDB::new_readonly_for_test(&tgt_db_dir);
+    let tgt_db = LumioDB::new_readonly_for_test(&tgt_db_dir);
     let ouptputlist = tgt_db
         .get_transaction_outputs(0, target_version, target_version)
         .unwrap()

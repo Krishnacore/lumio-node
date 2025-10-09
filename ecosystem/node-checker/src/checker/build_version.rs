@@ -16,10 +16,10 @@ use crate::{
     },
 };
 use anyhow::{anyhow, Result};
-use aptos_logger::debug;
+use lumio_logger::debug;
 use serde::{Deserialize, Serialize};
 
-// TODO: Use the key in crates/aptos-telemetry/src/build_information.rs
+// TODO: Use the key in crates/lumio-telemetry/src/build_information.rs
 const BUILD_COMMIT_HASH_KEY: &str = "build_commit_hash";
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

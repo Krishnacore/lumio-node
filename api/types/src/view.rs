@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{EntryFunctionId, MoveType};
-use aptos_types::serde_helper::vec_bytes;
+use lumio_types::serde_helper::vec_bytes;
 use move_core_types::{
     identifier::Identifier,
     language_storage::{ModuleId, TypeTag},

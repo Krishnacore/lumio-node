@@ -10,11 +10,11 @@ use crate::{
     subscription::{SubscriptionRequest, SubscriptionStreamRequests},
     tests::{mock, mock::MockClient, utils},
 };
-use aptos_config::{
-    config::{AptosDataClientConfig, StorageServiceConfig},
+use lumio_config::{
+    config::{LumioDataClientConfig, StorageServiceConfig},
     network_id::PeerNetworkId,
 };
-use aptos_storage_service_types::{
+use lumio_storage_service_types::{
     requests::{
         DataRequest, StorageServiceRequest, SubscribeTransactionOutputsWithProofRequest,
         SubscribeTransactionsOrOutputsWithProofRequest, SubscribeTransactionsWithProofRequest,
@@ -23,8 +23,8 @@ use aptos_storage_service_types::{
     responses::StorageServerSummary,
     StorageServiceError,
 };
-use aptos_time_service::TimeService;
-use aptos_types::epoch_change::EpochChangeProof;
+use lumio_time_service::TimeService;
+use lumio_types::epoch_change::EpochChangeProof;
 use arc_swap::ArcSwap;
 use claims::assert_matches;
 use dashmap::DashMap;
@@ -91,7 +91,7 @@ async fn test_peers_with_ready_subscriptions() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            LumioDataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -217,7 +217,7 @@ async fn test_remove_expired_subscriptions_no_new_data() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            LumioDataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -364,7 +364,7 @@ async fn test_remove_expired_subscriptions_blocked_stream() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            LumioDataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),
@@ -475,7 +475,7 @@ async fn test_remove_expired_subscriptions_blocked_stream_index() {
         let optimistic_fetches = Arc::new(DashMap::new());
         let lru_response_cache = Cache::new(0);
         let request_moderator = Arc::new(RequestModerator::new(
-            AptosDataClientConfig::default(),
+            LumioDataClientConfig::default(),
             cached_storage_server_summary.clone(),
             mock::create_peers_and_metadata(vec![]),
             StorageServiceConfig::default(),

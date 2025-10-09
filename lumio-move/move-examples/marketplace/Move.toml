@@ -1,0 +1,11 @@
+[package]
+name = "Marketplace"
+version = "0.0.0"
+
+[addresses]
+marketplace = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioToken = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
+LumioTokenObjects = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }

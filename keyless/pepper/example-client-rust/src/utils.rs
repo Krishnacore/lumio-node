@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{DEFAULT_CLIENT_TIMEOUT_SECS, DEFAULT_JWT};
-use aptos_types::keyless::Configuration;
+use lumio_types::keyless::Configuration;
 use reqwest::Client;
 use serde::Serialize;
 use std::{fs, io::stdin, time::Duration};

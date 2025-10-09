@@ -1,0 +1,71 @@
+# This compose file defines an Lumio Fullnode deployment.
+# Read the README.md files for instruction on how to install lumio-node
+
+services:
+  haproxy:
+    image: haproxy:3.0.2
+    volumes:
+      - type: bind
+        source: ./haproxy-fullnode.cfg
+        target: /usr/local/etc/haproxy/haproxy.cfg
+      - type: bind
+        source: ./blocked.ips
+        target: /usr/local/etc/haproxy/blocked.ips
+    networks:
+      - shared
+    expose:
+      # Public fullnode access
+      - 6182
+      # REST API
+      - 8080
+      # Fullnode metrics
+      - 9101
+      # Haproxy stats page
+      - 9102
+    ports:
+      - "6182:6182"
+      - "8080:8080"
+      # Only expose these internally
+      - "127.0.0.1:9101:9101"
+      - "127.0.0.1:9102:9102"
+
+  fullnode:
+    image: "${VALIDATOR_IMAGE_REPO:-lumiolabs/validator}:${IMAGE_TAG:-testnet}"
+    networks:
+      shared:
+    volumes:
+      - type: volume
+        source: lumio-fullnode
+        target: /opt/lumio/data
+      - type: bind
+        source: ./fullnode.yaml
+        target: /opt/lumio/etc/fullnode.yaml
+      - type: bind
+        source: ./genesis.blob
+        target: /opt/lumio/genesis/genesis.blob
+      - type: bind
+        source: ./waypoint.txt
+        target: /opt/lumio/genesis/waypoint.txt
+      - type: bind
+        source: ./keys/validator-full-node-identity.yaml
+        target: /opt/lumio/genesis/validator-full-node-identity.yaml
+    command: ["/usr/local/bin/lumio-node", "-f", "/opt/lumio/etc/fullnode.yaml"]
+    restart: unless-stopped
+    expose:
+      # Public fullnode access
+      - 6182
+      # REST API
+      - 8080
+      # Validator metrics
+      - 9101
+
+networks:
+  shared:
+    name: "lumio-docker-compose-shared"
+    ipam:
+      config:
+        - subnet: 172.16.1.0/24
+
+volumes:
+  lumio-fullnode:
+    name: lumio-fullnode

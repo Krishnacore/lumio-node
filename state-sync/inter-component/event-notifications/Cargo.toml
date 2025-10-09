@@ -1,5 +1,5 @@
 [package]
-name = "aptos-event-notifications"
+name = "lumio-event-notifications"
 description = "The notification service offered by state sync for on-chain events"
 version = "0.1.0"
 
@@ -14,22 +14,22 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-channels = { workspace = true }
-aptos-id-generator = { workspace = true }
-aptos-infallible = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-types = { workspace = true }
+lumio-channels = { workspace = true }
+lumio-id-generator = { workspace = true }
+lumio-infallible = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-types = { workspace = true }
 futures = { workspace = true }
 serde = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
-aptos-crypto = { workspace = true }
-aptos-db = { workspace = true }
-aptos-executor-test-helpers = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-genesis = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-executor-test-helpers = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-genesis = { workspace = true }
 bcs = { workspace = true }
 claims = { workspace = true }
 move-binary-format = { workspace = true }

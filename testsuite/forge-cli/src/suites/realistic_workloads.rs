@@ -5,11 +5,11 @@
 use super::ungrouped::{
     mixed_emit_job, PROGRESS_THRESHOLD_20_6, RELIABLE_REAL_ENV_PROGRESS_THRESHOLD,
 };
-use aptos_forge::{
+use lumio_forge::{
     args::TransactionTypeArg, success_criteria::SuccessCriteria, EmitJobMode, EmitJobRequest,
     EntryPoints, ForgeConfig, TransactionType, WorkflowProgress,
 };
-use aptos_testcases::{
+use lumio_testcases::{
     load_vs_perf_benchmark::{LoadVsPerfBenchmark, TransactionWorkload, Workloads},
     modifiers::CpuChaosTest,
     multi_region_network_test::MultiRegionNetworkEmulationTest,

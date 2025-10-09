@@ -12,16 +12,16 @@ use crate::{
     },
     streaming_service::DataStreamingService,
     tests::utils::{
-        create_ledger_info, get_data_notification, initialize_logger, MockAptosDataClient,
+        create_ledger_info, get_data_notification, initialize_logger, MockLumioDataClient,
         MAX_ADVERTISED_EPOCH_END, MAX_ADVERTISED_STATES, MAX_ADVERTISED_TRANSACTION,
         MAX_ADVERTISED_TRANSACTION_OUTPUT, MAX_REAL_EPOCH_END, MAX_REAL_TRANSACTION,
         MAX_REAL_TRANSACTION_OUTPUT, MIN_ADVERTISED_EPOCH_END, MIN_ADVERTISED_STATES,
         MIN_ADVERTISED_TRANSACTION, MIN_ADVERTISED_TRANSACTION_OUTPUT, TOTAL_NUM_STATE_VALUES,
     },
 };
-use aptos_config::config::{AptosDataClientConfig, DataStreamingServiceConfig};
-use aptos_time_service::TimeService;
-use aptos_types::{
+use lumio_config::config::{LumioDataClientConfig, DataStreamingServiceConfig};
+use lumio_time_service::TimeService;
+use lumio_types::{
     ledger_info::LedgerInfoWithSignatures,
     transaction::{TransactionListWithProofV2, TransactionOutputListWithProofV2},
 };
@@ -1638,7 +1638,7 @@ pub fn create_streaming_client_and_server(
     enable_subscription_streaming: bool,
 ) -> (
     StreamingServiceClient,
-    DataStreamingService<MockAptosDataClient>,
+    DataStreamingService<MockLumioDataClient>,
 ) {
     initialize_logger();
 
@@ -1647,9 +1647,9 @@ pub fn create_streaming_client_and_server(
         new_streaming_service_client_listener_pair();
 
     // Create a mock data client
-    let aptos_data_client_config = AptosDataClientConfig::default();
-    let aptos_data_client = MockAptosDataClient::new(
-        aptos_data_client_config,
+    let lumio_data_client_config = LumioDataClientConfig::default();
+    let lumio_data_client = MockLumioDataClient::new(
+        lumio_data_client_config,
         data_beyond_highest_advertised,
         limit_chunk_sizes,
         skip_emulate_network_latencies,
@@ -1667,9 +1667,9 @@ pub fn create_streaming_client_and_server(
 
     // Create the streaming service and connect it to the listener
     let streaming_service = DataStreamingService::new(
-        aptos_data_client_config,
+        lumio_data_client_config,
         data_streaming_service_config,
-        aptos_data_client,
+        lumio_data_client,
         streaming_service_listener,
         TimeService::mock(),
     );

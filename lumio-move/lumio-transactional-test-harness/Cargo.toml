@@ -1,0 +1,55 @@
+[package]
+name = "lumio-transactional-test-harness"
+description = "Transactional testing framework for Move"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-api-types = { workspace = true }
+lumio-block-executor = { workspace = true }
+lumio-cached-packages = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-gas-schedule = { workspace = true }
+lumio-resource-viewer = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-transaction-simulation = { workspace = true }
+lumio-types = { workspace = true, features = ["fuzzing"] }
+lumio-vm = { workspace = true }
+lumio-vm-environment = { workspace = true }
+lumio-vm-genesis = { workspace = true }
+lumio-vm-types = { workspace = true }
+bcs = { workspace = true }
+clap = { workspace = true }
+codespan-reporting = { workspace = true }
+hex = { workspace = true }
+move-binary-format = { workspace = true, features = ["fuzzing"] }
+move-bytecode-verifier = { workspace = true }
+move-command-line-common = { workspace = true }
+move-compiler-v2 = { workspace = true }
+move-core-types = { workspace = true, features = ["fuzzing"] }
+move-model = { workspace = true }
+move-symbol-pool = { workspace = true }
+move-transactional-test-runner = { workspace = true }
+move-vm-runtime = { workspace = true }
+move-vm-types = { workspace = true }
+once_cell = { workspace = true }
+serde_json = { workspace = true }
+tempfile = { workspace = true }
+
+[dev-dependencies]
+lumio-types = { workspace = true, features = ["fuzzing"] }
+datatest-stable = { workspace = true }
+
+[[test]]
+name = "tests"
+harness = false

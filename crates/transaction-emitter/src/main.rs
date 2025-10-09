@@ -5,11 +5,11 @@
 mod diag;
 
 use anyhow::{Context, Result};
-use aptos_logger::{Level, Logger};
-use aptos_transaction_emitter_lib::{
+use lumio_logger::{Level, Logger};
+use lumio_transaction_emitter_lib::{
     create_accounts_command, emit_transactions, Cluster, ClusterArgs, CreateAccountsArgs, EmitArgs,
 };
-use aptos_transaction_workloads_lib::args::EmitWorkloadArgs;
+use lumio_transaction_workloads_lib::args::EmitWorkloadArgs;
 use clap::{Parser, Subcommand};
 use diag::diag;
 

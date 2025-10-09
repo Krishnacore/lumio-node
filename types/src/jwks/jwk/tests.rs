@@ -9,7 +9,7 @@ use crate::{
     },
     move_any::{Any as MoveAny, AsMoveAny},
 };
-use aptos_crypto::HashValue;
+use lumio_crypto::HashValue;
 use std::str::FromStr;
 
 #[test]

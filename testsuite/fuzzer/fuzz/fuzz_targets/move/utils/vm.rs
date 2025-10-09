@@ -4,12 +4,12 @@
 #![allow(dead_code)]
 
 use crate::tdbg;
-use aptos_cached_packages::aptos_stdlib::code_publish_package_txn;
-use aptos_framework::natives::code::{
+use lumio_cached_packages::lumio_stdlib::code_publish_package_txn;
+use lumio_framework::natives::code::{
     ModuleMetadata, MoveOption, PackageDep, PackageMetadata, UpgradePolicy,
 };
-use aptos_language_e2e_tests::{account::Account, executor::FakeExecutor};
-use aptos_types::transaction::{ExecutionStatus, TransactionPayload, TransactionStatus};
+use lumio_language_e2e_tests::{account::Account, executor::FakeExecutor};
+use lumio_types::transaction::{ExecutionStatus, TransactionPayload, TransactionStatus};
 use arbitrary::Arbitrary;
 use fuzzer::UserAccount;
 use libfuzzer_sys::Corpus;
@@ -146,7 +146,7 @@ pub(crate) fn check_for_invariant_violation(e: VMStatus) {
             e,
             "RUST_BACKTRACE=1 DEBUG_VM_STATUS=",
             e.status_code(),
-            "./fuzz.sh run move_aptosvm_publish_and_run <ARTIFACT>"
+            "./fuzz.sh run move_lumiovm_publish_and_run <ARTIFACT>"
         );
     }
 }

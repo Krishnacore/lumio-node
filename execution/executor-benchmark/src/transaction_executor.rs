@@ -3,15 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{metrics::TIMER, pipeline::LedgerUpdateMessage};
-use aptos_crypto::hash::HashValue;
-use aptos_executor::block_executor::BlockExecutor;
-use aptos_executor_types::BlockExecutorTrait;
-use aptos_logger::info;
-use aptos_metrics_core::TimerHelper;
-use aptos_types::block_executor::{
+use lumio_crypto::hash::HashValue;
+use lumio_executor::block_executor::BlockExecutor;
+use lumio_executor_types::BlockExecutorTrait;
+use lumio_logger::info;
+use lumio_metrics_core::TimerHelper;
+use lumio_types::block_executor::{
     config::BlockExecutorConfigFromOnchain, partitioner::ExecutableBlock,
 };
-use aptos_vm::VMBlockExecutor;
+use lumio_vm::VMBlockExecutor;
 use std::{
     sync::{mpsc, Arc},
     time::{Duration, Instant},

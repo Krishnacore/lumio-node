@@ -26,11 +26,11 @@ use crate::{
     },
     PeerState,
 };
-use aptos_config::{
+use lumio_config::{
     config::{NodeConfig, PeerRole},
     network_id::NetworkId,
 };
-use aptos_time_service::TimeServiceTrait;
+use lumio_time_service::TimeServiceTrait;
 use std::cmp::min;
 
 #[tokio::test(flavor = "multi_thread")]

@@ -1,0 +1,12 @@
+[package]
+name = "Examples"
+version = "0.0.0"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioToken = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
+
+[addresses]
+lumio_framework = "0x1"
+# replace the admin_addr with the actual admin address we created using CLI
+admin_addr = "0xbeef"

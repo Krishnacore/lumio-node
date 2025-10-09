@@ -24,14 +24,14 @@ use crate::{
     transaction::{TransactionInfo, Version},
 };
 use anyhow::{ensure, Result};
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{
         CryptoHash, CryptoHasher, EventAccumulatorHasher, SparseMerkleInternalHasher,
         TestOnlyHasher, TransactionAccumulatorHasher,
     },
     HashValue,
 };
-use aptos_crypto_derive::CryptoHasher;
+use lumio_crypto_derive::CryptoHasher;
 #[cfg(any(test, feature = "fuzzing"))]
 use proptest_derive::Arbitrary;
 use serde::{Deserialize, Serialize};

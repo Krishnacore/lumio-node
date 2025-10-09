@@ -32,25 +32,25 @@ use crate::{
     network_interface::CommitMessage,
     pipeline::{execution_client::TExecutionClient, pipeline_builder::PipelineBuilder},
 };
-use aptos_channels::{aptos_channel, aptos_channel::Receiver, message_queues::QueueStyle};
-use aptos_config::{
+use lumio_channels::{lumio_channel, lumio_channel::Receiver, message_queues::QueueStyle};
+use lumio_config::{
     config::{ConsensusObserverConfig, NodeConfig},
     network_id::PeerNetworkId,
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     pipeline, pipelined_block::PipelinedBlock, vote_data::VoteData,
     wrapped_ledger_info::WrappedLedgerInfo,
 };
-use aptos_crypto::{bls12381, Genesis};
-use aptos_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
-use aptos_infallible::Mutex;
-use aptos_logger::{debug, error, info, warn};
-use aptos_network::{
+use lumio_crypto::{bls12381, Genesis};
+use lumio_event_notifications::{DbBackedOnChainConfig, ReconfigNotificationListener};
+use lumio_infallible::Mutex;
+use lumio_logger::{debug, error, info, warn};
+use lumio_network::{
     application::interface::NetworkClient, protocols::wire::handshake::v1::ProtocolId,
 };
-use aptos_storage_interface::DbReader;
-use aptos_time_service::TimeService;
-use aptos_types::{
+use lumio_storage_interface::DbReader;
+use lumio_time_service::TimeService;
+use lumio_types::{
     block_info::Round, epoch_state::EpochState, ledger_info::LedgerInfoWithSignatures,
     validator_signer::ValidatorSigner,
 };
@@ -1064,7 +1064,7 @@ impl ConsensusObserver {
         let signer = Arc::new(ValidatorSigner::new(AccountAddress::ZERO, sk.clone()));
         let dummy_signer = Arc::new(DagCommitSigner::new(signer.clone()));
         let (_, rand_msg_rx) =
-            aptos_channel::new::<AccountAddress, IncomingRandGenRequest>(QueueStyle::FIFO, 1, None);
+            lumio_channel::new::<AccountAddress, IncomingRandGenRequest>(QueueStyle::FIFO, 1, None);
         self.execution_client
             .start_epoch(
                 sk,

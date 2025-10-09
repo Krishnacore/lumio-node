@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::error::Error;
-use aptos_logger::Schema;
+use lumio_logger::Schema;
 use serde::Serialize;
 
 #[derive(Schema)]
@@ -30,7 +30,7 @@ impl LogSchema<'_> {
 #[derive(Clone, Copy, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub enum LogEntry {
-    AptosDataClient,
+    LumioDataClient,
     CheckStreamProgress,
     CreatedSubscriptionStream,
     EndOfStreamNotification,

@@ -3,24 +3,24 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{metrics::NUM_TXNS, pipeline::CommitBlockMessage};
-use aptos_crypto::hash::HashValue;
-use aptos_db::metrics::API_LATENCY_SECONDS;
-use aptos_executor::{
+use lumio_crypto::hash::HashValue;
+use lumio_db::metrics::API_LATENCY_SECONDS;
+use lumio_executor::{
     block_executor::BlockExecutor,
     metrics::{
         BLOCK_EXECUTION_WORKFLOW_WHOLE, COMMIT_BLOCKS, GET_BLOCK_EXECUTION_OUTPUT_BY_EXECUTING,
     },
 };
-use aptos_executor_types::BlockExecutorTrait;
-use aptos_logger::prelude::*;
-use aptos_metrics_core::IntCounterVecHelper;
-use aptos_types::{
+use lumio_executor_types::BlockExecutorTrait;
+use lumio_logger::prelude::*;
+use lumio_metrics_core::IntCounterVecHelper;
+use lumio_types::{
     aggregate_signature::AggregateSignature,
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
     transaction::Version,
 };
-use aptos_vm::VMBlockExecutor;
+use lumio_vm::VMBlockExecutor;
 use std::{
     sync::{mpsc, Arc},
     time::{Duration, Instant},

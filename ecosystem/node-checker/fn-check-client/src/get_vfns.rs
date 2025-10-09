@@ -12,9 +12,9 @@ use crate::{
     helpers::extract_network_address,
 };
 use anyhow::{Context, Result};
-use aptos_logger::info;
-use aptos_sdk::{
-    rest_client::Client as AptosClient,
+use lumio_logger::info;
+use lumio_sdk::{
+    rest_client::Client as LumioClient,
     types::{
         account_address::AccountAddress, account_config::CORE_CODE_ADDRESS,
         on_chain_config::ValidatorSet, validator_info::ValidatorInfo,
@@ -35,7 +35,7 @@ pub struct GetValidatorFullNodes {
 impl GetValidatorFullNodes {
     /// Get all the on chain validator info.
     async fn get_validator_infos(&self) -> Result<Vec<ValidatorInfo>> {
-        let client = AptosClient::new(self.node_address.clone());
+        let client = LumioClient::new(self.node_address.clone());
         let response = client
             .get_account_resource_bcs::<ValidatorSet>(CORE_CODE_ADDRESS, "0x1::stake::ValidatorSet")
             .await?;

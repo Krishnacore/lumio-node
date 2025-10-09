@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use super::ungrouped::RELIABLE_PROGRESS_THRESHOLD;
-use aptos_config::config::NodeConfig;
-use aptos_forge::{
+use lumio_config::config::NodeConfig;
+use lumio_forge::{
     success_criteria::{LatencyType, SuccessCriteria},
     EmitJobMode, EmitJobRequest, ForgeConfig, OverrideNodeConfigFn,
 };
-use aptos_testcases::public_fullnode_performance::PFNPerformance;
+use lumio_testcases::public_fullnode_performance::PFNPerformance;
 use std::{num::NonZeroUsize, sync::Arc, time::Duration};
 
 /// Attempts to match the test name to a PFN test

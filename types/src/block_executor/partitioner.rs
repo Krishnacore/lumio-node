@@ -6,7 +6,7 @@ use crate::transaction::{
     signature_verified_transaction::SignatureVerifiedTransaction,
     AuxiliaryInfo, AuxiliaryInfoTrait, Transaction,
 };
-use aptos_crypto::HashValue;
+use lumio_crypto::HashValue;
 use serde::{Deserialize, Serialize};
 use std::{
     cmp::Ordering,

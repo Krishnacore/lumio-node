@@ -1,6 +1,6 @@
 module poc::order_internal {
-    use aptos_std::crypto_algebra;
-    use aptos_std::bls12381_algebra::G1;
+    use lumio_std::crypto_algebra;
+    use lumio_std::bls12381_algebra::G1;
     use std::vector;
 
     public entry fun main(_owner: &signer) {

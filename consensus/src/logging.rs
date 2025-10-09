@@ -2,10 +2,10 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_consensus_types::common::Author;
-use aptos_crypto::HashValue;
-use aptos_logger::Schema;
-use aptos_types::block_info::Round;
+use lumio_consensus_types::common::Author;
+use lumio_crypto::HashValue;
+use lumio_logger::Schema;
+use lumio_types::block_info::Round;
 use serde::Serialize;
 
 #[derive(Schema)]

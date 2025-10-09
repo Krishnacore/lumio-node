@@ -9,13 +9,13 @@ use crate::{
     },
 };
 use anyhow::Result;
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::Block, quorum_cert::QuorumCert, timeout_2chain::TwoChainTimeoutCertificate, vote::Vote,
 };
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
-use aptos_storage_interface::DbReader;
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_infallible::Mutex;
+use lumio_storage_interface::DbReader;
+use lumio_types::{
     aggregate_signature::AggregateSignature,
     epoch_change::EpochChangeProof,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures},
@@ -240,7 +240,7 @@ impl PersistentLivenessStorage for MockStorage {
         Ok(EpochChangeProof::new(vec![lis], false))
     }
 
-    fn aptos_db(&self) -> Arc<dyn DbReader> {
+    fn lumio_db(&self) -> Arc<dyn DbReader> {
         unimplemented!()
     }
 
@@ -314,7 +314,7 @@ impl PersistentLivenessStorage for EmptyStorage {
         Ok(EpochChangeProof::new(vec![], false))
     }
 
-    fn aptos_db(&self) -> Arc<dyn DbReader> {
+    fn lumio_db(&self) -> Arc<dyn DbReader> {
         unimplemented!()
     }
 

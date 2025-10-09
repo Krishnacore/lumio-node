@@ -4,7 +4,7 @@
 
 //! This crate implements wrappers around our [Noise][noise] implementation.
 //! Noise is a protocol framework to encrypt and authentication connections.
-//! We use Noise to secure connections between peers in Aptos.
+//! We use Noise to secure connections between peers in Lumio.
 //! Specifically, we use the [Noise IK][ik] handshake which is a one round-trip protocol
 //! (the client sends one message, then the server responds).
 //! For more information about Noise and our implementation, refer to the [crypto] crate.
@@ -12,17 +12,17 @@
 //! Usage example:
 //!
 //! ```
-//! use aptos_network::noise::{AntiReplayTimestamps, HandshakeAuthMode, NoiseUpgrader};
+//! use lumio_network::noise::{AntiReplayTimestamps, HandshakeAuthMode, NoiseUpgrader};
 //! use futures::{executor, future, io::{AsyncReadExt, AsyncWriteExt}};
-//! use aptos_memsocket::MemorySocket;
-//! use aptos_config::{config::{Peer, PeerRole}, network_id::{NetworkContext, NetworkId}};
-//! use aptos_crypto::{x25519, ed25519, Uniform, PrivateKey, test_utils::TEST_SEED};
-//! use aptos_infallible::RwLock;
+//! use lumio_memsocket::MemorySocket;
+//! use lumio_config::{config::{Peer, PeerRole}, network_id::{NetworkContext, NetworkId}};
+//! use lumio_crypto::{x25519, ed25519, Uniform, PrivateKey, test_utils::TEST_SEED};
+//! use lumio_infallible::RwLock;
 //! use rand::{rngs::StdRng, SeedableRng};
-//! use aptos_types::PeerId;
+//! use lumio_types::PeerId;
 //! use std::{collections::{HashSet, HashMap}, io, sync::Arc};
-//! use aptos_config::config::RoleType;
-//! use aptos_network::application::storage::PeersAndMetadata;
+//! use lumio_config::config::RoleType;
+//! use lumio_network::application::storage::PeersAndMetadata;
 //!
 //! fn example() -> io::Result<()> {
 //! // create client and server NoiseUpgrader
@@ -100,7 +100,7 @@
 //!
 //! [noise]: http://noiseprotocol.org/
 //! [ik]: https://noiseexplorer.com/patterns/IK
-//! [crypto]: ../aptos_crypto/noise/index.html
+//! [crypto]: ../lumio_crypto/noise/index.html
 
 pub mod error;
 pub mod handshake;

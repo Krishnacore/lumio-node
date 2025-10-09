@@ -4,10 +4,10 @@
 use crate::{
     transcript_aggregation::TranscriptAggregationState, types::DKGTranscriptRequest, DKGMessage,
 };
-use aptos_channels::aptos_channel::Sender;
-use aptos_logger::info;
-use aptos_reliable_broadcast::ReliableBroadcast;
-use aptos_types::{dkg::DKGTrait, epoch_state::EpochState};
+use lumio_channels::lumio_channel::Sender;
+use lumio_logger::info;
+use lumio_reliable_broadcast::ReliableBroadcast;
+use lumio_types::{dkg::DKGTrait, epoch_state::EpochState};
 use futures::future::AbortHandle;
 use futures_util::future::Abortable;
 use move_core_types::account_address::AccountAddress;

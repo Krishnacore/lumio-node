@@ -5,7 +5,7 @@
 #![forbid(unsafe_code)]
 
 use crate::types::partial_state_compute_result::PartialStateComputeResult;
-use aptos_types::ledger_info::LedgerInfoWithSignatures;
+use lumio_types::ledger_info::LedgerInfoWithSignatures;
 
 #[derive(Debug)]
 pub struct ExecutedChunk {

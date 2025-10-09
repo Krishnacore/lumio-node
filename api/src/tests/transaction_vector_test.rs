@@ -16,13 +16,13 @@
  **************************************************************************************/
 
 use super::new_test_context;
-use aptos_api_test_context::{current_function_name, TestContext};
-use aptos_crypto::{
+use lumio_api_test_context::{current_function_name, TestContext};
+use lumio_crypto::{
     ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
     SigningKey, Uniform,
 };
-use aptos_proptest_helpers::ValueGenerator;
-use aptos_types::{
+use lumio_proptest_helpers::ValueGenerator;
+use lumio_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     transaction::{EntryFunction, RawTransaction, Script, SignedTransaction, TransactionArgument},

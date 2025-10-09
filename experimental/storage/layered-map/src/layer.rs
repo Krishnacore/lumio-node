@@ -7,10 +7,10 @@ use crate::{
     map::{DefaultHashBuilder, LayeredMap},
     metrics::LAYER,
 };
-use aptos_crypto::HashValue;
-use aptos_drop_helper::ArcAsyncDrop;
-use aptos_infallible::Mutex;
-use aptos_metrics_core::IntGaugeVecHelper;
+use lumio_crypto::HashValue;
+use lumio_drop_helper::ArcAsyncDrop;
+use lumio_infallible::Mutex;
+use lumio_metrics_core::IntGaugeVecHelper;
 use std::{marker::PhantomData, sync::Arc};
 
 #[derive(Debug)]

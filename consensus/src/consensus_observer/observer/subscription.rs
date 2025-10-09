@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::consensus_observer::{common::error::Error, observer::subscription_utils};
-use aptos_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
-use aptos_network::application::metadata::PeerMetadata;
-use aptos_storage_interface::DbReader;
-use aptos_time_service::{TimeService, TimeServiceTrait};
+use lumio_config::{config::ConsensusObserverConfig, network_id::PeerNetworkId};
+use lumio_network::application::metadata::PeerMetadata;
+use lumio_storage_interface::DbReader;
+use lumio_time_service::{TimeService, TimeServiceTrait};
 use std::{
     collections::{HashMap, HashSet},
     sync::Arc,
@@ -235,16 +235,16 @@ impl ConsensusObserverSubscription {
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_config::config::PeerRole;
-    use aptos_netcore::transport::ConnectionOrigin;
-    use aptos_network::{
+    use lumio_config::config::PeerRole;
+    use lumio_netcore::transport::ConnectionOrigin;
+    use lumio_network::{
         protocols::wire::handshake::v1::{MessagingProtocolVersion, ProtocolIdSet},
         transport::{ConnectionId, ConnectionMetadata},
         ProtocolId,
     };
-    use aptos_peer_monitoring_service_types::PeerMonitoringMetadata;
-    use aptos_storage_interface::Result;
-    use aptos_types::{network_address::NetworkAddress, transaction::Version};
+    use lumio_peer_monitoring_service_types::PeerMonitoringMetadata;
+    use lumio_storage_interface::Result;
+    use lumio_types::{network_address::NetworkAddress, transaction::Version};
     use claims::assert_matches;
     use mockall::mock;
 

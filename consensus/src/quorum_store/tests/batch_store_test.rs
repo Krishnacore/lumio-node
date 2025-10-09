@@ -6,10 +6,10 @@ use crate::quorum_store::{
     quorum_store_db::QuorumStoreDB,
     types::{PersistedValue, StorageMode},
 };
-use aptos_consensus_types::proof_of_store::BatchInfo;
-use aptos_crypto::HashValue;
-use aptos_temppath::TempPath;
-use aptos_types::{
+use lumio_consensus_types::proof_of_store::BatchInfo;
+use lumio_crypto::HashValue;
+use lumio_temppath::TempPath;
+use lumio_types::{
     account_address::AccountAddress, quorum_store::BatchId, transaction::SignedTransaction,
     validator_verifier::random_validator_verifier,
 };

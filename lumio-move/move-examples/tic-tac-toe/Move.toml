@@ -1,0 +1,9 @@
+[package]
+name = 'tic-tac-toe'
+version = '1.0.0'
+
+[addresses]
+tic_tac_toe = "_"
+
+[dependencies]
+LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }

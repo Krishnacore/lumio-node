@@ -2,13 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::monitor;
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     common::{TransactionInProgress, TransactionSummary},
     proof_of_store::BatchInfo,
 };
-use aptos_logger::prelude::*;
-use aptos_mempool::{QuorumStoreRequest, QuorumStoreResponse};
-use aptos_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
+use lumio_logger::prelude::*;
+use lumio_mempool::{QuorumStoreRequest, QuorumStoreResponse};
+use lumio_types::{quorum_store::BatchId, transaction::SignedTransaction, PeerId};
 use chrono::Utc;
 use futures::channel::{mpsc::Sender, oneshot};
 use std::{

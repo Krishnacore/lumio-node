@@ -1,6 +1,6 @@
 [package]
-name = "aptos-indexer-grpc-fullnode"
-description = "Aptos Indexer GRPC runtime on fullnode."
+name = "lumio-indexer-grpc-fullnode"
+description = "Lumio Indexer GRPC runtime on fullnode."
 version = "1.0.0"
 
 # Workspace inherited keys
@@ -29,19 +29,19 @@ tokio-stream = { workspace = true }
 tonic = { workspace = true }
 tonic-reflection = { workspace = true }
 
-aptos-api = { workspace = true }
-aptos-api-types = { workspace = true }
-aptos-bitvec = { workspace = true }
-aptos-config = { workspace = true }
-aptos-indexer-grpc-utils = { workspace = true }
-aptos-logger = { workspace = true }
-aptos-mempool = { workspace = true }
-aptos-metrics-core = { workspace = true }
+lumio-api = { workspace = true }
+lumio-api-types = { workspace = true }
+lumio-bitvec = { workspace = true }
+lumio-config = { workspace = true }
+lumio-indexer-grpc-utils = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-mempool = { workspace = true }
+lumio-metrics-core = { workspace = true }
 aptos-moving-average = { workspace = true }
-aptos-protos = { workspace = true }
-aptos-runtimes = { workspace = true }
-aptos-storage-interface = { workspace = true }
-aptos-types = { workspace = true }
+lumio-protos = { workspace = true }
+lumio-runtimes = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-types = { workspace = true }
 
 move-core-types = { workspace = true }
 
@@ -50,19 +50,19 @@ goldenfile = { workspace = true }
 rand = { workspace = true }
 regex = { workspace = true }
 
-aptos-api-test-context = { workspace = true }
-aptos-crypto = { workspace = true }
-aptos-db = { workspace = true }
-aptos-executor = { workspace = true }
-aptos-executor-types = { workspace = true }
-aptos-framework = { workspace = true }
-aptos-genesis = { workspace = true }
-aptos-global-constants = { workspace = true }
-aptos-mempool = { workspace = true }
-aptos-mempool-notifications = { workspace = true }
-aptos-proptest-helpers = { workspace = true }
-aptos-sdk = { workspace = true }
-aptos-secure-storage = { workspace = true }
-aptos-temppath = { workspace = true }
-aptos-vm = { workspace = true }
-aptos-vm-validator = { workspace = true }
+lumio-api-test-context = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-executor = { workspace = true }
+lumio-executor-types = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-genesis = { workspace = true }
+lumio-global-constants = { workspace = true }
+lumio-mempool = { workspace = true }
+lumio-mempool-notifications = { workspace = true }
+lumio-proptest-helpers = { workspace = true }
+lumio-sdk = { workspace = true }
+lumio-secure-storage = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-validator = { workspace = true }

@@ -14,9 +14,9 @@ use crate::{
     node_type::{Child, InternalNode, Node, NodeKey},
     TreeReader,
 };
-use aptos_crypto::HashValue;
-use aptos_storage_interface::{db_ensure as ensure, db_other_bail, AptosDbError, Result};
-use aptos_types::{
+use lumio_crypto::HashValue;
+use lumio_storage_interface::{db_ensure as ensure, db_other_bail, LumioDbError, Result};
+use lumio_types::{
     nibble::{nibble_path::NibblePath, Nibble, ROOT_NIBBLE_HEIGHT},
     transaction::Version,
 };

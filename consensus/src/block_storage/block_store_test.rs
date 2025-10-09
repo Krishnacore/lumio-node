@@ -10,7 +10,7 @@ use crate::{
         TreeInserter,
     },
 };
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::{
         block_test_utils::{
             self, certificate_for_genesis, gen_test_certificate, placeholder_certificate_for_block,
@@ -22,8 +22,8 @@ use aptos_consensus_types::{
     vote::Vote,
     vote_data::VoteData,
 };
-use aptos_crypto::{HashValue, PrivateKey};
-use aptos_types::{
+use lumio_crypto::{HashValue, PrivateKey};
+use lumio_types::{
     validator_signer::ValidatorSigner, validator_verifier::random_validator_verifier,
 };
 use proptest::prelude::*;
@@ -275,7 +275,7 @@ async fn test_path_from_root() {
 
 #[tokio::test]
 async fn test_insert_vote() {
-    ::aptos_logger::Logger::init_for_testing();
+    ::lumio_logger::Logger::init_for_testing();
     // Set up enough different authors to support different votes for the same block.
     let (signers, validator_verifier) = random_validator_verifier(11, Some(10), false);
     let my_signer = signers[10].clone();

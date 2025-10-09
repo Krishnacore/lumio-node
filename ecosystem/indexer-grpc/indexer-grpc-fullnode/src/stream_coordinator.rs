@@ -6,15 +6,15 @@ use crate::{
     counters::UNABLE_TO_FETCH_TRANSACTION,
     runtime::{DEFAULT_NUM_RETRIES, RETRY_TIME_MILLIS},
 };
-use aptos_api::context::Context;
-use aptos_api_types::{AsConverter, Transaction as APITransaction, TransactionOnChainData};
-use aptos_indexer_grpc_utils::{
+use lumio_api::context::Context;
+use lumio_api_types::{AsConverter, Transaction as APITransaction, TransactionOnChainData};
+use lumio_indexer_grpc_utils::{
     chunk_transactions,
     constants::MESSAGE_SIZE_LIMIT,
     counters::{log_grpc_step_fullnode, IndexerGrpcStep},
 };
-use aptos_logger::{error, info, sample, sample::SampleRate};
-use aptos_protos::{
+use lumio_logger::{error, info, sample, sample::SampleRate};
+use lumio_protos::{
     internal::fullnode::v1::{
         transactions_from_node_response, TransactionsFromNodeResponse, TransactionsOutput,
     },
@@ -355,9 +355,9 @@ impl IndexerStreamCoordinator {
             });
         let mut timestamp = block_event.proposed_time();
         let mut epoch = block_event.epoch();
-        let mut epoch_bcs = aptos_api_types::U64::from(epoch);
+        let mut epoch_bcs = lumio_api_types::U64::from(epoch);
         let mut block_height = block_event.height();
-        let mut block_height_bcs = aptos_api_types::U64::from(block_height);
+        let mut block_height_bcs = lumio_api_types::U64::from(block_height);
 
         let mut transactions = vec![];
         for (ind, raw_txn) in raw_txns.into_iter().enumerate() {
@@ -368,15 +368,15 @@ impl IndexerStreamCoordinator {
                 if let Some(txn) = raw_txn.transaction.try_as_block_metadata_ext() {
                     timestamp = txn.timestamp_usecs();
                     epoch = txn.epoch();
-                    epoch_bcs = aptos_api_types::U64::from(epoch);
+                    epoch_bcs = lumio_api_types::U64::from(epoch);
                     block_height += 1;
-                    block_height_bcs = aptos_api_types::U64::from(block_height);
+                    block_height_bcs = lumio_api_types::U64::from(block_height);
                 } else if let Some(txn) = raw_txn.transaction.try_as_block_metadata() {
                     timestamp = txn.timestamp_usecs();
                     epoch = txn.epoch();
-                    epoch_bcs = aptos_api_types::U64::from(epoch);
+                    epoch_bcs = lumio_api_types::U64::from(epoch);
                     block_height += 1;
-                    block_height_bcs = aptos_api_types::U64::from(block_height);
+                    block_height_bcs = lumio_api_types::U64::from(block_height);
                 }
             }
             let size_info = Self::get_size_info(&raw_txn);

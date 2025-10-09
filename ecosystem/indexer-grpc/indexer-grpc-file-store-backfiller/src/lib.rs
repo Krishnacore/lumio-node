@@ -4,8 +4,8 @@
 pub mod processor;
 
 use anyhow::Result;
-use aptos_indexer_grpc_server_framework::RunnableConfig;
-use aptos_indexer_grpc_utils::config::IndexerGrpcFileStoreConfig;
+use lumio_indexer_grpc_server_framework::RunnableConfig;
+use lumio_indexer_grpc_utils::config::IndexerGrpcFileStoreConfig;
 use processor::Processor;
 use serde::{Deserialize, Serialize};
 use url::Url;

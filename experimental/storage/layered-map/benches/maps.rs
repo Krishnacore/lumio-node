@@ -2,15 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::Result;
-use aptos_crypto::HashValue;
-use aptos_experimental_layered_map::{LayeredMap, MapLayer};
-use aptos_schemadb::{
+use lumio_crypto::HashValue;
+use lumio_experimental_layered_map::{LayeredMap, MapLayer};
+use lumio_schemadb::{
     batch::WriteBatch,
     define_schema,
     schema::{KeyCodec, ValueCodec},
     DB, DEFAULT_COLUMN_FAMILY_NAME,
 };
-use aptos_temppath::TempPath;
+use lumio_temppath::TempPath;
 use criterion::{
     criterion_group, criterion_main, measurement::WallTime, BatchSize, BenchmarkGroup, Criterion,
 };

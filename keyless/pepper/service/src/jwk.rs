@@ -3,10 +3,10 @@
 
 use crate::{metrics::JWK_FETCH_SECONDS, utils};
 use anyhow::{anyhow, Result};
-use aptos_infallible::Mutex;
-use aptos_keyless_pepper_common::jwt::parse;
-use aptos_logger::{info, warn};
-use aptos_types::{jwks::rsa::RSA_JWK, keyless::test_utils::get_sample_iss};
+use lumio_infallible::Mutex;
+use lumio_keyless_pepper_common::jwt::parse;
+use lumio_logger::{info, warn};
+use lumio_types::{jwks::rsa::RSA_JWK, keyless::test_utils::get_sample_iss};
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde_json::Value;

@@ -83,12 +83,12 @@ pub mod restore;
 #[cfg(any(test, feature = "fuzzing"))]
 pub mod test_helper;
 
-use crate::metrics::{APTOS_JELLYFISH_LEAF_COUNT, APTOS_JELLYFISH_LEAF_DELETION_COUNT, COUNTER};
-use aptos_crypto::{hash::CryptoHash, HashValue};
-use aptos_experimental_runtimes::thread_manager::THREAD_MANAGER;
-use aptos_metrics_core::{IntCounterHelper, IntCounterVecHelper};
-use aptos_storage_interface::{db_ensure as ensure, db_other_bail, AptosDbError, Result};
-use aptos_types::{
+use crate::metrics::{LUMIO_JELLYFISH_LEAF_COUNT, LUMIO_JELLYFISH_LEAF_DELETION_COUNT, COUNTER};
+use lumio_crypto::{hash::CryptoHash, HashValue};
+use lumio_experimental_runtimes::thread_manager::THREAD_MANAGER;
+use lumio_metrics_core::{IntCounterHelper, IntCounterVecHelper};
+use lumio_storage_interface::{db_ensure as ensure, db_other_bail, LumioDbError, Result};
+use lumio_types::{
     nibble::{nibble_path::NibblePath, Nibble, ROOT_NIBBLE_HEIGHT},
     proof::{SparseMerkleProof, SparseMerkleProofExt, SparseMerkleRangeProof},
     state_store::{state_key::StateKey, state_value::StateValue},
@@ -126,7 +126,7 @@ pub trait TreeReader<K> {
     /// Gets node given a node key. Returns error if the node does not exist.
     fn get_node_with_tag(&self, node_key: &NodeKey, tag: &str) -> Result<Node<K>> {
         self.get_node_option(node_key, tag)?
-            .ok_or_else(|| AptosDbError::NotFound(format!("Missing node at {:?}.", node_key)))
+            .ok_or_else(|| LumioDbError::NotFound(format!("Missing node at {:?}.", node_key)))
     }
 
     /// Gets node given a node key. Returns `None` if the node does not exist.
@@ -443,7 +443,7 @@ where
         } else {
             Node::Internal(InternalNode::new(children))
         };
-        APTOS_JELLYFISH_LEAF_COUNT.set(root_node.leaf_count() as i64);
+        LUMIO_JELLYFISH_LEAF_COUNT.set(root_node.leaf_count() as i64);
 
         let root_hash = root_node.hash();
         let leaf_count = root_node.leaf_count();
@@ -734,7 +734,7 @@ where
                 .get_node_with_tag(&next_node_key, "get_proof")
                 .map_err(|err| {
                     if nibble_depth == 0 {
-                        AptosDbError::MissingRootError(version)
+                        LumioDbError::MissingRootError(version)
                     } else {
                         err
                     }
@@ -752,7 +752,7 @@ where
                     }
                     let queried_child_index = nibble_iter
                         .next()
-                        .ok_or_else(|| AptosDbError::Other("ran out of nibbles".to_string()))?;
+                        .ok_or_else(|| LumioDbError::Other("ran out of nibbles".to_string()))?;
                     let child_node_key = internal_node.get_child_with_siblings(
                         &next_node_key,
                         queried_child_index,
@@ -830,7 +830,7 @@ where
 
     fn get_root_node(&self, version: Version) -> Result<Node<K>> {
         self.get_root_node_option(version)?.ok_or_else(|| {
-            AptosDbError::NotFound(format!("Root node not found for version {}.", version))
+            LumioDbError::NotFound(format!("Root node not found for version {}.", version))
         })
     }
 
@@ -984,7 +984,7 @@ where
             let new_leaf_node = Node::new_leaf(key, *value_hash, (state_key.clone(), version));
             Ok(Some(new_leaf_node))
         } else {
-            APTOS_JELLYFISH_LEAF_DELETION_COUNT.inc();
+            LUMIO_JELLYFISH_LEAF_DELETION_COUNT.inc();
             Ok(None)
         }
     } else {
@@ -1075,8 +1075,8 @@ impl NibbleExt for HashValue {
 #[cfg(test)]
 mod test {
     use super::NibbleExt;
-    use aptos_crypto::hash::{HashValue, TestOnlyHash};
-    use aptos_types::nibble::Nibble;
+    use lumio_crypto::hash::{HashValue, TestOnlyHash};
+    use lumio_types::nibble::Nibble;
 
     #[test]
     fn test_common_prefix_nibbles_len() {

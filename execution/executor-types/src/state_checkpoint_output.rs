@@ -3,9 +3,9 @@
 
 #![forbid(unsafe_code)]
 
-use aptos_crypto::HashValue;
-use aptos_drop_helper::DropHelper;
-use aptos_storage_interface::state_store::state_summary::LedgerStateSummary;
+use lumio_crypto::HashValue;
+use lumio_drop_helper::DropHelper;
+use lumio_storage_interface::state_store::state_summary::LedgerStateSummary;
 use derive_more::Deref;
 use std::sync::Arc;
 

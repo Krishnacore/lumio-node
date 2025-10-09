@@ -10,9 +10,9 @@ use crate::{
         wire::handshake::v1::{ProtocolId, ProtocolIdSet},
     },
 };
-use aptos_config::network_id::{NetworkId, PeerNetworkId};
-use aptos_logger::{prelude::*, sample, sample::SampleRate};
-use aptos_types::{network_address::NetworkAddress, PeerId};
+use lumio_config::network_id::{NetworkId, PeerNetworkId};
+use lumio_logger::{prelude::*, sample, sample::SampleRate};
+use lumio_types::{network_address::NetworkAddress, PeerId};
 use async_trait::async_trait;
 use bytes::Bytes;
 use itertools::Itertools;

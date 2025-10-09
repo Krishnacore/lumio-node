@@ -13,12 +13,12 @@ use crate::{
         proposer_election::ProposerElection,
     },
 };
-use aptos_bitvec::BitVec;
-use aptos_collections::BoundedVecDeque;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_crypto::HashValue;
-use aptos_infallible::Mutex;
-use aptos_types::account_config::NewBlockEvent;
+use lumio_bitvec::BitVec;
+use lumio_collections::BoundedVecDeque;
+use lumio_consensus_types::common::{Author, Round};
+use lumio_crypto::HashValue;
+use lumio_infallible::Mutex;
+use lumio_types::account_config::NewBlockEvent;
 use move_core_types::account_address::AccountAddress;
 use std::{collections::HashMap, sync::Arc};
 

@@ -1,5 +1,5 @@
 [package]
-name = "aptos-indexer-grpc-cache-worker"
+name = "lumio-indexer-grpc-cache-worker"
 description = "Indexer gRPC worker to collect on-chain data from node gRPC and push to cache."
 version = "1.0.0"
 
@@ -14,11 +14,11 @@ rust-version = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true }
-aptos-indexer-grpc-server-framework = { workspace = true }
-aptos-indexer-grpc-utils = { workspace = true }
-aptos-metrics-core = { workspace = true }
+lumio-indexer-grpc-server-framework = { workspace = true }
+lumio-indexer-grpc-utils = { workspace = true }
+lumio-metrics-core = { workspace = true }
 aptos-moving-average = { workspace = true }
-aptos-protos = { workspace = true }
+lumio-protos = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }
 futures = { workspace = true }
@@ -36,7 +36,7 @@ url = { workspace = true }
 jemallocator = { workspace = true }
 
 [dev-dependencies]
-aptos-config = { workspace = true }
+lumio-config = { workspace = true }
 reqwest = { workspace = true }
 tempfile = { workspace = true }
 

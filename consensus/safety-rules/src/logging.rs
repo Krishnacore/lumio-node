@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::Error;
-use aptos_consensus_types::common::{Author, Round};
-use aptos_logger::Schema;
-use aptos_types::waypoint::Waypoint;
+use lumio_consensus_types::common::{Author, Round};
+use lumio_logger::Schema;
+use lumio_types::waypoint::Waypoint;
 use serde::Serialize;
 
 #[derive(Schema)]

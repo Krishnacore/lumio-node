@@ -1,0 +1,26 @@
+[package]
+name = "lumio-debugger"
+version = "0.1.0"
+description = "Debugging tools."
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-consensus = { workspace = true }
+lumio-db-tool = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-move-debugger = { workspace = true }
+lumio-push-metrics = { workspace = true }
+clap = { workspace = true }
+tokio = { workspace = true }
+
+[target.'cfg(unix)'.dependencies]
+jemallocator = { workspace = true }

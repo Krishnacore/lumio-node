@@ -3,15 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{
-    AptosPublicInfo, ChainInfo, FullNode, NodeExt, Result, SwarmChaos, Validator, Version,
+    LumioPublicInfo, ChainInfo, FullNode, NodeExt, Result, SwarmChaos, Validator, Version,
 };
 use anyhow::{anyhow, bail};
-use aptos_config::{
+use lumio_config::{
     config::{NodeConfig, OverrideNodeConfig},
     network_id::NetworkId,
 };
-use aptos_rest_client::Client as RestClient;
-use aptos_sdk::types::PeerId;
+use lumio_rest_client::Client as RestClient;
+use lumio_sdk::types::PeerId;
 use futures::future::{join_all, try_join_all};
 use log::info;
 use prometheus_http_query::response::{PromqlResult, Sample};
@@ -94,14 +94,14 @@ pub trait Swarm: Sync + Send {
         timeout: Option<i64>,
     ) -> Result<Vec<Sample>>;
 
-    fn aptos_public_info(&self) -> AptosPublicInfo {
-        self.chain_info().into_aptos_public_info()
+    fn lumio_public_info(&self) -> LumioPublicInfo {
+        self.chain_info().into_lumio_public_info()
     }
 
     fn chain_info_for_node(&mut self, idx: usize) -> ChainInfo;
 
-    fn aptos_public_info_for_node(&mut self, idx: usize) -> AptosPublicInfo {
-        self.chain_info_for_node(idx).into_aptos_public_info()
+    fn lumio_public_info_for_node(&mut self, idx: usize) -> LumioPublicInfo {
+        self.chain_info_for_node(idx).into_lumio_public_info()
     }
 
     fn get_default_pfn_node_config(&self) -> NodeConfig;

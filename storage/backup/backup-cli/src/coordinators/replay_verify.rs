@@ -13,13 +13,13 @@ use crate::{
     utils::{GlobalRestoreOptions, RestoreRunMode, TrustedWaypointOpt},
 };
 use anyhow::Result;
-use aptos_db::backup::restore_handler::RestoreHandler;
-use aptos_executor_types::VerifyExecutionMode;
-use aptos_logger::prelude::*;
-use aptos_storage_interface::AptosDbError;
-use aptos_types::{on_chain_config::TimedFeatureOverride, transaction::Version};
-use aptos_vm::AptosVM;
-use aptos_vm_environment::prod_configs::set_timed_feature_override;
+use lumio_db::backup::restore_handler::RestoreHandler;
+use lumio_executor_types::VerifyExecutionMode;
+use lumio_logger::prelude::*;
+use lumio_storage_interface::LumioDbError;
+use lumio_types::{on_chain_config::TimedFeatureOverride, transaction::Version};
+use lumio_vm::LumioVM;
+use lumio_vm_environment::prod_configs::set_timed_feature_override;
 use std::sync::Arc;
 use thiserror::Error;
 
@@ -37,8 +37,8 @@ impl From<anyhow::Error> for ReplayError {
     }
 }
 
-impl From<AptosDbError> for ReplayError {
-    fn from(error: AptosDbError) -> Self {
+impl From<LumioDbError> for ReplayError {
+    fn from(error: LumioDbError) -> Self {
         ReplayError::OtherError(error.to_string())
     }
 }
@@ -99,7 +99,7 @@ impl ReplayVerifyCoordinator {
     }
 
     async fn run_impl(self) -> Result<(), ReplayError> {
-        AptosVM::set_concurrency_level_once(self.replay_concurrency_level);
+        LumioVM::set_concurrency_level_once(self.replay_concurrency_level);
         set_timed_feature_override(TimedFeatureOverride::Replay);
 
         let metadata_view = metadata::cache::sync_and_load(

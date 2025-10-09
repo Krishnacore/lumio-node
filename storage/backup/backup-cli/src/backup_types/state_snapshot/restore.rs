@@ -23,12 +23,12 @@ use crate::{
     },
 };
 use anyhow::{anyhow, ensure, Result};
-use aptos_db::state_restore::StateSnapshotRestoreMode;
-use aptos_infallible::Mutex;
-use aptos_logger::prelude::*;
-use aptos_metrics_core::TimerHelper;
-use aptos_storage_interface::StateSnapshotReceiver;
-use aptos_types::{
+use lumio_db::state_restore::StateSnapshotRestoreMode;
+use lumio_infallible::Mutex;
+use lumio_logger::prelude::*;
+use lumio_metrics_core::TimerHelper;
+use lumio_storage_interface::StateSnapshotReceiver;
+use lumio_types::{
     access_path::Path,
     ledger_info::LedgerInfoWithSignatures,
     on_chain_config::Features,
@@ -39,7 +39,7 @@ use aptos_types::{
     },
     transaction::Version,
 };
-use aptos_vm_environment::prod_configs::{aptos_prod_verifier_config, LATEST_GAS_FEATURE_VERSION};
+use lumio_vm_environment::prod_configs::{lumio_prod_verifier_config, LATEST_GAS_FEATURE_VERSION};
 use clap::Parser;
 use futures::{stream, TryStreamExt};
 use move_binary_format::CompiledModule;
@@ -235,7 +235,7 @@ impl StateSnapshotRestoreController {
         // TODO: Instead of using default features, fetch them from the the state.
         let features = Features::default();
 
-        let config = aptos_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &features);
+        let config = lumio_prod_verifier_config(LATEST_GAS_FEATURE_VERSION, &features);
         for (key, value) in blob {
             if let StateKeyInner::AccessPath(p) = key.inner() {
                 if let Path::Code(module_id) = p.get_path() {

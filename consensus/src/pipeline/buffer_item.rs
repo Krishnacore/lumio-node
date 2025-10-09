@@ -4,16 +4,16 @@
 
 use crate::{counters, pipeline::hashable::Hashable};
 use anyhow::anyhow;
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     common::{Author, Round},
     pipeline::commit_vote::CommitVote,
     pipelined_block::PipelinedBlock,
 };
-use aptos_crypto::{bls12381, HashValue};
-use aptos_executor_types::ExecutorResult;
-use aptos_logger::prelude::*;
-use aptos_reliable_broadcast::DropGuard;
-use aptos_types::{
+use lumio_crypto::{bls12381, HashValue};
+use lumio_executor_types::ExecutorResult;
+use lumio_logger::prelude::*;
+use lumio_reliable_broadcast::DropGuard;
+use lumio_types::{
     block_info::BlockInfo,
     ledger_info::{LedgerInfo, LedgerInfoWithSignatures, SignatureAggregator},
     validator_verifier::ValidatorVerifier,
@@ -457,10 +457,10 @@ impl BufferItem {
 #[cfg(test)]
 mod test {
     use super::*;
-    use aptos_consensus_types::{block::Block, block_data::BlockData};
-    use aptos_crypto::HashValue;
-    use aptos_executor_types::state_compute_result::StateComputeResult;
-    use aptos_types::{
+    use lumio_consensus_types::{block::Block, block_data::BlockData};
+    use lumio_crypto::HashValue;
+    use lumio_executor_types::state_compute_result::StateComputeResult;
+    use lumio_types::{
         aggregate_signature::AggregateSignature,
         ledger_info::LedgerInfo,
         validator_signer::ValidatorSigner,

@@ -3,7 +3,7 @@
 
 use crate::{create_emitter_and_request, LoadDestination, NetworkLoadTest};
 use anyhow::Context;
-use aptos_forge::{
+use lumio_forge::{
     args::TransactionTypeArg,
     emitter::NumAccountsMode,
     prometheus_metrics::{LatencyBreakdown, LatencyBreakdownSlice, MetricSamples},
@@ -383,8 +383,8 @@ impl NetworkTest for LoadVsPerfBenchmark {
             }
 
             // Note: uncomment below to perform reconfig during a test
-            // let mut aptos_info = ctx.swarm().aptos_public_info();
-            // runtime.block_on(aptos_info.reconfig());
+            // let mut lumio_info = ctx.swarm().lumio_public_info();
+            // runtime.block_on(lumio_info.reconfig());
         }
 
         let table = to_table(self.workloads.type_name(), &results);

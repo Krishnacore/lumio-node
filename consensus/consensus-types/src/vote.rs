@@ -6,9 +6,9 @@ use crate::{
     common::Author, quorum_cert::QuorumCert, timeout_2chain::TwoChainTimeout, vote_data::VoteData,
 };
 use anyhow::{ensure, Context};
-use aptos_crypto::{bls12381, hash::CryptoHash, CryptoMaterialError};
-use aptos_short_hex_str::AsShortHexStr;
-use aptos_types::{
+use lumio_crypto::{bls12381, hash::CryptoHash, CryptoMaterialError};
+use lumio_short_hex_str::AsShortHexStr;
+use lumio_types::{
     ledger_info::{LedgerInfo, SignatureWithStatus},
     validator_signer::ValidatorSigner,
     validator_verifier::ValidatorVerifier,

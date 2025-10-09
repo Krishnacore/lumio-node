@@ -54,11 +54,11 @@ impl From<serde_json::Error> for Error {
     }
 }
 
-impl From<aptos_vault_client::Error> for Error {
-    fn from(error: aptos_vault_client::Error) -> Self {
+impl From<lumio_vault_client::Error> for Error {
+    fn from(error: lumio_vault_client::Error) -> Self {
         match error {
-            aptos_vault_client::Error::NotFound(_, key) => Self::KeyNotSet(key),
-            aptos_vault_client::Error::HttpError(403, _, _) => Self::PermissionDenied,
+            lumio_vault_client::Error::NotFound(_, key) => Self::KeyNotSet(key),
+            lumio_vault_client::Error::HttpError(403, _, _) => Self::PermissionDenied,
             _ => Self::InternalError(format!("{}", error)),
         }
     }

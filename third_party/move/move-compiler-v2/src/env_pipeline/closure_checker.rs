@@ -6,7 +6,7 @@
 //!
 //! - The closure satisfies the ability requirements of it's inferred type. For the
 //!   definition of closure abilities, see
-//!   [AIP-112](https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-112.md).
+//!   [AIP-112](https://github.com/lumio-foundation/AIPs/blob/main/aips/aip-112.md).
 //! - The closure does not capture references, as this is currently not allowed.
 //! - In a script, the closure cannot have a lambda lifted function.
 //! ```

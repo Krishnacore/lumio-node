@@ -11,9 +11,9 @@ use crate::{
     },
     smoke_test_environment::SwarmBuilder,
 };
-use aptos_forge::{NodeExt, Swarm, SwarmExt};
-use aptos_logger::{debug, info};
-use aptos_types::{
+use lumio_forge::{NodeExt, Swarm, SwarmExt};
+use lumio_logger::{debug, info};
+use lumio_types::{
     jwks::{
         jwk::JWK, secure_test_rsa_jwk, unsupported::UnsupportedJWK, AllProvidersJWKs, ProviderJWKs,
     },
@@ -33,7 +33,7 @@ async fn jwk_consensus_provider_change_mind() {
 
     let (swarm, mut cli, _faucet) = SwarmBuilder::new_local(4)
         .with_num_fullnodes(1)
-        .with_aptos()
+        .with_lumio()
         .with_init_genesis_config(Arc::new(move |conf| {
             conf.epoch_duration_secs = epoch_duration_secs;
         }))

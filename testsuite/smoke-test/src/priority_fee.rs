@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{smoke_test_environment::SwarmBuilder, txn_emitter::generate_traffic};
-use aptos_api_types::ViewFunction;
-use aptos_forge::{args::TransactionTypeArg, NodeExt};
-use aptos_types::on_chain_config::{
+use lumio_api_types::ViewFunction;
+use lumio_forge::{args::TransactionTypeArg, NodeExt};
+use lumio_types::on_chain_config::{
     BlockGasLimitType, ExecutionConfigV4, OnChainExecutionConfig, TransactionDeduperType,
     TransactionShufflerType,
 };
@@ -33,7 +33,7 @@ async fn test_low_gas_limit_parallel() {
 
 async fn test_impl(block_gas_limit: u64, concurrency_level: u16) {
     let mut swarm = SwarmBuilder::new_local(2)
-        .with_aptos()
+        .with_lumio()
         .with_init_config(Arc::new(move |_, config, _| {
             config.execution.concurrency_level = concurrency_level;
         }))

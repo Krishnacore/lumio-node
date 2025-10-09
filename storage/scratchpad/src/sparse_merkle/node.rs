@@ -22,11 +22,11 @@
 //! corresponding account content. The difference is that a `LeafNode` does not always have the
 //! value, in the case when the leaf was loaded into memory as part of a non-inclusion proof.
 
-use aptos_crypto::{
+use lumio_crypto::{
     hash::{CryptoHash, SPARSE_MERKLE_PLACEHOLDER_HASH},
     HashValue,
 };
-use aptos_types::proof::{SparseMerkleInternalNode, SparseMerkleLeafNode};
+use lumio_types::proof::{SparseMerkleInternalNode, SparseMerkleLeafNode};
 use std::sync::{Arc, Weak};
 
 #[derive(Clone, Debug)]

@@ -8,9 +8,9 @@ named_addr = "0xFED"
 
 [dev-addresses]
 
-[dependencies.AptosFramework]
-git = "https://github.com/aptos-labs/aptos-core.git"
+[dependencies.LumioFramework]
+git = "https://github.com/lumio-labs/lumio-core.git"
 rev = "mainnet"
-subdir = "aptos-move/framework/aptos-framework"
+subdir = "lumio-move/framework/lumio-framework"
 
 [dev-dependencies]

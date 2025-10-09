@@ -13,12 +13,12 @@ use crate::{
         Processor,
     },
 };
-use aptos_api::context::Context;
-use aptos_config::config::{IndexerConfig, NodeConfig};
-use aptos_logger::{error, info};
-use aptos_mempool::MempoolClientSender;
-use aptos_storage_interface::DbReader;
-use aptos_types::chain_id::ChainId;
+use lumio_api::context::Context;
+use lumio_config::config::{IndexerConfig, NodeConfig};
+use lumio_logger::{error, info};
+use lumio_mempool::MempoolClientSender;
+use lumio_storage_interface::DbReader;
+use lumio_types::chain_id::ChainId;
 use std::{collections::VecDeque, sync::Arc};
 use tokio::runtime::Runtime;
 
@@ -84,7 +84,7 @@ pub fn bootstrap(
         return None;
     }
 
-    let runtime = aptos_runtimes::spawn_named_runtime("indexer".into(), None);
+    let runtime = lumio_runtimes::spawn_named_runtime("indexer".into(), None);
 
     let indexer_config = config.indexer.clone();
     let node_config = config.clone();

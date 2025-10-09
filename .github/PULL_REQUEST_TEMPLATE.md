@@ -28,9 +28,9 @@
 ## Which Components or Systems Does This Change Impact?
 - [ ] Validator Node
 - [ ] Full Node (API, Indexer, etc.)
-- [ ] Move/Aptos Virtual Machine
-- [ ] Aptos Framework
-- [ ] Aptos CLI/SDK
+- [ ] Move/Lumio Virtual Machine
+- [ ] Lumio Framework
+- [ ] Lumio CLI/SDK
 - [ ] Developer Infrastructure
 - [ ] Move Compiler
 - [ ] Other (specify)

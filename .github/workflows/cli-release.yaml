@@ -1,4 +1,4 @@
-# This defines a workflow to build and release a new version of the aptos CLI.
+# This defines a workflow to build and release a new version of the lumio CLI.
 # In order to trigger it go to the Actions Tab of the Repo, click "Release CLI" and then "Run Workflow".
 
 name: "Release CLI"
@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-ubuntu-22.04
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   # Add one for 24.04 to be clear
   build-ubuntu24-binary:
@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-ubuntu-24.04
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   # Generic linux should be the older version, more likely compatible
   # This actually builds for non-SIMD processors, and an older GLIBC
@@ -78,7 +78,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-linux
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   # Generic linux arm should be the older version, more likely compatible
   build-linux-arm-binary:
@@ -95,7 +95,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-linux-arm
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   build-macos-x86_64-binary:
     name: "Build MacOS x86_64 binary"
@@ -111,7 +111,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-macos-x86-64
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   build-macos-arm-binary:
     name: "Build MacOS ARM binary"
@@ -127,7 +127,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-macos-arm
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   build-windows-binary:
     name: "Build Windows binary"
@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cli-builds-windows
-          path: aptos-cli-*.zip
+          path: lumio-cli-*.zip
 
   release-binaries:
     name: "Release binaries"
@@ -173,11 +173,11 @@ jobs:
         uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0 # pin@v1.2.1
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ format('aptos-cli-v{0}', inputs.release_version) }}"
+          automatic_release_tag: "${{ format('lumio-cli-v{0}', inputs.release_version) }}"
           prerelease: false
-          title: "${{ format('Aptos CLI Release v{0}', inputs.release_version) }}"
+          title: "${{ format('Lumio CLI Release v{0}', inputs.release_version) }}"
           files: |
-            aptos-cli-*.zip
+            lumio-cli-*.zip
 
   bump-homebrew-version-pr:
     name: "Make PR to bump version in Homebrew"
@@ -187,8 +187,8 @@ jobs:
     steps:
       - uses: mislav/bump-homebrew-formula-action@v3
         with:
-          formula-name: aptos
-          tag-name: "${{ format('aptos-cli-v{0}', inputs.release_version) }}"
+          formula-name: lumio
+          tag-name: "${{ format('lumio-cli-v{0}', inputs.release_version) }}"
           base-branch: main
           create-pullrequest: true
           commit-message: |
@@ -198,4 +198,4 @@ jobs:
 
             From CLI release run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         env:
-          COMMITTER_TOKEN: ${{ secrets.APTOS_BOT_GH_PAT_APTOS_CORE_HOMEBREW_BUMPER }}
+          COMMITTER_TOKEN: ${{ secrets.LUMIO_BOT_GH_PAT_LUMIO_CORE_HOMEBREW_BUMPER }}

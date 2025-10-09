@@ -1,0 +1,12 @@
+[package]
+name = "keccak256"
+version = "1.0.0"
+authors = []
+
+[addresses]
+poc = "0xcaffe"
+
+[dependencies]
+MoveStdlib = { local = "../../../../../../lumio-move/framework/move-stdlib" }
+LumioFramework = { local = "../../../../../../lumio-move/framework/lumio-framework" }
+LumioStdlib = { local = "../../../../../../lumio-move/framework/lumio-stdlib" } 

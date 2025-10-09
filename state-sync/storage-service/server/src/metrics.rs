@@ -2,8 +2,8 @@
 // Parts of the project are originally copyright © Meta Platforms, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-use aptos_config::network_id::NetworkId;
-use aptos_metrics_core::{
+use lumio_config::network_id::NetworkId;
+use lumio_metrics_core::{
     register_histogram_vec, register_int_counter_vec, register_int_gauge_vec, HistogramVec,
     IntCounterVec, IntGaugeVec,
 };
@@ -33,7 +33,7 @@ const REQUEST_PROCESSING_LATENCY_BUCKETS_SECS: &[f64] = &[
 /// Gauge for tracking the number of actively ignored peers
 pub static IGNORED_PEER_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_storage_service_server_ignored_peer_count",
+        "lumio_storage_service_server_ignored_peer_count",
         "Gauge for tracking the number of actively ignored peers",
         &["network_id"]
     )
@@ -43,7 +43,7 @@ pub static IGNORED_PEER_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Counter for lru cache events in the storage service (server-side)
 pub static LRU_CACHE_EVENT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_lru_cache",
+        "lumio_storage_service_server_lru_cache",
         "Counters for lru cache events in the storage server",
         &["network_id", "event"]
     )
@@ -54,7 +54,7 @@ pub static LRU_CACHE_EVENT: Lazy<IntCounterVec> = Lazy::new(|| {
 /// the network frame limit size or storage read time.
 pub static NETWORK_FRAME_OVERFLOW: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_network_frame_overflow",
+        "lumio_storage_service_server_network_frame_overflow",
         "Counters for network frame overflows in the storage server",
         &["truncation_reason", "response_type"]
     )
@@ -64,7 +64,7 @@ pub static NETWORK_FRAME_OVERFLOW: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Gauge for tracking the number of active optimistic fetches
 pub static OPTIMISTIC_FETCH_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_storage_service_server_optimistic_fetch_count",
+        "lumio_storage_service_server_optimistic_fetch_count",
         "Gauge for tracking the number of active optimistic fetches",
         &["network_id"]
     )
@@ -74,7 +74,7 @@ pub static OPTIMISTIC_FETCH_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Counter for optimistic fetch request events
 pub static OPTIMISTIC_FETCH_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_optimistic_fetch_event",
+        "lumio_storage_service_server_optimistic_fetch_event",
         "Counters related to optimistic fetch events",
         &["network_id", "event"]
     )
@@ -84,7 +84,7 @@ pub static OPTIMISTIC_FETCH_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Time it takes to process an optimistic fetch request
 pub static OPTIMISTIC_FETCH_LATENCIES: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_optimistic_fetch_latency",
+        "lumio_storage_service_server_optimistic_fetch_latency",
         "Time it takes to process an optimistic fetch request",
         &["network_id", "request_type", "result"],
         REQUEST_PROCESSING_LATENCY_BUCKETS_SECS.to_vec(),
@@ -95,7 +95,7 @@ pub static OPTIMISTIC_FETCH_LATENCIES: Lazy<HistogramVec> = Lazy::new(|| {
 /// Counter for pending network events to the storage service (server-side)
 pub static PENDING_STORAGE_SERVER_NETWORK_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_pending_network_events",
+        "lumio_storage_service_server_pending_network_events",
         "Counters for pending network events for the storage server",
         &["state"]
     )
@@ -105,7 +105,7 @@ pub static PENDING_STORAGE_SERVER_NETWORK_EVENTS: Lazy<IntCounterVec> = Lazy::ne
 /// Counter for storage service errors encountered
 pub static STORAGE_ERRORS_ENCOUNTERED: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_errors",
+        "lumio_storage_service_server_errors",
         "Counters related to the storage server errors encountered",
         &["network_id", "error_type"]
     )
@@ -115,7 +115,7 @@ pub static STORAGE_ERRORS_ENCOUNTERED: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counter for received storage service requests
 pub static STORAGE_REQUESTS_RECEIVED: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_requests_received",
+        "lumio_storage_service_server_requests_received",
         "Counters related to the storage server requests received",
         &["network_id", "request_type"]
     )
@@ -125,7 +125,7 @@ pub static STORAGE_REQUESTS_RECEIVED: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Counter for storage service responses sent
 pub static STORAGE_RESPONSES_SENT: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_responses_sent",
+        "lumio_storage_service_server_responses_sent",
         "Counters related to the storage server responses sent",
         &["network_id", "response_type"]
     )
@@ -135,7 +135,7 @@ pub static STORAGE_RESPONSES_SENT: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Time it takes to read data from the storage service DB
 pub static STORAGE_DB_READ_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_db_read_latency",
+        "lumio_storage_service_server_db_read_latency",
         "Time it takes to read data from the storage service DB",
         &["request_type", "result"],
     )
@@ -145,7 +145,7 @@ pub static STORAGE_DB_READ_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
 /// Time it takes to fetch and package a storage service response
 pub static STORAGE_FETCH_PROCESSING_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_fetch_processing_latency",
+        "lumio_storage_service_server_fetch_processing_latency",
         "Time it takes to fetch and package a storage service response",
         &["network_id", "request_type", "result"],
     )
@@ -155,7 +155,7 @@ pub static STORAGE_FETCH_PROCESSING_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
 /// Time it takes to create a storage service response
 pub static STORAGE_RESPONSE_CREATION_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_response_creation_latency",
+        "lumio_storage_service_server_response_creation_latency",
         "Time it takes to create a storage service response",
         &["network_id", "request_type", "result"],
     )
@@ -165,7 +165,7 @@ pub static STORAGE_RESPONSE_CREATION_LATENCY: Lazy<HistogramVec> = Lazy::new(|| 
 /// Time it takes to process a storage request
 pub static STORAGE_REQUEST_PROCESSING_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_request_latency",
+        "lumio_storage_service_server_request_latency",
         "Time it takes to process a storage service request",
         &["network_id", "request_type", "result"],
         REQUEST_PROCESSING_LATENCY_BUCKETS_SECS.to_vec(),
@@ -176,7 +176,7 @@ pub static STORAGE_REQUEST_PROCESSING_LATENCY: Lazy<HistogramVec> = Lazy::new(||
 /// Time it takes to validate a storage request
 pub static STORAGE_REQUEST_VALIDATION_LATENCY: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_request_validation_latency",
+        "lumio_storage_service_server_request_validation_latency",
         "Time it takes to validate a storage service request",
         &["network_id", "request_type", "result"],
         REQUEST_PROCESSING_LATENCY_BUCKETS_SECS.to_vec(),
@@ -187,7 +187,7 @@ pub static STORAGE_REQUEST_VALIDATION_LATENCY: Lazy<HistogramVec> = Lazy::new(||
 /// Gauge for tracking the number of active subscriptions
 pub static SUBSCRIPTION_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
     register_int_gauge_vec!(
-        "aptos_storage_service_server_subscription_count",
+        "lumio_storage_service_server_subscription_count",
         "Gauge for tracking the number of active subscriptions",
         &["network_id"]
     )
@@ -197,7 +197,7 @@ pub static SUBSCRIPTION_COUNT: Lazy<IntGaugeVec> = Lazy::new(|| {
 /// Counter for subscription events
 pub static SUBSCRIPTION_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
     register_int_counter_vec!(
-        "aptos_storage_service_server_subscription_event",
+        "lumio_storage_service_server_subscription_event",
         "Counters related to subscription events",
         &["network_id", "event"]
     )
@@ -207,7 +207,7 @@ pub static SUBSCRIPTION_EVENTS: Lazy<IntCounterVec> = Lazy::new(|| {
 /// Time it takes to process a subscription request
 pub static SUBSCRIPTION_LATENCIES: Lazy<HistogramVec> = Lazy::new(|| {
     register_histogram_vec!(
-        "aptos_storage_service_server_subscription_latency",
+        "lumio_storage_service_server_subscription_latency",
         "Time it takes to process a subscription request",
         &["network_id", "request_type", "result"],
         REQUEST_PROCESSING_LATENCY_BUCKETS_SECS.to_vec(),

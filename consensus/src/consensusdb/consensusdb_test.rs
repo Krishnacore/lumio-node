@@ -5,13 +5,13 @@
 use self::schema::dag::NodeSchema;
 use super::*;
 use crate::dag::{CertifiedNode, Extensions, Node, Vote};
-use aptos_consensus_types::{
+use lumio_consensus_types::{
     block::block_test_utils::certificate_for_genesis,
     common::{Author, Payload},
 };
-use aptos_crypto::bls12381::Signature;
-use aptos_temppath::TempPath;
-use aptos_types::aggregate_signature::AggregateSignature;
+use lumio_crypto::bls12381::Signature;
+use lumio_temppath::TempPath;
+use lumio_types::aggregate_signature::AggregateSignature;
 use std::{collections::HashMap, hash::Hash};
 
 #[test]

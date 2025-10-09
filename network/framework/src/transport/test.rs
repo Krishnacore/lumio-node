@@ -8,14 +8,14 @@ use crate::{
     testutils,
     transport::*,
 };
-use aptos_config::config::{Peer, PeerRole, PeerSet, HANDSHAKE_VERSION};
-use aptos_crypto::{test_utils::TEST_SEED, traits::Uniform, x25519, x25519::PrivateKey};
-use aptos_netcore::{
+use lumio_config::config::{Peer, PeerRole, PeerSet, HANDSHAKE_VERSION};
+use lumio_crypto::{test_utils::TEST_SEED, traits::Uniform, x25519, x25519::PrivateKey};
+use lumio_netcore::{
     framing::{read_u16frame, write_u16frame},
     transport::{memory, ConnectionOrigin, Transport},
 };
-use aptos_time_service::MockTimeService;
-use aptos_types::{
+use lumio_time_service::MockTimeService;
+use lumio_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     network_address::{NetworkAddress, Protocol::*},
@@ -51,8 +51,8 @@ fn setup<TTransport>(
 ) -> (
     Runtime,
     MockTimeService,
-    (PeerId, AptosNetTransport<TTransport>),
-    (PeerId, AptosNetTransport<TTransport>),
+    (PeerId, LumioNetTransport<TTransport>),
+    (PeerId, LumioNetTransport<TTransport>),
     Arc<PeersAndMetadata>,
     ProtocolIdSet,
 )
@@ -160,7 +160,7 @@ where
     let supported_protocols =
         ProtocolIdSet::from_iter([ProtocolId::ConsensusRpcBcs, ProtocolId::DiscoveryDirectSend]);
     let chain_id = ChainId::default();
-    let listener_transport = AptosNetTransport::new(
+    let listener_transport = LumioNetTransport::new(
         base_transport.clone(),
         listener_network_context,
         time_service.clone(),
@@ -172,7 +172,7 @@ where
         false, /* Disable proxy protocol */
     );
 
-    let dialer_transport = AptosNetTransport::new(
+    let dialer_transport = LumioNetTransport::new(
         base_transport,
         dialer_network_context,
         time_service.clone(),
@@ -513,7 +513,7 @@ fn test_transport_maybe_mutual<TTransport>(
 }
 
 ////////////////////////////////////////
-// AptosNetTransport<MemoryTransport> //
+// LumioNetTransport<MemoryTransport> //
 ////////////////////////////////////////
 
 #[test]
@@ -555,13 +555,13 @@ fn test_memory_transport_maybe_mutual() {
 }
 
 /////////////////////////////////////
-// AptosNetTransport<TcpTransport> //
+// LumioNetTransport<TcpTransport> //
 /////////////////////////////////////
 
 #[test]
 fn test_tcp_transport_mutual_auth() {
     test_transport_success(
-        APTOS_TCP_TRANSPORT.clone(),
+        LUMIO_TCP_TRANSPORT.clone(),
         Auth::Mutual,
         "/ip4/127.0.0.1/tcp/0",
         expect_ip4_tcp_noise_addr,
@@ -571,7 +571,7 @@ fn test_tcp_transport_mutual_auth() {
 #[test]
 fn test_tcp_transport_server_only_auth() {
     test_transport_success(
-        APTOS_TCP_TRANSPORT.clone(),
+        LUMIO_TCP_TRANSPORT.clone(),
         Auth::ServerOnly,
         "/ip4/127.0.0.1/tcp/0",
         expect_ip4_tcp_noise_addr,
@@ -581,7 +581,7 @@ fn test_tcp_transport_server_only_auth() {
 #[test]
 fn test_tcp_transport_rejects_unauthed_dialer() {
     test_transport_rejects_unauthed_dialer(
-        APTOS_TCP_TRANSPORT.clone(),
+        LUMIO_TCP_TRANSPORT.clone(),
         "/ip4/127.0.0.1/tcp/0",
         expect_ip4_tcp_noise_addr,
     );

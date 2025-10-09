@@ -1,0 +1,9 @@
+[package]
+name = "bcs_stream"
+version = "0.0.0"
+
+[addresses]
+bcs_stream = "0xCAFE"
+
+[dependencies]
+LumioStdlib = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-stdlib", rev = "mainnet" }

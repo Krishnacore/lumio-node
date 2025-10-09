@@ -3,8 +3,8 @@
 use super::{build::BaselineConfigurationRunners, common::ServerArgs};
 use crate::{configuration::NodeAddress, runner::Runner, CheckSummary};
 use anyhow::{anyhow, Context};
-use aptos_crypto::{x25519, ValidCryptoMaterialStringExt};
-use aptos_logger::error;
+use lumio_crypto::{x25519, ValidCryptoMaterialStringExt};
+use lumio_logger::error;
 use poem::http::StatusCode;
 use poem_openapi::{param::Query, payload::Json, Object, OpenApi, OpenApiService};
 use std::convert::TryInto;
@@ -143,5 +143,5 @@ pub fn build_openapi_service<R: Runner>(
     let url: Url = server_args
         .try_into()
         .expect("Failed to parse listen address");
-    OpenApiService::new(api, "Aptos Node Checker", version).server(url)
+    OpenApiService::new(api, "Lumio Node Checker", version).server(url)
 }

@@ -8,9 +8,9 @@ B = "0x43"
 
 [dev-addresses]
 
-[dependencies.AptosFramework]
-git = "https://github.com/aptos-labs/aptos-framework.git"
+[dependencies.LumioFramework]
+git = "https://github.com/lumio-labs/lumio-framework.git"
 rev = "mainnet"
-subdir = "aptos-framework"
+subdir = "lumio-framework"
 
 [dev-dependencies]

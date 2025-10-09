@@ -8,11 +8,11 @@ use std::{fs::File, io::Write};
 
 #[derive(Debug, Parser)]
 #[clap(
-    name = "Aptos format generator",
-    about = "Trace serde (de)serialization to generate format descriptions for Aptos types"
+    name = "Lumio format generator",
+    about = "Trace serde (de)serialization to generate format descriptions for Lumio types"
 )]
 struct Options {
-    #[clap(long, value_enum, default_value_t = Corpus::Aptos, ignore_case = true)]
+    #[clap(long, value_enum, default_value_t = Corpus::Lumio, ignore_case = true)]
     corpus: Corpus,
 
     #[clap(long)]

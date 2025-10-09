@@ -1,0 +1,40 @@
+[package]
+name = "lumio-genesis"
+description = "A tool to manage genesis"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+anyhow = { workspace = true }
+lumio-cached-packages = { workspace = true }
+lumio-config = { workspace = true }
+lumio-crypto = { workspace = true }
+lumio-db = { workspace = true }
+lumio-executor = { workspace = true }
+lumio-framework = { workspace = true }
+lumio-keygen = { workspace = true }
+lumio-logger = { workspace = true }
+lumio-storage-interface = { workspace = true }
+lumio-temppath = { workspace = true }
+lumio-types = { workspace = true }
+lumio-vm = { workspace = true }
+lumio-vm-genesis = { workspace = true }
+bcs = { workspace = true }
+rand = { workspace = true }
+serde = { workspace = true }
+serde_yaml = { workspace = true }
+
+[dev-dependencies]
+lumio-config = { workspace = true }
+
+[features]
+testing = []
+fuzzing = ["lumio-config/fuzzing"]

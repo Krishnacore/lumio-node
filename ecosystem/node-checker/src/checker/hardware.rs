@@ -14,12 +14,12 @@ use crate::{
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
 
-// TODO: Use the keys in crates/aptos-telemetry/src/system_information.rs
+// TODO: Use the keys in crates/lumio-telemetry/src/system_information.rs
 const CPU_COUNT_KEY: &str = "cpu_count";
 const MEMORY_TOTAL_KEY: &str = "memory_total";
 
 const NODE_REQUIREMENTS_DOC_LINK: &str =
-    "https://aptos.dev/nodes/validator-node/operator/node-requirements";
+    "https://lumio.dev/nodes/validator-node/operator/node-requirements";
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]

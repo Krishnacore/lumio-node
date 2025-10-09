@@ -1,0 +1,10 @@
+[package]
+name = "ConfidentialAssetExample"
+version = "1.0.0"
+
+[dependencies]
+LumioFramework = { local = "../../framework/lumio-framework" }
+LumioExperimental = { local = "../../framework/lumio-experimental" }
+
+[addresses]
+confidential_asset_example = "_"

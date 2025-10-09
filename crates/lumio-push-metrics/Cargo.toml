@@ -1,0 +1,20 @@
+[package]
+name = "lumio-push-metrics"
+description = "Lumio push metrics"
+version = "0.1.0"
+
+# Workspace inherited keys
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+rust-version = { workspace = true }
+
+[dependencies]
+lumio-logger = { workspace = true }
+lumio-metrics-core = { workspace = true }
+rand = { workspace = true }
+ureq = { workspace = true }
+url = { workspace = true }
