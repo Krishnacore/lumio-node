@@ -34,7 +34,7 @@ on:
       FORGE_INDEXER_DEPLOYER_PROFILE:
         required: false
         type: string
-        description: If set enables an indexer stack with your test, spinning up with the provided profile from https://github.com/aptos-labs/internal-ops/blob/main/infra/cli/commands/forge/profiles.ts
+        description: If set enables an indexer stack with your test, spinning up with the provided profile from https://github.com/lumio-labs/internal-ops/blob/main/infra/cli/commands/forge/profiles.ts
       FORGE_NUM_VALIDATORS:
         required: false
         type: string

@@ -38,7 +38,7 @@ def modify_file(path: str, modify_entry: Callable[[GasEntry], GasEntry]):
 def modify_all_execution(modify_entry: Callable[[GasEntry], GasEntry]):
     modify_file(root_path + "/src/gas_schedule/instr.rs", modify_entry)
     modify_file(root_path + "/src/gas_schedule/move_stdlib.rs", modify_entry)
-    modify_file(root_path + "/src/gas_schedule/aptos_framework.rs", modify_entry)
+    modify_file(root_path + "/src/gas_schedule/lumio_framework.rs", modify_entry)
 
     def wrapper(entry):
         # part of io costs

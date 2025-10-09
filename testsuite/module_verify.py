@@ -39,8 +39,8 @@ def main():
     os.mkdir("local")
     subprocess.run(
         [
-            "target/release/aptos-debugger",
-            "aptos-db",
+            "target/release/lumio-debugger",
+            "lumio-db",
             "backup",
             "verify",
             "--validate-modules",

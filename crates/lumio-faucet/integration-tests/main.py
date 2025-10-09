@@ -48,13 +48,13 @@ def parse_args():
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument(
         "--image-repo-with-project",
-        default="aptoslabs",
+        default="lumiolabs",
         help=(
             "What docker image repo (+ project) to use for the localnet. "
-            "By default we use Docker Hub: %(default)s (so, just aptoslabs for the "
+            "By default we use Docker Hub: %(default)s (so, just lumiolabs for the "
             "project since Docker Hub is the implied default repo). If you want to "
             "specify a different repo, it might look like this: "
-            "docker.pkg.github.com/aptoslabs/aptos-core"
+            "docker.pkg.github.com/lumiolabs/lumio-core"
         ),
     )
     parser.add_argument(
@@ -62,7 +62,7 @@ def parse_args():
         required=True,
         choices=VALID_NETWORK_OPTIONS,
         help=(
-            "What branch the Aptos CLI used for the localnet should be built "
+            "What branch the Lumio CLI used for the localnet should be built "
             'from. If "custom", --tag must be set.'
         ),
     )

@@ -10,11 +10,11 @@ use std::process::exit;
 #[command(bin_name = "cargo")]
 enum CargoCli {
     #[command(name = "x")]
-    AptosCargoTool(AptosCargoToolArgs),
+    LumioCargoTool(LumioCargoToolArgs),
 }
 
 #[derive(Parser)]
-struct AptosCargoToolArgs {
+struct LumioCargoToolArgs {
     #[command(subcommand)]
     cmd: LumioCargoCommand,
     #[command(flatten)]
@@ -22,8 +22,8 @@ struct AptosCargoToolArgs {
 }
 
 fn main() {
-    let CargoCli::AptosCargoTool(args) = CargoCli::parse();
-    let AptosCargoToolArgs { cmd, package_args } = args;
+    let CargoCli::LumioCargoTool(args) = CargoCli::parse();
+    let LumioCargoToolArgs { cmd, package_args } = args;
     let result = cmd.execute(&package_args);
 
     // At this point, we'll want to print and determine whether to exit for an error code

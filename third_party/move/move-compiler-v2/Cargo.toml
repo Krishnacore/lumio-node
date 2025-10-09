@@ -1,10 +1,10 @@
 [package]
 name = "move-compiler-v2"
 version = "0.1.0"
-authors = ["Aptos Labs"]
+authors = ["Lumio Labs"]
 description = "Move compiler based on stackless bytecode"
 repository = "https://github.com/lumio-labs/lumio-core"
-homepage = "https://aptosfoundation.org/"
+homepage = "https://lumiofoundation.org/"
 license = "Apache-2.0"
 publish = false
 edition = "2021"

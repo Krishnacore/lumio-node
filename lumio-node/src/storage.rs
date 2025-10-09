@@ -60,7 +60,7 @@ pub(crate) fn bootstrap_db(
         (None, None)
     };
 
-    let (aptos_db_reader, db_rw, backup_service) = match FastSyncStorageWrapper::initialize_dbs(
+    let (lumio_db_reader, db_rw, backup_service) = match FastSyncStorageWrapper::initialize_dbs(
         node_config,
         internal_indexer_db.clone(),
         update_sender,
@@ -98,7 +98,7 @@ pub(crate) fn bootstrap_db(
         },
     };
     Ok((
-        aptos_db_reader,
+        lumio_db_reader,
         db_rw,
         backup_service,
         internal_indexer_db,
@@ -112,9 +112,9 @@ pub(crate) fn bootstrap_db(
 pub(crate) fn bootstrap_db(
     node_config: &NodeConfig,
 ) -> Result<(Arc<dyn DbReader>, DbReaderWriter, Option<Runtime>)> {
-    use lumio_db::db::fake_aptosdb::FakeLumioDB;
+    use lumio_db::db::fake_lumiodb::FakeLumioDB;
 
-    let aptos_db = LumioDB::open(
+    let lumio_db = LumioDB::open(
         node_config.storage.get_dir_paths(),
         false, /* readonly */
         node_config.storage.storage_pruner_config,
@@ -124,9 +124,9 @@ pub(crate) fn bootstrap_db(
         node_config.storage.max_num_nodes_per_lru_cache_shard,
     )
     .map_err(|err| anyhow!("DB failed to open {}", err))?;
-    let (aptos_db, db_rw) = DbReaderWriter::wrap(FakeLumioDB::new(aptos_db));
+    let (lumio_db, db_rw) = DbReaderWriter::wrap(FakeLumioDB::new(lumio_db));
     maybe_apply_genesis(&db_rw, node_config)?;
-    Ok((aptos_db, db_rw, None))
+    Ok((lumio_db, db_rw, None))
 }
 
 /// Creates a RocksDb checkpoint for the consensus_db, state_sync_db,
@@ -186,7 +186,7 @@ pub fn initialize_database_and_checkpoints(
 
     // Open the database
     let instant = Instant::now();
-    let (_aptos_db, db_rw, backup_service, indexer_db_opt, update_receiver) =
+    let (_lumio_db, db_rw, backup_service, indexer_db_opt, update_receiver) =
         bootstrap_db(node_config)?;
 
     // Log the duration to open storage

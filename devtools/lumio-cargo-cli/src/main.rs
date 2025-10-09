@@ -3,15 +3,15 @@
 
 #![forbid(unsafe_code)]
 
-use lumio_cargo_cli::AptosCargoCli;
+use lumio_cargo_cli::LumioCargoCli;
 use clap::Parser;
 use log::error;
 use std::process::exit;
 
 fn main() {
-    let cli = AptosCargoCli::parse();
+    let cli = LumioCargoCli::parse();
     env_logger::Builder::new()
-        .filter_module("aptos_cargo_cli", cli.verbose.log_level_filter())
+        .filter_module("lumio_cargo_cli", cli.verbose.log_level_filter())
         .init();
     let result = cli.execute();
 

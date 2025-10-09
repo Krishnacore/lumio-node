@@ -1,6 +1,6 @@
 [package]
 name = "lumio-node"
-description = "Aptos node"
+description = "Lumio node"
 version = "1.36.3"
 
 # Workspace inherited keys

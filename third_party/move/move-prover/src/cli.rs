@@ -160,10 +160,10 @@ impl Options {
                     .help("prints the effective toml configuration, then exits")
             )
             .arg(
-                Arg::new("aptos")
-                    .long("aptos")
+                Arg::new("lumio")
+                    .long("lumio")
                     .action(SetTrue)
-                    .help("configures the prover to use Aptos natives")
+                    .help("configures the prover to use Lumio natives")
             )
             .arg(
                 Arg::new("compiler-v2")
@@ -716,7 +716,7 @@ impl Options {
             options.backend.z3_trace_file = Some(format!("{}.z3log", fun_name));
         }
 
-        if matches.get_flag("aptos") {
+        if matches.get_flag("lumio") {
             options.backend.custom_natives = Some(CustomNativeOptions {
                 template_bytes: include_bytes!(
                     "../../../../lumio-move/framework/src/lumio-natives.bpl"

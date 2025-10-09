@@ -57,7 +57,7 @@ def run_node(network: Network, image_repo_with_project: str, external_test_dir: 
             "-v",
             f"{external_test_dir}:{internal_mount_path}",
             image_name,
-            "aptos",
+            "lumio",
             "node",
             "run-local-testnet",
             "--test-dir",

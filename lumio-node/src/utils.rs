@@ -17,13 +17,13 @@ use std::cmp::min;
 
 /// Error message to display when non-production features are enabled
 pub const ERROR_MSG_BAD_FEATURE_FLAGS: &str = r#"
-aptos-node was compiled with feature flags that shouldn't be enabled.
+lumio-node was compiled with feature flags that shouldn't be enabled.
 
 This is caused by cargo's feature unification.
 When you compile two crates with a shared dependency, if one enables a feature flag for the dependency, then it is also enabled for the other crate.
 
-PLEASE RECOMPILE APTOS-NODE SEPARATELY using the following command:
-    cargo build --package aptos-node
+PLEASE RECOMPILE LUMIO-NODE SEPARATELY using the following command:
+    cargo build --package lumio-node
 
 "#;
 
@@ -42,13 +42,13 @@ pub fn fetch_chain_id(db: &DbReaderWriter) -> anyhow::Result<ChainId> {
     let db_state_view = db
         .reader
         .latest_state_checkpoint_view()
-        .map_err(|err| anyhow!("[aptos-node] failed to create db state view {}", err))?;
+        .map_err(|err| anyhow!("[lumio-node] failed to create db state view {}", err))?;
     Ok(ChainIdResource::fetch_config(&db_state_view)
-        .expect("[aptos-node] missing chain ID resource")
+        .expect("[lumio-node] missing chain ID resource")
         .chain_id())
 }
 
-/// Sets the Aptos VM configuration based on the node configurations
+/// Sets the Lumio VM configuration based on the node configurations
 pub fn set_lumio_vm_configurations(node_config: &NodeConfig) {
     set_paranoid_type_checks(node_config.execution.paranoid_type_verification);
     let effective_concurrency_level = if node_config.execution.concurrency_level == 0 {

@@ -9,15 +9,15 @@ import pathlib
 ROOT = pathlib.Path(__file__).absolute().parents[2]
 
 # Specifies directories for regular packages.
-# Paths are relative to the root of the aptos-core repository.
+# Paths are relative to the root of the lumio-core repository.
 PACKAGES = [
     "testsuite/benchmark-workloads/packages",
-    "aptos-move/move-examples/token_objects/ambassador",
-    "aptos-move/move-examples/aggregator_examples",
-    "aptos-move/move-examples/bcs-stream"
+    "lumio-move/move-examples/token_objects/ambassador",
+    "lumio-move/move-examples/aggregator_examples",
+    "lumio-move/move-examples/bcs-stream"
 ]
 # Specifies directories for experimental packages (will be compiled with latest, possibly unstable) language version.
-# Paths are relative to the root of the aptos-core repository.
+# Paths are relative to the root of the lumio-core repository.
 EXPERIMENTAL_PACKAGES = [
     "testsuite/benchmark-workloads/packages-experimental/experimental_usecases",
 ]

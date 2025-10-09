@@ -10,9 +10,9 @@ import subprocess
 import traceback
 from dataclasses import dataclass
 
-from aptos_sdk.async_client import RestClient
+from lumio_sdk.async_client import RestClient
 from common import METRICS_PORT, NODE_PORT, AccountInfo, Network, build_image_name
-from aptos_sdk.account_address import AccountAddress
+from lumio_sdk.account_address import AccountAddress
 
 LOG = logging.getLogger(__name__)
 
@@ -159,7 +159,7 @@ class RunHelper:
     # Move any Move files into the working directory.
     def prepare_move(self):
         shutil.copytree(
-            "../../../aptos-move/move-examples/cli-e2e-tests",
+            "../../../lumio-move/move-examples/cli-e2e-tests",
             os.path.join(self.host_working_directory, "move/cli-e2e-tests"),
             ignore=shutil.ignore_patterns("build"),
         )
@@ -183,18 +183,18 @@ class RunHelper:
             # make sure we're using "workspace" configuration and not "global" configuration.
             response = self.run_command(
                 "check_workspace_config",
-                ["aptos", "config", "show-global-config"],
+                ["lumio", "config", "show-global-config"],
             )
             response = json.loads(response.stdout)
             if response["Result"]["config_type"].lower() != "workspace":
                 raise RuntimeError(
                     "When using --test-cli-path you must use workspace configuration, "
-                    "try running `aptos config set-global-config --config-type workspace`"
+                    "try running `lumio config set-global-config --config-type workspace`"
                 )
 
     # Get the account info of the account created by test_init.
     def get_account_info(self):
-        path = os.path.join(self.host_working_directory, ".aptos", "config.yaml")
+        path = os.path.join(self.host_working_directory, ".lumio", "config.yaml")
         with open(path) as f:
             content = f.read().splitlines()
         # To avoid using external deps we parse the file manually.

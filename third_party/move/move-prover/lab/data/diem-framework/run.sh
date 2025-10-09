@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FRAMEWORK="../../../../../../aptos-move/framework/aptos-framework/sources"
+FRAMEWORK="../../../../../../lumio-move/framework/lumio-framework/sources"
 
 # Benchmark per function
 cargo run --release -p prover-lab -- bench -f -c prover.toml $FRAMEWORK/*.move

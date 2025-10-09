@@ -13,42 +13,42 @@ use determinator::Utf8Paths0;
 use log::{debug, trace};
 
 // Useful package name constants for targeted tests
-const APTOS_CLI_PACKAGE_NAME: &str = "aptos";
+const LUMIO_CLI_PACKAGE_NAME: &str = "lumio";
 
 // Relevant file paths to monitor when deciding to run the targeted tests.
-// Note: these paths should be relative to the root of the `aptos-core` repository,
+// Note: these paths should be relative to the root of the `lumio-core` repository,
 // and will be transformed into UTF-8 paths for cross-platform compatibility.
 const RELEVANT_FILE_PATHS_FOR_COMPILER_V2: [&str; 5] = [
-    "aptos-move/aptos-transactional-test-harness",
-    "aptos-move/e2e-move-tests",
-    "aptos-move/framework",
-    "aptos-move/move-examples",
+    "lumio-move/lumio-transactional-test-harness",
+    "lumio-move/e2e-move-tests",
+    "lumio-move/framework",
+    "lumio-move/move-examples",
     "third_party/move",
 ];
 const RELEVANT_FILE_PATHS_FOR_EXECUTION_PERFORMANCE_TESTS: [&str; 5] = [
     ".github/workflows/execution-performance.yaml",
     ".github/workflows/workflow-run-execution-performance.yaml",
-    "aptos-move/e2e-benchmark",
-    "execution/aptos-executor-benchmark",
+    "lumio-move/e2e-benchmark",
+    "execution/lumio-executor-benchmark",
     "testsuite/single_node_performance.py",
 ];
 const RELEVANT_FILE_PATHS_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 4] = [
     ".github",
     "testsuite",
-    "aptos-move/aptos-release-builder",
-    "aptos-move/framework",
+    "lumio-move/lumio-release-builder",
+    "lumio-move/framework",
 ];
 
 // Relevant packages to monitor when deciding to run the targeted tests
-const RELEVANT_PACKAGES_FOR_COMPILER_V2: [&str; 2] = ["aptos-framework", "e2e-move-tests"];
+const RELEVANT_PACKAGES_FOR_COMPILER_V2: [&str; 2] = ["lumio-framework", "e2e-move-tests"];
 const RELEVANT_PACKAGES_FOR_EXECUTION_PERFORMANCE_TESTS: [&str; 2] =
-    ["aptos-executor-benchmark", "aptos-move-e2e-benchmark"];
+    ["lumio-executor-benchmark", "lumio-move-e2e-benchmark"];
 const RELEVANT_PACKAGES_FOR_FRAMEWORK_UPGRADE_TESTS: [&str; 2] =
-    ["aptos-framework", "aptos-release-builder"];
+    ["lumio-framework", "lumio-release-builder"];
 
 // The targeted unit test packages to ignore (these will be run separately, by other jobs)
 const TARGETED_UNIT_TEST_PACKAGES_TO_IGNORE: [&str; 3] =
-    ["aptos-testcases", "smoke-test", "aptos-keyless-circuit"];
+    ["lumio-testcases", "smoke-test", "lumio-keyless-circuit"];
 
 #[derive(Args, Clone, Debug)]
 #[command(disable_help_flag = true)]
@@ -69,7 +69,7 @@ impl CommonArgs {
 }
 
 #[derive(Clone, Subcommand, Debug)]
-pub enum AptosCargoCommand {
+pub enum LumioCargoCommand {
     AffectedPackages(CommonArgs),
     ChangedFiles(CommonArgs),
     Check(CommonArgs),
@@ -85,39 +85,39 @@ pub enum AptosCargoCommand {
     Test(CommonArgs),
 }
 
-impl AptosCargoCommand {
+impl LumioCargoCommand {
     fn command(&self) -> &'static str {
         match self {
-            AptosCargoCommand::Check(_) => "check",
-            AptosCargoCommand::Xclippy(_) => "clippy",
-            AptosCargoCommand::Fmt(_) => "fmt",
-            AptosCargoCommand::Nextest(_) => "nextest",
-            AptosCargoCommand::Test(_) => "test",
+            LumioCargoCommand::Check(_) => "check",
+            LumioCargoCommand::Xclippy(_) => "clippy",
+            LumioCargoCommand::Fmt(_) => "fmt",
+            LumioCargoCommand::Nextest(_) => "nextest",
+            LumioCargoCommand::Test(_) => "test",
             command => panic!("Unsupported command attempted! Command: {:?}", command),
         }
     }
 
     fn command_args(&self) -> &CommonArgs {
         match self {
-            AptosCargoCommand::AffectedPackages(args) => args,
-            AptosCargoCommand::ChangedFiles(args) => args,
-            AptosCargoCommand::Check(args) => args,
-            AptosCargoCommand::CheckMergeBase(args) => args,
-            AptosCargoCommand::Xclippy(args) => args,
-            AptosCargoCommand::Fmt(args) => args,
-            AptosCargoCommand::Nextest(args) => args,
-            AptosCargoCommand::TargetedCLITests(args) => args,
-            AptosCargoCommand::TargetedCompilerV2Tests(args) => args,
-            AptosCargoCommand::TargetedExecutionPerformanceTests(args) => args,
-            AptosCargoCommand::TargetedFrameworkUpgradeTests(args) => args,
-            AptosCargoCommand::TargetedUnitTests(args) => args,
-            AptosCargoCommand::Test(args) => args,
+            LumioCargoCommand::AffectedPackages(args) => args,
+            LumioCargoCommand::ChangedFiles(args) => args,
+            LumioCargoCommand::Check(args) => args,
+            LumioCargoCommand::CheckMergeBase(args) => args,
+            LumioCargoCommand::Xclippy(args) => args,
+            LumioCargoCommand::Fmt(args) => args,
+            LumioCargoCommand::Nextest(args) => args,
+            LumioCargoCommand::TargetedCLITests(args) => args,
+            LumioCargoCommand::TargetedCompilerV2Tests(args) => args,
+            LumioCargoCommand::TargetedExecutionPerformanceTests(args) => args,
+            LumioCargoCommand::TargetedFrameworkUpgradeTests(args) => args,
+            LumioCargoCommand::TargetedUnitTests(args) => args,
+            LumioCargoCommand::Test(args) => args,
         }
     }
 
     fn extra_opts(&self) -> Option<&[&str]> {
         match self {
-            AptosCargoCommand::Xclippy(_) => Some(&[
+            LumioCargoCommand::Xclippy(_) => Some(&[
                 "-Dwarnings",
                 "-Wclippy::all",
                 "-Aclippy::upper_case_acronyms",
@@ -157,49 +157,49 @@ impl AptosCargoCommand {
 
     pub fn execute(&self, package_args: &SelectedPackageArgs) -> anyhow::Result<()> {
         match self {
-            AptosCargoCommand::AffectedPackages(_) => {
+            LumioCargoCommand::AffectedPackages(_) => {
                 // Calculate and display the affected packages
                 let affected_package_paths = package_args.compute_target_packages()?;
                 output_affected_packages(affected_package_paths)
             },
-            AptosCargoCommand::ChangedFiles(_) => {
+            LumioCargoCommand::ChangedFiles(_) => {
                 // Calculate and display the changed files
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
                 output_changed_files(changed_files)
             },
-            AptosCargoCommand::CheckMergeBase(_) => {
+            LumioCargoCommand::CheckMergeBase(_) => {
                 // Check the merge base
                 package_args.check_merge_base()
             },
-            AptosCargoCommand::TargetedCLITests(_) => {
+            LumioCargoCommand::TargetedCLITests(_) => {
                 // Run the targeted CLI tests (if necessary).
                 // First, start by calculating the affected packages.
                 let affected_package_paths = package_args.compute_target_packages()?;
 
-                // Check if the affected packages contains the Aptos CLI
+                // Check if the affected packages contains the Lumio CLI
                 let mut cli_affected = false;
                 for package_path in affected_package_paths {
                     // Extract the package name from the full path
                     let package_name = get_package_name_from_path(&package_path);
 
-                    // Check if the package is the Aptos CLI
-                    if package_name == APTOS_CLI_PACKAGE_NAME {
-                        cli_affected = true; // The Aptos CLI was affected
+                    // Check if the package is the Lumio CLI
+                    if package_name == LUMIO_CLI_PACKAGE_NAME {
+                        cli_affected = true; // The Lumio CLI was affected
                         break;
                     }
                 }
 
-                // If the Aptos CLI is affected, run the targeted CLI tests
+                // If the Lumio CLI is affected, run the targeted CLI tests
                 if cli_affected {
                     println!("Running the targeted CLI tests...");
                     return run_targeted_cli_tests();
                 }
 
                 // Otherwise, skip the CLI tests
-                println!("Skipping CLI tests as the Aptos CLI package was not affected!");
+                println!("Skipping CLI tests as the Lumio CLI package was not affected!");
                 Ok(())
             },
-            AptosCargoCommand::TargetedCompilerV2Tests(_) => {
+            LumioCargoCommand::TargetedCompilerV2Tests(_) => {
                 // Run the targeted compiler v2 tests (if necessary).
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -224,7 +224,7 @@ impl AptosCargoCommand {
                 println!("Skipping targeted compiler v2 tests because no relevant files or packages were affected!");
                 Ok(())
             },
-            AptosCargoCommand::TargetedExecutionPerformanceTests(_) => {
+            LumioCargoCommand::TargetedExecutionPerformanceTests(_) => {
                 // Determine if the execution performance tests should be run.
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -248,7 +248,7 @@ impl AptosCargoCommand {
 
                 Ok(())
             },
-            AptosCargoCommand::TargetedFrameworkUpgradeTests(_) => {
+            LumioCargoCommand::TargetedFrameworkUpgradeTests(_) => {
                 // Determine if the framework upgrade tests should be run.
                 // Start by calculating the changed files and affected packages.
                 let (_, _, changed_files) = package_args.identify_changed_files()?;
@@ -273,7 +273,7 @@ impl AptosCargoCommand {
 
                 Ok(())
             },
-            AptosCargoCommand::TargetedUnitTests(_) => {
+            LumioCargoCommand::TargetedUnitTests(_) => {
                 // Run the targeted unit tests (if necessary).
                 // Start by calculating the affected packages.
                 let (direct_args, push_through_args, affected_package_paths) =
@@ -418,18 +418,18 @@ fn get_package_name_from_path(package_path: &str) -> String {
 fn run_targeted_cli_tests() -> anyhow::Result<()> {
     // First, run the CLI tests
     let mut command = Cargo::command("test");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LUMIO_CLI_PACKAGE_NAME]);
     command.run(false);
 
     // Next, build the CLI binary
     let mut command = Cargo::command("build");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LUMIO_CLI_PACKAGE_NAME]);
     command.run(false);
 
     // Finally, run the CLI --help command. Here, we ignore the exit status
     // because the CLI will return a non-zero exit status when running --help.
     let mut command = Cargo::command("run");
-    command.args(["-p", APTOS_CLI_PACKAGE_NAME]);
+    command.args(["-p", LUMIO_CLI_PACKAGE_NAME]);
     command.run(true);
 
     Ok(())
@@ -515,16 +515,16 @@ fn output_changed_files(changed_files: Utf8Paths0) -> anyhow::Result<()> {
 
 #[derive(Parser, Debug, Clone)]
 #[clap(author, version)]
-pub struct AptosCargoCli {
+pub struct LumioCargoCli {
     #[command(subcommand)]
-    cmd: AptosCargoCommand,
+    cmd: LumioCargoCommand,
     #[command(flatten)]
     package_args: SelectedPackageArgs,
     #[command(flatten)]
     pub verbose: clap_verbosity_flag::Verbosity,
 }
 
-impl AptosCargoCli {
+impl LumioCargoCli {
     pub fn execute(&self) -> anyhow::Result<()> {
         self.cmd.execute(&self.package_args)
     }
@@ -537,13 +537,13 @@ mod tests {
     #[test]
     fn test_detect_relevant_changes() {
         // Create relevant paths and packages for testing
-        let relevant_file_paths = vec![".github/actions/", "aptos-move/", "Cargo.lock", "crates/"];
-        let relevant_package_names = vec!["aptos-node", "e2e-move-tests"];
+        let relevant_file_paths = vec![".github/actions/", "lumio-move/", "Cargo.lock", "crates/"];
+        let relevant_package_names = vec!["lumio-node", "e2e-move-tests"];
 
         // Verify that no changes are detected
         let changed_file_paths = Utf8Paths0::from_bytes(b"developer-docs-site/").unwrap();
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/test-crate#test-crate".into()];
+            vec!["file:///home/lumio-core/crates/test-crate#test-crate".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -565,7 +565,7 @@ mod tests {
 
         // Verify that package changes are detected correctly
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/aptos-node#aptos-node".into()];
+            vec!["file:///home/lumio-core/crates/lumio-node#lumio-node".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -577,7 +577,7 @@ mod tests {
         // Verify that both file and package changes are detected correctly
         let changed_file_path = Utf8Paths0::from_bytes(b"Cargo.lock").unwrap();
         let affected_package_paths =
-            vec!["file:///home/aptos-core/crates/e2e-move-tests#e2e-move-tests".into()];
+            vec!["file:///home/lumio-core/crates/e2e-move-tests#e2e-move-tests".into()];
         let relevant_changes_detected = detect_relevant_changes(
             relevant_file_paths.clone(),
             relevant_package_names.clone(),
@@ -590,12 +590,12 @@ mod tests {
     #[test]
     fn test_detect_relevant_changes_file_paths() {
         // Create relevant file paths for testing
-        let relevant_file_paths = vec![".github/actions/", "aptos-move/", "Cargo.lock", "crates/"];
+        let relevant_file_paths = vec![".github/actions/", "lumio-move/", "Cargo.lock", "crates/"];
 
         // Verify that no changes are detected
         let changed_file_paths = vec![
             ".githubb/",
-            "aptos-nove/file.txt",
+            "lumio-nove/file.txt",
             "Cargo.lockity",
             "/my/crates/",
         ];
@@ -616,7 +616,7 @@ mod tests {
         // Verify that file changes are detected correctly
         let changed_file_paths = vec![
             ".github///actions/test-action/action.yaml",
-            "aptos-move/file.txt",
+            "lumio-move/file.txt",
             "Cargo.lock",
             "crates/",
         ];
@@ -638,14 +638,14 @@ mod tests {
     #[test]
     fn test_detect_relevant_changes_package_paths() {
         // Create relevant package names for testing
-        let relevant_package_names = vec!["aptos-node", "e2e-move-tests"];
+        let relevant_package_names = vec!["lumio-node", "e2e-move-tests"];
 
         // Verify that no changes are detected
         let affected_package_paths = vec![
-            "file:///home/aptos-core/aptos-mode/tests/e2e-move-tests#test-crate",
-            "file:///home/aptos-core/crates/test-crate#other-test-crate",
-            "file:///home/aptos-core/crates/other-crate#other-crate",
-            "file:///home/aptos-core/aptos-node#other-node-crate",
+            "file:///home/lumio-core/lumio-mode/tests/e2e-move-tests#test-crate",
+            "file:///home/lumio-core/crates/test-crate#other-test-crate",
+            "file:///home/lumio-core/crates/other-crate#other-crate",
+            "file:///home/lumio-core/lumio-node#other-node-crate",
         ];
         for affected_package_path in affected_package_paths {
             // Verify that no changes are detected
@@ -660,8 +660,8 @@ mod tests {
 
         // Verify that package changes are detected correctly
         let affected_package_paths = vec![
-            "file:///home/aptos-core/crates/aptos-node#aptos-node",
-            "file:///home/aptos-core/crates/e2e-move-tests#e2e-move-tests",
+            "file:///home/lumio-core/crates/lumio-node#lumio-node",
+            "file:///home/lumio-core/crates/e2e-move-tests#e2e-move-tests",
         ];
         for affected_package_path in affected_package_paths {
             // Verify changes are detected
@@ -680,7 +680,7 @@ mod tests {
         // Create a fully qualified test package path
         let package_name = "test-package-name".to_string();
         let package_path = format!(
-            "file:///home/aptos-core/devtools/aptos-cargo-cli#{}",
+            "file:///home/lumio-core/devtools/lumio-cargo-cli#{}",
             package_name
         );
 
@@ -698,7 +698,7 @@ mod tests {
     #[should_panic(expected = "Failed to extract package name from path")]
     fn test_get_package_name_from_path_empty() {
         // Create a test package path with an empty package name
-        let package_path = "file:///home/aptos-core/devtools/aptos-cargo-cli#";
+        let package_path = "file:///home/lumio-core/devtools/lumio-cargo-cli#";
 
         // Extract the package name from the path (this should panic)
         get_package_name_from_path(package_path);
@@ -708,7 +708,7 @@ mod tests {
     #[should_panic(expected = "Package path missing delimiter")]
     fn test_get_package_name_from_path_missing_delimiter() {
         // Create a test package path without a package name
-        let package_path = "file:///home/aptos-core/devtools/aptos-cargo-cli";
+        let package_path = "file:///home/lumio-core/devtools/lumio-cargo-cli";
 
         // Extract the package name from the path (this should panic)
         get_package_name_from_path(package_path);

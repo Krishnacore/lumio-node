@@ -8,7 +8,7 @@ use codespan_reporting::{
     term::{emit, termcolor::WriteColor, Config},
 };
 
-/// It's used in the native aptos-cli output to show error messages.
+/// It's used in the native lumio-cli output to show error messages.
 /// Wraps the `codespan_reporting::term::emit()` method.
 pub struct HumanEmitter<'w, W: WriteColor> {
     writer: &'w mut W,

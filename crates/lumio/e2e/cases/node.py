@@ -14,7 +14,7 @@ def test_node_show_validator_set(run_helper: RunHelper, test_name=None):
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "node",
             "show-validator-set",
             "--profile",
@@ -47,7 +47,7 @@ def test_node_update_consensus_key(run_helper: RunHelper, test_name=None):
     run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "init",
             "--assume-yes",
             "--network",
@@ -62,7 +62,7 @@ def test_node_update_consensus_key(run_helper: RunHelper, test_name=None):
     run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "stake",
             "initialize-stake-owner",
             "--profile",
@@ -81,7 +81,7 @@ def test_node_update_consensus_key(run_helper: RunHelper, test_name=None):
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "node",
             "update-consensus-key",
             "--profile",
@@ -102,7 +102,7 @@ def test_node_update_consensus_key(run_helper: RunHelper, test_name=None):
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "node",
             "get-stake-pool",
             "--profile",
@@ -134,7 +134,7 @@ def test_node_update_validator_network_address(run_helper: RunHelper, test_name=
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "node",
             "update-validator-network-addresses",
             "--profile",
@@ -157,7 +157,7 @@ def test_node_update_validator_network_address(run_helper: RunHelper, test_name=
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "node",
             "get-stake-pool",
             "--profile",

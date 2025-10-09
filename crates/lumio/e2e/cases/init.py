@@ -17,17 +17,17 @@ def test_init(run_helper: RunHelper, test_name=None):
     # account with the default amount of 100000000 OCTA.
     run_helper.run_command(
         test_name,
-        ["aptos", "init", "--assume-yes", "--network", "local"],
+        ["lumio", "init", "--assume-yes", "--network", "local"],
         input="\n",
     )
 
     # Assert that the CLI config is there.
     config_path = os.path.join(
-        run_helper.host_working_directory, ".aptos", "config.yaml"
+        run_helper.host_working_directory, ".lumio", "config.yaml"
     )
     if not os.path.exists(config_path):
         raise TestError(
-            f"{config_path} not found (in host working dir) after running aptos init"
+            f"{config_path} not found (in host working dir) after running lumio init"
         )
 
     # Assert that it contains info for the account that was created.
@@ -54,9 +54,9 @@ def test_metrics_accessible(run_helper: RunHelper, test_name=None):
 
 
 @test_case
-def test_aptos_header_included(run_helper: RunHelper, test_name=None):
-    # Make sure the aptos-cli header is included on the original request
+def test_lumio_header_included(run_helper: RunHelper, test_name=None):
+    # Make sure the lumio-cli header is included on the original request
     response = requests.get(run_helper.get_metrics_url())
 
-    if 'request_source_client="aptos-cli' not in response.text:
-        raise TestError("Request should contain the correct aptos header: aptos-cli")
+    if 'request_source_client="lumio-cli' not in response.text:
+        raise TestError("Request should contain the correct lumio header: lumio-cli")

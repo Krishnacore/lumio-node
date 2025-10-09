@@ -14,7 +14,7 @@ def run_faucet_integration_tests():
             "cargo",
             "test",
             "--package",
-            "aptos-faucet-core",
+            "lumio-faucet-core",
             "--features",
             "integration-tests",
         ],

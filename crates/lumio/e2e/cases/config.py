@@ -6,7 +6,7 @@ import json
 from common import TestError
 from test_helpers import RunHelper
 from test_results import test_case
-from aptos_sdk.account_address import AccountAddress
+from lumio_sdk.account_address import AccountAddress
 
 @test_case
 def test_config_show_profiles(run_helper: RunHelper, test_name=None):
@@ -14,7 +14,7 @@ def test_config_show_profiles(run_helper: RunHelper, test_name=None):
     response = run_helper.run_command(
         test_name,
         [
-            "aptos",
+            "lumio",
             "config",
             "show-profiles",
         ],
@@ -29,5 +29,5 @@ def test_config_show_profiles(run_helper: RunHelper, test_name=None):
         or profile["network"] != expected_profile.network
     ):
         raise TestError(
-            f"[aptos config show-profiles] shows incorrect profile {profile} -- \n expected {expected_profile}"
+            f"[lumio config show-profiles] shows incorrect profile {profile} -- \n expected {expected_profile}"
         )

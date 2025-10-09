@@ -49,9 +49,9 @@ use tokio::runtime::Runtime;
 
 const EPOCH_LENGTH_SECS: u64 = 60;
 
-/// Runs an Aptos validator or fullnode
+/// Runs an Lumio validator or fullnode
 #[derive(Clone, Debug, Parser)]
-#[clap(name = "Aptos Node", author, version)]
+#[clap(name = "Lumio Node", author, version)]
 pub struct LumioNodeArgs {
     /// Path to node configuration file (or template for local test mode).
     #[clap(
@@ -89,7 +89,7 @@ pub struct LumioNodeArgs {
     #[clap(long, requires("test"))]
     random_ports: bool,
 
-    /// Paths to the Aptos framework release package to be used for genesis.
+    /// Paths to the Lumio framework release package to be used for genesis.
     #[clap(long, requires("test"))]
     genesis_framework: Option<PathBuf>,
 
@@ -112,7 +112,7 @@ pub struct LumioNodeArgs {
 }
 
 impl LumioNodeArgs {
-    /// Runs an Aptos node based on the given command line arguments and config flags
+    /// Runs an Lumio node based on the given command line arguments and config flags
     pub fn run(self) {
         #[cfg(target_os = "linux")]
         // https://sfackler.github.io/rstack/doc/rstack_self/index.html
@@ -195,7 +195,7 @@ pub fn load_seed(input: &str) -> Result<[u8; 32], FromHexError> {
 }
 
 /// Runtime handle to ensure that all inner runtimes stay in scope
-pub struct AptosHandle {
+pub struct LumioHandle {
     _admin_service: AdminService,
     _api_runtime: Option<Runtime>,
     _backup_runtime: Option<Runtime>,
@@ -223,7 +223,7 @@ pub fn start(
     start_and_report_ports(config, log_file, create_global_rayon_pool, None, None)
 }
 
-/// Start an Aptos node
+/// Start an Lumio node
 pub fn start_and_report_ports(
     config: NodeConfig,
     log_file: Option<PathBuf>,
@@ -237,7 +237,7 @@ pub fn start_and_report_ports(
     // Create global rayon thread pool
     utils::create_global_rayon_pool(create_global_rayon_pool);
 
-    // Initialize the global aptos-node-identity
+    // Initialize the global lumio-node-identity
     lumio_node_identity::init(config.get_peer_id())?;
 
     // Instantiate the global logger
@@ -344,7 +344,7 @@ pub fn start_test_environment_node(
     test_dir: PathBuf,
     enable_lazy_mode: bool,
 ) -> anyhow::Result<()> {
-    let aptos_root_key_path = test_dir.join("mint.key");
+    let lumio_root_key_path = test_dir.join("mint.key");
 
     // Prepare log file since we cannot automatically route logs to stderr
     let log_file = test_dir.join("validator.log");
@@ -353,7 +353,7 @@ pub fn start_test_environment_node(
     println!("Completed generating configuration:");
     println!("\tLog file: {:?}", log_file);
     println!("\tTest dir: {:?}", test_dir);
-    println!("\tAptos root key path: {:?}", aptos_root_key_path);
+    println!("\tLumio root key path: {:?}", lumio_root_key_path);
     println!("\tWaypoint: {}", config.base.waypoint.genesis_waypoint());
     println!("\tChainId: {}", ChainId::test().id());
     println!("\tREST API endpoint: http://{}", &config.api.address);
@@ -362,7 +362,7 @@ pub fn start_test_environment_node(
         &config.inspection_service.address, &config.inspection_service.port
     );
     println!(
-        "\tAptosnet fullnode network endpoint: {}",
+        "\tLumionet fullnode network endpoint: {}",
         &config.full_node_networks[0].listen_address
     );
     if config.indexer_grpc.enabled {
@@ -380,7 +380,7 @@ pub fn start_test_environment_node(
     if enable_lazy_mode {
         println!("\tLazy mode is enabled");
     }
-    println!("\nAptos is running, press ctrl-c to exit\n");
+    println!("\nLumio is running, press ctrl-c to exit\n");
 
     start(config, Some(log_file), false)
 }
@@ -580,7 +580,7 @@ where
     }
 
     // The validator builder puts the first node in the 0 directory
-    let aptos_root_key_path = test_dir.join("mint.key");
+    let lumio_root_key_path = test_dir.join("mint.key");
 
     // Build genesis and the validator node
     let builder = lumio_genesis::builder::Builder::new(test_dir, framework.clone())?
@@ -594,7 +594,7 @@ where
 
             match env::var("ENABLE_KEYLESS_DEFAULT") {
                 Ok(val) if val.as_str() == "1" => {
-                    let response = ureq::get("https://api.devnet.aptoslabs.com/v1/accounts/0x1/resource/0x1::keyless_account::Groth16VerificationKey").call();
+                    let response = ureq::get("https://api.devnet.lumiolabs.com/v1/accounts/0x1/resource/0x1::keyless_account::Groth16VerificationKey").call();
                     let json: Value = response.into_json().expect("Failed to parse JSON");
                     configure_keyless_with_vk(genesis_config, json).unwrap();
                 },
@@ -618,7 +618,7 @@ where
 
     // Write the mint key to disk
     let serialized_keys = bcs::to_bytes(&root_key)?;
-    let mut key_file = fs::File::create(aptos_root_key_path)?;
+    let mut key_file = fs::File::create(lumio_root_key_path)?;
     key_file.write_all(&serialized_keys)?;
 
     // Build a waypoint file so that clients / docker can grab it easily
@@ -694,7 +694,7 @@ pub fn setup_environment_and_start_node(
     logger_filter_update_job: Option<LoggerFilterUpdater>,
     api_port_tx: Option<oneshot::Sender<u16>>,
     indexer_grpc_port_tx: Option<oneshot::Sender<u16>>,
-) -> anyhow::Result<AptosHandle> {
+) -> anyhow::Result<LumioHandle> {
     // Log the node config at node startup
     node_config.log_all_configs();
 
@@ -707,7 +707,7 @@ pub fn setup_environment_and_start_node(
 
     admin_service.set_lumio_db(db_rw.clone().into());
 
-    // Set the Aptos VM configurations
+    // Set the Lumio VM configurations
     utils::set_lumio_vm_configurations(&node_config);
 
     // Obtain the chain_id from the DB
@@ -760,7 +760,7 @@ pub fn setup_environment_and_start_node(
     );
 
     // Start state sync and get the notification endpoints for mempool and consensus
-    let (aptos_data_client, state_sync_runtimes, mempool_listener, consensus_notifier) =
+    let (lumio_data_client, state_sync_runtimes, mempool_listener, consensus_notifier) =
         state_sync::start_state_sync_and_get_notification_handles(
             &node_config,
             storage_service_network_interfaces,
@@ -772,7 +772,7 @@ pub fn setup_environment_and_start_node(
     // Start the node inspection service
     services::start_node_inspection_service(
         &node_config,
-        aptos_data_client,
+        lumio_data_client,
         peers_and_metadata.clone(),
     );
 
@@ -851,7 +851,7 @@ pub fn setup_environment_and_start_node(
         &mut admin_service,
     );
 
-    Ok(AptosHandle {
+    Ok(LumioHandle {
         _admin_service: admin_service,
         _api_runtime: api_runtime,
         _backup_runtime: backup_service,

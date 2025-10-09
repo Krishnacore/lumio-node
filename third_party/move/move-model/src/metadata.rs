@@ -183,7 +183,7 @@ impl CompilerVersion {
 /// however, there maybe some isolated exceptions.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, PartialOrd, Ord)]
 pub enum LanguageVersion {
-    /// The version of Move at around the genesis of the Aptos network end
+    /// The version of Move at around the genesis of the Lumio network end
     /// of '22. This is the original Diem Move plus the extension of inline
     /// functions with lambda parameters, as well as a simple form of `for`
     /// loops.

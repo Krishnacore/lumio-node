@@ -328,7 +328,7 @@ impl<L> PackageCache<L> {
         self.listener
             .on_bytecode_package_download_start(address, package_name);
 
-        let client = aptos_rest_client::Client::new(fullnode_url.clone());
+        let client = lumio_rest_client::Client::new(fullnode_url.clone());
 
         let package_registry = client
             .get_account_resource_at_version_bcs::<PackageRegistry>(

@@ -22,8 +22,8 @@ fn test_runner(path: &Path) -> datatest_stable::Result<()> {
         dependencies: vec![path_from_crate_root("../../move-stdlib/sources")],
         named_address_mapping: vec![
             "std=0x1".to_string(),
-            "aptos_std=0x1".to_string(),
-            "aptos_framework=0x1".to_string(),
+            "lumio_std=0x1".to_string(),
+            "lumio_framework=0x1".to_string(),
         ],
         language_version: Some(LanguageVersion::latest_stable()),
         compiler_version: Some(CompilerVersion::latest_stable()),

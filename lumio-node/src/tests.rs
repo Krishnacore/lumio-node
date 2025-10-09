@@ -45,7 +45,7 @@ fn test_mutual_authentication_validators() {
 
 #[cfg(feature = "check-vm-features")]
 #[test]
-fn test_aptos_vm_does_not_have_test_natives() {
+fn test_lumio_vm_does_not_have_test_natives() {
     lumio_vm::natives::assert_no_test_natives(crate::utils::ERROR_MSG_BAD_FEATURE_FLAGS)
 }
 
@@ -116,24 +116,24 @@ fn test_create_single_node_test_config() {
 }
 
 #[test]
-fn test_verifier_cache_enabled_for_aptos_node() {
+fn test_verifier_cache_enabled_for_lumio_node() {
     use std::process::{Command, Stdio};
-    // Run the shell command `cargo tree -p aptos-node -e features`
+    // Run the shell command `cargo tree -p lumio-node -e features`
     let output = Command::new("cargo")
         .arg("tree")
         .arg("-p")
-        .arg("aptos-node")
+        .arg("lumio-node")
         .arg("-e")
         .arg("features")
         .stdout(Stdio::piped())
         .output()
-        .expect("Failed to execute `cargo tree -p aptos-node -e features`");
+        .expect("Failed to execute `cargo tree -p lumio-node -e features`");
     let output = String::from_utf8_lossy(&output.stdout);
 
     let feature = "disable_verifier_cache";
     assert!(
         !output.contains(feature),
-        "Feature `{}` should not be enabled for aptos-node",
+        "Feature `{}` should not be enabled for lumio-node",
         feature
     );
 }

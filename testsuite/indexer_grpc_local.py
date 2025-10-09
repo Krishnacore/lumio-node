@@ -43,16 +43,16 @@ GRPC_IS_READY_MESSAGE = f"""
 
     - For non-TLS:
         grpcurl -plaintext -d '{{ "starting_version": 0 }}' \\
-            -H "x-aptos-data-authorization:dummy_token" \\
-            {GRPC_DATA_SERVICE_NON_TLS_URL} aptos.indexer.v1.RawData/GetTransactions
+            -H "x-lumio-data-authorization:dummy_token" \\
+            {GRPC_DATA_SERVICE_NON_TLS_URL} lumio.indexer.v1.RawData/GetTransactions
     - For TLS:
         grpcurl -insecure -d '{{ "starting_version": 0 }}' \\
-            -H "x-aptos-data-authorization:dummy_token" \\
-            {GRPC_DATA_SERVICE_TLS_URL} aptos.indexer.v1.RawData/GetTransactions
+            -H "x-lumio-data-authorization:dummy_token" \\
+            {GRPC_DATA_SERVICE_TLS_URL} lumio.indexer.v1.RawData/GetTransactions
     ======================================
 """
 
-SHARED_DOCKER_VOLUME_NAMES = ["aptos-shared", "indexer-grpc-file-store"]
+SHARED_DOCKER_VOLUME_NAMES = ["lumio-shared", "indexer-grpc-file-store"]
 
 WAIT_TESTNET_START_TIMEOUT_SECS = 60
 WAIT_INDEXER_GRPC_START_TIMEOUT_SECS = 60
@@ -242,14 +242,14 @@ def wait_for_indexer_grpc_progress(context: SystemContext) -> None:
                     "-d",
                     '{ "starting_version": 0 }',
                     "-H",
-                    "x-aptos-data-authorization:dummy_token",
+                    "x-lumio-data-authorization:dummy_token",
                     "-import-path",
                     "protos/proto",
                     "-proto",
-                    "aptos/indexer/v1/raw_data.proto",
+                    "lumio/indexer/v1/raw_data.proto",
                     "-plaintext",
                     GRPC_DATA_SERVICE_NON_TLS_URL,
-                    "aptos.indexer.v1.RawData/GetTransactions",
+                    "lumio.indexer.v1.RawData/GetTransactions",
                 ],
                 timeout_secs=GRPC_PROGRESS_THRESHOLD_SECS,
             )
@@ -366,7 +366,7 @@ def check_system(context: SystemContext) -> None:
 
 
 def main() -> None:
-    # Change to the root of aptos-core.
+    # Change to the root of lumio-core.
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
