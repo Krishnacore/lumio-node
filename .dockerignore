@@ -20,11 +20,11 @@
 !**/*.mpb
 !**/*.errmap
 !config/src/config/test_data
-!aptos-move/aptos-gas-profiling/templates/
-!aptos-move/aptos-release-builder/data/*.yaml
-!aptos-move/aptos-release-builder/data/proposals/*
-!aptos-move/framework/
-!aptos-move/move-examples/hello_blockchain/
+!lumio-move/aptos-gas-profiling/templates/
+!lumio-move/aptos-release-builder/data/*.yaml
+!lumio-move/aptos-release-builder/data/proposals/*
+!lumio-move/framework/
+!lumio-move/move-examples/hello_blockchain/
 !crates/aptos/src/move_tool/*.bpl
 !crates/aptos-localnet/src/hasura_metadata.json
 !crates/aptos-faucet/doc/
