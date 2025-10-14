@@ -8,6 +8,6 @@ lumio_token_objects = "0x4"
 example_addr = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-LumioTokenObjects = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioTokenObjects = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }
 ManagedFungibleAsset = { local = "../managed_fungible_asset" }

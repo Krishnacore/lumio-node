@@ -214,7 +214,7 @@ impl FrameworkPackageArgs {
         prompt_options: PromptOptions,
     ) -> CliTypedResult<()> {
         const LUMIO_FRAMEWORK: &str = "LumioFramework";
-        const LUMIO_GIT_PATH: &str = "https://github.com/lumio-labs/lumio-framework.git";
+        const LUMIO_GIT_PATH: &str = "https://github.com/pontem-network/lumio-framework.git";
         const SUBDIR_PATH: &str = "lumio-framework";
         const DEFAULT_BRANCH: &str = "mainnet";
 

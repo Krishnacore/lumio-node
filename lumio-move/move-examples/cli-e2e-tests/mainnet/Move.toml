@@ -9,11 +9,11 @@ addr = "_"
 addr = "0x12345"
 
 [dependencies.LumioFramework]
-git = "https://github.com/lumio-labs/lumio-framework.git"
+git = "https://github.com/pontem-network/lumio-framework.git"
 rev = "mainnet"
 subdir = "lumio-framework"
 
 [dependencies.LumioTokenObjects]
-git = "https://github.com/lumio-labs/lumio-framework.git"
+git = "https://github.com/pontem-network/lumio-framework.git"
 rev = "mainnet"
 subdir = "lumio-token-objects"

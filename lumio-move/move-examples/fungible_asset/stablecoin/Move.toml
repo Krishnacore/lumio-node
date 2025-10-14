@@ -18,4 +18,4 @@ pauser = "0xdafe"
 denylister = "0xcade"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }

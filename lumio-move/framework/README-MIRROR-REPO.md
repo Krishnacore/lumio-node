@@ -10,11 +10,11 @@ To use the packages in this repository as dependencies in your Move project, you
 To add a dependency from this repository, include the following in your `move.toml` file:
 ```
 [dependencies]
-<package_name> = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "<path_to_directory_containing_Move.toml>", rev = "<commit_hash_or_branch_name>" }
+<package_name> = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "<path_to_directory_containing_Move.toml>", rev = "<commit_hash_or_branch_name>" }
 ```
 For example, to add `LumioFramework` from the `mainnet` branch, you would use:
 ```
-LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
 ```
 Make sure to replace `subdir` with the appropriate path if you are referencing a different package within the framework.
 

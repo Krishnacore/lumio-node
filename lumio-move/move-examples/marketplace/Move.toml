@@ -6,6 +6,6 @@ version = "0.0.0"
 marketplace = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-LumioToken = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
-LumioTokenObjects = { git = "https://github.com/lumio-labs/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }
+LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioToken = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
+LumioTokenObjects = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }

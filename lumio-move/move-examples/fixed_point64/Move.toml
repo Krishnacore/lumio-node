@@ -9,7 +9,7 @@ fixed_point64 = "0xdeadbeef"
 [dev-addresses]
 
 [dependencies.LumioFramework]
-git = "https://github.com/lumio-labs/lumio-framework.git"
+git = "https://github.com/pontem-network/lumio-framework.git"
 rev = "mainnet"
 subdir = "lumio-framework"
 

@@ -2,8 +2,8 @@
 name = 'my_todo_list'
 version = '1.0.0'
 [dependencies.LumioFramework]
-git = 'https://github.com/lumio-labs/lumio-framework.git'
+git = 'https://github.com/pontem-network/lumio-framework.git'
 rev = 'main'
 subdir = 'lumio-framework'
 [addresses]
-todolist_addr='_'
+todolist_addr = '_'

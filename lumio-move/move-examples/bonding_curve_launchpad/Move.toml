@@ -16,11 +16,11 @@ swap = "0xcafe"
 
 
 [dependencies.LumioFramework]
-git = "https://github.com/lumio-labs/lumio-framework.git"
+git = "https://github.com/pontem-network/lumio-framework.git"
 rev = "bbf569abd260d94bc30fe96da297d2aecb193644"
 subdir = "lumio-framework"
 
 [dependencies.swap]
-git = "https://github.com/lumio-labs/lumio-framework.git"
+git = "https://github.com/pontem-network/lumio-framework.git"
 rev = "bbf569abd260d94bc30fe96da297d2aecb193644"
 subdir = "lumio-move/move-examples/swap"

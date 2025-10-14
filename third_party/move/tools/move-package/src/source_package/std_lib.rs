@@ -21,7 +21,7 @@ pub enum StdLib {
 
 impl StdLib {
     /// The well-known git URL for the standard library.
-    const STD_GIT_URL: &'static str = "https://github.com/aptos-labs/aptos-framework.git";
+    const STD_GIT_URL: &'static str = "https://github.com/pontem-network/lumio-framework.git";
 
     /// Returns the dependency for the standard library with the given version.
     pub fn dependency(&self, version: &StdVersion) -> Dependency {
