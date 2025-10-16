@@ -22,8 +22,8 @@ RUN ln -sf /usr/bin/perf_* /usr/bin/perf
 RUN addgroup --system --gid 6180 aptos && adduser --system --ingroup aptos --no-create-home --uid 6180 aptos
 
 RUN mkdir -p /opt/aptos/etc
-COPY --link --from=node-builder /aptos/dist/aptos-node /usr/local/bin/
-COPY --link --from=tools-builder /aptos/dist/aptos-debugger /usr/local/bin/
+COPY --link --from=node-builder /aptos/dist/lumio-node /usr/local/bin/
+COPY --link --from=tools-builder /aptos/dist/lumio-debugger /usr/local/bin/
 
 # Admission control
 EXPOSE 8000
