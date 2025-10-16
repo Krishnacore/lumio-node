@@ -25,12 +25,16 @@ variable "GCP_DOCKER_ARTIFACT_REPO" {}
 variable "AWS_ECR_ACCOUNT_NUM" {}
 
 variable "TARGET_REGISTRY" {
-  // must be "gcp" | "local" | "remote-all" | "remote" (deprecated, but kept for backwards compatibility. Same as "gcp"), informs which docker tags are being generated
-  default = CI == "true" ? "remote" : "local"
+  // must be "gcp" | "local" | "remote-all" | "remote" (deprecated, but kept for backwards compatibility. Same as "gcp") | "harbor", informs which docker tags are being generated
+  default = CI == "true" ? "remote" : "harbor"
 }
 
 variable "ecr_base" {
   default = "${AWS_ECR_ACCOUNT_NUM}.dkr.ecr.us-west-2.amazonaws.com/aptos"
+}
+
+variable "HARBOR_REGISTRY" {
+  default = "registry.wings.toys/lumio/lumio-node"
 }
 
 variable "NORMALIZED_GIT_BRANCH_OR_PR" {}
@@ -236,9 +240,15 @@ function "generate_tags" {
     TARGET_REGISTRY == "gcp" || TARGET_REGISTRY == "remote" ? [
       "${GCP_DOCKER_ARTIFACT_REPO}/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}",
       "${GCP_DOCKER_ARTIFACT_REPO}/${target}:${IMAGE_TAG_PREFIX}${NORMALIZED_GIT_BRANCH_OR_PR}",
+      ] : (
+      TARGET_REGISTRY == "harbor" ? [
+        "${HARBOR_REGISTRY}/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}",
+        "${HARBOR_REGISTRY}/${target}:${IMAGE_TAG_PREFIX}${NORMALIZED_GIT_BRANCH_OR_PR}",
+        "${HARBOR_REGISTRY}/${target}:latest",
       ] : [ // "local" or any other value
-      "aptos-core/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}-from-local",
-      "aptos-core/${target}:${IMAGE_TAG_PREFIX}from-local",
-    ]
+        "lumio-node/${target}:${IMAGE_TAG_PREFIX}${GIT_SHA}-from-local",
+        "lumio-node/${target}:${IMAGE_TAG_PREFIX}from-local",
+      ]
+    )
   )
 }
