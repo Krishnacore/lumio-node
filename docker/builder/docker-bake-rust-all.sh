@@ -12,13 +12,13 @@
 
 set -ex
 
-export GIT_SHA=$(git rev-parse HEAD)
-export GIT_BRANCH=$(git symbolic-ref --short HEAD)
-export GIT_TAG=$(git tag -l --contains HEAD)
+export GIT_SHA=${CI_COMMIT_SHA:-$(git rev-parse HEAD)}
+export GIT_BRANCH=${CI_COMMIT_REF_NAME:-$(git symbolic-ref --short HEAD 2>/dev/null || echo "detached-${GIT_SHA:0:8}")}
+export GIT_TAG=${CI_COMMIT_TAG:-$(git tag -l --contains HEAD)}
 export GIT_CREDENTIALS="${GIT_CREDENTIALS:-}"
 export BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 export BUILT_VIA_BUILDKIT="true"
-export TARGET_CACHE_ID=${TARGET_CACHE_ID:-$GIT_BRANCH}
+export TARGET_CACHE_ID=${TARGET_CACHE_ID:-${GIT_BRANCH:-main}}
 export NORMALIZED_GIT_BRANCH_OR_PR=$(printf "$TARGET_CACHE_ID" | sed -e 's/[^a-zA-Z0-9]/-/g')
 
 export PROFILE=${PROFILE:-release}
