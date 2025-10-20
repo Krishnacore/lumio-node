@@ -49,7 +49,7 @@ async fn test_permissioned_delegation() {
     );
     account1.increment_sequence_number();
 
-    // Setup permissions: 10 APT allowance, and 0.1 APT gas.
+    // Setup permissions: 10 LUM allowance, and 0.1 LUM gas.
     let script = format!(
         r#"
     script {{
@@ -62,8 +62,8 @@ async fn test_permissioned_delegation() {
         coin::migrate_to_fungible_store<lumio_framework::lumio_coin::LumioCoin>(sender);
         let key = permissioned_delegation::gen_ed25519_key(ed25519::new_unvalidated_public_key_from_bytes(x"{}"));
         let permissioned_signer = permissioned_delegation::add_permissioned_handle(sender, key, std::option::none(), {});
-        primary_fungible_store::grant_apt_permission(sender, &permissioned_signer, 1000000000); // 10 apt
-        transaction_validation::grant_gas_permission(sender, &permissioned_signer, 100000000); // 1 apt because that is the max_gas
+        primary_fungible_store::grant_lum_permission(sender, &permissioned_signer, 1000000000); // 10 lum
+        transaction_validation::grant_gas_permission(sender, &permissioned_signer, 100000000); // 1 lum because that is the max_gas
     }}
     }}
     "#,
@@ -99,7 +99,7 @@ async fn test_permissioned_delegation() {
         }),
     );
 
-    // Transfer 1 APT and 2 APT.
+    // Transfer 1 LUM and 2 LUM.
     let transfer_txn = account1.sign_aa_transaction_with_transaction_builder(
         vec![],
         None,

@@ -305,7 +305,7 @@ impl TransactionGasLog {
         );
         if !self.storage.event_discount.is_zero() {
             let discount_msg = format!(
-                "*This does not include a discount of {} APT which was applied to reduce the total cost for events.",
+                "*This does not include a discount of {} LUM which was applied to reduce the total cost for events.",
                 fmt_storage_fee(self.storage.event_discount)
             );
             data.insert(

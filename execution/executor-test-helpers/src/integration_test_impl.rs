@@ -21,7 +21,7 @@ use lumio_storage_interface::{
 };
 use lumio_types::{
     account_config::{
-        lumio_test_root_address, primary_apt_store, AccountResource, FungibleStoreResource,
+        lumio_test_root_address, primary_lum_store, AccountResource, FungibleStoreResource,
         ObjectGroupResource,
     },
     block_metadata::BlockMetadata,
@@ -421,7 +421,7 @@ pub fn create_db_and_executor<P: AsRef<std::path::Path>>(
 pub fn get_account_balance(state_view: &dyn StateView, address: &AccountAddress) -> u64 {
     FungibleStoreResource::fetch_move_resource_from_group(
         state_view,
-        &primary_apt_store(*address),
+        &primary_lum_store(*address),
         &ObjectGroupResource::struct_tag(),
     )
     .unwrap()

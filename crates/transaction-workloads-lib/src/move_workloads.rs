@@ -257,10 +257,10 @@ pub enum EntryPoints {
     /// there to slow down deserialization & verification, effectively making it more expensive to
     /// load it into code cache.
     SimpleScript,
-    /// Set up an APT transfer permission and transfering APT by using that permissioned signer.
-    APTTransferWithPermissionedSigner,
-    /// Transfer APT using vanilla master signer to compare the performance.
-    APTTransferWithMasterSigner,
+    /// Set up an LUM transfer permission and transfering LUM by using that permissioned signer.
+    LUMTransferWithPermissionedSigner,
+    /// Transfer LUM using vanilla master signer to compare the performance.
+    LUMTransferWithMasterSigner,
 
     OrderBook {
         state: Arc<OrderBookState>,
@@ -335,8 +335,8 @@ impl EntryPointTrait for EntryPoints {
             | EntryPoints::ResourceGroupsSenderMultiChange { .. }
             | EntryPoints::CoinInitAndMint
             | EntryPoints::FungibleAssetMint
-            | EntryPoints::APTTransferWithPermissionedSigner
-            | EntryPoints::APTTransferWithMasterSigner
+            | EntryPoints::LUMTransferWithPermissionedSigner
+            | EntryPoints::LUMTransferWithMasterSigner
             | EntryPoints::MonotonicCounter { .. } => "framework_usecases",
             EntryPoints::OrderBook { .. } => "experimental_usecases",
             EntryPoints::TokenV2AmbassadorMint { .. } | EntryPoints::TokenV2AmbassadorBurn => {
@@ -418,8 +418,8 @@ impl EntryPointTrait for EntryPoints {
             EntryPoints::IncGlobalMilestoneAggV2 { .. }
             | EntryPoints::CreateGlobalMilestoneAggV2 { .. } => "counter_with_milestone",
             EntryPoints::DeserializeU256 => "bcs_stream",
-            EntryPoints::APTTransferWithPermissionedSigner
-            | EntryPoints::APTTransferWithMasterSigner => "permissioned_transfer",
+            EntryPoints::LUMTransferWithPermissionedSigner
+            | EntryPoints::LUMTransferWithMasterSigner => "permissioned_transfer",
             EntryPoints::MonotonicCounter { .. } => "transaction_context_example",
             EntryPoints::OrderBook { .. } => "order_book_example",
         }
@@ -842,7 +842,7 @@ impl EntryPointTrait for EntryPoints {
                     ],
                 )
             },
-            EntryPoints::APTTransferWithPermissionedSigner => get_payload(
+            EntryPoints::LUMTransferWithPermissionedSigner => get_payload(
                 module_id,
                 ident_str!("transfer_permissioned").to_owned(),
                 vec![
@@ -850,7 +850,7 @@ impl EntryPointTrait for EntryPoints {
                     bcs::to_bytes(&1u64).unwrap(),
                 ],
             ),
-            EntryPoints::APTTransferWithMasterSigner => {
+            EntryPoints::LUMTransferWithMasterSigner => {
                 get_payload(module_id, ident_str!("transfer").to_owned(), vec![
                     bcs::to_bytes(&other.expect("Must provide other")).unwrap(),
                     bcs::to_bytes(&1u64).unwrap(),
@@ -1021,8 +1021,8 @@ impl EntryPointTrait for EntryPoints {
             EntryPoints::DeserializeU256 => AutomaticArgs::None,
             EntryPoints::IncGlobalMilestoneAggV2 { .. } => AutomaticArgs::None,
             EntryPoints::CreateGlobalMilestoneAggV2 { .. } => AutomaticArgs::Signer,
-            EntryPoints::APTTransferWithPermissionedSigner
-            | EntryPoints::APTTransferWithMasterSigner => AutomaticArgs::Signer,
+            EntryPoints::LUMTransferWithPermissionedSigner
+            | EntryPoints::LUMTransferWithMasterSigner => AutomaticArgs::Signer,
             EntryPoints::MonotonicCounter { .. } => AutomaticArgs::None,
             EntryPoints::OrderBook { .. } => AutomaticArgs::None,
         }

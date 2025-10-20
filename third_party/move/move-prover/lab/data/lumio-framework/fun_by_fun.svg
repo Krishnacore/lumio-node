@@ -537,7 +537,7 @@ stake::withdraw_with_cap
 2.063
 </text>
 <text x="0" y="2679" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-system_addresses::assert_aptos_framework
+system_addresses::assert_lumos_framework
 </text>
 <rect x="0" y="2692" width="12" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="21" y="2693" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -887,7 +887,7 @@ multisig_account::update_metadata
 1.882
 </text>
 <text x="0" y="4426" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::initialize
+lumio_coin::initialize
 </text>
 <rect x="0" y="4439" width="10" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="20" y="4440" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -1188,7 +1188,7 @@ multisig_account::get_transaction
 1.807
 </text>
 <text x="0" y="5929" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_account::assert_account_is_registered_for_apt
+aptos_account::assert_account_is_registered_for_lum
 </text>
 <rect x="0" y="5942" width="10" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="19" y="5943" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -1580,7 +1580,7 @@ coin::destroy_freeze_cap
 1.754
 </text>
 <text x="0" y="7886" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::destroy_mint_cap
+lumio_coin::destroy_mint_cap
 </text>
 <rect x="0" y="7899" width="10" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="19" y="7900" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -2084,7 +2084,7 @@ optional_aggregator::destroy_optional_integer
 1.702
 </text>
 <text x="0" y="10403" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::find_delegation
+lumio_coin::find_delegation
 </text>
 <rect x="0" y="10415" width="9" height="9" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="18" y="10417" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -2595,7 +2595,7 @@ optional_aggregator::add_integer
 1.627
 </text>
 <text x="0" y="12954" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-stake::store_aptos_coin_mint_cap
+stake::store_lumos_coin_mint_cap
 </text>
 <rect x="0" y="12967" width="9" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="18" y="12968" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -2854,7 +2854,7 @@ aptos_governance::update_governance_config
 1.615
 </text>
 <text x="0" y="14247" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-transaction_fee::store_aptos_coin_burn_cap
+transaction_fee::store_lumos_coin_burn_cap
 </text>
 <rect x="0" y="14260" width="9" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="18" y="14261" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -3022,7 +3022,7 @@ system_addresses::is_framework_reserved_address
 1.605
 </text>
 <text x="0" y="15086" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::has_mint_capability
+lumio_coin::has_mint_capability
 </text>
 <rect x="0" y="15099" width="9" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="18" y="15100" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -3302,7 +3302,7 @@ aptos_governance::get_required_proposer_stake
 1.590
 </text>
 <text x="0" y="16484" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-system_addresses::is_aptos_framework_address
+system_addresses::is_lumos_framework_address
 </text>
 <rect x="0" y="16497" width="9" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="18" y="16498" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -3435,7 +3435,7 @@ staking_contract::switch_operator
 1.090
 </text>
 <text x="0" y="17148" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::mint
+lumio_coin::mint
 </text>
 <rect x="0" y="17161" width="6" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="17162" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -4114,7 +4114,7 @@ staking_contract::staking_contract_amounts
 1.027
 </text>
 <text x="0" y="20538" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-genesis::initialize_core_resources_and_aptos_coin
+genesis::initialize_core_resources_and_lumos_coin
 </text>
 <rect x="0" y="20551" width="5" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="20552" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -4135,14 +4135,14 @@ create_signer::create_signer
 1.026
 </text>
 <text x="0" y="20643" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::claim_mint_capability
+lumio_coin::claim_mint_capability
 </text>
 <rect x="0" y="20656" width="5" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="20657" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
 1.026
 </text>
 <text x="0" y="20678" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::delegate_mint_capability
+lumio_coin::delegate_mint_capability
 </text>
 <rect x="0" y="20690" width="5" height="9" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="20692" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -4198,7 +4198,7 @@ staking_contract::request_commission
 1.026
 </text>
 <text x="0" y="20957" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-aptos_coin::configure_accounts_for_test
+lumio_coin::configure_accounts_for_test
 </text>
 <rect x="0" y="20970" width="5" height="8" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="20971" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">
@@ -4688,7 +4688,7 @@ vesting::admin_withdraw
 1.018
 </text>
 <text x="0" y="23404" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="12.096774193548388" opacity="1" fill="#000000">
-genesis::initialize_aptos_coin
+genesis::initialize_lumos_coin
 </text>
 <rect x="0" y="23416" width="5" height="9" opacity="1" fill="#B4B4B4" stroke="none"/>
 <text x="15" y="23418" dy="0.76em" text-anchor="start" font-family="sans-serif" font-size="10.483870967741936" opacity="1" fill="#000000">

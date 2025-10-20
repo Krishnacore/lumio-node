@@ -112,7 +112,7 @@ module bonding_curve_launchpad::bonding_curve_launchpad {
 
     //---------------------------Dispatchable Standard---------------------------
     /// Follows the Dispatchable FA standard for creating custom withdraw logic.
-    /// Each created FA has transfers disabled, until the APT reserves minimum threshold on
+    /// Each created FA has transfers disabled, until the LUM reserves minimum threshold on
     /// the associated liquidity pair are met. This is referred to as graduation.
     /// - `transfer_ref` will ignore this custom withdraw logic.
     /// - Since `transfer_ref` is only available to our permissioned/explicit actions, participants will initially only
@@ -130,10 +130,10 @@ module bonding_curve_launchpad::bonding_curve_launchpad {
 
     //---------------------------Bonding Curve Launchpad (BCL)---------------------------
     /// Participants can launch new FA's and their associated liquidity pair.
-    /// Optionally, the participant can immediately perform an initial swap from APT to FA.
+    /// Optionally, the participant can immediately perform an initial swap from LUM to FA.
     public entry fun create_fa_pair(
         creator: &signer,
-        apt_amount_in: u64,
+        lum_amount_in: u64,
         name: String,
         symbol: String,
         max_supply: u128,
@@ -145,27 +145,27 @@ module bonding_curve_launchpad::bonding_curve_launchpad {
         let (fa_address, fa_minted) = create_fa(name, symbol, max_supply, decimals, icon_uri, project_uri);
         let fa_metadata_obj = object::address_to_object(fa_address);
         // `transfer_ref` is required for swapping in `liquidity_pair`. Otherwise, the custom withdraw function would
-        // block the transfer of APT to the creator.
+        // block the transfer of LUM to the creator.
         let transfer_ref = &borrow_global<FAController>(fa_address).transfer_ref;
-        // Create the liquidity pair between APT and the new FA. Include the initial creator swap, if needed.
+        // Create the liquidity pair between LUM and the new FA. Include the initial creator swap, if needed.
         liquidity_pairs::register_liquidity_pair(
             name,
             symbol,
             transfer_ref,
             creator,
             fa_metadata_obj,
-            apt_amount_in,
+            lum_amount_in,
             fa_minted,
             max_supply
         );
     }
 
-    /// Swap from FA to APT, or vice versa, through `liquidity_pair`.
+    /// Swap from FA to LUM, or vice versa, through `liquidity_pair`.
     public entry fun swap(
         account: &signer,
         name: String,
         symbol: String,
-        swap_to_apt: bool,
+        swap_to_lum: bool,
         amount_in: u64
     ) acquires LaunchPad, FAController {
         // Verify the `amount_in` is valid and that the FA exists.
@@ -176,10 +176,10 @@ module bonding_curve_launchpad::bonding_curve_launchpad {
         let fa_metadata_obj = object::address_to_object(get_fa_obj_address(name, symbol));
         let transfer_ref = &borrow_global<FAController>(get_fa_obj_address(name, symbol)).transfer_ref;
         // Initiate the swap on the associated liquidity pair.
-        if (swap_to_apt) {
-            liquidity_pairs::swap_fa_to_apt(name, symbol, transfer_ref, account, fa_metadata_obj, amount_in);
+        if (swap_to_lum) {
+            liquidity_pairs::swap_fa_to_lum(name, symbol, transfer_ref, account, fa_metadata_obj, amount_in);
         } else {
-            liquidity_pairs::swap_apt_to_fa(name, symbol, transfer_ref, account, fa_metadata_obj, amount_in);
+            liquidity_pairs::swap_lum_to_fa(name, symbol, transfer_ref, account, fa_metadata_obj, amount_in);
         };
     }
 

@@ -12,7 +12,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
     use swap::test_helpers;
 
     const ELIQUIDITY_PAIR_SWAP_AMOUNTOUT_INCORRECT: u64 = 1001;
-    const EUSER_APT_BALANCE_INCORRECT: u64 = 10001;
+    const EUSER_LUM_BALANCE_INCORRECT: u64 = 10001;
     const EINCORRECT_FROZEN_STATUS: u64 = 10002;
     const EUSER_FA_BALANCE_INCORRECT: u64 = 10003;
 
@@ -83,7 +83,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         test_setup_initialize_contracts(swap_dex_signer, bcl_owner_signer);
         // Create FA and LiquidityPair, w.o Initial Swap.
         let user_address = signer::address_of(bonding_curve_creator);
-        let starting_apt_balance = coin::balance<LumioCoin>(user_address);
+        let starting_lum_balance = coin::balance<LumioCoin>(user_address);
         let name = string::utf8(b"SheepyCoin");
         let symbol = string::utf8(b"SHEEP");
         bonding_curve_launchpad::create_fa_pair(
@@ -100,7 +100,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
                 b"https://t4.ftcdn.net/jpg/03/12/95/13/360_F_312951336_8LxW7gBLHslTnpbOAwxFo5FpD2R5vGxu.jpg"
             )
         );
-        assert!(coin::balance<LumioCoin>(user_address) == starting_apt_balance, EUSER_APT_BALANCE_INCORRECT);
+        assert!(coin::balance<LumioCoin>(user_address) == starting_lum_balance, EUSER_LUM_BALANCE_INCORRECT);
         assert!(bonding_curve_launchpad::get_balance(name, symbol, user_address) == 0, EUSER_FA_BALANCE_INCORRECT);
     }
 
@@ -120,7 +120,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         test_setup_initialize_contracts(swap_dex_signer, bcl_owner_signer);
         // Create FA and LiquidityPair, w/ Initial Swap.
         let user_address = signer::address_of(bonding_curve_creator);
-        let starting_apt_balance = coin::balance<LumioCoin>(user_address);
+        let starting_lum_balance = coin::balance<LumioCoin>(user_address);
         let name = string::utf8(b"SheepyCoin");
         let symbol = string::utf8(b"SHEEP");
         bonding_curve_launchpad::create_fa_pair(
@@ -137,7 +137,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
                 b"https://t4.ftcdn.net/jpg/03/12/95/13/360_F_312951336_8LxW7gBLHslTnpbOAwxFo5FpD2R5vGxu.jpg"
             )
         );
-        assert!(coin::balance<LumioCoin>(user_address) == starting_apt_balance - 1000, EUSER_APT_BALANCE_INCORRECT);
+        assert!(coin::balance<LumioCoin>(user_address) == starting_lum_balance - 1000, EUSER_LUM_BALANCE_INCORRECT);
         assert!(bonding_curve_launchpad::get_balance(name, symbol, user_address) == 16, EUSER_FA_BALANCE_INCORRECT);
     }
 
@@ -206,22 +206,22 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         let user_address = signer::address_of(bonding_curve_creator);
         let name = string::utf8(b"SheepyCoin");
         let symbol = string::utf8(b"SHEEP");
-        let starting_apt_balance = coin::balance<LumioCoin>(user_address);
-        // APT -> FA
+        let starting_lum_balance = coin::balance<LumioCoin>(user_address);
+        // LUM -> FA
         bonding_curve_launchpad::swap(bonding_curve_creator, name, symbol, false, 100_000_000);
         assert!(
-            coin::balance<LumioCoin>(user_address) == starting_apt_balance - 100_000_000,
-            EUSER_APT_BALANCE_INCORRECT
+            coin::balance<LumioCoin>(user_address) == starting_lum_balance - 100_000_000,
+            EUSER_LUM_BALANCE_INCORRECT
         );
         assert!(
             bonding_curve_launchpad::get_balance(name, symbol, user_address) == 1_602_794,
             ELIQUIDITY_PAIR_SWAP_AMOUNTOUT_INCORRECT
         );
-        // FA -> APT
+        // FA -> LUM
         bonding_curve_launchpad::swap(bonding_curve_creator, name, symbol, true, 1_602_794);
         assert!(
-            coin::balance<LumioCoin>(user_address) == starting_apt_balance - 26,
-            EUSER_APT_BALANCE_INCORRECT
+            coin::balance<LumioCoin>(user_address) == starting_lum_balance - 26,
+            EUSER_LUM_BALANCE_INCORRECT
         ); // u256/u64 precision loss.
         assert!(
             bonding_curve_launchpad::get_balance(name, symbol, user_address) == 0,
@@ -242,7 +242,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         bonding_curve_creator: &signer
     ) {
         test_e2e_bonding_curve_creation(lumio_framework, swap_dex_signer, bcl_owner_signer, bonding_curve_creator);
-        let grad_apt: u64 = 6_000 * math64::pow(10, (8 as u64));
+        let grad_lum: u64 = 6_000 * math64::pow(10, (8 as u64));
         let name = string::utf8(b"SheepyCoin");
         let symbol = string::utf8(b"SHEEP");
         assert!(bonding_curve_launchpad::get_is_frozen(name, symbol) == true, EINCORRECT_FROZEN_STATUS);
@@ -251,8 +251,8 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             name,
             symbol,
             false,
-            grad_apt
-        ); // Over-threshold Swap. APT -> FA
+            grad_lum
+        ); // Over-threshold Swap. LUM -> FA
         assert!(bonding_curve_launchpad::get_is_frozen(name, symbol) == false, EINCORRECT_FROZEN_STATUS);
     }
 
@@ -316,7 +316,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         bonding_curve_creator = @0x803
     )]
     #[expected_failure(abort_code = liquidity_pairs::ELIQUIDITY_PAIR_DISABLED, location = liquidity_pairs)]
-    fun test_e2e_failing_apt_swap_after_graduation(
+    fun test_e2e_failing_lum_swap_after_graduation(
         lumio_framework: &signer,
         swap_dex_signer: &signer,
         bcl_owner_signer: &signer,
@@ -329,7 +329,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             1_000_000
-        ); // APT -> FA
+        ); // LUM -> FA
     }
 
     #[test(
@@ -352,7 +352,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             10
-        ); // FA -> APT
+        ); // FA -> LUM
     }
 
     #[test(
@@ -412,7 +412,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
         bonding_curve_creator = @0x803
     )]
     #[expected_failure(abort_code = bonding_curve_launchpad::bonding_curve_launchpad::ELIQUIDITY_PAIR_SWAP_AMOUNTIN_INVALID, location = bonding_curve_launchpad)]
-    fun test_e2e_failing_swap_of_zero_input_apt(
+    fun test_e2e_failing_swap_of_zero_input_lum(
         lumio_framework: &signer,
         swap_dex_signer: &signer,
         bcl_owner_signer: &signer,
@@ -425,7 +425,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             0
-        ); // APT -> FA
+        ); // LUM -> FA
     }
 
     #[test(
@@ -448,7 +448,7 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             false,
             0
-        ); // Swap afer graduation, guaranteed to fail. FA -> APT
+        ); // Swap afer graduation, guaranteed to fail. FA -> LUM
     }
 
     #[test(
@@ -471,6 +471,6 @@ module bonding_curve_launchpad::test_bonding_curve_launchpad {
             string::utf8(b"SHEEP"),
             true,
             10000
-        ); // Swap afer graduation, guaranteed to fail. FA -> APT
+        ); // Swap afer graduation, guaranteed to fail. FA -> LUM
     }
 }

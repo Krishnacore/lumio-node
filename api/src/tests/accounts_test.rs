@@ -8,7 +8,7 @@ use lumio_api_types::{MoveModuleBytecode, MoveResource, MoveStructTag, StateKeyW
 use lumio_cached_packages::lumio_stdlib;
 use lumio_sdk::types::LUMIO_COIN_TYPE_STR;
 use lumio_types::{
-    account_config::{primary_apt_store, ObjectCoreResource},
+    account_config::{primary_lum_store, ObjectCoreResource},
     transaction::{EntryFunction, TransactionPayload},
     LumioCoinType, CoinType,
 };
@@ -355,7 +355,7 @@ async fn test_get_account_balance(
                 ),
                 Identifier::new("upgrade_store_to_concurrent").unwrap(),
                 vec![TypeTag::Struct(Box::new(ObjectCoreResource::struct_tag()))],
-                vec![bcs::to_bytes(&primary_apt_store(root_account.address())).unwrap()],
+                vec![bcs::to_bytes(&primary_lum_store(root_account.address())).unwrap()],
             )))
             .expiration_timestamp_secs(context.get_expiration_time())
             .upgrade_payload_with_rng(

@@ -150,7 +150,7 @@ pub(crate) struct TransactionDiffBuilder {
     /// If true, differences related to the gas usage are ignored. These include:
     ///   - total gas used is not compared,
     ///   - `EmitFeeStatement` event is not compared,
-    ///   - total APT supply is not compared,
+    ///   - total LUM supply is not compared,
     ///   - account balances are no compared.
     allow_different_gas_usage: bool,
 }
@@ -257,7 +257,7 @@ impl TransactionDiffBuilder {
         let mut right = right.into_mut().into_inner();
 
         let filter_gas_related_ops = |ops: &mut BTreeMap<StateKey, WriteOp>| {
-            // Skip total coin APT supply comparisons.
+            // Skip total coin LUM supply comparisons.
             ops.remove(&*TOTAL_SUPPLY_STATE_KEY);
 
             // Total supply for fungible store. Note that this sadly does not work well for

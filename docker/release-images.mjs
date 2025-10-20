@@ -47,10 +47,10 @@ import {
   joinTagSegments,
 } from "./image-helpers.js";
 
-// When we release aptos-node, we also want to release related images for tooling, testing, etc. Similarly, other images have other related images
+// When we release lumio-node, we also want to release related images for tooling, testing, etc. Similarly, other images have other related images
 // that we can release together, ie in a release group.
 const IMAGES_TO_RELEASE_BY_RELEASE_GROUP = {
-  "aptos-node": ["validator", "validator-testing", "faucet", "tools"],
+  "lumio-node": ["validator", "validator-testing", "faucet", "tools"],
   "aptos-indexer-grpc": ["indexer-grpc"],
 };
 
@@ -157,7 +157,7 @@ async function main() {
 }
 
 // The image tag prefix is used to determine the release group. Examples:
-// * tag a release as "aptos-node-vX.Y.Z"
+// * tag a release as "lumio-node-vX.Y.Z"
 // * tag a release as "aptos-indexer-grpc-vX.Y.Z"
 export function getImageReleaseGroupByImageTagPrefix(prefix) {
   // iterate over the keys in IMAGES_TO_RELEASE_BY_RELEASE_GROUP
@@ -167,8 +167,8 @@ export function getImageReleaseGroupByImageTagPrefix(prefix) {
       return imageReleaseGroup;
     }
   }
-  // if there's no match, then release aptos-node by default
-  return "aptos-node";
+  // if there's no match, then release lumio-node by default
+  return "lumio-node";
 }
 
 // This prevents tests from executing main

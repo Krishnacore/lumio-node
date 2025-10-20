@@ -16,7 +16,7 @@ func demo_coin_transfer() {
 			Address: aptos.AccountAddress(
 				[32]uint8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			),
-			Module:     aptos.Identifier("aptos_coin"),
+			Module:     aptos.Identifier("lumio_coin"),
 			Name:       aptos.Identifier("AptosCoin"),
 		},
 	}

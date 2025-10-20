@@ -50,7 +50,7 @@ use std::{
 
 pub const LUMIO_COIN_TYPE_STR: &str = "0x1::lumio_coin::LumioCoin";
 lazy_static! {
-    pub static ref APT_METADATA_ADDRESS: AccountAddress = {
+    pub static ref LUM_METADATA_ADDRESS: AccountAddress = {
         let mut addr = [0u8; 32];
         addr[31] = 10u8;
         AccountAddress::new(addr)
@@ -133,8 +133,8 @@ pub struct LocalAccount {
     sequence_number: AtomicU64,
 }
 
-pub fn get_apt_primary_store_address(address: AccountAddress) -> AccountAddress {
-    get_paired_fa_primary_store_address(address, *APT_METADATA_ADDRESS)
+pub fn get_lum_primary_store_address(address: AccountAddress) -> AccountAddress {
+    get_paired_fa_primary_store_address(address, *LUM_METADATA_ADDRESS)
 }
 
 pub fn get_paired_fa_primary_store_address(
@@ -150,9 +150,9 @@ pub fn get_paired_fa_primary_store_address(
 pub fn get_paired_fa_metadata_address(coin_type_name: &MoveStructTag) -> AccountAddress {
     let coin_type_name = coin_type_name.to_string();
     if coin_type_name == LUMIO_COIN_TYPE_STR {
-        *APT_METADATA_ADDRESS
+        *LUM_METADATA_ADDRESS
     } else {
-        let mut preimage = APT_METADATA_ADDRESS.to_vec();
+        let mut preimage = LUM_METADATA_ADDRESS.to_vec();
         preimage.extend(coin_type_name.as_bytes());
         preimage.push(0xFE);
         AccountAddress::from_bytes(HashValue::sha3_256_of(&preimage).to_vec()).unwrap()
@@ -1292,7 +1292,7 @@ mod tests {
             .unwrap();
         println!("Address: {}", account.address().to_hex_literal());
         let balance = lumio_rest_client
-            .view_apt_account_balance(account.address())
+            .view_lum_account_balance(account.address())
             .await
             .unwrap()
             .into_inner();
@@ -1310,7 +1310,7 @@ mod tests {
         println!(
             "Balance: {}",
             lumio_rest_client
-                .view_apt_account_balance(account.address())
+                .view_lum_account_balance(account.address())
                 .await
                 .unwrap()
                 .into_inner()

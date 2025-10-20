@@ -5,7 +5,7 @@ use anyhow::Result;
 use lumio_types::{
     account_address::AccountAddress,
     account_config::{
-        primary_apt_store, AccountResource, CoinInfoResource, CoinStoreResource,
+        primary_lum_store, AccountResource, CoinInfoResource, CoinStoreResource,
         ConcurrentSupplyResource, FungibleStoreResource, ObjectCoreResource, ObjectGroupResource,
         TypeInfoResource,
     },
@@ -25,29 +25,29 @@ use std::{collections::BTreeMap, str::FromStr};
 
 pub struct CommonStructTags {
     pub account: StructTag,
-    pub apt_coin_store: StructTag,
+    pub lum_coin_store: StructTag,
     pub object_group: StructTag,
     pub object_core: StructTag,
     pub fungible_store: StructTag,
     pub concurrent_supply: StructTag,
 
-    pub apt_coin_type_name: String,
+    pub lum_coin_type_name: String,
 
-    pub apt_coin_info_resource: StateKey,
+    pub lum_coin_info_resource: StateKey,
 }
 
 impl CommonStructTags {
     pub fn new() -> Self {
         Self {
             account: AccountResource::struct_tag(),
-            apt_coin_store: CoinStoreResource::<LumioCoinType>::struct_tag(),
+            lum_coin_store: CoinStoreResource::<LumioCoinType>::struct_tag(),
             object_group: ObjectGroupResource::struct_tag(),
             object_core: ObjectCoreResource::struct_tag(),
             fungible_store: FungibleStoreResource::struct_tag(),
             concurrent_supply: ConcurrentSupplyResource::struct_tag(),
 
-            apt_coin_type_name: "0x1::lumio_coin::LumioCoin".to_string(),
-            apt_coin_info_resource: StateKey::resource_typed::<CoinInfoResource<LumioCoinType>>(
+            lum_coin_type_name: "0x1::lumio_coin::LumioCoin".to_string(),
+            lum_coin_info_resource: StateKey::resource_typed::<CoinInfoResource<LumioCoinType>>(
                 &LumioCoinType::coin_info_address(),
             )
             .unwrap(),
@@ -97,7 +97,7 @@ impl DbAccessUtil {
     }
 
     pub fn new_state_key_lumio_coin(&self, address: &AccountAddress) -> StateKey {
-        StateKey::resource(address, &self.common.apt_coin_store).unwrap()
+        StateKey::resource(address, &self.common.lum_coin_store).unwrap()
     }
 
     pub fn new_state_key_object_resource_group(&self, address: &AccountAddress) -> StateKey {
@@ -117,7 +117,7 @@ impl DbAccessUtil {
     ) -> Result<FungibleStoreResource> {
         let rg: Option<ObjectGroupResource> = Self::get_value(
             &StateKey::resource_group(
-                &primary_apt_store(*account),
+                &primary_lum_store(*account),
                 &ObjectGroupResource::struct_tag(),
             ),
             state_view,
@@ -132,7 +132,7 @@ impl DbAccessUtil {
         })
     }
 
-    pub fn get_apt_coin_store(
+    pub fn get_lum_coin_store(
         coin_store_key: &StateKey,
         state_view: &impl StateView,
     ) -> Result<Option<CoinStoreResource<LumioCoinType>>> {
@@ -169,7 +169,7 @@ impl DbAccessUtil {
         )
     }
 
-    pub fn new_apt_coin_store(
+    pub fn new_lum_coin_store(
         balance: u64,
         address: AccountAddress,
     ) -> CoinStoreResource<LumioCoinType> {

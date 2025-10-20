@@ -26,7 +26,7 @@ use lumio_mvhashmap::types::TxnIndex;
 use lumio_types::{
     account_address::AccountAddress,
     account_config::{
-        primary_apt_store, AccountResource, CoinInfoResource, CoinRegister, CoinStoreResource,
+        primary_lum_store, AccountResource, CoinInfoResource, CoinRegister, CoinStoreResource,
         ConcurrentSupplyResource, DepositEvent, DepositFAEvent, FungibleStoreResource,
         WithdrawEvent, WithdrawFAEvent,
     },
@@ -126,10 +126,10 @@ impl ExecutorTask for NativeVMExecutorTask {
     fn init(env: &LumioEnvironment, _state_view: &impl StateView) -> Self {
         let fa_migration_complete = env
             .features()
-            .is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+            .is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LUM_STORE);
         let new_accounts_default_to_fa = env
             .features()
-            .is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
+            .is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LUM_STORE);
         assert_eq!(
             fa_migration_complete, new_accounts_default_to_fa,
             "native code only works with both flags either enabled or disabled"
@@ -197,7 +197,7 @@ impl NativeVMExecutorTask {
         let aggregator_v1_write_set = BTreeMap::new();
         let mut aggregator_v1_delta_set = BTreeMap::new();
 
-        self.reduce_apt_supply(
+        self.reduce_lum_supply(
             fa_migration_complete,
             gas,
             view,
@@ -218,7 +218,7 @@ impl NativeVMExecutorTask {
                     view,
                     &mut resource_write_set,
                 )?;
-                self.withdraw_apt(
+                self.withdraw_lum(
                     fa_migration_complete,
                     sender,
                     0,
@@ -240,7 +240,7 @@ impl NativeVMExecutorTask {
                     view,
                     &mut resource_write_set,
                 )?;
-                self.withdraw_fa_apt_from_signer(
+                self.withdraw_fa_lum_from_signer(
                     sender,
                     amount,
                     view,
@@ -249,7 +249,7 @@ impl NativeVMExecutorTask {
                     &mut events,
                 )?;
                 if amount > 0 {
-                    self.deposit_fa_apt(
+                    self.deposit_fa_lum(
                         recipient,
                         amount,
                         view,
@@ -273,7 +273,7 @@ impl NativeVMExecutorTask {
                     &mut resource_write_set,
                 )?;
 
-                self.withdraw_apt(
+                self.withdraw_lum(
                     fa_migration_complete,
                     sender,
                     amount,
@@ -283,7 +283,7 @@ impl NativeVMExecutorTask {
                     &mut events,
                 )?;
 
-                let exists = self.deposit_apt(
+                let exists = self.deposit_lum(
                     fa_migration_complete,
                     recipient,
                     amount,
@@ -321,7 +321,7 @@ impl NativeVMExecutorTask {
                 let (deltas, amount_to_sender) =
                     compute_deltas_for_batch(recipients, amounts, sender);
 
-                self.withdraw_apt(
+                self.withdraw_lum(
                     fa_migration_complete,
                     sender,
                     amount_to_sender,
@@ -332,7 +332,7 @@ impl NativeVMExecutorTask {
                 )?;
 
                 for (recipient_address, transfer_amount) in deltas.into_iter() {
-                    let existed = self.deposit_apt(
+                    let existed = self.deposit_lum(
                         fa_migration_complete,
                         recipient_address,
                         transfer_amount as u64,
@@ -499,7 +499,7 @@ impl NativeVMExecutorTask {
         Ok(())
     }
 
-    fn reduce_apt_supply(
+    fn reduce_lum_supply(
         &self,
         fa_migration_complete: bool,
         gas: u64,
@@ -509,20 +509,20 @@ impl NativeVMExecutorTask {
         aggregator_v1_delta_set: &mut BTreeMap<StateKey, DeltaOp>,
     ) -> Result<(), ()> {
         if fa_migration_complete {
-            self.reduce_fa_apt_supply(gas, view, resource_write_set, delayed_field_change_set)
+            self.reduce_fa_lum_supply(gas, view, resource_write_set, delayed_field_change_set)
         } else {
-            self.reduce_coin_apt_supply(gas, view, aggregator_v1_delta_set)
+            self.reduce_coin_lum_supply(gas, view, aggregator_v1_delta_set)
         }
     }
 
-    fn reduce_fa_apt_supply(
+    fn reduce_fa_lum_supply(
         &self,
         gas: u64,
         view: &(impl ExecutorView + ResourceGroupView),
         resource_write_set: &mut BTreeMap<StateKey, AbstractResourceWriteOp>,
         delayed_field_change_set: &mut BTreeMap<DelayedFieldID, DelayedChange<DelayedFieldID>>,
     ) -> Result<(), ()> {
-        let apt_metadata_object_state_key = self
+        let lum_metadata_object_state_key = self
             .db_util
             .new_state_key_object_resource_group(&AccountAddress::TEN);
 
@@ -537,7 +537,7 @@ impl NativeVMExecutorTask {
         ]));
 
         let supply = Self::get_value_from_group_with_layout::<ConcurrentSupplyResource>(
-            &apt_metadata_object_state_key,
+            &lum_metadata_object_state_key,
             concurrent_supply_rg_tag,
             view,
             Some(&concurrent_supply_layout),
@@ -553,14 +553,14 @@ impl NativeVMExecutorTask {
             }),
         );
         let materialized_size = view
-            .get_resource_state_value_size(&apt_metadata_object_state_key)
+            .get_resource_state_value_size(&lum_metadata_object_state_key)
             .map_err(hide_error)?;
         let metadata = view
-            .get_resource_state_value_metadata(&apt_metadata_object_state_key)
+            .get_resource_state_value_metadata(&lum_metadata_object_state_key)
             .map_err(hide_error)?
             .unwrap();
         resource_write_set.insert(
-            apt_metadata_object_state_key,
+            lum_metadata_object_state_key,
             AbstractResourceWriteOp::ResourceGroupInPlaceDelayedFieldChange(
                 ResourceGroupInPlaceDelayedFieldChangeOp {
                     materialized_size,
@@ -571,14 +571,14 @@ impl NativeVMExecutorTask {
         Ok(())
     }
 
-    fn reduce_coin_apt_supply(
+    fn reduce_coin_lum_supply(
         &self,
         gas: u64,
         view: &(impl ExecutorView + ResourceGroupView),
         aggregator_v1_delta_set: &mut BTreeMap<StateKey, DeltaOp>,
     ) -> Result<(), ()> {
         let (sender_coin_store, _metadata) = Self::get_value::<CoinInfoResource<LumioCoinType>>(
-            &self.db_util.common.apt_coin_info_resource,
+            &self.db_util.common.lum_coin_info_resource,
             view,
         )?
         .ok_or(())?;
@@ -593,7 +593,7 @@ impl NativeVMExecutorTask {
         Ok(())
     }
 
-    fn withdraw_apt(
+    fn withdraw_lum(
         &self,
         fa_migration_complete: bool,
         sender: AccountAddress,
@@ -604,7 +604,7 @@ impl NativeVMExecutorTask {
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<(), ()> {
         if fa_migration_complete {
-            self.withdraw_fa_apt_from_signer(
+            self.withdraw_fa_lum_from_signer(
                 sender,
                 amount,
                 view,
@@ -613,7 +613,7 @@ impl NativeVMExecutorTask {
                 events,
             )?;
         } else {
-            self.withdraw_coin_apt_from_signer(
+            self.withdraw_coin_lum_from_signer(
                 sender,
                 amount,
                 view,
@@ -625,7 +625,7 @@ impl NativeVMExecutorTask {
         Ok(())
     }
 
-    fn withdraw_fa_apt_from_signer(
+    fn withdraw_fa_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -634,7 +634,7 @@ impl NativeVMExecutorTask {
         resource_write_set: &mut BTreeMap<StateKey, AbstractResourceWriteOp>,
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<(), ()> {
-        let sender_store_address = primary_apt_store(sender_address);
+        let sender_store_address = primary_lum_store(sender_address);
         let sender_fa_store_object_key = self
             .db_util
             .new_state_key_object_resource_group(&sender_store_address);
@@ -676,7 +676,7 @@ impl NativeVMExecutorTask {
         }
     }
 
-    fn withdraw_coin_apt_from_signer(
+    fn withdraw_coin_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -692,7 +692,7 @@ impl NativeVMExecutorTask {
 
         let (mut sender_coin_store, metadata) = match sender_coin_store_opt {
             None => {
-                return self.withdraw_fa_apt_from_signer(
+                return self.withdraw_fa_lum_from_signer(
                     sender_address,
                     transfer_amount,
                     view,
@@ -728,7 +728,7 @@ impl NativeVMExecutorTask {
     }
 
     /// Returns bool whether FungibleStore existed.
-    fn deposit_apt(
+    fn deposit_lum(
         &self,
         fa_migration_complete: bool,
         recipient_address: AccountAddress,
@@ -738,7 +738,7 @@ impl NativeVMExecutorTask {
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<bool, ()> {
         if fa_migration_complete {
-            self.deposit_fa_apt(
+            self.deposit_fa_lum(
                 recipient_address,
                 transfer_amount,
                 view,
@@ -746,7 +746,7 @@ impl NativeVMExecutorTask {
                 events,
             )
         } else {
-            self.deposit_coin_apt(
+            self.deposit_coin_lum(
                 recipient_address,
                 transfer_amount,
                 view,
@@ -757,7 +757,7 @@ impl NativeVMExecutorTask {
     }
 
     /// Returns bool whether FungibleStore existed.
-    fn deposit_fa_apt(
+    fn deposit_fa_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -765,7 +765,7 @@ impl NativeVMExecutorTask {
         resource_write_set: &mut BTreeMap<StateKey, AbstractResourceWriteOp>,
         events: &mut Vec<(ContractEvent, Option<MoveTypeLayout>)>,
     ) -> Result<bool, ()> {
-        let recipient_store_address = primary_apt_store(recipient_address);
+        let recipient_store_address = primary_lum_store(recipient_address);
         let recipient_fa_store_object_key = self
             .db_util
             .new_state_key_object_resource_group(&recipient_store_address);
@@ -826,7 +826,7 @@ impl NativeVMExecutorTask {
         Ok(existed)
     }
 
-    fn deposit_coin_apt(
+    fn deposit_coin_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -855,7 +855,7 @@ impl NativeVMExecutorTask {
                         None,
                     ));
                     (
-                        DbAccessUtil::new_apt_coin_store(0, recipient_address),
+                        DbAccessUtil::new_lum_coin_store(0, recipient_address),
                         None,
                         false,
                     )

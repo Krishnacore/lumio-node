@@ -33,7 +33,7 @@ use once_cell::sync::Lazy;
 use serde::Serialize;
 use std::{collections::HashSet, str::FromStr};
 
-const APT_ADDRESS: AccountAddress = AccountAddress::TEN;
+const LUM_ADDRESS: AccountAddress = AccountAddress::TEN;
 const OTHER_CURRENCY_ADDRESS: &str = "0x12341234123412341234123412341234";
 static OTHER_CURRENCY: Lazy<Currency> = Lazy::new(|| Currency {
     symbol: "FUN".to_string(),
@@ -251,7 +251,7 @@ async fn test_fa_mint() {
     let amount = 100;
     let sender = AccountAddress::random();
     let store_address = AccountAddress::random();
-    let (mint_changes, mint_events) = mint_fa_output(sender, APT_ADDRESS, store_address, 0, amount);
+    let (mint_changes, mint_events) = mint_fa_output(sender, LUM_ADDRESS, store_address, 0, amount);
     let input = test_transaction(sender, version, mint_changes, mint_events);
 
     let result = Transaction::from_transaction(&context, input).await;
@@ -303,7 +303,7 @@ async fn test_fa_transfer() {
     let receiver_store_address = AccountAddress::random();
     let (changes, events) = transfer_fa_output(
         sender,
-        APT_ADDRESS,
+        LUM_ADDRESS,
         store_address,
         amount * 2,
         receiver,

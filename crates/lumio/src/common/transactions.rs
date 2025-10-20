@@ -274,7 +274,7 @@ impl TxnOptions {
         let sequence_number = account.sequence_number;
 
         let balance = client
-            .view_apt_account_balance_at_version(sender_address, version)
+            .view_lum_account_balance_at_version(sender_address, version)
             .await
             .map_err(|err| CliError::ApiError(err.to_string()))?
             .into_inner();

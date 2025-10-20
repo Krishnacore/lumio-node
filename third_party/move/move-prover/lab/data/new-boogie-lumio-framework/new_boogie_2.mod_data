@@ -10,7 +10,7 @@
 0x1::aggregator_factory                           683           ok
 0x1::optional_aggregator                         1225           ok
 0x1::coin                                        2662           ok
-0x1::aptos_coin                                  1007           ok
+0x1::lumio_coin                                  1007           ok
 0x1::aptos_account                               2438           ok
 0x1::transaction_context                          671           ok
 0x1::chain_status                                 962           ok

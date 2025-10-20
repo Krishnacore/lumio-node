@@ -15734,7 +15734,7 @@
                 "$ref": "#/components/schemas/BlockMetadataExtension"
               },
               {
-                "description": "If some, it means the internal txn type is `lumio_types::transaction::Transaction::BlockMetadataExt`.\nOtherwise, it is `lumio_types::transaction::Transaction::BlockMetadata`.\n\nNOTE: we could have introduced a new APT txn type to represent the corresponding internal type,\nbut that is a breaking change to the ecosystem.\n\nNOTE: `oai` does not support `flatten` together with `skip_serializing_if`.",
+                "description": "If some, it means the internal txn type is `lumio_types::transaction::Transaction::BlockMetadataExt`.\nOtherwise, it is `lumio_types::transaction::Transaction::BlockMetadata`.\n\nNOTE: we could have introduced a new LUM txn type to represent the corresponding internal type,\nbut that is a breaking change to the ecosystem.\n\nNOTE: `oai` does not support `flatten` together with `skip_serializing_if`.",
                 "default": null
               }
             ]

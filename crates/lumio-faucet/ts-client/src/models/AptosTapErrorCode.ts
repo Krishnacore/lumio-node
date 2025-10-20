@@ -14,7 +14,7 @@ export enum AptosTapErrorCode {
     SOURCE_IP_MISSING = 'SourceIpMissing',
     TRANSACTION_FAILED = 'TransactionFailed',
     ENDPOINT_NOT_ENABLED = 'EndpointNotEnabled',
-    APTOS_API_ERROR = 'AptosApiError',
+    LUMIO_API_ERROR = 'AptosApiError',
     BYPASSER_ERROR = 'BypasserError',
     CHECKER_ERROR = 'CheckerError',
     STORAGE_ERROR = 'StorageError',

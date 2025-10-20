@@ -9665,7 +9665,7 @@
                 "return": []
               },
               {
-                "name": "assert_account_is_registered_for_apt",
+                "name": "assert_account_is_registered_for_lum",
                 "visibility": "public",
                 "is_entry": false,
                 "generic_type_params": [],
@@ -12506,7 +12506,7 @@
                 }
               ]
             },
-            "symbol": "APT"
+            "symbol": "LUM"
           }
         },
         "type": "write_resource"
@@ -26555,7 +26555,7 @@
                     "return": []
                   },
                   {
-                    "name": "assert_account_is_registered_for_apt",
+                    "name": "assert_account_is_registered_for_lum",
                     "visibility": "public",
                     "is_entry": false,
                     "generic_type_params": [],
@@ -29967,7 +29967,7 @@
                     }
                   ]
                 },
-                "symbol": "APT"
+                "symbol": "LUM"
               }
             },
             "type": "write_resource"

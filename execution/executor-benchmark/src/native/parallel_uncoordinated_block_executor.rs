@@ -15,7 +15,7 @@ use lumio_metrics_core::TimerHelper;
 use lumio_types::{
     account_address::AccountAddress,
     account_config::{
-        primary_apt_store, AccountResource, CoinInfoResource, CoinRegister, CoinStoreResource,
+        primary_lum_store, AccountResource, CoinInfoResource, CoinRegister, CoinStoreResource,
         ConcurrentSupplyResource, DepositEvent, DepositFAEvent, FungibleStoreResource,
         WithdrawEvent, WithdrawFAEvent,
     },
@@ -170,7 +170,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<()>;
 
-    fn reduce_apt_supply(
+    fn reduce_lum_supply(
         &self,
         fa_migration_complete: bool,
         gas: u64,
@@ -178,27 +178,27 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<()> {
         if fa_migration_complete {
-            self.reduce_fa_apt_supply(gas, state_view, output)
+            self.reduce_fa_lum_supply(gas, state_view, output)
         } else {
-            self.reduce_coin_apt_supply(gas, state_view, output)
+            self.reduce_coin_lum_supply(gas, state_view, output)
         }
     }
 
-    fn reduce_fa_apt_supply(
+    fn reduce_fa_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<()>;
 
-    fn reduce_coin_apt_supply(
+    fn reduce_coin_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<()>;
 
-    fn withdraw_apt_from_signer(
+    fn withdraw_lum_from_signer(
         &self,
         fa_migration_complete: bool,
         sender_address: AccountAddress,
@@ -208,7 +208,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<()> {
         if fa_migration_complete {
-            self.withdraw_fa_apt_from_signer(
+            self.withdraw_fa_lum_from_signer(
                 sender_address,
                 transfer_amount,
                 gas,
@@ -216,7 +216,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
                 output,
             )
         } else {
-            self.withdraw_coin_apt_from_signer(
+            self.withdraw_coin_lum_from_signer(
                 sender_address,
                 transfer_amount,
                 gas,
@@ -226,7 +226,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         }
     }
 
-    fn withdraw_fa_apt_from_signer(
+    fn withdraw_fa_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -235,7 +235,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<()>;
 
-    fn withdraw_coin_apt_from_signer(
+    fn withdraw_coin_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -244,7 +244,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<()>;
 
-    fn deposit_apt(
+    fn deposit_lum(
         &self,
         fa_migration_complete: bool,
         recipient_address: AccountAddress,
@@ -253,13 +253,13 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<bool> {
         if fa_migration_complete {
-            self.deposit_fa_apt(recipient_address, transfer_amount, state_view, output)
+            self.deposit_fa_lum(recipient_address, transfer_amount, state_view, output)
         } else {
-            self.deposit_coin_apt(recipient_address, transfer_amount, state_view, output)
+            self.deposit_coin_lum(recipient_address, transfer_amount, state_view, output)
         }
     }
 
-    fn deposit_fa_apt(
+    fn deposit_fa_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -267,7 +267,7 @@ pub trait CommonNativeRawTransactionExecutor: Sync + Send {
         output: &mut IncrementalOutput,
     ) -> Result<bool>;
 
-    fn deposit_coin_apt(
+    fn deposit_coin_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -296,9 +296,9 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
     fn init_block_state(&self, state_view: &(impl StateView + Sync)) -> bool {
         let features = Features::fetch_config(&state_view).unwrap_or_default();
         let fa_migration_complete =
-            features.is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE);
+            features.is_enabled(FeatureFlag::OPERATIONS_DEFAULT_TO_FA_LUM_STORE);
         let new_accounts_default_to_fa =
-            features.is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
+            features.is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LUM_STORE);
         assert_eq!(
             fa_migration_complete, new_accounts_default_to_fa,
             "native code only works with both flags either enabled or disabled"
@@ -327,7 +327,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
             } => {
                 self.update_sequence_number(sender, sequence_number, state_view, &mut output)?;
 
-                self.withdraw_apt_from_signer(
+                self.withdraw_lum_from_signer(
                     fa_migration_complete,
                     sender,
                     0,
@@ -344,9 +344,9 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
             } => {
                 self.update_sequence_number(sender, sequence_number, state_view, &mut output)?;
 
-                self.withdraw_fa_apt_from_signer(sender, amount, gas, state_view, &mut output)?;
+                self.withdraw_fa_lum_from_signer(sender, amount, gas, state_view, &mut output)?;
 
-                let _existed = self.deposit_fa_apt(recipient, amount, state_view, &mut output)?;
+                let _existed = self.deposit_fa_lum(recipient, amount, state_view, &mut output)?;
             },
             NativeTransaction::Transfer {
                 sender,
@@ -357,7 +357,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
                 fail_on_recipient_account_missing,
             } => {
                 self.update_sequence_number(sender, sequence_number, state_view, &mut output)?;
-                self.withdraw_apt_from_signer(
+                self.withdraw_lum_from_signer(
                     fa_migration_complete,
                     sender,
                     amount,
@@ -366,7 +366,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
                     &mut output,
                 )?;
 
-                let existed = self.deposit_apt(
+                let existed = self.deposit_lum(
                     fa_migration_complete,
                     recipient,
                     amount,
@@ -398,7 +398,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
                 let (deltas, amount_to_sender) =
                     compute_deltas_for_batch(recipients, amounts, sender);
 
-                self.withdraw_apt_from_signer(
+                self.withdraw_lum_from_signer(
                     fa_migration_complete,
                     sender,
                     amount_to_sender,
@@ -408,7 +408,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
                 )?;
 
                 for (recipient_address, transfer_amount) in deltas.into_iter() {
-                    let existed = self.deposit_apt(
+                    let existed = self.deposit_lum(
                         fa_migration_complete,
                         recipient_address,
                         transfer_amount as u64,
@@ -431,7 +431,7 @@ impl<T: CommonNativeRawTransactionExecutor> RawTransactionExecutor for T {
             NativeTransaction::BlockEpilogue => return output.into_success_output(0),
         };
 
-        self.reduce_apt_supply(fa_migration_complete, gas, state_view, &mut output)?;
+        self.reduce_lum_supply(fa_migration_complete, gas, state_view, &mut output)?;
 
         output.into_success_output(gas)
     }
@@ -468,46 +468,46 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         Ok(())
     }
 
-    fn reduce_fa_apt_supply(
+    fn reduce_fa_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<()> {
-        let apt_metadata_object_state_key = self
+        let lum_metadata_object_state_key = self
             .db_util
             .new_state_key_object_resource_group(&AccountAddress::TEN);
 
         let concurrent_supply_rg_tag = &self.db_util.common.concurrent_supply;
 
-        let mut apt_metadata_object =
-            DbAccessUtil::get_resource_group(&apt_metadata_object_state_key, state_view)?.unwrap();
+        let mut lum_metadata_object =
+            DbAccessUtil::get_resource_group(&lum_metadata_object_state_key, state_view)?.unwrap();
         let mut supply = bcs::from_bytes::<ConcurrentSupplyResource>(
-            &apt_metadata_object
+            &lum_metadata_object
                 .remove(concurrent_supply_rg_tag)
                 .unwrap(),
         )?;
 
         supply.current.set(supply.current.get() - gas as u128);
 
-        apt_metadata_object.insert(concurrent_supply_rg_tag.clone(), bcs::to_bytes(&supply)?);
+        lum_metadata_object.insert(concurrent_supply_rg_tag.clone(), bcs::to_bytes(&supply)?);
 
         output.write_set.push((
-            apt_metadata_object_state_key,
-            WriteOp::legacy_modification(bcs::to_bytes(&apt_metadata_object)?.into()),
+            lum_metadata_object_state_key,
+            WriteOp::legacy_modification(bcs::to_bytes(&lum_metadata_object)?.into()),
         ));
 
         Ok(())
     }
 
-    fn reduce_coin_apt_supply(
+    fn reduce_coin_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<()> {
         let coin_info = DbAccessUtil::get_value::<CoinInfoResource<LumioCoinType>>(
-            &self.db_util.common.apt_coin_info_resource,
+            &self.db_util.common.lum_coin_info_resource,
             state_view,
         )?
         .ok_or_else(|| anyhow::anyhow!("no coin info"))?;
@@ -524,7 +524,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         Ok(())
     }
 
-    fn withdraw_fa_apt_from_signer(
+    fn withdraw_fa_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -532,7 +532,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<()> {
-        let sender_store_address = primary_apt_store(sender_address);
+        let sender_store_address = primary_lum_store(sender_address);
 
         let sender_fa_store_object_key = self
             .db_util
@@ -578,7 +578,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         Ok(())
     }
 
-    fn withdraw_coin_apt_from_signer(
+    fn withdraw_coin_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -589,11 +589,11 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         let sender_coin_store_key = self.db_util.new_state_key_lumio_coin(&sender_address);
         let sender_coin_store_opt = {
             let _timer = TIMER.timer_with(&["read_sender_coin_store"]);
-            DbAccessUtil::get_apt_coin_store(&sender_coin_store_key, state_view)?
+            DbAccessUtil::get_lum_coin_store(&sender_coin_store_key, state_view)?
         };
         let mut sender_coin_store = match sender_coin_store_opt {
             None => {
-                return self.withdraw_fa_apt_from_signer(
+                return self.withdraw_fa_lum_from_signer(
                     sender_address,
                     transfer_amount,
                     gas,
@@ -622,14 +622,14 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         Ok(())
     }
 
-    fn deposit_fa_apt(
+    fn deposit_fa_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
         state_view: &(impl StateView + Sync),
         output: &mut IncrementalOutput,
     ) -> Result<bool> {
-        let recipient_store_address = primary_apt_store(recipient_address);
+        let recipient_store_address = primary_lum_store(recipient_address);
         let recipient_fa_store_object_key = self
             .db_util
             .new_state_key_object_resource_group(&recipient_store_address);
@@ -689,7 +689,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         Ok(recipient_fa_store_existed)
     }
 
-    fn deposit_coin_apt(
+    fn deposit_coin_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -699,7 +699,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
         let recipient_coin_store_key = self.db_util.new_state_key_lumio_coin(&recipient_address);
 
         let (mut recipient_coin_store, recipient_coin_store_existed) =
-            match DbAccessUtil::get_apt_coin_store(&recipient_coin_store_key, state_view)? {
+            match DbAccessUtil::get_lum_coin_store(&recipient_coin_store_key, state_view)? {
                 Some(recipient_coin_store) => (recipient_coin_store, true),
                 None => {
                     output.events.push(
@@ -711,7 +711,7 @@ impl CommonNativeRawTransactionExecutor for NativeRawTransactionExecutor {
                         .expect("Creating CoinRegister should always succeed"),
                     );
                     (
-                        DbAccessUtil::new_apt_coin_store(0, recipient_address),
+                        DbAccessUtil::new_lum_coin_store(0, recipient_address),
                         false,
                     )
                 },
@@ -864,7 +864,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(())
     }
 
-    fn reduce_fa_apt_supply(
+    fn reduce_fa_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
@@ -907,7 +907,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(())
     }
 
-    fn reduce_coin_apt_supply(
+    fn reduce_coin_lum_supply(
         &self,
         gas: u64,
         state_view: &(impl StateView + Sync),
@@ -915,7 +915,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
     ) -> Result<()> {
         let total_supply_state_key = self.coin_supply_state_key.get_or_init(|| {
             let entry =
-                self.cache_get_mut_or_init(&self.db_util.common.apt_coin_info_resource, |key| {
+                self.cache_get_mut_or_init(&self.db_util.common.lum_coin_info_resource, |key| {
                     CachedResource::AptCoinInfo(
                         DbAccessUtil::get_value::<CoinInfoResource<LumioCoinType>>(key, state_view)
                             .unwrap()
@@ -967,7 +967,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(())
     }
 
-    fn withdraw_fa_apt_from_signer(
+    fn withdraw_fa_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -980,7 +980,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(())
     }
 
-    fn withdraw_coin_apt_from_signer(
+    fn withdraw_coin_lum_from_signer(
         &self,
         sender_address: AccountAddress,
         transfer_amount: u64,
@@ -993,7 +993,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(())
     }
 
-    fn deposit_fa_apt(
+    fn deposit_fa_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -1005,7 +1005,7 @@ impl CommonNativeRawTransactionExecutor for NativeValueCacheRawTransactionExecut
         Ok(existed)
     }
 
-    fn deposit_coin_apt(
+    fn deposit_coin_lum(
         &self,
         recipient_address: AccountAddress,
         transfer_amount: u64,
@@ -1054,17 +1054,17 @@ impl NativeValueCacheRawTransactionExecutor {
     ) -> ConcurrentSupplyResource {
         let concurrent_supply_rg_tag = &self.db_util.common.concurrent_supply;
 
-        let apt_metadata_object_state_key = self
+        let lum_metadata_object_state_key = self
             .db_util
             .new_state_key_object_resource_group(&AccountAddress::TEN);
 
-        let mut apt_metadata_object =
-            DbAccessUtil::get_resource_group(&apt_metadata_object_state_key, state_view)
+        let mut lum_metadata_object =
+            DbAccessUtil::get_resource_group(&lum_metadata_object_state_key, state_view)
                 .unwrap()
                 .unwrap();
 
         bcs::from_bytes::<ConcurrentSupplyResource>(
-            &apt_metadata_object
+            &lum_metadata_object
                 .remove(concurrent_supply_rg_tag)
                 .unwrap(),
         )
@@ -1079,7 +1079,7 @@ impl NativeValueCacheRawTransactionExecutor {
         decrement: u64,
         fail_on_missing: bool,
     ) -> bool {
-        let store_address = primary_apt_store(account);
+        let store_address = primary_lum_store(account);
         let fungible_store_rg_tag = &self.db_util.common.fungible_store;
         let cache_key = StateKey::resource(&store_address, fungible_store_rg_tag).unwrap();
 
@@ -1124,12 +1124,12 @@ impl NativeValueCacheRawTransactionExecutor {
 
         let mut entry = self.cache_get_mut_or_init(&coin_store_key, |key| {
             CachedResource::AptCoinStore(
-                match DbAccessUtil::get_apt_coin_store(key, state_view).unwrap() {
+                match DbAccessUtil::get_lum_coin_store(key, state_view).unwrap() {
                     Some(store) => store,
                     None => {
                         exists = false;
                         assert!(!fail_on_missing);
-                        DbAccessUtil::new_apt_coin_store(0, account)
+                        DbAccessUtil::new_lum_coin_store(0, account)
                     },
                 },
             )

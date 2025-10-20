@@ -30,7 +30,7 @@ from test_framework.git import Git
 from test_framework.logging import log, init_logging
 from forge import image_exists
 
-UPSTREAM_APTOS_CORE_REPO = "aptos-labs/aptos-core"
+UPSTREAM_LUMOS_CORE_REPO = "aptos-labs/aptos-core"
 DOCKER_RUST_BUILD_WORKFLOW_NAME = "workflow-run-docker-rust-build.yaml"
 FORGE_WORKFLOW_NAME = "adhoc-forge.yaml"
 EXP_GIT_BRANCH_PREFIX = "exp/"
@@ -313,7 +313,7 @@ def main(log_metadata: bool) -> None:
 )
 @click.option(
     "--repo",
-    default=UPSTREAM_APTOS_CORE_REPO,
+    default=UPSTREAM_LUMOS_CORE_REPO,
     help="Repo to run the workflow on",
 )
 @click.option(
@@ -371,7 +371,7 @@ def run(
         EXP_GIT_BRANCH_PREFIX + current_git_branch
     )  # the temporary branch to push to
     is_fork = False
-    if get_repo_from_remote_ret != repo and repo == UPSTREAM_APTOS_CORE_REPO:
+    if get_repo_from_remote_ret != repo and repo == UPSTREAM_LUMOS_CORE_REPO:
         print(f"WARNING: You are running this script from a fork of {repo}.")
         print("WARNING: This script will push a new branch to your fork.")
         print(
@@ -382,7 +382,7 @@ def run(
         )
         is_fork = True
 
-    if repo != UPSTREAM_APTOS_CORE_REPO:
+    if repo != UPSTREAM_LUMOS_CORE_REPO:
         print(
             f"WARNING: You are running this script on a repo ({repo}) other than the upstream"
         )
@@ -445,7 +445,7 @@ def run(
 @main.command("list", help="List all authored workflows")
 @click.option(
     "--repo",
-    default=UPSTREAM_APTOS_CORE_REPO,
+    default=UPSTREAM_LUMOS_CORE_REPO,
     help="Repo to run the workflow on",
 )
 def list_exp(repo: str):

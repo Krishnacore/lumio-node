@@ -20,7 +20,7 @@ pub type AbstractValueSizePerArg = GasQuantity<UnitDiv<AbstractValueUnit, Arg>>;
 pub enum GasUnit {}
 
 /// Unit of the Lumio network's native coin.
-pub enum APT {}
+pub enum LUM {}
 
 /// Alternative unit of the Lumio network's native coin. 1 Octa = 10^-8 Lumio coins.
 pub enum Octa {}
@@ -51,6 +51,6 @@ pub type NumModules = GasQuantity<Module>;
  * Unit Conversion
  *
  **************************************************************************************************/
-impl ToUnit<Octa> for APT {
+impl ToUnit<Octa> for LUM {
     const MULTIPLIER: u64 = 1_0000_0000;
 }

@@ -68,7 +68,7 @@ impl CliCommand<()> for Init {
     }
 }
 
-/// Funds an account with APT tokens
+/// Funds an account with LUM tokens
 #[derive(Debug, Parser)]
 pub struct Fund {
     /// Path to a stored session
@@ -79,7 +79,7 @@ pub struct Fund {
     #[clap(long, value_parser = crate::common::types::load_account_arg)]
     account: AccountAddress,
 
-    /// Funding amount, in Octa (10^-8 APT)
+    /// Funding amount, in Octa (10^-8 LUM)
     #[clap(long)]
     amount: u64,
 }

@@ -102,7 +102,7 @@
       }
     }
     */
-/// - 4.d Check out the transactions on https://explorer.lumiolabs.com/ by searching for the transaction hash.
+/// - 4.d Check out the transactions on https://explorer.aptoslabs.com/ by searching for the transaction hash.
 module mint_nft::create_nft_with_resource_and_admin_accounts {
     use std::error;
     use std::string;

@@ -5,7 +5,7 @@ use crate::{genesis::GENESIS_CHANGE_SET_HEAD, Account, AccountData};
 use anyhow::{anyhow, bail, Result};
 use lumio_types::{
     account_config::{
-        primary_apt_store, CoinStoreResource, FungibleStoreResource, ObjectGroupResource,
+        primary_lum_store, CoinStoreResource, FungibleStoreResource, ObjectGroupResource,
     },
     chain_id::ChainId,
     on_chain_config::{FeatureFlag, Features, OnChainConfig},
@@ -237,7 +237,7 @@ pub trait SimulationStateStore: TStateView<Key = StateKey> {
         Self: Sized,
     {
         let features: Features = self.get_on_chain_config().unwrap_or_default();
-        let use_fa_balance = features.is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE);
+        let use_fa_balance = features.is_enabled(FeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LUM_STORE);
         let use_concurrent_balance =
             features.is_enabled(FeatureFlag::DEFAULT_TO_CONCURRENT_FUNGIBLE_BALANCE);
 
@@ -253,8 +253,8 @@ pub trait SimulationStateStore: TStateView<Key = StateKey> {
         Ok(data)
     }
 
-    /// Fetches the APT balance of an account from the legacy coin store.
-    fn get_apt_balance_legacy(&self, address: AccountAddress) -> Result<u64> {
+    /// Fetches the LUM balance of an account from the legacy coin store.
+    fn get_lum_balance_legacy(&self, address: AccountAddress) -> Result<u64> {
         let coin_store = match self.get_resource::<CoinStoreResource<LumioCoinType>>(address)? {
             Some(coin_store) => coin_store,
             None => return Ok(0),
@@ -263,9 +263,9 @@ pub trait SimulationStateStore: TStateView<Key = StateKey> {
         Ok(coin_store.coin())
     }
 
-    /// Fetches the APT balance of an account from the fungible store.
-    fn get_apt_balance_fungible_store(&self, address: AccountAddress) -> Result<u64> {
-        let primary_store_object_address = primary_apt_store(address);
+    /// Fetches the LUM balance of an account from the fungible store.
+    fn get_lum_balance_fungible_store(&self, address: AccountAddress) -> Result<u64> {
+        let primary_store_object_address = primary_lum_store(address);
         let resource_group =
             match self.get_resource_group::<ObjectGroupResource>(primary_store_object_address)? {
                 Some(resource_group) => resource_group,
@@ -280,15 +280,15 @@ pub trait SimulationStateStore: TStateView<Key = StateKey> {
         Ok(fungible_store.balance)
     }
 
-    /// Fetches the APT balance of an account.
+    /// Fetches the LUM balance of an account.
     /// This includes both legacy and fungible store balances.
-    fn get_apt_balance(&self, address: AccountAddress) -> Result<u64> {
-        Ok(self.get_apt_balance_legacy(address)? + self.get_apt_balance_fungible_store(address)?)
+    fn get_lum_balance(&self, address: AccountAddress) -> Result<u64> {
+        Ok(self.get_lum_balance_legacy(address)? + self.get_lum_balance_fungible_store(address)?)
     }
 
-    /// Adds APT to an account's fungible store.
-    fn fund_apt_fungible_store(&self, address: AccountAddress, amount: u64) -> Result<(u64, u64)> {
-        let primary_store_object_address = primary_apt_store(address);
+    /// Adds LUM to an account's fungible store.
+    fn fund_lum_fungible_store(&self, address: AccountAddress, amount: u64) -> Result<(u64, u64)> {
+        let primary_store_object_address = primary_lum_store(address);
 
         let mut resource_group = self
             .get_resource_group::<ObjectGroupResource>(primary_store_object_address)?

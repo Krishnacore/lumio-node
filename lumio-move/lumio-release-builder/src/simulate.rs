@@ -417,7 +417,7 @@ pub async fn simulate_multistep_proposal(
     print!("Creating and funding sender account.. ");
     std::io::stdout().flush()?;
     let mut rng = lumio_keygen::KeyGen::from_seed([0; 32]);
-    let balance = 100 * 1_0000_0000; // 100 APT
+    let balance = 100 * 1_0000_0000; // 100 LUM
     let account = AccountData::new_from_seed(&mut rng, balance, 0);
     state_view.apply_write_set(&account.to_writeset())?;
     // TODO: should update coin info (total supply)

@@ -10233,7 +10233,7 @@
                 }
               ]
             },
-            "symbol": "APT"
+            "symbol": "LUM"
           }
         },
         "type": "write_resource"
@@ -24720,7 +24720,7 @@
                     }
                   ]
                 },
-                "symbol": "APT"
+                "symbol": "LUM"
               }
             },
             "type": "write_resource"

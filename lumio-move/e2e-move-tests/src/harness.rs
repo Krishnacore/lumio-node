@@ -870,7 +870,7 @@ impl MoveHarness {
         .unwrap_or(0)
             + self
                 .read_resource_from_resource_group::<FungibleStoreResource>(
-                    &lumio_types::account_config::fungible_store::primary_apt_store(*addr),
+                    &lumio_types::account_config::fungible_store::primary_lum_store(*addr),
                     ObjectGroupResource::struct_tag(),
                     FungibleStoreResource::struct_tag(),
                 )

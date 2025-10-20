@@ -9,7 +9,7 @@ module 0xcafe::test {
     }
 
     fun init_module(s: &signer) {
-        // Transfer away all the APT from s so there's nothing left to pay for gas.
+        // Transfer away all the LUM from s so there's nothing left to pay for gas.
         // This makes this init_module function fail for sure.
         let balance = coin::balance<LumioCoin>(address_of(s));
         let coins = coin::withdraw<LumioCoin>(s, balance);

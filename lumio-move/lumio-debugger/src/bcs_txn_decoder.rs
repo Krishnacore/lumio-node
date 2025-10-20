@@ -55,11 +55,11 @@ impl Command {
             .unwrap();
         println!("Version: {:?}", version);
         println!(
-            "Overview: https://explorer.lumiolabs.com/txn/{:?}/userTxnOverview?network={}",
+            "Overview: https://explorer.aptoslabs.com/txn/{:?}/userTxnOverview?network={}",
             version, network
         );
         println!(
-            "Payload: https://explorer.lumiolabs.com/txn/{:?}/payload?network={}",
+            "Payload: https://explorer.aptoslabs.com/txn/{:?}/payload?network={}",
             version, network
         );
 

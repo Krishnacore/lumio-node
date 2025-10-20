@@ -103,7 +103,7 @@ pub trait LumioGasMeter: MoveGasMeter {
 
     /// Charges fee for utilizing short-term or long-term storage.
     ///
-    /// Since the fee is measured in APT/Octa, it needs to be converted into gas units
+    /// Since the fee is measured in LUM/Octa, it needs to be converted into gas units
     /// according to the given unit price.
     fn charge_storage_fee(
         &mut self,

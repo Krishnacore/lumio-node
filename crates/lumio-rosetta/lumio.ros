@@ -18,7 +18,7 @@ create_account(1){
 
         // Find the "faucet" loaded account
         currency = {
-          "symbol": "APT",
+          "symbol": "LUM",
           "decimals": 8,
           "metadata": {
             "move_type": "0x1::lumio_coin::LumioCoin"
@@ -52,7 +52,7 @@ create_account(1){
 request_funds(1){
   find_account{
     currency = {
-      "symbol": "APT",
+      "symbol": "LUM",
       "decimals": 8,
       "metadata": {
         "move_type": "0x1::lumio_coin::LumioCoin"
@@ -84,7 +84,7 @@ transfer(50){
     transfer{
         transfer.network = {"network":"TESTING", "blockchain":"lumio"};
         currency = {
-          "symbol": "APT",
+          "symbol": "LUM",
           "decimals": 8,
           "metadata": {
             "move_type": "0x1::lumio_coin::LumioCoin"

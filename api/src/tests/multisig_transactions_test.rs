@@ -43,7 +43,7 @@ async fn test_multisig_transaction_with_payload_succeeds(
             1000, /* initial balance */
         )
         .await;
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
 
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account_1.address(), 1000);
     context
@@ -61,8 +61,8 @@ async fn test_multisig_transaction_with_payload_succeeds(
         .execute_multisig_transaction(owner_account_1, multisig_account, 202)
         .await;
 
-    // The multisig tx that transfers away 1000 APT should have succeeded.
-    assert_eq!(0, context.get_apt_balance(multisig_account).await);
+    // The multisig tx that transfers away 1000 LUM should have succeeded.
+    assert_eq!(0, context.get_lum_balance(multisig_account).await);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -114,21 +114,21 @@ async fn test_multisig_transaction_with_existing_account(
         .reject_multisig_transaction(owner_account_3, multisig_account.address(), 1)
         .await;
 
-    let org_multisig_balance = context.get_apt_balance(multisig_account.address()).await;
-    let org_owner_1_balance = context.get_apt_balance(owner_account_1.address()).await;
+    let org_multisig_balance = context.get_lum_balance(multisig_account.address()).await;
+    let org_owner_1_balance = context.get_lum_balance(owner_account_1.address()).await;
 
     context
         .execute_multisig_transaction(owner_account_2, multisig_account.address(), 202)
         .await;
 
-    // The multisig tx that transfers away 1000 APT should have succeeded.
+    // The multisig tx that transfers away 1000 LUM should have succeeded.
     assert_eq!(
         org_multisig_balance - 1000,
-        context.get_apt_balance(multisig_account.address()).await
+        context.get_lum_balance(multisig_account.address()).await
     );
     assert_eq!(
         org_owner_1_balance + 1000,
-        context.get_apt_balance(owner_account_1.address()).await
+        context.get_lum_balance(owner_account_1.address()).await
     );
 }
 
@@ -161,7 +161,7 @@ async fn test_multisig_transaction_to_update_owners(
             0, /* initial balance */
         )
         .await;
-    assert_eq!(0, context.get_apt_balance(multisig_account).await);
+    assert_eq!(0, context.get_lum_balance(multisig_account).await);
 
     // Add owners 3 and 4.
     let add_owners_payload = bcs::to_bytes(&MultisigTransactionPayload::EntryFunction(
@@ -306,7 +306,7 @@ async fn test_multisig_transaction_with_insufficient_balance_to_cover_gas(
         use_orderless_transactions,
     );
     let owner_account_1 = &mut context.create_account().await;
-    // Owner 2 has no APT balance.
+    // Owner 2 has no LUM balance.
     let owner_account_2 = &mut context.gen_account();
     let multisig_account = context
         .create_multisig_account(
@@ -348,12 +348,12 @@ async fn test_multisig_transaction_with_payload_and_failing_execution(
     let multisig_account = context
         .create_multisig_account(owner_account, vec![], 1, 1000)
         .await;
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account.address(), 2000);
     context
         .create_multisig_transaction(owner_account, multisig_account, multisig_payload.clone())
         .await;
-    // Target transaction execution should fail because the multisig account only has 1000 APT but
+    // Target transaction execution should fail because the multisig account only has 1000 LUM but
     // is requested to send 2000.
     // The transaction should still succeed with the failure tracked on chain.
     context
@@ -361,7 +361,7 @@ async fn test_multisig_transaction_with_payload_and_failing_execution(
         .await;
 
     // Balance didn't change since the target transaction failed.
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -385,7 +385,7 @@ async fn test_multisig_transaction_with_payload_hash(
     let multisig_account = context
         .create_multisig_account(owner_account, vec![], 1, 1000)
         .await;
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account.address(), 1000);
     context
         .create_multisig_transaction_with_payload_hash(
@@ -405,8 +405,8 @@ async fn test_multisig_transaction_with_payload_hash(
         )
         .await;
 
-    // The multisig tx that transfers away 1000 APT should have succeeded.
-    assert_eq!(0, context.get_apt_balance(multisig_account).await);
+    // The multisig tx that transfers away 1000 LUM should have succeeded.
+    assert_eq!(0, context.get_lum_balance(multisig_account).await);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -430,7 +430,7 @@ async fn test_multisig_transaction_with_payload_hash_and_failing_execution(
     let multisig_account = context
         .create_multisig_account(owner_account, vec![], 1, 1000)
         .await;
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account.address(), 2000);
     context
         .create_multisig_transaction_with_payload_hash(
@@ -440,7 +440,7 @@ async fn test_multisig_transaction_with_payload_hash_and_failing_execution(
         )
         .await;
 
-    // Target transaction execution should fail because the multisig account only has 1000 APT but
+    // Target transaction execution should fail because the multisig account only has 1000 LUM but
     // is requested to send 2000.
     // The transaction should still succeed with the failure tracked on chain.
     context
@@ -454,7 +454,7 @@ async fn test_multisig_transaction_with_payload_hash_and_failing_execution(
         )
         .await;
     // Balance didn't change since the target transaction failed.
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -523,7 +523,7 @@ async fn test_multisig_transaction_with_matching_payload(
     let multisig_account = context
         .create_multisig_account(owner_account, vec![], 1, 1000)
         .await;
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account.address(), 1000);
     context
         .create_multisig_transaction(owner_account, multisig_account, multisig_payload.clone())
@@ -539,8 +539,8 @@ async fn test_multisig_transaction_with_matching_payload(
         )
         .await;
 
-    // The multisig tx that transfers away 1000 APT should have succeeded.
-    assert_eq!(0, context.get_apt_balance(multisig_account).await);
+    // The multisig tx that transfers away 1000 LUM should have succeeded.
+    assert_eq!(0, context.get_lum_balance(multisig_account).await);
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -582,7 +582,7 @@ async fn test_multisig_transaction_with_mismatching_payload(
         )
         .await;
     // Balance didn't change since the target transaction failed.
-    assert_eq!(1000, context.get_apt_balance(multisig_account).await);
+    assert_eq!(1000, context.get_lum_balance(multisig_account).await);
 
     // Excuting the transaction with the correct payload should succeed.
     context
@@ -855,7 +855,7 @@ async fn test_simulate_multisig_transaction_should_charge_gas_against_sender(
             10, /* initial balance */
         )
         .await;
-    assert_eq!(10, context.get_apt_balance(multisig_account).await);
+    assert_eq!(10, context.get_lum_balance(multisig_account).await);
 
     let multisig_payload = construct_multisig_txn_transfer_payload(owner_account.address(), 10);
     context

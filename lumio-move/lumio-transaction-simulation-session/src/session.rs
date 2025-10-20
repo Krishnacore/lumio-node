@@ -223,7 +223,7 @@ impl Session {
         })
     }
 
-    /// Funds an account with APT.
+    /// Funds an account with LUM.
     ///
     /// This counts as a session operation but is not a real transaction, as it modifies the
     /// storage state directly.
@@ -231,7 +231,7 @@ impl Session {
     /// This can be useful for testing -- for example, to fund an account before using it to
     /// send its first transaction.
     pub fn fund_account(&mut self, account: AccountAddress, amount: u64) -> Result<()> {
-        let (before, after) = self.state_store.fund_apt_fungible_store(account, amount)?;
+        let (before, after) = self.state_store.fund_lum_fungible_store(account, amount)?;
 
         let summary = Summary::FundFungible {
             account,

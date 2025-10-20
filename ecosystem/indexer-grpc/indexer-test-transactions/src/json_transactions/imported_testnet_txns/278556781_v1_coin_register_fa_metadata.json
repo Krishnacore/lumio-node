@@ -75,7 +75,7 @@
             ]
           },
           "typeStr": "0x1::coin::CoinInfo<0x589dabf3b43ef5c331ea3c0f9b6b005860c1f0ef94a5948d133e051b20c22862::proton_cbdy::PRT_KFBCCC>",
-          "data": "{\"decimals\":10,\"name\":\"Lumio\",\"supply\":{\"vec\":[]},\"symbol\":\"APT\"}"
+          "data": "{\"decimals\":10,\"name\":\"Lumio\",\"supply\":{\"vec\":[]},\"symbol\":\"LUM\"}"
         }
       },
       {

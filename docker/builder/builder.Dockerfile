@@ -4,7 +4,7 @@ FROM rust as rust-base
 WORKDIR /aptos
 
 
-RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::lum::LUM::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     sed -i 's|http://deb.debian.org/debian|http://cloudfront.debian.net/debian|g' /etc/apt/sources.list &&  \
@@ -50,7 +50,7 @@ RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git_credentials \
 
 COPY --link . /aptos/
 
-FROM builder-base as aptos-node-builder
+FROM builder-base as lumio-node-builder
 
 RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
     --mount=type=cache,target=/usr/local/cargo/git,id=node-builder-cargo-git-cache \

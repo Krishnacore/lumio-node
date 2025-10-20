@@ -838,7 +838,7 @@ mod test {
 
         // Assert that the account exists now with the expected balance.
         let response = lumio_node_api_client
-            .view_apt_account_balance(
+            .view_lum_account_balance(
                 AccountAddress::from_str(&fund_request.address.unwrap()).unwrap(),
             )
             .await?;
@@ -898,7 +898,7 @@ mod test {
 
         // Assert that the account exists now with the expected balance.
         let response = lumio_node_api_client
-            .view_apt_account_balance(
+            .view_lum_account_balance(
                 AccountAddress::from_str(&fund_request.address.unwrap()).unwrap(),
             )
             .await?;
@@ -948,7 +948,7 @@ mod test {
 
         // Confirm that the account was given the full 1000 OCTA as requested.
         let response = lumio_node_api_client
-            .view_apt_account_balance(
+            .view_lum_account_balance(
                 AccountAddress::from_str(&fund_request.address.unwrap()).unwrap(),
             )
             .await?;
@@ -968,7 +968,7 @@ mod test {
 
         // Confirm that the account was only given 100 OCTA (maximum_amount), not 1000.
         let response = lumio_node_api_client
-            .view_apt_account_balance(
+            .view_lum_account_balance(
                 AccountAddress::from_str(&fund_request.address.unwrap()).unwrap(),
             )
             .await?;

@@ -21,7 +21,7 @@ The `lumio-rosetta` binary can run in three modes:
 ## Features supported
 
 ### Balances
-* Only the native `APT` is supported.
+* Only the native `LUM` is supported.
 * Staking balances are also supported, with the sub-account with the name of `stake`, and only with `0x1::staking_contract` stake pools.
 * Balances are loaded from the live API `get_account_resources`; and if the `block` has been pruned, it will error out.
 * All balances are provided the balance at the end of a `block`.
@@ -67,7 +67,7 @@ provided in the `ConstructinoPreProcessRequest`.
 
 #### Transfers
 * Transfers occur as a combination of a `withdraw` and a `deposit`.  This has the side effect of creating the receiver if it doesn't exist.
-* Transfers support only APT at this moment.
+* Transfers support only LUM at this moment.
 
 #### Set Operator
 * A staking contract stake pool can change its operator.

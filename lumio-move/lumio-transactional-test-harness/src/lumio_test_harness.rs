@@ -17,7 +17,7 @@ use lumio_transaction_simulation::{
 };
 use lumio_types::{
     account_config::{
-        lumio_test_root_address, primary_apt_store, AccountResource, FungibleStoreResource,
+        lumio_test_root_address, primary_lum_store, AccountResource, FungibleStoreResource,
         ObjectGroupResource,
     },
     block_metadata::BlockMetadata,
@@ -452,7 +452,7 @@ impl LumioTestAdapter<'_> {
     fn fetch_account_balance(&self, signer_addr: &AccountAddress) -> Result<u64> {
         Ok(FungibleStoreResource::fetch_move_resource_from_group(
             &self.storage,
-            &primary_apt_store(*signer_addr),
+            &primary_lum_store(*signer_addr),
             &ObjectGroupResource::struct_tag(),
         )?
         .unwrap()

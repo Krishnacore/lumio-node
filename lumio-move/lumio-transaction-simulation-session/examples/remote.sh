@@ -9,7 +9,7 @@ rm -rf sess
 # initialize session
 cargo run -p lumio -- move sim init --path sess --network devnet --api-key $API_KEY
 
-# fund account with 1 APT
+# fund account with 1 LUM
 cargo run -p lumio -- move sim fund --session sess --account default --amount 100000000
 
 # transfer 100 Octa to self

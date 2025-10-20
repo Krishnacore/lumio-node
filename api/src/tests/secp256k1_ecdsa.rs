@@ -75,7 +75,7 @@ async fn test_multi_secp256k1_ecdsa(
         .unwrap(),
     );
     let secp256k1_ecdsa_txn = SignedTransaction::new_single_sender(raw_txn, authenticator);
-    let balance_start = context.get_apt_balance(other.address()).await;
+    let balance_start = context.get_lum_balance(other.address()).await;
     let bcs_txn = bcs::to_bytes(&secp256k1_ecdsa_txn).unwrap();
     context
         .expect_status_code(202)
@@ -84,7 +84,7 @@ async fn test_multi_secp256k1_ecdsa(
     context.commit_mempool_txns(1).await;
     assert_eq!(
         balance_start + 5,
-        context.get_apt_balance(other.address()).await
+        context.get_lum_balance(other.address()).await
     );
 
     let txns = context
@@ -143,7 +143,7 @@ async fn test_secp256k1_ecdsa(
         .into_raw_transaction()
         .sign_secp256k1_ecdsa(&private_key, public_key)
         .unwrap();
-    let balance_start = context.get_apt_balance(other.address()).await;
+    let balance_start = context.get_lum_balance(other.address()).await;
     let bcs_txn = bcs::to_bytes(&secp256k1_ecdsa_txn.into_inner()).unwrap();
     context
         .expect_status_code(202)
@@ -152,7 +152,7 @@ async fn test_secp256k1_ecdsa(
     context.commit_mempool_txns(1).await;
     assert_eq!(
         balance_start + 5,
-        context.get_apt_balance(other.address()).await
+        context.get_lum_balance(other.address()).await
     );
 
     let txns = context

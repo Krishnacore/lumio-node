@@ -24,8 +24,8 @@ FungibleAssetMint	6	0.969	1.008	198.2
 IncGlobalMilestoneAggV2 { milestone_every: 1 }	6	0.993	1.012	27.8
 IncGlobalMilestoneAggV2 { milestone_every: 2 }	6	0.983	1.004	16.3
 EmitEvents { count: 1000 }	6	0.994	1.019	6726.6
-APTTransferWithPermissionedSigner	6	0.994	1.013	788.5
-APTTransferWithMasterSigner	6	0.994	1.017	83.0
+LUMTransferWithPermissionedSigner	6	0.994	1.013	788.5
+LUMTransferWithMasterSigner	6	0.994	1.017	83.0
 VectorTrimAppend { vec_len: 3000, element_len: 1, index: 0, repeats: 0 }	6	0.998	1.009	4660.5
 VectorTrimAppend { vec_len: 3000, element_len: 1, index: 100, repeats: 1000 }	6	0.995	1.061	21446.3
 VectorTrimAppend { vec_len: 3000, element_len: 1, index: 2990, repeats: 1000 }	6	0.994	1.007	12415.7

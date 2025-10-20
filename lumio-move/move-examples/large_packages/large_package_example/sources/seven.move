@@ -31,9 +31,9 @@
 ///
 /// - An **Application Programming Interface (API)(** is a set of protocols and tools that allow users to interact with Lumio blockchain nodes and client networks via external applications. Lumio offers a REST API for this purpose. See the [Lumio API reference](https://lumio.dev/nodes/lumio-api-spec#/) documentation and [Use the Lumio API](../integration/fullnode-rest-api.md) for more details.
 ///
-/// ### APT
+/// ### LUM
 ///
-/// **Lumio token (APT)** is the Lumio blockchain native token used for paying network and transaction fees.
+/// **Lumio token (LUM)** is the Lumio blockchain native token used for paying network and transaction fees.
 ///
 /// ### Lumio
 ///
@@ -66,7 +66,7 @@
 ///
 /// ### Lumio Explorer
 ///
-/// - The **[Lumio Explorer](https://explorer.lumiolabs.com/)** is an interface that helps users examine details of the Lumio blockchain, including account information, validators, and transactions.
+/// - The **[Lumio Explorer](https://explorer.aptoslabs.com/)** is an interface that helps users examine details of the Lumio blockchain, including account information, validators, and transactions.
 /// - The Lumio Explorer help users validate their work in Lumio wallets and other tools in the blockchain. Find more details at [Use the Lumio Explorer](../guides/explore-lumio.md).
 ///
 /// ### Lumio Framework
@@ -180,7 +180,7 @@
 ///
 /// ### Faucet
 ///
-/// - **Faucet** is a service that mints APT on devnet and testnet. APT on these networks has no real world value, it is only for development purposes.
+/// - **Faucet** is a service that mints LUM on devnet and testnet. LUM on these networks has no real world value, it is only for development purposes.
 /// - You can use the faucet in a few different ways:
 ///   - With the [Lumio CLI](../tools/lumio-cli-tool/use-lumio-cli.md#fund-an-account-with-the-faucet).
 ///   - Through a wallet, such as Petra, Martian, or Pontem. You can find a full list [here](https://github.com/lumio-foundation/ecosystem-projects#wallets).
@@ -193,7 +193,7 @@
 ///
 /// ### Fungible Asset
 ///
-/// - A **fungible asset** is an asset, such as a currency, share, in-game resource, etc., that is interchangeable with another identical asset without any loss in its value. For example, APT is a fungible asset because you can exchange one APT for another.
+/// - A **fungible asset** is an asset, such as a currency, share, in-game resource, etc., that is interchangeable with another identical asset without any loss in its value. For example, LUM is a fungible asset because you can exchange one LUM for another.
 /// - Follow the [Digital Asset Standards](../standards/index.md#digital-asset-standards) to create fungible assets on the Lumio blockchain.
 /// - Next generation of the Coin standard that addresses shortcomings of `lumio_framework::coin` such as lack of guaranteed enforcement of freeze and burn and advanced functionalities such as programmable transfers, e.g., approve in ERC-20.
 ///
@@ -204,7 +204,7 @@
 ///
 /// ### Fungible Unit
 ///
-/// - A **fungible unit** is an individual unit of a fungible asset. These units are identical and interchangeable without any loss in value. For example, each Octa (the smallest unit of APT) is a fungible unit.
+/// - A **fungible unit** is an individual unit of a fungible asset. These units are identical and interchangeable without any loss in value. For example, each Octa (the smallest unit of LUM) is a fungible unit.
 ///
 /// ## G
 ///

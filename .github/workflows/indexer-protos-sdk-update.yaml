@@ -99,7 +99,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
           token: ${{ steps.secrets.outputs.token }}
-          repository: 'lumio-labs/aptos-indexer-processor-sdk'
+          repository: 'aptos-labs/aptos-indexer-processor-sdk'
           event-type: 'proto-dependency-update'
           client-payload: '{"commit_hash": "${{ github.sha }}", "branch_name": "${{ steps.commit_hash.outputs.branch_name }}"}'
       - name: Poll for Workflow Run and Wait for Job Completion

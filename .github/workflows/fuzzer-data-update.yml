@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Rust
-        uses: lumio-labs/aptos-core/.github/actions/rust-setup@main
+        uses: aptos-labs/aptos-core/.github/actions/rust-setup@main
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2

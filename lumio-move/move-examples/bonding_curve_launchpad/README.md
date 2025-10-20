@@ -5,19 +5,19 @@ Bonding Curve Launchpad (BCL) - A fungible asset launchpad that doubles as a con
 
 After creation of a new FA, it can, initially, only be traded on the launchpad. Dispatchable FA features are used to support the global freezing of tokens from external transfers. The creator of the FA can not premint to gain advantages against latter participants. Additionally, the usage of virtual liquidity prevents the typical overwhelming early adopter's advantage.
 
-Once the APT threshold is met within the liquidity pair, the reserves are moved onto a public DEX, referred to as graduation. From there, the global freeze is disabled, allowing all participants to freely use their tokens.
+Once the LUM threshold is met within the liquidity pair, the reserves are moved onto a public DEX, referred to as graduation. From there, the global freeze is disabled, allowing all participants to freely use their tokens.
 
 ### Key terms
 **Graduation** - The process of moving the close-looped FA's liquidity reserves from the `bonding_curve_launchpad` to a public DEX, while enabling any and all transfers from FA owners. Public trading is then available, removing the need to consult the `bonding_curve_launchpad`'s held `transfer_ref` for the given FA.
 
-**Virtual Liquidity** - To prevent early adopter's advantage, a pre-defined amount of virtual liquidity is assumed to exist in all APT reserves for liquidity pairs. Since the FA and APT reserves will be closer together in value, an early transfer won't be as dramatic for the number of tokens received. 
+**Virtual Liquidity** - To prevent early adopter's advantage, a pre-defined amount of virtual liquidity is assumed to exist in all LUM reserves for liquidity pairs. Since the FA and LUM reserves will be closer together in value, an early transfer won't be as dramatic for the number of tokens received. 
 
 
 ## This resource contains:
 * (Dispatchable) Fungible Assets.
 * Reusing stored signer vars (w/ [objects](https://lumio.dev/move/move-on-lumio/objects/)).
 * External third party dependencies.
-* E2E testing (w/ object deployments, APT creation).
+* E2E testing (w/ object deployments, LUM creation).
 * Using `rev` to specify feature branches ([Dispatchable FA](https://github.com/lumio-labs/lumio-core/commit/bbf569abd260d94bc30fe96da297d2aecb193644)).
 * and more.
 
@@ -63,8 +63,8 @@ One style could encompass sublinear functions to reward early adopters more heav
 ### `bonding_curve_launchpad.move`
 * Contains public methods (both entry and normal), for the end user.
 * Creates and holds references (transfer) to the launched Fungible Asset through the FA's respective Object.
-* Dispatches to `liquidity_pairs` to create a new pair between the launched FA and APT.
-* Facilitates swaps between any enabled FA and APT.
+* Dispatches to `liquidity_pairs` to create a new pair between the launched FA and LUM.
+* Facilitates swaps between any enabled FA and LUM.
 ### `liquidity_pairs.move`
 * Creates and holds references to each liquidity pair, through a named objects.
 * Contains business logic for performing swaps on each pair.
@@ -83,17 +83,17 @@ One style could encompass sublinear functions to reward early adopters more heav
    3. A pre-defined number of the FA is minted, and kept temporarily on `bonding_curve_launchpad`.
 2. `bonding_curve_launchpad` creates a liquidity pair on the `liquidity_pairs` module, which follows the constant product formula.
    1. Liquidity pair is represented and stored as an Object. This allows for the reserves to be held directly on the object, rather than the `bonding_curve_launchpad` account.
-   2. The entirety of minted FA + a pre-defined number of **virtual liquidity** for APT is deposited into the liquidity pair object. 
+   2. The entirety of minted FA + a pre-defined number of **virtual liquidity** for LUM is deposited into the liquidity pair object. 
    3. Trading against the liquidity pair is enabled, but restricted to `public entry` functions found in `bonding_curve_launchpad`.
-3. Optionally, the creator can immediately initiate a swap from APT to the FA.
+3. Optionally, the creator can immediately initiate a swap from LUM to the FA.
 #### Trading against the FA's associated liquidity pair
-1. External users can swap APT to FA, or vice versa, through `public entry` methods available on `bonding_curve_launchpad`. 
+1. External users can swap LUM to FA, or vice versa, through `public entry` methods available on `bonding_curve_launchpad`. 
    1. Although the normal `transfer` functionality of the FA is disabled by the custom dispatchable `withdraw` function, `bonding_curve_launchpad` can assist with swaps using it's stored `transfer_ref` from the FA's Object. `transfer_ref` is not impeded by the custom dispatchable function.
    2. The logic for calculating the `amountOut` of a swap is based on the constant product formula for reader familiarity. In a production scenario, a sub-linear trading function can assist in incentivizing general early adoption.
 #### Graduating from `liquidity_pairs` to a public FA DEX
-1. After each swap from APT to FA, when the APT reserves are increasing, a threshold is checked for whether the liquidity pair can **graduate** or not. The threshold is a pre-defined minimum amount of APT that must exist in the reserves. Once this threshold is met during a swap, **graduation** begins.
+1. After each swap from LUM to FA, when the LUM reserves are increasing, a threshold is checked for whether the liquidity pair can **graduate** or not. The threshold is a pre-defined minimum amount of LUM that must exist in the reserves. Once this threshold is met during a swap, **graduation** begins.
    1. The associated liquidity pair on the `liquidity_pairs` module is disabled by toggling `is_enabled`, preventing any more swaps against the pair. Additionally, the liquidity pair's `is_frozen` is disabled to allow owners to transfer freely. 
-   2. The reserves from the liquidity pair, both APT and FA, are moved to an external, public third-party DEX as a new liquidity pair. In this case, the `lumio-move` FA DEX example, called swap. 
+   2. The reserves from the liquidity pair, both LUM and FA, are moved to an external, public third-party DEX as a new liquidity pair. In this case, the `lumio-move` FA DEX example, called swap. 
    3. To prevent any wrongdoing from the `bonding_curve_launchpad` owner, any liquidity tokens received during the creation of the new liquidity pair on the third-party DEX will be sent to a dead address. Otherwise, the tokens could be used to drain the liquidity pair, at any time.
 
 
@@ -104,16 +104,16 @@ lumio move test --dev
 ```
 
 ## Example testnet deployments
-[Bonding Curve Launchpad](https://explorer.lumiolabs.com/account/0x0bb954c7dda5fa777cb34d2e35f593ddc4749f1ab260017ee75d1d216a551841/transactions?network=testnet)
+[Bonding Curve Launchpad](https://explorer.aptoslabs.com/account/0x0bb954c7dda5fa777cb34d2e35f593ddc4749f1ab260017ee75d1d216a551841/transactions?network=testnet)
 
-[Swap DEX](https://explorer.lumiolabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?)
+[Swap DEX](https://explorer.aptoslabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?)
 
-[Swap Deployer](https://explorer.lumiolabs.com/account/0x4d51c99abff19bfb5ca3065f1e71dfc066c38e334def24dbac2b2a38bee8b946?network=testnet)
+[Swap Deployer](https://explorer.aptoslabs.com/account/0x4d51c99abff19bfb5ca3065f1e71dfc066c38e334def24dbac2b2a38bee8b946?network=testnet)
 
 
 ## How to deploy:
 0. **Note:** Since the `swap` module we're relying on as a third party DEX isn't on-chain, you'll need to first:
-    * Deploy the `swap` module on-chain. Or, if you're on the testnet, you can use the [already-deployed `swap` smart contract](https://explorer.lumiolabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?).
+    * Deploy the `swap` module on-chain. Or, if you're on the testnet, you can use the [already-deployed `swap` smart contract](https://explorer.aptoslabs.com/account/0xe26bbe169db47aaa32349d253891af42134e1f6b64fef63f60105ec9ab6b240f/transactions?network=testnet?).
     * Rely on a different DEX for the token graduation.
 
 From there, you can follow the [object code deployment](https://preview.lumio.dev/en/build/smart-contracts/learn-move/advanced-guides/object-code-deployment) steps to deploy and set up the smart contract.

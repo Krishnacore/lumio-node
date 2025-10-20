@@ -12,7 +12,7 @@
         "repo": "apple"
       }
     },
-    "aptos-node": {
+    "lumio-node": {
       "image": {
         "repo": "banana2"
       }

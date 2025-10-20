@@ -328,17 +328,17 @@ impl From<FeatureFlag> for LumioFeatureFlag {
                 LumioFeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION
             },
             FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress => {
-                LumioFeatureFlag::PRIMARY_APT_FUNGIBLE_STORE_AT_USER_ADDRESS
+                LumioFeatureFlag::PRIMARY_LUM_FUNGIBLE_STORE_AT_USER_ADDRESS
             },
             FeatureFlag::ObjectNativeDerivedAddress => {
                 LumioFeatureFlag::OBJECT_NATIVE_DERIVED_ADDRESS
             },
             FeatureFlag::DispatchableFungibleAsset => LumioFeatureFlag::DISPATCHABLE_FUNGIBLE_ASSET,
             FeatureFlag::NewAccountsDefaultToFaAptStore => {
-                LumioFeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE
+                LumioFeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LUM_STORE
             },
             FeatureFlag::OperationsDefaultToFaAptStore => {
-                LumioFeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE
+                LumioFeatureFlag::OPERATIONS_DEFAULT_TO_FA_LUM_STORE
             },
             FeatureFlag::AggregatorV2IsAtLeastApi => {
                 LumioFeatureFlag::AGGREGATOR_V2_IS_AT_LEAST_API
@@ -504,17 +504,17 @@ impl From<LumioFeatureFlag> for FeatureFlag {
             LumioFeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION => {
                 FeatureFlag::CoinToFungibleAssetMigration
             },
-            LumioFeatureFlag::PRIMARY_APT_FUNGIBLE_STORE_AT_USER_ADDRESS => {
+            LumioFeatureFlag::PRIMARY_LUM_FUNGIBLE_STORE_AT_USER_ADDRESS => {
                 FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress
             },
             LumioFeatureFlag::OBJECT_NATIVE_DERIVED_ADDRESS => {
                 FeatureFlag::ObjectNativeDerivedAddress
             },
             LumioFeatureFlag::DISPATCHABLE_FUNGIBLE_ASSET => FeatureFlag::DispatchableFungibleAsset,
-            LumioFeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_APT_STORE => {
+            LumioFeatureFlag::NEW_ACCOUNTS_DEFAULT_TO_FA_LUM_STORE => {
                 FeatureFlag::NewAccountsDefaultToFaAptStore
             },
-            LumioFeatureFlag::OPERATIONS_DEFAULT_TO_FA_APT_STORE => {
+            LumioFeatureFlag::OPERATIONS_DEFAULT_TO_FA_LUM_STORE => {
                 FeatureFlag::OperationsDefaultToFaAptStore
             },
             LumioFeatureFlag::AGGREGATOR_V2_IS_AT_LEAST_API => {
