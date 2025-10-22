@@ -19,11 +19,13 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 ### Even if version slightly off, still mostly works
 RUN ln -sf /usr/bin/perf_* /usr/bin/perf
 
-RUN addgroup --system --gid 6180 aptos && adduser --system --ingroup aptos --no-create-home --uid 6180 aptos
+RUN addgroup --system --gid 6180 lumio && adduser --system --ingroup lumio --no-create-home --uid 6180 lumio
 
-RUN mkdir -p /opt/aptos/etc
-COPY --link --from=node-builder /aptos/dist/lumio-node /usr/local/bin/
-COPY --link --from=tools-builder /aptos/dist/lumio-debugger /usr/local/bin/
+RUN mkdir -p /opt/lumio/etc /opt/lumio-framework
+COPY --link --from=node-builder /lumio/dist/lumio-node /usr/local/bin/
+COPY --link --from=tools-builder /lumio/dist/lumio-debugger /usr/local/bin/
+COPY --link --from=tools-builder /lumio/dist/lumio /usr/local/bin/
+COPY --link --from=tools-builder /lumio/dist/head.mrb /opt/lumio-framework/framework.mrb
 
 # Admission control
 EXPOSE 8000
