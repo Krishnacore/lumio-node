@@ -179,6 +179,28 @@ jobs:
           files: |
             lumio-cli-*.zip
 
+  release-to-lumio-cli-repo:
+    name: "Create release in lumio-cli repository"
+    needs: release-binaries
+    runs-on: ubuntu-latest
+    if: ${{ inputs.dry_run }} == 'false'
+    steps:
+      - name: Download prebuilt binaries
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cli-builds-*
+          merge-multiple: true
+      
+      - name: Create Release in lumio-cli repo
+        uses: softprops/action-gh-release@v2
+        with:
+          repository: pontem-network/lumio-cli
+          tag_name: "${{ format('lumio-cli-v{0}', inputs.release_version) }}"
+          name: "${{ format('Lumio CLI Release v{0}', inputs.release_version) }}"
+          files: |
+            lumio-cli-*.zip
+          token: ${{ secrets.LUMIO_CLI_REPO_PAT }}
+
   # bump-homebrew-version-pr:
   #   name: "Make PR to bump version in Homebrew"
   #   needs:
