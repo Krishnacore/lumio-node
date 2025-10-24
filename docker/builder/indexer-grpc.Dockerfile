@@ -2,12 +2,12 @@
 
 FROM debian-base AS indexer-grpc
 
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-cache-worker /usr/local/bin/aptos-indexer-grpc-cache-worker
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-file-store /usr/local/bin/aptos-indexer-grpc-file-store
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-data-service /usr/local/bin/aptos-indexer-grpc-data-service
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-file-checker /usr/local/bin/aptos-indexer-grpc-file-checker
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-data-service-v2 /usr/local/bin/aptos-indexer-grpc-data-service-v2
-COPY --link --from=indexer-builder /aptos/dist/aptos-indexer-grpc-manager /usr/local/bin/aptos-indexer-grpc-manager
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-cache-worker /usr/local/bin/lumio-indexer-grpc-cache-worker
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-file-store /usr/local/bin/lumio-indexer-grpc-file-store
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-data-service /usr/local/bin/lumio-indexer-grpc-data-service
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-file-checker /usr/local/bin/lumio-indexer-grpc-file-checker
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-data-service-v2 /usr/local/bin/lumio-indexer-grpc-data-service-v2
+COPY --link --from=indexer-builder /lumio/dist/lumio-indexer-grpc-manager /usr/local/bin/lumio-indexer-grpc-manager
 
 # The health check port
 EXPOSE 8080
