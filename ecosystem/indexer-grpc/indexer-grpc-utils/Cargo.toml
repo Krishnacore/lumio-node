@@ -24,6 +24,8 @@ build_html = { workspace = true }
 bytesize = { workspace = true }
 chrono = { workspace = true }
 cloud-storage = { workspace = true }
+aws-config = "1.1"
+aws-sdk-s3 = "1.13"
 dashmap = { workspace = true }
 futures = { workspace = true }
 itertools = { workspace = true }

@@ -23,6 +23,18 @@ pub struct LocalFileStore {
     pub enable_compression: bool,
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct S3FileStore {
+    pub s3_bucket_name: String,
+    pub s3_bucket_sub_dir: Option<PathBuf>,
+    pub s3_region: String,
+    pub s3_endpoint: Option<String>,
+    pub s3_access_key: String,
+    pub s3_secret_key: String,
+    #[serde(default = "default_enable_compression")]
+    pub enable_compression: bool,
+}
+
 const fn default_enable_compression() -> bool {
     false
 }
@@ -32,6 +44,7 @@ const fn default_enable_compression() -> bool {
 pub enum IndexerGrpcFileStoreConfig {
     GcsFileStore(GcsFileStore),
     LocalFileStore(LocalFileStore),
+    S3FileStore(S3FileStore),
 }
 
 impl Default for IndexerGrpcFileStoreConfig {
@@ -63,6 +76,17 @@ impl IndexerGrpcFileStoreConfig {
                     local_file_store.local_file_store_path,
                 ))
             },
+            IndexerGrpcFileStoreConfig::S3FileStore(s3_file_store) => Arc::new(
+                crate::file_store_operator_v2::s3::S3FileStore::new(
+                    s3_file_store.s3_bucket_name,
+                    s3_file_store.s3_bucket_sub_dir,
+                    s3_file_store.s3_region,
+                    s3_file_store.s3_endpoint,
+                    s3_file_store.s3_access_key,
+                    s3_file_store.s3_secret_key,
+                )
+                .await,
+            ),
         }
     }
 
@@ -84,6 +108,9 @@ impl IndexerGrpcFileStoreConfig {
                     local_file_store.enable_compression,
                 ),
             ),
+            IndexerGrpcFileStoreConfig::S3FileStore(_) => {
+                panic!("S3FileStore is only supported in v2 API. Use create_filestore() instead.")
+            },
         }
     }
 }
