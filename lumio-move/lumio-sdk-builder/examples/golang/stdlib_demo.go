@@ -6,22 +6,22 @@ package main
 
 import (
 	"fmt"
-	stdlib "testing/aptosstdlib"
-	aptos "testing/aptostypes"
+	stdlib "testing/lumiostdlib"
+	lumio "testing/lumiotypes"
 )
 
 func demo_coin_transfer() {
-	token := &aptos.TypeTag__Struct{
-		Value: aptos.StructTag{
-			Address: aptos.AccountAddress(
+	token := &lumio.TypeTag__Struct{
+		Value: lumio.StructTag{
+			Address: lumio.AccountAddress(
 				[32]uint8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 			),
-			Module:     aptos.Identifier("lumio_coin"),
-			Name:       aptos.Identifier("AptosCoin"),
+			Module:     lumio.Identifier("lumio_coin"),
+			Name:       lumio.Identifier("LumioCoin"),
 		},
 	}
 
-	to := aptos.AccountAddress(
+	to := lumio.AccountAddress(
 		[32]uint8{0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22,
     0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22},
 	)

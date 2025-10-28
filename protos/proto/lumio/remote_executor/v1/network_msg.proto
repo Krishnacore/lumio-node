@@ -3,7 +3,7 @@
 
 syntax = "proto3";
 
-package aptos.remote_executor.v1;
+package lumio.remote_executor.v1;
 
 message NetworkMessage {
   bytes message = 1;

@@ -17,8 +17,8 @@ import { BooleanTransactionFilter } from "./filter";
 export interface TransactionsInStorage {
   /** Required; transactions data. */
   transactions?:
-    | Transaction[]
-    | undefined;
+  | Transaction[]
+  | undefined;
   /** Required; chain id. */
   startingVersion?: bigint | undefined;
 }
@@ -26,22 +26,22 @@ export interface TransactionsInStorage {
 export interface GetTransactionsRequest {
   /** Required; start version of current stream. */
   startingVersion?:
-    | bigint
-    | undefined;
+  | bigint
+  | undefined;
   /**
    * Optional; number of transactions to return in current stream.
    * If not present, return an infinite stream of transactions.
    */
   transactionsCount?:
-    | bigint
-    | undefined;
+  | bigint
+  | undefined;
   /**
    * Optional; number of transactions in each `TransactionsResponse` for current stream.
    * If not present, default to 1000. If larger than 1000, request will be rejected.
    */
   batchSize?:
-    | bigint
-    | undefined;
+  | bigint
+  | undefined;
   /** If provided, only transactions that match the filter will be included. */
   transactionFilter?: BooleanTransactionFilter | undefined;
 }
@@ -55,8 +55,8 @@ export interface ProcessedRange {
 export interface TransactionsResponse {
   /** Required; transactions data. */
   transactions?:
-    | Transaction[]
-    | undefined;
+  | Transaction[]
+  | undefined;
   /** Required; chain id. */
   chainId?: bigint | undefined;
   processedRange?: ProcessedRange | undefined;
@@ -581,7 +581,7 @@ export type RawDataService = typeof RawDataService;
 export const RawDataService = {
   /** Get transactions batch without any filtering from starting version and end if transaction count is present. */
   getTransactions: {
-    path: "/aptos.indexer.v1.RawData/GetTransactions",
+    path: "/lumio.indexer.v1.RawData/GetTransactions",
     requestStream: false,
     responseStream: true,
     requestSerialize: (value: GetTransactionsRequest) => Buffer.from(GetTransactionsRequest.encode(value).finish()),
@@ -609,8 +609,8 @@ export interface RawDataClient extends Client {
   ): ClientReadableStream<TransactionsResponse>;
 }
 
-export const RawDataClient = makeGenericClientConstructor(RawDataService, "aptos.indexer.v1.RawData") as unknown as {
-  new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): RawDataClient;
+export const RawDataClient = makeGenericClientConstructor(RawDataService, "lumio.indexer.v1.RawData") as unknown as {
+  new(address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): RawDataClient;
   service: typeof RawDataService;
   serviceName: string;
 };

@@ -4,7 +4,7 @@ import { sleep } from "k6";
 import grpc from "k6/experimental/grpc";
 
 const GRPC_ADDR = __ENV.GRPC_ADDR || "127.0.0.1:50052";
-const GRPC_METHOD = "aptos.indexer.v1.RawData/GetTransactions";
+const GRPC_METHOD = "lumio.indexer.v1.RawData/GetTransactions";
 
 // relative path from this directory to the proto files
 const GRPC_IMPORT_PATHS = ["../../../crates/aptos-protos/proto"];

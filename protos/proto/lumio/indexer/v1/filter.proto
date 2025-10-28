@@ -3,9 +3,9 @@
 
 syntax = "proto3";
 
-package aptos.indexer.v1;
+package lumio.indexer.v1;
 
-import "aptos/transaction/v1/transaction.proto";
+import "lumio/transaction/v1/transaction.proto";
 
 message LogicalAndFilters {
   repeated BooleanTransactionFilter filters = 1;
@@ -17,7 +17,7 @@ message LogicalOrFilters {
 
 message TransactionRootFilter {
   optional bool success = 1;
-  optional aptos.transaction.v1.Transaction.TransactionType transaction_type = 2;
+  optional lumio.transaction.v1.Transaction.TransactionType transaction_type = 2;
 }
 
 message EntryFunctionFilter {
