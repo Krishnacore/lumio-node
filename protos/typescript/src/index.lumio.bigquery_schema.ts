@@ -1,3 +1,3 @@
 /* eslint-disable */
 
-export * as transaction from "./index.aptos.bigquery_schema.transaction";
+export * as transaction from "./index.lumio.bigquery_schema.transaction";

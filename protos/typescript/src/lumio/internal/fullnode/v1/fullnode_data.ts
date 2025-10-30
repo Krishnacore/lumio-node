@@ -26,12 +26,12 @@ export interface TransactionsOutput {
 
 export interface StreamStatus {
   type?:
-    | StreamStatus_StatusType
-    | undefined;
+  | StreamStatus_StatusType
+  | undefined;
   /** Required. Start version of current batch/stream, inclusive. */
   startVersion?:
-    | bigint
-    | undefined;
+  | bigint
+  | undefined;
   /** End version of current *batch*, inclusive. */
   endVersion?: bigint | undefined;
 }
@@ -83,8 +83,8 @@ export interface GetTransactionsFromNodeRequest {
    * If not set will panic somewhere
    */
   startingVersion?:
-    | bigint
-    | undefined;
+  | bigint
+  | undefined;
   /**
    * Optional; number of transactions to return in current stream.
    * If not set, response streams infinitely.
@@ -95,8 +95,8 @@ export interface GetTransactionsFromNodeRequest {
 export interface TransactionsFromNodeResponse {
   status?: StreamStatus | undefined;
   data?:
-    | TransactionsOutput
-    | undefined;
+  | TransactionsOutput
+  | undefined;
   /** Making sure that all the responses include a chain id */
   chainId?: number | undefined;
 }
@@ -746,7 +746,7 @@ export const PingFullnodeResponse = {
 export type FullnodeDataService = typeof FullnodeDataService;
 export const FullnodeDataService = {
   ping: {
-    path: "/aptos.internal.fullnode.v1.FullnodeData/Ping",
+    path: "/lumio.internal.fullnode.v1.FullnodeData/Ping",
     requestStream: false,
     responseStream: false,
     requestSerialize: (value: PingFullnodeRequest) => Buffer.from(PingFullnodeRequest.encode(value).finish()),
@@ -755,7 +755,7 @@ export const FullnodeDataService = {
     responseDeserialize: (value: Buffer) => PingFullnodeResponse.decode(value),
   },
   getTransactionsFromNode: {
-    path: "/aptos.internal.fullnode.v1.FullnodeData/GetTransactionsFromNode",
+    path: "/lumio.internal.fullnode.v1.FullnodeData/GetTransactionsFromNode",
     requestStream: false,
     responseStream: true,
     requestSerialize: (value: GetTransactionsFromNodeRequest) =>
@@ -801,9 +801,9 @@ export interface FullnodeDataClient extends Client {
 
 export const FullnodeDataClient = makeGenericClientConstructor(
   FullnodeDataService,
-  "aptos.internal.fullnode.v1.FullnodeData",
+  "lumio.internal.fullnode.v1.FullnodeData",
 ) as unknown as {
-  new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): FullnodeDataClient;
+  new(address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): FullnodeDataClient;
   service: typeof FullnodeDataService;
   serviceName: string;
 };
