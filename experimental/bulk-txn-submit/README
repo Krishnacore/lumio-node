@@ -12,6 +12,6 @@ Arguments:
 
 After first run , it prints --accounts-seed "" param you can pass in the future , to reuse same worker accounts, or to get the funds back with: 
 
-cargo run --release --package lumio-experimental-bulk-txn-submit --bin lumio-experimental-bulk-txn-submit -- submit -t https://fullnode.mainnet.lumiolabs.com --coin-source-key {PRIVATE_KEY_FOR_ACCOUNT_WITH_FUNDS} --chain-id testnet --accounts-seed "[seed,number,list]" --octas-per-workload-transaction 0 --num-worker-accounts 5 return-worker-funds
+cargo run --release --package lumio-experimental-bulk-txn-submit --bin lumio-experimental-bulk-txn-submit -- submit -t https://api.mainnet.lumio.io --coin-source-key {PRIVATE_KEY_FOR_ACCOUNT_WITH_FUNDS} --chain-id testnet --accounts-seed "[seed,number,list]" --octas-per-workload-transaction 0 --num-worker-accounts 5 return-worker-funds
 
 Script is extensible, if you want to add support for your transaction type.

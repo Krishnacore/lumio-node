@@ -25,7 +25,7 @@ async fn main() -> Result<()> {
 
     cache
         .fetch_on_chain_package(
-            &Url::from_str("https://fullnode.mainnet.lumiolabs.com").unwrap(),
+            &Url::from_str("https://api.mainnet.lumio.io").unwrap(),
             3022354983,
             AccountAddress::ONE,
             "MoveStdlib",

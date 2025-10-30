@@ -1,3 +1,3 @@
 error
 
-package not found: https://fullnode.mainnet.lumiolabs.com///0x1::DoesNotExist
+package not found: https://api.mainnet.lumio.io///0x1::DoesNotExist

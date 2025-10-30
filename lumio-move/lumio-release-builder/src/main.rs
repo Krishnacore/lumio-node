@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 use anyhow::{bail, Context};
+use clap::{Parser, Subcommand};
 use lumio_crypto::{ed25519::Ed25519PrivateKey, ValidCryptoMaterialStringExt};
 use lumio_framework::natives::code::PackageRegistry;
 use lumio_gas_schedule::LATEST_GAS_FEATURE_VERSION;
@@ -11,13 +12,12 @@ use lumio_release_builder::{
     simulate::simulate_all_proposals,
     validate::{DEFAULT_RESOLUTION_TIME, FAST_RESOLUTION_TIME},
 };
-use lumio_rest_client::{LumioBaseUrl, Client};
+use lumio_rest_client::{Client, LumioBaseUrl};
 use lumio_types::{
     account_address::AccountAddress,
     chain_id::ChainId,
     jwks::{ObservedJWKs, SupportedOIDCProviders},
 };
-use clap::{Parser, Subcommand};
 use std::{path::PathBuf, str::FromStr};
 use url::Url;
 
@@ -56,7 +56,7 @@ impl NetworkSelection {
         use NetworkSelection::*;
 
         let s = match &self {
-            Mainnet => "https://fullnode.mainnet.lumiolabs.com",
+            Mainnet => "https://api.mainnet.lumio.io",
             Testnet => "https://fullnode.testnet.lumiolabs.com",
             Devnet => "https://fullnode.devnet.lumiolabs.com",
             RestEndpoint(url) => url,
@@ -159,7 +159,7 @@ pub enum Commands {
     },
     /// Print out current values of on chain configs.
     PrintConfigs {
-        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.lumiolabs.com/v1.
+        /// Url endpoint for the desired network. e.g: https://api.mainnet.lumio.io/v1.
         #[clap(short, long)]
         endpoint: url::Url,
         /// Whether to print out the full gas schedule.
@@ -175,7 +175,7 @@ pub enum Commands {
     /// Usage: --endpoint '<URL>'
     /// --package-address <ADDRESS> --package-name <PACKAGE_NAME> [--print-json]
     PrintPackageMetadata {
-        /// Url endpoint for the desired network. e.g: https://fullnode.mainnet.lumiolabs.com/v1.
+        /// Url endpoint for the desired network. e.g: https://api.mainnet.lumio.io/v1.
         #[clap(short, long)]
         endpoint: url::Url,
         /// The address under which the package is published

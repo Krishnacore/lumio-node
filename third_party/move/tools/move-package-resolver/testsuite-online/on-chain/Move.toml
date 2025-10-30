@@ -3,5 +3,5 @@ name = "Pack"
 version = "0.1.2"
 
 [dependencies]
-MoveStdlib = { lumio = "https://fullnode.mainnet.lumiolabs.com", address = "0x1" }
-LumioStdlib = { lumio = "https://fullnode.mainnet.lumiolabs.com", address = "0x1" }
+MoveStdlib = { lumio = "https://api.mainnet.lumio.io", address = "0x1" }
+LumioStdlib = { lumio = "https://api.mainnet.lumio.io", address = "0x1" }

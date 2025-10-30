@@ -3,4 +3,4 @@ name = "Pack"
 version = "0.1.2"
 
 [dependencies]
-DoesNotExist = { lumio = "https://fullnode.mainnet.lumiolabs.com", address = "0x1" }
+DoesNotExist = { lumio = "https://api.mainnet.lumio.io", address = "0x1" }

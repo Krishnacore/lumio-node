@@ -17,10 +17,10 @@ use crate::{
         },
     },
 };
-use lumio_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, ValidCryptoMaterialStringExt};
-use lumio_ledger;
 use async_trait::async_trait;
 use clap::Parser;
+use lumio_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, ValidCryptoMaterialStringExt};
+use lumio_ledger;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 use std::{
@@ -141,8 +141,7 @@ impl CliCommand<()> for InitTool {
         // Ensure that there is at least a REST URL set for the network
         match network {
             Network::Mainnet => {
-                profile_config.rest_url =
-                    Some("https://fullnode.mainnet.lumiolabs.com".to_string());
+                profile_config.rest_url = Some("https://api.mainnet.lumio.io".to_string());
                 profile_config.faucet_url = None;
             },
             Network::Testnet => {
