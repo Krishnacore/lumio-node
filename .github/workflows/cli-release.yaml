@@ -153,7 +153,7 @@ jobs:
     needs:
       - build-ubuntu22-binary
       - build-ubuntu24-binary
-      # - build-windows-binary
+      - build-windows-binary
       - build-linux-binary
       # - build-linux-arm-binary
       - build-macos-arm-binary
