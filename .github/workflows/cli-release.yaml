@@ -129,24 +129,24 @@ jobs:
           name: cli-builds-macos-arm
           path: lumio-cli-*.zip
 
-  # build-windows-binary:
-  #   name: "Build Windows binary"
-  #   runs-on: windows-2025
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         ref: ${{ github.event.inputs.source_git_ref_override }}
-  #     # Ensure that long paths work
-  #     - name: Ensure long paths work
-  #       run: git config --global core.longpaths true
-  #       shell: bash
-  #     - name: Build CLI
-  #       run: scripts\cli\build_cli_release.ps1
-  #     - name: Upload Binary
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: cli-builds-windows
-  #         path: lumio-cli-*.zip
+  build-windows-binary:
+    name: "Build Windows binary"
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.source_git_ref_override }}
+      # Ensure that long paths work
+      - name: Ensure long paths work
+        run: git config --global core.longpaths true
+        shell: bash
+      - name: Build CLI
+        run: scripts\cli\build_cli_release.ps1
+      - name: Upload Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-builds-windows
+          path: lumio-cli-*.zip
 
   release-binaries:
     name: "Release binaries"
