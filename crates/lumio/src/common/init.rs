@@ -146,7 +146,7 @@ impl CliCommand<()> for InitTool {
             },
             Network::Testnet => {
                 profile_config.rest_url =
-                    Some("https://fullnode.testnet.lumiolabs.com".to_string());
+                    Some("https://api.testnet.lumio.io".to_string());
                 // The faucet in testnet is only accessible with some kind of bypass.
                 // For regular users this can only really mean an auth token. So if
                 // there is no auth token set, we don't set the faucet URL. If the user

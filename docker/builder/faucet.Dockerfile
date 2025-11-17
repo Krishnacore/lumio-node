@@ -7,9 +7,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get update && apt-get --no-install-recommends install -y \
         procps
 
-RUN mkdir -p /aptos/client/data/wallet/
+RUN mkdir -p /lumio/client/data/wallet/
 
-COPY --link --from=tools-builder /aptos/dist/aptos-faucet-service /usr/local/bin/aptos-faucet-service
+COPY --link --from=tools-builder /lumio/dist/lumio-faucet-service /usr/local/bin/lumio-faucet-service
 
 # Mint proxy listening address
 EXPOSE 8000

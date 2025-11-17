@@ -23,7 +23,7 @@ pub static DEVNET_FAUCET_URL: Lazy<Url> =
     Lazy::new(|| Url::parse("https://faucet.devnet.lumiolabs.com").unwrap());
 
 pub static TESTNET_NODE_URL: Lazy<Url> =
-    Lazy::new(|| Url::parse("https://fullnode.testnet.lumiolabs.com").unwrap());
+    Lazy::new(|| Url::parse("https://api.testnet.lumio.io").unwrap());
 
 pub static TESTNET_FAUCET_URL: Lazy<Url> =
     Lazy::new(|| Url::parse("https://faucet.testnet.lumiolabs.com").unwrap());

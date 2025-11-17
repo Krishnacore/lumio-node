@@ -32,7 +32,7 @@
 ///
 /// 1. [Localnet](http://127.0.0.1:8080) -- our standalone tool for local development against a known version of the codebase with no external network.
 /// 1. [Devnet](https://fullnode.devnet.lumiolabs.com/v1/spec#/) -- a shared resource for the community, data resets weekly, weekly update from lumio-core main branch.
-/// 1. [Testnet](https://fullnode.testnet.lumiolabs.com/v1/spec#/) -- a shared resource for the community, data will be preserved, network configuration will mimic Mainnet.
+/// 1. [Testnet](https://api.testnet.lumio.io/v1/spec#/) -- a shared resource for the community, data will be preserved, network configuration will mimic Mainnet.
 /// 1. [Mainnet](https://api.mainnet.lumio.io/v1/spec#/) -- a production network with real assets.
 ///
 /// See [Lumio Blockchain Networks](../nodes/networks.md) for full details on each environment.
@@ -59,8 +59,8 @@
 ///   </TabItem>
 ///   <TabItem value="testnet" label="Testnet">
 ///     <ul>
-///       <li>REST API: <a href="https://fullnode.testnet.lumiolabs.com/v1">https://fullnode.testnet.lumiolabs.com/v1</a></li>
-///       <li>REST API Spec: <a href="https://fullnode.testnet.lumiolabs.com/v1/spec#/">https://fullnode.testnet.lumiolabs.com/v1/spec#/</a></li>
+///       <li>REST API: <a href="https://api.testnet.lumio.io/v1">https://api.testnet.lumio.io/v1</a></li>
+///       <li>REST API Spec: <a href="https://api.testnet.lumio.io/v1/spec#/">https://api.testnet.lumio.io/v1/spec#/</a></li>
 ///       <li>Indexer API: <a href="https://api.testnet.lumiolabs.com/v1/graphql">https://api.testnet.lumiolabs.com/v1/graphql</a></li>
 ///       <li>Faucet API: <a href="https://faucet.testnet.lumiolabs.com">https://faucet.testnet.lumiolabs.com</a></li>
 ///       <li><a href="https://cloud.hasura.io/public/graphiql?endpoint=https://api.testnet.lumiolabs.com/v1/graphql">Indexer GraphQL</a></li>

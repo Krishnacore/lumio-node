@@ -89,7 +89,7 @@ fn test_config_roundtrip_empty_base() -> Result<()> {
 #[test]
 fn test_config_roundtrip_remote_base() -> Result<()> {
     let config = Config::with_remote(
-        Url::parse("https://fullnode.testnet.lumiolabs.com")?,
+        Url::parse("https://api.testnet.lumio.io")?,
         1,
         Some("some_api_key".to_string()),
     );

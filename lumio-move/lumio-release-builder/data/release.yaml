@@ -1,5 +1,5 @@
 ---
-remote_endpoint: https://fullnode.testnet.lumiolabs.com
+remote_endpoint: https://api.testnet.lumio.io
 # replace with below for actual release, compat test needs concrete URL above:
 # remote_endpoint: ~
 name: "v1.36.1"

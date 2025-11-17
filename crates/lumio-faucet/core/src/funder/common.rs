@@ -50,7 +50,7 @@ const DEFAULT_KEY_FILE_PATH: &str = "/opt/lumio/etc/mint.key";
 pub struct ApiConnectionConfig {
     /// Lumio node (any node type with an open API) server URL.
     /// Include the port in this if not using the default for the scheme.
-    #[clap(long, default_value = "https://fullnode.testnet.lumiolabs.com/")]
+    #[clap(long, default_value = "https://api.testnet.lumio.io/")]
     pub node_url: Url,
 
     /// API key for talking to the node API.

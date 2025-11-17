@@ -57,7 +57,7 @@ impl NetworkSelection {
 
         let s = match &self {
             Mainnet => "https://api.mainnet.lumio.io",
-            Testnet => "https://fullnode.testnet.lumiolabs.com",
+            Testnet => "https://api.testnet.lumio.io",
             Devnet => "https://fullnode.devnet.lumiolabs.com",
             RestEndpoint(url) => url,
         };
