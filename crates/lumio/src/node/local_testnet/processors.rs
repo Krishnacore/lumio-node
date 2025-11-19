@@ -3,15 +3,15 @@
 
 use super::{health_checker::HealthChecker, traits::ServiceManager, RunLocalnet};
 use anyhow::{bail, Context, Result};
-use aptos_indexer_processor_sdk::{
-    aptos_indexer_transaction_stream::TransactionStreamConfig,
-    postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
-};
-pub use lumio_localnet::processors::get_processor_config;
 use async_trait::async_trait;
 use clap::Parser;
 use diesel::Connection;
 use diesel_async::{async_connection_wrapper::AsyncConnectionWrapper, pg::AsyncPgConnection};
+use lumio_indexer_processor_sdk::{
+    lumio_indexer_transaction_stream::TransactionStreamConfig,
+    postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
+};
+pub use lumio_localnet::processors::get_processor_config;
 use maplit::hashset;
 use processor::{
     config::{
