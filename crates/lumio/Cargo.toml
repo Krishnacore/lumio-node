@@ -30,7 +30,7 @@ lumio-genesis = { workspace = true }
 lumio-github-client = { workspace = true }
 lumio-global-constants = { workspace = true }
 lumio-indexer-grpc-server-framework = { workspace = true }
-aptos-indexer-processor-sdk = { workspace = true }
+lumio-indexer-processor-sdk = { workspace = true }
 lumio-keygen = { workspace = true }
 lumio-ledger = { workspace = true }
 lumio-localnet = { workspace = true }

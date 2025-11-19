@@ -503,10 +503,10 @@ ark-groth16 = "0.4.0"
 ark-relations = "0.4.0"
 ark-serialize = "0.4.0"
 ark-std = { version = "0.4.0", features = ["getrandom"] }
-aptos-indexer-processor-sdk = { git = "https://github.com/aptos-labs/aptos-indexer-processor-sdk.git", tag = "aptos-indexer-processor-sdk-v2.1.2", features = [
+lumio-indexer-processor-sdk = { git = "https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git", features = [
     "postgres_partial",
 ] }
-aptos-moving-average = { git = "https://github.com/aptos-labs/aptos-indexer-processors.git", rev = "62beedc881d1b76632318ceb186ee9065236468e" }
+aptos-moving-average = { package = "lumio-moving-average", git = "https://github.com/vladimirovmm/lumio-indexer-processors.git" }
 assert_approx_eq = "1.1.0"
 async-channel = "1.7.1"
 async-mutex = "1.4.0"
@@ -941,7 +941,7 @@ futures-io = { git = "https://github.com/aptos-labs/futures-rs", branch = "backp
 futures-task = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 futures-macro = { git = "https://github.com/aptos-labs/futures-rs", branch = "backport" }
 
-# There is a circular dependency between lumio-core, aptos-indexer-processor-sdk, and lumio-indexer-processors-v2,
+# There is a circular dependency between lumio-core, lumio-indexer-processor-sdk, and lumio-indexer-processors-v2,
 # so we cannot simply change the version and package for `jemalloc-sys` in one repo without running into conflicts.
 # We have to keep this shim until everything uses the same jemalloc dependency.
 jemalloc-sys = { git = "https://github.com/aptos-labs/jemalloc-sys-shim", rev = "e0920246dd74303fab9a14b990768c6ac990a59b" }
