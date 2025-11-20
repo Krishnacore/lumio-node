@@ -11,7 +11,7 @@ use lumio_indexer_grpc_utils::{
     file_store_operator::FileStoreOperator,
     types::RedisUrl,
 };
-use aptos_moving_average::MovingAverage;
+use lumio_moving_average::MovingAverage;
 use std::time::Duration;
 use tracing::debug;
 

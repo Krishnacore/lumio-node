@@ -37,7 +37,7 @@ lumio-indexer-grpc-utils = { workspace = true }
 lumio-logger = { workspace = true }
 lumio-mempool = { workspace = true }
 lumio-metrics-core = { workspace = true }
-aptos-moving-average = { workspace = true }
+lumio-moving-average = { workspace = true }
 lumio-protos = { workspace = true }
 lumio-runtimes = { workspace = true }
 lumio-storage-interface = { workspace = true }

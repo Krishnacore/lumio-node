@@ -6,12 +6,13 @@ use crate::{
     stream_coordinator::IndexerStreamCoordinator,
     ServiceContext,
 };
+use futures::Stream;
 use lumio_indexer_grpc_utils::{
     counters::{log_grpc_step_fullnode, IndexerGrpcStep},
     timestamp_now_proto,
 };
 use lumio_logger::{error, info};
-use aptos_moving_average::MovingAverage;
+use lumio_moving_average::MovingAverage;
 use lumio_protos::{
     indexer::v1::FullnodeInfo,
     internal::fullnode::v1::{
@@ -20,7 +21,6 @@ use lumio_protos::{
         PingFullnodeResponse, StreamStatus, TransactionsFromNodeResponse,
     },
 };
-use futures::Stream;
 use std::{
     pin::Pin,
     time::{Duration, SystemTime, UNIX_EPOCH},

@@ -14,11 +14,11 @@ replace_in_file() {
     
     # Process the file line by line
     awk '
-    /Copyright.*Aptos|©.*Aptos|SPDX-License-Identifier|aptos-labs\/aptos|aptos_moving_average|lumio_indexer_processor_sdk/ { 
+    /Copyright.*Aptos|©.*Aptos|SPDX-License-Identifier|aptos-labs\/aptos|lumio_moving_average|lumio_indexer_processor_sdk/ { 
         # Keep these lines unchanged
         print $0 
     }
-    !/Copyright.*Aptos|©.*Aptos|SPDX-License-Identifier|aptos-labs\/aptos|aptos_moving_average|lumio_indexer_processor_sdk/ { 
+    !/Copyright.*Aptos|©.*Aptos|SPDX-License-Identifier|aptos-labs\/aptos|lumio_moving_average|lumio_indexer_processor_sdk/ { 
         # Replace in all other lines
         gsub(/Lumio/, "Lumio")
         gsub(/LUMIO/, "LUMIO")  
