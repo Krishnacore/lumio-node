@@ -41,8 +41,8 @@ COPY --link --from=tools-builder /lumio/aptos-move/framework/move-stdlib /aptos-
 COPY --link --from=tools-builder /lumio/aptos-move/move-examples/hello_blockchain /aptos-move/move-examples/hello_blockchain
 
 ### Get Aptos Move releases for genesis ceremony
-RUN mkdir -p /aptos-framework/move
-COPY --link --from=tools-builder /lumio/dist/head.mrb /aptos-framework/move/head.mrb
+RUN mkdir -p /lumio-framework/move
+COPY --link --from=tools-builder /lumio/dist/head.mrb /lumio-framework/move/head.mrb
 
 # add build info
 ARG BUILD_DATE

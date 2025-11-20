@@ -36,7 +36,7 @@ export default () => {
   };
 
   const metadata = {
-    "x-aptos-data-authorization": "dummy_token",
+    "x-lumio-data-authorization": "dummy_token",
   };
 
   const params = {
