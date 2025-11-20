@@ -7,5 +7,5 @@ resource_groups_primary = "_"
 resource_groups_secondary = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../../framework/lumio-framework" }
 ResourceGroupsPrimary = { local = "../primary" }

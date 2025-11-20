@@ -8,5 +8,5 @@ lumio_token_objects = "0x4"
 example_addr = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-LumioTokenObjects = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token-objects", rev = "mainnet" }
+LumioStdlib = { local = "../../../framework/lumio-stdlib" }
+LumioFramework = { local = "../../../framework/lumio-framework" }

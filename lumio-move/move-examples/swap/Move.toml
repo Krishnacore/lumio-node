@@ -8,4 +8,4 @@ deployer = "_"
 swap = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../framework/lumio-framework" }

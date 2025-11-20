@@ -3,8 +3,8 @@ name = "Examples"
 version = "0.0.0"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-LumioToken = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
+LumioFramework = { local = "../../../framework/lumio-framework" }
+LumioToken = { local = "../../../framework/lumio-token" }
 
 [addresses]
 lumio_framework = "0x1"

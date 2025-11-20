@@ -14,7 +14,7 @@ To add a dependency from this repository, include the following in your `move.to
 ```
 For example, to add `LumioFramework` from the `mainnet` branch, you would use:
 ```
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../framework/lumio-framework" }
 ```
 Make sure to replace `subdir` with the appropriate path if you are referencing a different package within the framework.
 

@@ -3,5 +3,5 @@ name = "Pack"
 version = "0.1.2"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "mainnet", subdir = "lumio-framework" }
-MoveStdlib = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "mainnet", subdir = "move-stdlib" }
+LumioFramework = { local = "../../../../../../lumio-move/framework/lumio-framework" }
+MoveStdlib = { local = "../../../../../../lumio-move/framework/move-stdlib" }

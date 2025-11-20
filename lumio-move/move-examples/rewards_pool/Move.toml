@@ -6,4 +6,4 @@ version = "1.0.0"
 rewards_pool = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../framework/lumio-framework" }

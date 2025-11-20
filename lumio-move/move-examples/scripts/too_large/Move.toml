@@ -3,5 +3,5 @@ name = "TooLargeTest"
 version = "0.0.0"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-MoveStdlib = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "move-stdlib", rev = "mainnet" }
+LumioFramework = { local = "../../../framework/lumio-framework" }
+MoveStdlib = { local = "../../../framework/move-stdlib" }
