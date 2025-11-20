@@ -11,7 +11,7 @@ test:
 		--package-name testing \
 		--with-aptos-types "../../../../testsuite/generate-format/tests/staged/aptos.yaml" \
 		--target-source-dir . \
-		"../../../framework/aptos-framework/build/AptosFramework"
+		"../../../framework/aptos-framework/build/LumioFramework"
 	- go mod init testing
 	go mod edit -replace testing=`pwd`
 	go get github.com/aptos-labs/serde-reflection/serde-generate/runtime/golang/bcs

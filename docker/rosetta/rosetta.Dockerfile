@@ -11,11 +11,11 @@ RUN apt-get update && apt-get install -y cmake curl clang git pkg-config libssl-
 ### Build Rust code ###
 FROM rust-base as builder
 
-ARG GIT_REPO=https://github.com/aptos-labs/aptos-core.git
+ARG GIT_REPO=ssh://git@github.com/pontem-network/lumio-node.git
 ARG GIT_REF
 
 RUN git clone $GIT_REPO ./ && git reset $GIT_REF --hard
-RUN --mount=type=cache,target=/aptos/target --mount=type=cache,target=$CARGO_HOME/registry \
+RUN --mount=type=cache,target=/lumio/target --mount=type=cache,target=$CARGO_HOME/registry \
   cargo build --release \
   -p aptos-rosetta \
   && mkdir dist \
@@ -26,7 +26,7 @@ FROM ubuntu-base AS rosetta
 
 RUN apt-get update && apt-get install -y libssl-dev ca-certificates && apt-get clean && rm -r /var/lib/apt/lists/*
 
-COPY --from=builder /aptos/dist/aptos-rosetta /usr/local/bin/aptos-rosetta
+COPY --from=builder /lumio/dist/aptos-rosetta /usr/local/bin/aptos-rosetta
 
 # Rosetta API
 EXPOSE 8082
@@ -34,7 +34,7 @@ EXPOSE 8082
 # Capture backtrace on error
 ENV RUST_BACKTRACE 1
 
-WORKDIR /opt/aptos/data
+WORKDIR /opt/lumio/data
 
 ENTRYPOINT ["/usr/local/bin/aptos-rosetta"]
-CMD ["online", "--config /opt/aptos/fullnode.yaml"]
+CMD ["online", "--config /opt/lumio/fullnode.yaml"]

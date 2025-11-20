@@ -3,5 +3,5 @@ name = "Pack"
 version = "0.1.2"
 
 [dependencies]
-AptosFramework = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "main", subdir = "lumio-framework" }
-MoveStdlib = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "main", subdir = "move-stdlib" }
+LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "mainnet", subdir = "lumio-framework" }
+MoveStdlib = { git = "https://github.com/pontem-network/lumio-framework.git", rev = "mainnet", subdir = "move-stdlib" }

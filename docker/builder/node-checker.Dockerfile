@@ -2,7 +2,7 @@
 
 FROM debian-base AS node-checker
 
-COPY  --link --from=tools-builder /aptos/dist/lumio-node-checker /usr/local/bin/lumio-node-checker
+COPY  --link --from=tools-builder /lumio/dist/lumio-node-checker /usr/local/bin/lumio-node-checker
 
 ENV RUST_LOG_FORMAT=json
 

@@ -1,5 +1,5 @@
 /* eslint-disable */
 
-export * from "./aptos/indexer/v1/filter";
-export * from "./aptos/indexer/v1/raw_data";
-export * from "./aptos/indexer/v1/grpc";
+export * from "./lumio/indexer/v1/filter";
+export * from "./lumio/indexer/v1/raw_data";
+export * from "./lumio/indexer/v1/grpc";

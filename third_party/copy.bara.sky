@@ -1,5 +1,5 @@
 moveUrl = "https://github.com/move-language/move-on-aptos.git"
-aptosUrl = "https://github.com/aptos-labs/aptos-core.git"
+lumioUrl = "ssh://git@github.com/pontem-network/lumio-node.git"
 
 # Workflow to pull from Move to Aptos. This creates a draft PR at the fixed branch `from_move`
 # which should be further massaged before sending out.
@@ -28,7 +28,7 @@ core.workflow(
 core.workflow(
     name = "push_move",
     origin = git.github_origin(
-        url = aptosUrl,
+        url = lumioUrl,
         ref = "main",
     ),
     destination = git.destination(
@@ -50,7 +50,7 @@ core.workflow(
 core.workflow(
     name = "push_move_direct",
     origin = git.github_origin(
-        url = aptosUrl,
+        url = lumioUrl,
         ref = "main",
     ),
     destination = git.github_destination(

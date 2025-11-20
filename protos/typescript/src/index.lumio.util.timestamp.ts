@@ -1,3 +1,3 @@
 /* eslint-disable */
 
-export * from "./aptos/util/timestamp/timestamp";
+export * from "./lumio/util/timestamp/timestamp";

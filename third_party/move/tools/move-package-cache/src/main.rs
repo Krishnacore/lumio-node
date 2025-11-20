@@ -16,7 +16,7 @@ async fn main() -> Result<()> {
     let cache = PackageCache::new_with_listener("./data", DebugPackageCacheListener).unwrap();
 
     let lumio_framework_url =
-        Url::from_str("https://github.com/aptos-labs/aptos-framework").unwrap();
+        Url::from_str("https://github.com/pontem-network/lumio-framework.git").unwrap();
 
     let oid = cache
         .resolve_git_revision(&lumio_framework_url, "main")
