@@ -948,3 +948,9 @@ jemalloc-sys = { git = "https://github.com/aptos-labs/jemalloc-sys-shim", rev = 
 
 # There is a bug in the lru crate. Patch it until https://github.com/jeromefroe/lru-rs/pull/219 is merged and released.
 lru = { git = "https://github.com/aptos-labs/lru-rs", rev = "d16747e8b119c48315a1c76669f962456d06dfe7" }
+
+[patch."ssh://git@github.com/pontem-network/lumio-node.git"]
+lumio-protos = { path = "protos/rust" }
+lumio-system-utils = { path = "crates/lumio-system-utils" }
+lumio-transaction-filter = { path = "ecosystem/indexer-grpc/transaction-filter" }
+
