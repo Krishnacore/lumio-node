@@ -2,7 +2,7 @@
 compiled_package_info:
   package_name: Dep
   address_alias_instantiation: {}
-  source_digest: B01B575F8492F72C72DBF502E1F788F49A9CA8AC335FB9E52B0455ACA35677E0
+  source_digest: 452B088DBB6B0CB87AEA8CB36B672DECAEFD09084809A8075DE36EE1B5134930
   build_flags:
     dev_mode: false
     test_mode: false
@@ -10,11 +10,10 @@ compiled_package_info:
     generate_docs: false
     generate_abis: false
     generate_move_model: true
-    full_model_generation: false
+    full_model_generation: true
     install_dir: ~
     force_recompilation: false
     additional_named_addresses: {}
-    architecture: ~
     fetch_deps_only: false
     skip_fetch_latest_git_deps: false
     compiler_config:
@@ -28,8 +27,10 @@ compiled_package_info:
         - legacy_entry_fun
         - "lint::allow_unsafe_randomness"
         - "lint::skip"
+        - module_lock
         - "mutation::skip"
         - native_interface
+        - persistent
         - randomness
         - resource_group
         - resource_group_member
@@ -39,7 +40,7 @@ compiled_package_info:
         - view
       skip_attribute_checks: false
       compiler_version: V2_0
-      language_version: V2_1
+      language_version: "2.1"
       experiments:
         - optimize=on
 dependencies: []

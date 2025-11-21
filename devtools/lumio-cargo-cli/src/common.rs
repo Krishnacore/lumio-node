@@ -422,7 +422,7 @@ fn recompute_merge_base_metadata(
         .arg("clone")
         .arg("--depth")
         .arg("500") // Clone the last 500 commits to ensure the merge base is included
-        .arg("https://github.com/aptos-labs/aptos-core.git")
+        .arg("ssh://git@github.com/pontem-network/lumio-node.git")
         .arg(clone_directory.clone())
         .output()
         .expect("failed to execute git clone");

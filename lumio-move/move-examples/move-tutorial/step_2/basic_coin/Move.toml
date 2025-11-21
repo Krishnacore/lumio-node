@@ -2,7 +2,5 @@
 name = "basic_coin"
 version = "0.0.0"
 
-[dependencies.LumioStdlib]
-git = 'https://github.com/pontem-network/lumio-framework.git'
-rev = 'main'
-subdir = 'lumio-stdlib'
+[dependencies]
+LumioStdlib = { local = "../../../../framework/lumio-stdlib" }

@@ -14,7 +14,7 @@ spec:
   serviceAccountName: forge
   containers:
     - name: main
-      image: 123.dkr.ecr.banana-east-1.amazonaws.com/aptos/forge:forge_asdf
+      image: 123.dkr.ecr.banana-east-1.amazonaws.com/lumio/forge:forge_asdf
       imagePullPolicy: Always
       command:
         - /bin/bash

@@ -25,7 +25,7 @@
 !lumio-move/lumio-release-builder/data/proposals/*
 !lumio-move/framework/
 !lumio-move/move-examples/hello_blockchain/
-!crates/aptos/src/move_tool/*.bpl
+!crates/lumio/src/move_tool/*.bpl
 !crates/lumio-localnet/src/hasura_metadata.json
 !crates/lumio-faucet/doc/
 !crates/transaction-emitter-lib/src/emitter/test_proofs_for_localnet_txn_emitter.txt

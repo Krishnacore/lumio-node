@@ -24,7 +24,7 @@ use lumio_indexer_grpc_utils::{
     time_diff_since_pb_timestamp_in_secs,
     types::RedisUrl,
 };
-use aptos_moving_average::MovingAverage;
+use lumio_moving_average::MovingAverage;
 use lumio_protos::{
     indexer::v1::{raw_data_server::RawData, GetTransactionsRequest, TransactionsResponse},
     transaction::v1::{transaction::TxnData, Transaction},

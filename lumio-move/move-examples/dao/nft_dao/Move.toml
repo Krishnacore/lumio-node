@@ -8,5 +8,5 @@ dao_platform = "_"
 lumio_framework = "0x1"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
-LumioToken = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-token", rev = "mainnet" }
+LumioStdlib = { local = "../../../framework/lumio-stdlib" }
+LumioFramework = { local = "../../../framework/lumio-framework" }

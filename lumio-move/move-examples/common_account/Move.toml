@@ -3,7 +3,7 @@ name = "CommonAccount"
 version = "1.0.0"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../framework/lumio-framework" }
 
 [addresses]
 common_account = "_"

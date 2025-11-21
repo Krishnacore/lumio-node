@@ -11,7 +11,7 @@ import { GeneralService } from './services/GeneralService';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
-export class AptosFaucetClient {
+export class LumioFaucetClient {
 
     public readonly captcha: CaptchaService;
     public readonly fund: FundService;

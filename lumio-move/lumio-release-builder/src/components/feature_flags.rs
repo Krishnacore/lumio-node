@@ -112,7 +112,7 @@ pub enum FeatureFlag {
     RejectUnstableBytecode,
     TransactionContextExtension,
     CoinToFungibleAssetMigration,
-    PrimaryAPTFungibleStoreAtUserAddress,
+    PrimaryLUMFungibleStoreAtUserAddress,
     ObjectNativeDerivedAddress,
     DispatchableFungibleAsset,
     NewAccountsDefaultToFaAptStore,
@@ -327,7 +327,7 @@ impl From<FeatureFlag> for LumioFeatureFlag {
             FeatureFlag::CoinToFungibleAssetMigration => {
                 LumioFeatureFlag::COIN_TO_FUNGIBLE_ASSET_MIGRATION
             },
-            FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress => {
+            FeatureFlag::PrimaryLUMFungibleStoreAtUserAddress => {
                 LumioFeatureFlag::PRIMARY_LUM_FUNGIBLE_STORE_AT_USER_ADDRESS
             },
             FeatureFlag::ObjectNativeDerivedAddress => {
@@ -505,7 +505,7 @@ impl From<LumioFeatureFlag> for FeatureFlag {
                 FeatureFlag::CoinToFungibleAssetMigration
             },
             LumioFeatureFlag::PRIMARY_LUM_FUNGIBLE_STORE_AT_USER_ADDRESS => {
-                FeatureFlag::PrimaryAPTFungibleStoreAtUserAddress
+                FeatureFlag::PrimaryLUMFungibleStoreAtUserAddress
             },
             LumioFeatureFlag::OBJECT_NATIVE_DERIVED_ADDRESS => {
                 FeatureFlag::ObjectNativeDerivedAddress

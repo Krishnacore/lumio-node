@@ -1,6 +1,6 @@
 FROM debian-base AS keyless-pepper-service
 
-COPY --link --from=tools-builder /aptos/dist/aptos-keyless-pepper-service /usr/local/bin/aptos-keyless-pepper-service
+COPY --link --from=tools-builder /lumio/dist/aptos-keyless-pepper-service /usr/local/bin/aptos-keyless-pepper-service
 
 EXPOSE 8000
 ENV RUST_LOG_FORMAT=json

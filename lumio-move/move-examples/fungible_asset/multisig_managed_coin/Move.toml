@@ -7,5 +7,5 @@ lumio_framework = "0x1"
 example_addr = "_"
 
 [dependencies]
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioFramework = { local = "../../../framework/lumio-framework" }
 ManagedFungibleAsset = { local = "../managed_fungible_asset" }

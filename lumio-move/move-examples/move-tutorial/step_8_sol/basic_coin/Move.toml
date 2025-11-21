@@ -5,7 +5,5 @@ version = "0.0.0"
 [addresses]
 named_addr = "0xDEADBEEF"
 
-[dependencies.LumioStdlib]
-git = 'https://github.com/pontem-network/lumio-framework.git'
-rev = 'main'
-subdir = 'lumio-stdlib'
+[dependencies]
+LumioStdlib = { local = "../../../../framework/lumio-stdlib" }

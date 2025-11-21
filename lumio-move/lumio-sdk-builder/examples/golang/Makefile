@@ -5,13 +5,13 @@ clean:
 	- rm -rf go.mod go.sum lumiostdlib lumiotypes
 
 test:
-	cargo run -p aptos-framework release
-	cargo run -p aptos-sdk-builder -- \
+	cargo run -p lumio-framework release
+	cargo run -p lumio-sdk-builder -- \
 		--language go --module-name lumiostdlib \
 		--package-name testing \
-		--with-aptos-types "../../../../testsuite/generate-format/tests/staged/aptos.yaml" \
+		--with-lumio-types "../../../../testsuite/generate-format/tests/staged/aptos.yaml" \
 		--target-source-dir . \
-		"../../../framework/aptos-framework/build/AptosFramework"
+		"../../../framework/lumio-framework/build/LumioFramework"
 	- go mod init testing
 	go mod edit -replace testing=`pwd`
 	go get github.com/aptos-labs/serde-reflection/serde-generate/runtime/golang/bcs

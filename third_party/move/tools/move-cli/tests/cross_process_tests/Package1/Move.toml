@@ -6,4 +6,4 @@ version = "0.0.0"
 std = "0x1"
 
 [dependencies]
-MoveStdlib = { local = "../../../../move-stdlib" }
+MoveStdlib = { local = "../../../../../move-stdlib" }

@@ -7,14 +7,14 @@ use crate::{
     no_panic_println,
 };
 use anyhow::{anyhow, Context, Result};
-use aptos_indexer_processor_sdk::{
-    aptos_indexer_transaction_stream::TransactionStreamConfig,
-    postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
-};
-use lumio_localnet::{health_checker::HealthChecker, processors::get_processor_config};
 use diesel::Connection;
 use diesel_async::{async_connection_wrapper::AsyncConnectionWrapper, pg::AsyncPgConnection};
 use futures::{future::try_join_all, stream::FuturesUnordered, StreamExt, TryFutureExt};
+use lumio_indexer_processor_sdk::{
+    lumio_indexer_transaction_stream::TransactionStreamConfig,
+    postgres::utils::database::run_pending_migrations, server_framework::RunnableConfig,
+};
+use lumio_localnet::{health_checker::HealthChecker, processors::get_processor_config};
 use processor::{
     config::{
         db_config::{DbConfig, PostgresConfig},

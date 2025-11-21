@@ -6,5 +6,5 @@ version = "0.0.0"
 aggregator_examples = "0xCAFE"
 
 [dependencies]
-LumioStdlib = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-stdlib", rev = "mainnet" }
-LumioFramework = { git = "https://github.com/pontem-network/lumio-framework.git", subdir = "lumio-framework", rev = "mainnet" }
+LumioStdlib = { local = "../../framework/lumio-stdlib" }
+LumioFramework = { local = "../../framework/lumio-framework" }

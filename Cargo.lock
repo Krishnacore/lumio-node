@@ -303,158 +303,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aptos-indexer-processor-sdk"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
-dependencies = [
- "ahash 0.8.11",
- "anyhow",
- "aptos-indexer-transaction-stream",
- "aptos-protos",
- "aptos-system-utils",
- "async-trait",
- "autometrics",
- "axum 0.7.5",
- "backtrace",
- "bcs 0.1.4",
- "bigdecimal",
- "chrono",
- "clap 4.5.21",
- "derive_builder",
- "diesel",
- "diesel-async",
- "diesel_migrations",
- "field_count",
- "futures",
- "futures-util",
- "hex",
- "indexmap 2.7.0",
- "instrumented-channel",
- "kanal",
- "mockall 0.12.1",
- "native-tls",
- "num_cpus",
- "once_cell",
- "petgraph 0.6.5",
- "postgres-native-tls",
- "prometheus",
- "prometheus-client",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "sha2 0.9.9",
- "tempfile",
- "thiserror",
- "tiny-keccak",
- "tokio",
- "tokio-postgres",
- "toml 0.7.8",
- "tracing",
- "tracing-subscriber 0.3.18",
- "url",
-]
-
-[[package]]
-name = "aptos-indexer-transaction-stream"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
-dependencies = [
- "anyhow",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2)",
- "aptos-protos",
- "aptos-transaction-filter",
- "chrono",
- "futures-util",
- "once_cell",
- "prometheus",
- "prost 0.13.4",
- "sample",
- "serde",
- "tokio",
- "tonic 0.12.3",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-moving-average"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
-dependencies = [
- "chrono",
-]
-
-[[package]]
-name = "aptos-moving-average"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e#62beedc881d1b76632318ceb186ee9065236468e"
-dependencies = [
- "chrono",
-]
-
-[[package]]
-name = "aptos-profiler"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
-dependencies = [
- "anyhow",
- "backtrace",
- "jemalloc-sys",
- "jemallocator",
- "pprof",
- "regex",
-]
-
-[[package]]
-name = "aptos-protos"
-version = "1.3.1"
-source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
-dependencies = [
- "pbjson",
- "prost 0.13.4",
- "serde",
- "tonic 0.12.3",
-]
-
-[[package]]
-name = "aptos-system-utils"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
-dependencies = [
- "anyhow",
- "aptos-profiler",
- "async-mutex",
- "http 0.2.11",
- "hyper 0.14.28",
- "lazy_static",
- "mime",
- "pprof",
- "regex",
- "rstack-self",
- "tokio",
- "tracing",
- "url",
-]
-
-[[package]]
-name = "aptos-transaction-filter"
-version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-core.git?rev=2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686#2dd9c73b27fdcbe78c7391fd43c9a5d00b93e686"
-dependencies = [
- "anyhow",
- "aptos-protos",
- "derivative",
- "derive_builder",
- "memchr",
- "once_cell",
- "prost 0.13.4",
- "serde",
- "serde_json",
- "serde_yaml 0.8.26",
- "thiserror",
-]
-
-[[package]]
 name = "arbitrary"
 version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6621,7 +6469,7 @@ dependencies = [
 [[package]]
 name = "instrumented-channel"
 version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
 dependencies = [
  "delegate",
  "derive_builder",
@@ -7477,7 +7325,6 @@ name = "lumio"
 version = "7.8.0"
 dependencies = [
  "anyhow",
- "aptos-indexer-processor-sdk",
  "async-trait",
  "backoff",
  "base64 0.13.1",
@@ -7512,6 +7359,7 @@ dependencies = [
  "lumio-github-client",
  "lumio-global-constants",
  "lumio-indexer-grpc-server-framework",
+ "lumio-indexer-processor-sdk",
  "lumio-keygen",
  "lumio-ledger",
  "lumio-localnet",
@@ -7615,7 +7463,7 @@ dependencies = [
  "lumio-mempool",
  "lumio-runtimes",
  "lumio-storage-interface",
- "lumio-system-utils",
+ "lumio-system-utils 0.1.0",
  "lumio-types",
  "sha256",
  "tikv-jemalloc-ctl",
@@ -8719,7 +8567,7 @@ dependencies = [
  "lumio-metrics-core",
  "lumio-mvhashmap",
  "lumio-node-resource-metrics",
- "lumio-profiler",
+ "lumio-profiler 0.1.0",
  "lumio-push-metrics",
  "lumio-sdk",
  "lumio-storage-interface",
@@ -9341,7 +9189,6 @@ name = "lumio-indexer-grpc-cache-worker"
 version = "1.0.0"
 dependencies = [
  "anyhow",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "async-trait",
  "clap 4.5.21",
  "futures",
@@ -9350,7 +9197,8 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-protos",
+ "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-protos 1.3.1",
  "once_cell",
  "prost 0.13.4",
  "redis",
@@ -9369,15 +9217,15 @@ name = "lumio-indexer-grpc-data-service"
 version = "1.0.0"
 dependencies = [
  "anyhow",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "async-trait",
  "clap 4.5.21",
  "futures",
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-protos",
- "lumio-transaction-filter",
+ "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-protos 1.3.1",
+ "lumio-transaction-filter 0.1.0",
  "once_cell",
  "prost 0.13.4",
  "redis",
@@ -9406,8 +9254,8 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-protos",
- "lumio-transaction-filter",
+ "lumio-protos 1.3.1",
+ "lumio-transaction-filter 0.1.0",
  "once_cell",
  "prost 0.13.4",
  "rand 0.7.3",
@@ -9447,13 +9295,13 @@ name = "lumio-indexer-grpc-file-store"
 version = "1.0.0"
 dependencies = [
  "anyhow",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "async-trait",
  "clap 4.5.21",
  "futures",
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
+ "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
  "once_cell",
  "redis",
  "serde",
@@ -9472,7 +9320,7 @@ dependencies = [
  "futures",
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "serde",
  "serde_json",
  "tikv-jemallocator",
@@ -9487,7 +9335,6 @@ name = "lumio-indexer-grpc-fullnode"
 version = "1.0.0"
 dependencies = [
  "anyhow",
- "aptos-moving-average 0.1.0 (git+https://github.com/aptos-labs/aptos-indexer-processors.git?rev=62beedc881d1b76632318ceb186ee9065236468e)",
  "bcs 0.1.4",
  "bytes",
  "chrono",
@@ -9513,8 +9360,9 @@ dependencies = [
  "lumio-mempool",
  "lumio-mempool-notifications",
  "lumio-metrics-core",
+ "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
  "lumio-proptest-helpers",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "lumio-runtimes",
  "lumio-sdk",
  "lumio-secure-storage",
@@ -9543,7 +9391,7 @@ dependencies = [
  "futures",
  "lazy_static",
  "lumio-indexer-grpc-utils",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "once_cell",
  "redis",
  "redis-test",
@@ -9565,7 +9413,7 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "once_cell",
  "prost 0.13.4",
  "rand 0.7.3",
@@ -9589,7 +9437,7 @@ dependencies = [
  "clap 4.5.21",
  "figment",
  "lumio-metrics-core",
- "lumio-system-utils",
+ "lumio-system-utils 0.1.0",
  "prometheus",
  "serde",
  "tempfile",
@@ -9651,8 +9499,8 @@ dependencies = [
  "futures",
  "itertools 0.13.0",
  "lumio-metrics-core",
- "lumio-protos",
- "lumio-transaction-filter",
+ "lumio-protos 1.3.1",
+ "lumio-transaction-filter 0.1.0",
  "lz4",
  "once_cell",
  "prometheus",
@@ -9680,7 +9528,7 @@ dependencies = [
  "futures",
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "serde",
  "serde_json",
  "tikv-jemallocator",
@@ -9692,10 +9540,62 @@ dependencies = [
 ]
 
 [[package]]
+name = "lumio-indexer-processor-sdk"
+version = "0.1.0"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+dependencies = [
+ "ahash 0.8.11",
+ "anyhow",
+ "async-trait",
+ "autometrics",
+ "axum 0.7.5",
+ "backtrace",
+ "bcs 0.1.4",
+ "bigdecimal",
+ "chrono",
+ "clap 4.5.21",
+ "derive_builder",
+ "diesel",
+ "diesel-async",
+ "diesel_migrations",
+ "field_count",
+ "futures",
+ "futures-util",
+ "hex",
+ "indexmap 2.7.0",
+ "instrumented-channel",
+ "kanal",
+ "lumio-indexer-transaction-stream",
+ "lumio-protos 1.3.1 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
+ "lumio-system-utils 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
+ "mockall 0.12.1",
+ "native-tls",
+ "num_cpus",
+ "once_cell",
+ "petgraph 0.6.5",
+ "postgres-native-tls",
+ "prometheus",
+ "prometheus-client",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "sha2 0.9.9",
+ "tempfile",
+ "thiserror",
+ "tiny-keccak",
+ "tokio",
+ "tokio-postgres",
+ "toml 0.7.8",
+ "tracing",
+ "tracing-subscriber 0.3.18",
+ "url",
+]
+
+[[package]]
 name = "lumio-indexer-test-transactions"
 version = "1.0.0"
 dependencies = [
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "serde_json",
 ]
 
@@ -9711,7 +9611,7 @@ dependencies = [
  "lumio-config",
  "lumio-faucet-core",
  "lumio-indexer-grpc-utils",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "rand 0.7.3",
  "serde",
  "serde_json",
@@ -9721,6 +9621,28 @@ dependencies = [
  "tokio-stream",
  "toml 0.7.8",
  "tonic 0.12.3",
+ "url",
+]
+
+[[package]]
+name = "lumio-indexer-transaction-stream"
+version = "0.1.0"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "futures-util",
+ "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git)",
+ "lumio-protos 1.3.1 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
+ "lumio-transaction-filter 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
+ "once_cell",
+ "prometheus",
+ "prost 0.13.4",
+ "sample",
+ "serde",
+ "tokio",
+ "tonic 0.12.3",
+ "tracing",
  "url",
 ]
 
@@ -10001,7 +9923,7 @@ dependencies = [
  "dirs 5.0.1",
  "futures",
  "lumio-indexer-grpc-utils",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "lumio-rest-client",
  "processor",
  "reqwest 0.11.23",
@@ -10216,6 +10138,22 @@ dependencies = [
  "sha3 0.9.1",
  "smallvec",
  "tempfile",
+]
+
+[[package]]
+name = "lumio-moving-average"
+version = "0.1.0"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+dependencies = [
+ "chrono",
+]
+
+[[package]]
+name = "lumio-moving-average"
+version = "0.1.0"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processors.git#d3544ad1b00492cfec9a972f1fa8d9306ae55c16"
+dependencies = [
+ "chrono",
 ]
 
 [[package]]
@@ -10700,6 +10638,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "lumio-profiler"
+version = "0.1.0"
+source = "git+ssh://git@github.com/pontem-network/lumio-node.git#2805dfcbaee46b8d9f328c787693aeed1b0ddf80"
+dependencies = [
+ "anyhow",
+ "pprof",
+ "regex",
+ "tikv-jemalloc-sys",
+]
+
+[[package]]
 name = "lumio-proptest-helpers"
 version = "0.1.0"
 dependencies = [
@@ -10711,6 +10660,17 @@ dependencies = [
 [[package]]
 name = "lumio-protos"
 version = "1.3.1"
+dependencies = [
+ "pbjson",
+ "prost 0.13.4",
+ "serde",
+ "tonic 0.12.3",
+]
+
+[[package]]
+name = "lumio-protos"
+version = "1.3.1"
+source = "git+ssh://git@github.com/pontem-network/lumio-node.git#2805dfcbaee46b8d9f328c787693aeed1b0ddf80"
 dependencies = [
  "pbjson",
  "prost 0.13.4",
@@ -11082,7 +11042,7 @@ dependencies = [
  "lumio-config",
  "lumio-logger",
  "lumio-metrics-core",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "once_cell",
  "serde",
  "thiserror",
@@ -11302,7 +11262,27 @@ dependencies = [
  "http 0.2.11",
  "hyper 0.14.28",
  "lazy_static",
- "lumio-profiler",
+ "lumio-profiler 0.1.0",
+ "mime",
+ "pprof",
+ "regex",
+ "rstack-self",
+ "tokio",
+ "tracing",
+ "url",
+]
+
+[[package]]
+name = "lumio-system-utils"
+version = "0.1.0"
+source = "git+ssh://git@github.com/pontem-network/lumio-node.git#2805dfcbaee46b8d9f328c787693aeed1b0ddf80"
+dependencies = [
+ "anyhow",
+ "async-mutex",
+ "http 0.2.11",
+ "hyper 0.14.28",
+ "lazy_static",
+ "lumio-profiler 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
  "mime",
  "pprof",
  "regex",
@@ -11538,8 +11518,26 @@ dependencies = [
  "anyhow",
  "derivative",
  "derive_builder",
- "lumio-protos",
+ "lumio-protos 1.3.1",
  "lz4",
+ "memchr",
+ "once_cell",
+ "prost 0.13.4",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.8.26",
+ "thiserror",
+]
+
+[[package]]
+name = "lumio-transaction-filter"
+version = "0.1.0"
+source = "git+ssh://git@github.com/pontem-network/lumio-node.git#2805dfcbaee46b8d9f328c787693aeed1b0ddf80"
+dependencies = [
+ "anyhow",
+ "derivative",
+ "derive_builder",
+ "lumio-protos 1.3.1 (git+ssh://git@github.com/pontem-network/lumio-node.git)",
  "memchr",
  "once_cell",
  "prost 0.13.4",
@@ -12040,7 +12038,6 @@ name = "lumio-workspace-server"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-indexer-processor-sdk",
  "bollard",
  "clap 4.5.21",
  "diesel",
@@ -12049,6 +12046,7 @@ dependencies = [
  "lumio-cached-packages",
  "lumio-config",
  "lumio-faucet-core",
+ "lumio-indexer-processor-sdk",
  "lumio-localnet",
  "lumio-node",
  "lumio-types",
@@ -15312,13 +15310,12 @@ dependencies = [
 [[package]]
 name = "processor"
 version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processors-v2.git?tag=aptos-indexer-processors-v2.1.5#a1a0cfeff7febc81dbe5a238ed5318f319aaef6c"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processors-v2.git#d0afb634a00609dd45f17f7c613255a78b2258b4"
 dependencies = [
  "ahash 0.8.11",
  "allocative",
  "allocative_derive",
  "anyhow",
- "aptos-indexer-processor-sdk",
  "async-trait",
  "bcs 0.1.4",
  "bigdecimal",
@@ -15343,6 +15340,7 @@ dependencies = [
  "jemallocator",
  "lazy_static",
  "log",
+ "lumio-indexer-processor-sdk",
  "native-tls",
  "num_cpus",
  "once_cell",
@@ -16818,7 +16816,7 @@ dependencies = [
 [[package]]
 name = "sample"
 version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-indexer-processor-sdk.git?tag=aptos-indexer-processor-sdk-v2.1.2#188ba1a37597739a2e503165dec0c3fcc63c89ec"
+source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
 dependencies = [
  "tracing",
 ]

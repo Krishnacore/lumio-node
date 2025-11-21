@@ -6,7 +6,5 @@ upgrade_policy = "compatible"
 [addresses]
 test_account = "_"
 
-[dependencies.LumioFramework]
-git = "https://github.com/pontem-network/lumio-framework.git"
-subdir = "lumio-framework"
-rev = "mainnet"
+[dependencies]
+LumioFramework = { local = "../../framework/lumio-framework" }
