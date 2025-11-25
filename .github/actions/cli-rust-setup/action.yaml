@@ -4,6 +4,9 @@ inputs:
   GIT_CREDENTIALS:
     description: "Optional credentials to pass to git"
     required: false
+  SSH_KEY:
+    description: "Optional SSH private key for private dependencies"
+    required: false
   ADDITIONAL_KEY:
     description: "An optional additional key to pass to rust-cache"
     required: false
@@ -12,34 +15,43 @@ inputs:
 runs:
   using: composite
   steps:
+    - run: echo "HELLO FROM UPDATED ACTION"
+      shell: bash
     - uses: dsherret/rust-toolchain-file@v1
-    # rust-cache action will cache ~/.cargo and ./target
-    # https://github.com/Swatinem/rust-cache#cache-details
-    - name: Run cargo cache
-      uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # pin@v2.7.8
-      with:
-        key: ${{ inputs.ADDITIONAL_KEY }}
     - name: Install build tools
       shell: bash
       run: scripts/cli/minimal_cli_build.sh
     - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
       shell: bash
     - name: Setup git credentials
-      if: inputs.GIT_CREDENTIALS != ''
       shell: bash
       run: |
-        # Configure git to use the provided credentials directly in the URL
-        # This ensures that rewritten SSH URLs include the authentication token
-        AUTH_URL="${{ inputs.GIT_CREDENTIALS }}"
+        # Ensure github.com is in known_hosts
+        mkdir -p ~/.ssh
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
         
-        git config --global url."${AUTH_URL}/".insteadOf "ssh://git@github.com/"
-        git config --global url."${AUTH_URL}/".insteadOf "git@github.com:"
+        # If SSH_KEY is provided, write it to file and configure git
+        if [ -n "${{ inputs.SSH_KEY }}" ]; then
+          echo "Setting up SSH key from input..."
+          echo "${{ inputs.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Start ssh-agent manually if needed, or just let git use the file
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_ed25519
+          
+          # Configure git to use ssh explicitly if needed
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+        fi
         
-        # Also configure credential helper as a fallback
-        git config --global credential.helper store
-        echo "${AUTH_URL}" > ~/.git-credentials
+        # Debug SSH connection
+        echo "=== SSH Debug Info ==="
+        ssh-add -l || echo "No keys in agent"
+        ssh -v -T git@github.com || true
+        echo "======================"
         
-        echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+        # Clean up any previous HTTPS/Cargo config overrides
+        rm -rf ~/.cargo/config.toml .cargo/config.toml
+        rm -rf ~/.cargo/git/db/*
 
     # Display the rust toolchain version being installed
     - name: Setup rust toolchain

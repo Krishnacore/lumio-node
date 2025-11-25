@@ -35,9 +35,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
-      - uses: ./.github/actions/cli-rust-setup
-        with:
-          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI so it respects core.sshCommand
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Ubuntu-22.04" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -54,9 +82,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
-      - uses: ./.github/actions/cli-rust-setup
-        with:
-          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Ubuntu-24.04" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -75,9 +131,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
-      - uses: ./.github/actions/cli-rust-setup
-        with:
-          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Linux" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "true"
       - name: Upload Binary
@@ -110,9 +194,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
-      - uses: ./.github/actions/cli-rust-setup
-        with:
-          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -128,9 +240,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
-      - uses: ./.github/actions/cli-rust-setup
-        with:
-          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -146,21 +286,42 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
+      
+      - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install build tools
+        shell: bash
+        run: scripts/cli/minimal_cli_build.sh
+        
+      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+        shell: bash
+
       # Ensure that long paths work
       - name: Ensure long paths work
         run: git config --global core.longpaths true
         shell: bash
+
       - name: Setup git credentials
         shell: bash
         run: |
-          AUTH_URL="https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
-          git config --global url."${AUTH_URL}/".insteadOf "ssh://git@github.com/"
-          git config --global url."${AUTH_URL}/".insteadOf "git@github.com:"
+          # Ensure github.com is in known_hosts to prevent interactive prompts
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           
-          git config --global credential.helper store
-          echo "${AUTH_URL}" > ~/.git-credentials
+          # Write SSH Key from secret to file
+          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           
+          # Configure git to use this key specifically
+          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+          
+          # Clean up any previous config
+          rm -rf ~/.cargo/config.toml .cargo/config.toml
+          rm -rf ~/.cargo/git/db/*
+          
+          # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+
       - name: Build CLI
         run: scripts\cli\build_cli_release.ps1
       - name: Upload Binary
@@ -236,9 +397,9 @@ jobs:
   #         create-pullrequest: true
   #         commit-message: |
   #           {{formulaName}} {{version}}
-
+  #
   #           Created by https://github.com/mislav/bump-homebrew-formula-action
-
+  #
   #           From CLI release run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
   #       env:
   #         COMMITTER_TOKEN: ${{ secrets.LUMIO_BOT_GH_PAT_LUMIO_CORE_HOMEBREW_BUMPER }}
