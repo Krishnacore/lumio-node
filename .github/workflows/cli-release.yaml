@@ -289,10 +289,6 @@ jobs:
       
       - uses: dsherret/rust-toolchain-file@v1
       
-      - name: Install build tools
-        shell: bash
-        run: scripts/cli/minimal_cli_build.sh
-        
       - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
         shell: bash
 
