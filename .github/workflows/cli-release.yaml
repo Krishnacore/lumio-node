@@ -155,6 +155,8 @@ jobs:
         run: |
           git config --global credential.helper store
           echo "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com" > ~/.git-credentials
+          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
       - name: Build CLI
         run: scripts\cli\build_cli_release.ps1
       - name: Upload Binary
