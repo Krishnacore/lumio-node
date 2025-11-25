@@ -59,10 +59,6 @@ jobs:
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
           
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
-          
           # FORCE Cargo to use git CLI so it respects core.sshCommand
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
 
@@ -105,10 +101,6 @@ jobs:
           
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
-          
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
           
           # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
@@ -154,10 +146,6 @@ jobs:
           
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
-          
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
           
           # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
@@ -218,10 +206,6 @@ jobs:
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
           
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
-          
           # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
 
@@ -263,10 +247,6 @@ jobs:
           
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
-          
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
           
           # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
@@ -310,10 +290,6 @@ jobs:
           
           # Configure git to use this key specifically
           git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
-          
-          # Clean up any previous config
-          rm -rf ~/.cargo/config.toml .cargo/config.toml
-          rm -rf ~/.cargo/git/db/*
           
           # FORCE Cargo to use git CLI
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
