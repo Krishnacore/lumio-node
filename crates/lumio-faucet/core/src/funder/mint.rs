@@ -5,10 +5,11 @@
 use super::{FunderHealthMessage, FunderTrait};
 use crate::endpoints::{LumioTapError, LumioTapErrorCode};
 use anyhow::{Context, Result};
+use async_trait::async_trait;
 use lumio_logger::info;
 use lumio_sdk::{
     crypto::ed25519::Ed25519PublicKey,
-    rest_client::{LumioBaseUrl, Client},
+    rest_client::{Client, LumioBaseUrl},
     transaction_builder::{lumio_stdlib, TransactionFactory},
     types::{
         account_address::AccountAddress,
@@ -19,7 +20,6 @@ use lumio_sdk::{
         LocalAccount,
     },
 };
-use async_trait::async_trait;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;

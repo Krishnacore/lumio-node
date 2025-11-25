@@ -6469,7 +6469,7 @@ dependencies = [
 [[package]]
 name = "instrumented-channel"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git#bab2c4a8d1bda3ee940e3b7b4a791dddc79b29ea"
 dependencies = [
  "delegate",
  "derive_builder",
@@ -9197,7 +9197,7 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-moving-average 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-indexer-processors.git)",
  "lumio-protos",
  "once_cell",
  "prost 0.13.4",
@@ -9223,7 +9223,7 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-moving-average 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-indexer-processors.git)",
  "lumio-protos",
  "lumio-transaction-filter",
  "once_cell",
@@ -9301,7 +9301,7 @@ dependencies = [
  "lumio-indexer-grpc-server-framework",
  "lumio-indexer-grpc-utils",
  "lumio-metrics-core",
- "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-moving-average 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-indexer-processors.git)",
  "once_cell",
  "redis",
  "serde",
@@ -9360,7 +9360,7 @@ dependencies = [
  "lumio-mempool",
  "lumio-mempool-notifications",
  "lumio-metrics-core",
- "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processors.git)",
+ "lumio-moving-average 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-indexer-processors.git)",
  "lumio-proptest-helpers",
  "lumio-protos",
  "lumio-runtimes",
@@ -9542,7 +9542,7 @@ dependencies = [
 [[package]]
 name = "lumio-indexer-processor-sdk"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git#bab2c4a8d1bda3ee940e3b7b4a791dddc79b29ea"
 dependencies = [
  "ahash 0.8.11",
  "anyhow",
@@ -9627,12 +9627,12 @@ dependencies = [
 [[package]]
 name = "lumio-indexer-transaction-stream"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git#bab2c4a8d1bda3ee940e3b7b4a791dddc79b29ea"
 dependencies = [
  "anyhow",
  "chrono",
  "futures-util",
- "lumio-moving-average 0.1.0 (git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git)",
+ "lumio-moving-average 0.1.0 (git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git)",
  "lumio-protos",
  "lumio-transaction-filter",
  "once_cell",
@@ -10143,7 +10143,7 @@ dependencies = [
 [[package]]
 name = "lumio-moving-average"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git#bab2c4a8d1bda3ee940e3b7b4a791dddc79b29ea"
 dependencies = [
  "chrono",
 ]
@@ -10151,7 +10151,7 @@ dependencies = [
 [[package]]
 name = "lumio-moving-average"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processors.git#d3544ad1b00492cfec9a972f1fa8d9306ae55c16"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processors.git#4f761fa59d3f731af4568639b5a4a57c2c12c6b6"
 dependencies = [
  "chrono",
 ]
@@ -15250,7 +15250,7 @@ dependencies = [
 [[package]]
 name = "processor"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processors-v2.git#d0afb634a00609dd45f17f7c613255a78b2258b4"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processors-v2.git#0161a5e47421f25a68b8607ad0a1262cf677f787"
 dependencies = [
  "ahash 0.8.11",
  "allocative",
@@ -16756,7 +16756,7 @@ dependencies = [
 [[package]]
 name = "sample"
 version = "0.1.0"
-source = "git+https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git#bbc4a4e6a41d068e126c50f8d4adae2bbe437ab9"
+source = "git+ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git#bab2c4a8d1bda3ee940e3b7b4a791dddc79b29ea"
 dependencies = [
  "tracing",
 ]

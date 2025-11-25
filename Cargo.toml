@@ -503,10 +503,10 @@ ark-groth16 = "0.4.0"
 ark-relations = "0.4.0"
 ark-serialize = "0.4.0"
 ark-std = { version = "0.4.0", features = ["getrandom"] }
-lumio-indexer-processor-sdk = { git = "https://github.com/vladimirovmm/lumio-indexer-processor-sdk.git", features = [
+lumio-indexer-processor-sdk = { git = "ssh://git@github.com/pontem-network/lumio-indexer-processor-sdk.git", features = [
     "postgres_partial",
 ] }
-lumio-moving-average = { git = "https://github.com/vladimirovmm/lumio-indexer-processors.git" }
+lumio-moving-average = { git = "ssh://git@github.com/pontem-network/lumio-indexer-processors.git" }
 assert_approx_eq = "1.1.0"
 async-channel = "1.7.1"
 async-mutex = "1.4.0"
@@ -710,7 +710,7 @@ pretty = "0.10.0"
 pretty_assertions = "1.2.1"
 # We set default-features to false so we don't onboard the libpq dep. See more here:
 # https://github.com/aptos-labs/aptos-core/pull/12568
-processor = { git = "https://github.com/vladimirovmm/lumio-indexer-processors-v2.git", default-features = false }
+processor = { git = "ssh://git@github.com/pontem-network/lumio-indexer-processors-v2.git", default-features = false }
 procfs = "0.14.1"
 proc-macro2 = "1.0.38"
 project-root = "0.2.2"
