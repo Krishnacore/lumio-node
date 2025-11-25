@@ -177,15 +177,18 @@ jobs:
 
   build-macos-x86_64-binary:
     name: "Build MacOS x86_64 binary"
-    runs-on: macos-15-intel
+    runs-on: macos-14
     env:
-      CFLAGS: "-mno-adx"
+      CARGO_BUILD_TARGET: x86_64-apple-darwin
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       
       - uses: dsherret/rust-toolchain-file@v1
+      
+      - name: Install target
+        run: rustup target add x86_64-apple-darwin
       
       - name: Install build tools
         shell: bash
