@@ -32,6 +32,7 @@ runs:
         echo "${{ inputs.GIT_CREDENTIALS }}" > ~/.git-credentials
         git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
         git config --global url."https://github.com/".insteadOf "git@github.com:"
+        echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
 
     # Display the rust toolchain version being installed
     - name: Setup rust toolchain

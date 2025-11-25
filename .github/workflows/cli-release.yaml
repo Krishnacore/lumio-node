@@ -157,6 +157,7 @@ jobs:
           echo "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com" > ~/.git-credentials
           git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
           git config --global url."https://github.com/".insteadOf "git@github.com:"
+          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
       - name: Build CLI
         run: scripts\cli\build_cli_release.ps1
       - name: Upload Binary
