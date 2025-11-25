@@ -28,10 +28,17 @@ runs:
       if: inputs.GIT_CREDENTIALS != ''
       shell: bash
       run: |
+        # Configure git to use the provided credentials directly in the URL
+        # This ensures that rewritten SSH URLs include the authentication token
+        AUTH_URL="${{ inputs.GIT_CREDENTIALS }}"
+        
+        git config --global url."${AUTH_URL}/".insteadOf "ssh://git@github.com/"
+        git config --global url."${AUTH_URL}/".insteadOf "git@github.com:"
+        
+        # Also configure credential helper as a fallback
         git config --global credential.helper store
-        echo "${{ inputs.GIT_CREDENTIALS }}" > ~/.git-credentials
-        git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-        git config --global url."https://github.com/".insteadOf "git@github.com:"
+        echo "${AUTH_URL}" > ~/.git-credentials
+        
         echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
 
     # Display the rust toolchain version being installed

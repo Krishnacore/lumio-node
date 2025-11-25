@@ -105,7 +105,7 @@ jobs:
 
   build-macos-x86_64-binary:
     name: "Build MacOS x86_64 binary"
-    runs-on: macos-13
+    runs-on: macos-15-intel
     steps:
       - uses: actions/checkout@v4
         with:
@@ -153,10 +153,13 @@ jobs:
       - name: Setup git credentials
         shell: bash
         run: |
+          AUTH_URL="https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
+          git config --global url."${AUTH_URL}/".insteadOf "ssh://git@github.com/"
+          git config --global url."${AUTH_URL}/".insteadOf "git@github.com:"
+          
           git config --global credential.helper store
-          echo "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com" > ~/.git-credentials
-          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          echo "${AUTH_URL}" > ~/.git-credentials
+          
           echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
       - name: Build CLI
         run: scripts\cli\build_cli_release.ps1
