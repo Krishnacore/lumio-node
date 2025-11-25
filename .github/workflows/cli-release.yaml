@@ -36,6 +36,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       - uses: ./.github/actions/cli-rust-setup
+        with:
+          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Ubuntu-22.04" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -53,6 +55,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       - uses: ./.github/actions/cli-rust-setup
+        with:
+          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Ubuntu-24.04" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -72,6 +76,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       - uses: ./.github/actions/cli-rust-setup
+        with:
+          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "Linux" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "true"
       - name: Upload Binary
@@ -105,6 +111,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       - uses: ./.github/actions/cli-rust-setup
+        with:
+          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -121,6 +129,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.source_git_ref_override }}
       - uses: ./.github/actions/cli-rust-setup
+        with:
+          GIT_CREDENTIALS: "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com"
       - name: Build CLI
         run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
       - name: Upload Binary
@@ -140,6 +150,11 @@ jobs:
       - name: Ensure long paths work
         run: git config --global core.longpaths true
         shell: bash
+      - name: Setup git credentials
+        shell: bash
+        run: |
+          git config --global credential.helper store
+          echo "https://git:${{ secrets.LUMIO_BUILD_PAT }}@github.com" > ~/.git-credentials
       - name: Build CLI
         run: scripts\cli\build_cli_release.ps1
       - name: Upload Binary
