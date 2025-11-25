@@ -175,53 +175,53 @@ jobs:
   #         name: cli-builds-linux-arm
   #         path: lumio-cli-*.zip
 
-  build-macos-x86_64-binary:
-    name: "Build MacOS x86_64 binary"
-    runs-on: macos-14
-    env:
-      CARGO_BUILD_TARGET: x86_64-apple-darwin
-      RUSTFLAGS: "--cfg tokio_unstable"
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.source_git_ref_override }}
+  # build-macos-x86_64-binary:
+  #   name: "Build MacOS x86_64 binary"
+  #   runs-on: macos-14
+  #   env:
+  #     CARGO_BUILD_TARGET: x86_64-apple-darwin
+  #     RUSTFLAGS: "--cfg tokio_unstable"
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ github.event.inputs.source_git_ref_override }}
       
-      - uses: dsherret/rust-toolchain-file@v1
+  #     - uses: dsherret/rust-toolchain-file@v1
       
-      - name: Install target
-        run: rustup target add x86_64-apple-darwin
+  #     - name: Install target
+  #       run: rustup target add x86_64-apple-darwin
       
-      - name: Install build tools
-        shell: bash
-        run: scripts/cli/minimal_cli_build.sh
+  #     - name: Install build tools
+  #       shell: bash
+  #       run: scripts/cli/minimal_cli_build.sh
         
-      - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
-        shell: bash
+  #     - run: echo "/home/runner/.cargo/bin" | tee -a $GITHUB_PATH
+  #       shell: bash
 
-      - name: Setup git credentials
-        shell: bash
-        run: |
-          # Ensure github.com is in known_hosts to prevent interactive prompts
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+  #     - name: Setup git credentials
+  #       shell: bash
+  #       run: |
+  #         # Ensure github.com is in known_hosts to prevent interactive prompts
+  #         mkdir -p ~/.ssh
+  #         ssh-keyscan github.com >> ~/.ssh/known_hosts
           
-          # Write SSH Key from secret to file
-          echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+  #         # Write SSH Key from secret to file
+  #         echo "${{ secrets.LUMIO_BUILD_SSH_KEY }}" > ~/.ssh/id_ed25519
+  #         chmod 600 ~/.ssh/id_ed25519
           
-          # Configure git to use this key specifically
-          git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
+  #         # Configure git to use this key specifically
+  #         git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"
           
-          # FORCE Cargo to use git CLI
-          echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
+  #         # FORCE Cargo to use git CLI
+  #         echo "CARGO_NET_GIT_FETCH_WITH_CLI=true" >> $GITHUB_ENV
 
-      - name: Build CLI
-        run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
-      - name: Upload Binary
-        uses: actions/upload-artifact@v4
-        with:
-          name: cli-builds-macos-x86-64
-          path: lumio-cli-*.zip
+  #     - name: Build CLI
+  #       run: scripts/cli/build_cli_release.sh "macOS" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
+  #     - name: Upload Binary
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: cli-builds-macos-x86-64
+  #         path: lumio-cli-*.zip
 
   build-macos-arm-binary:
     name: "Build MacOS ARM binary"
@@ -317,7 +317,7 @@ jobs:
       - build-linux-binary
       # - build-linux-arm-binary
       - build-macos-arm-binary
-      - build-macos-x86_64-binary
+      # - build-macos-x86_64-binary
     runs-on: ubuntu-latest
     permissions:
       contents: "write"
