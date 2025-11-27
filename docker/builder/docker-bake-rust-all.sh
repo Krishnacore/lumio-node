@@ -82,10 +82,16 @@ echo "Building target: ${BUILD_TARGET}"
 echo "To build only a specific target, run: docker/builder/docker-bake-rust-all.sh <target>"
 echo "E.g. docker/builder/docker-bake-rust-all.sh forge-images"
 
+# Only use --allow=ssh if SSH_AUTH_SOCK is available (SSH agent is running)
+SSH_ALLOW=""
+if [ -n "$SSH_AUTH_SOCK" ]; then
+  SSH_ALLOW="--allow=ssh"
+fi
+
 if [ "$CI" == "true" ]; then
-  docker buildx bake --allow=ssh --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
+  docker buildx bake $SSH_ALLOW --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
 else
-  docker buildx bake --allow=ssh --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
+  docker buildx bake $SSH_ALLOW --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
 fi
 
 echo "Build complete. Docker buildx cache usage:"

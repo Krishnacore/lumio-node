@@ -49,6 +49,10 @@ variable "FEATURES" {
 variable "CARGO_TARGET_DIR" {
   // Cargo target directory
 }
+variable "SSH_AUTH_SOCK" {
+  // SSH agent socket - if empty, ssh mount will be disabled
+  default = ""
+}
 
 group "all" {
   targets = flatten([
@@ -95,7 +99,7 @@ target "builder-base" {
     "id=GIT_CREDENTIALS",
     "id=SSH_KEY,env=SSH_KEY_B64"
   ]
-  ssh = ["default"]
+  ssh = SSH_AUTH_SOCK != "" ? ["default"] : []
 }
 
 target "lumio-node-builder" {
@@ -108,7 +112,7 @@ target "lumio-node-builder" {
     "id=GIT_CREDENTIALS",
     "id=SSH_KEY,env=SSH_KEY_B64"
   ]
-  ssh = ["default"]
+  ssh = SSH_AUTH_SOCK != "" ? ["default"] : []
 }
 
 target "tools-builder" {
@@ -121,7 +125,7 @@ target "tools-builder" {
     "id=GIT_CREDENTIALS",
     "id=SSH_KEY,env=SSH_KEY_B64"
   ]
-  ssh = ["default"]
+  ssh = SSH_AUTH_SOCK != "" ? ["default"] : []
 }
 
 target "indexer-builder" {
@@ -134,7 +138,7 @@ target "indexer-builder" {
     "id=GIT_CREDENTIALS",
     "id=SSH_KEY,env=SSH_KEY_B64"
   ]
-  ssh = ["default"]
+  ssh = SSH_AUTH_SOCK != "" ? ["default"] : []
 }
 
 target "_common" {
