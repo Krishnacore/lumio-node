@@ -13,14 +13,14 @@ use crate::{
     ApiTags, Context,
 };
 use anyhow::Context as anyhowContext;
+use itertools::Itertools;
 use lumio_api_types::{
-    LumioErrorCode, AsConverter, MoveValue, ViewFunction, ViewRequest, MAX_RECURSIVE_TYPES_ALLOWED,
+    AsConverter, LumioErrorCode, MoveValue, ViewFunction, ViewRequest, MAX_RECURSIVE_TYPES_ALLOWED,
     U64,
 };
 use lumio_bcs_utils::serialize_uleb128;
 use lumio_types::{state_store::StateView, transaction::ViewFunctionError, vm_status::StatusCode};
 use lumio_vm::LumioVM;
-use itertools::Itertools;
 use move_core_types::language_storage::TypeTag;
 use poem_openapi::{param::Query, payload::Json, ApiRequest, OpenApi};
 use std::sync::Arc;
@@ -56,6 +56,10 @@ pub enum ViewFunctionRequest {
 
     #[oai(content_type = "application/x.lumio.view_function+bcs")]
     Bcs(Bcs),
+
+    // to support the wallet
+    #[oai(content_type = "application/x.aptos.view_function+bcs")]
+    Old(Bcs),
 }
 
 #[OpenApi]
@@ -123,7 +127,7 @@ fn view_request(
                     &ledger_info,
                 )
             })?,
-        ViewFunctionRequest::Bcs(data) => {
+        ViewFunctionRequest::Bcs(data) | ViewFunctionRequest::Old(data) => {
             bcs::from_bytes_with_limit(data.0.as_slice(), MAX_RECURSIVE_TYPES_ALLOWED as usize)
                 .context("Failed to deserialize input into ViewRequest")
                 .map_err(|err| {
