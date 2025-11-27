@@ -23,8 +23,8 @@ use crate::{
 use anyhow::Context as AnyhowContext;
 use lumio_api_types::{
     transaction::TransactionSummary, verify_function_identifier, verify_module_identifier, Address,
-    LumioError, LumioErrorCode, AsConverter, EncodeSubmissionRequest, GasEstimation,
-    GasEstimationBcs, HashValue, HexEncodedBytes, LedgerInfo, MoveType, PendingTransaction,
+    AsConverter, EncodeSubmissionRequest, GasEstimation, GasEstimationBcs, HashValue,
+    HexEncodedBytes, LedgerInfo, LumioError, LumioErrorCode, MoveType, PendingTransaction,
     SubmitTransactionRequest, Transaction, TransactionData, TransactionOnChainData,
     TransactionsBatchSingleSubmissionFailure, TransactionsBatchSubmissionResult, UserTransaction,
     VerifyInput, VerifyInputWithRecursion, U64,
@@ -40,7 +40,7 @@ use lumio_types::{
         TransactionPayload, TransactionPayloadInner,
     },
     vm_status::StatusCode,
-    LumioCoinType, CoinType,
+    CoinType, LumioCoinType,
 };
 use lumio_vm::{LumioSimulationVM, LumioVM};
 use move_core_types::{ident_str, language_storage::ModuleId, vm_status::VMStatus};
@@ -91,16 +91,20 @@ pub enum SubmitTransactionPost {
 
     // TODO: Since I don't want to impl all the Poem derives on SignedTransaction,
     // find a way to at least indicate in the spec that it expects a SignedTransaction.
-    // TODO: https://github.com/lumio-labs/lumio-core/issues/2275
+    // TODO: https://github.com/aptos-labs/aptos-core/issues/2275
     #[oai(content_type = "application/x.lumio.signed_transaction+bcs")]
     Bcs(Bcs),
+
+    // to support the wallet
+    #[oai(content_type = "application/x.aptos.signed_transaction+bcs")]
+    Old(Bcs),
 }
 
 impl VerifyInput for SubmitTransactionPost {
     fn verify(&self) -> anyhow::Result<()> {
         match self {
             SubmitTransactionPost::Json(inner) => inner.0.verify(),
-            SubmitTransactionPost::Bcs(_) => Ok(()),
+            SubmitTransactionPost::Bcs(_) | SubmitTransactionPost::Old(_) => Ok(()),
         }
     }
 }
@@ -117,6 +121,10 @@ pub enum SubmitTransactionsBatchPost {
     // TODO: https://github.com/lumio-labs/lumio-core/issues/2275
     #[oai(content_type = "application/x.lumio.signed_transaction+bcs")]
     Bcs(Bcs),
+
+    // to support the wallet
+    #[oai(content_type = "application/x.aptos.signed_transaction+bcs")]
+    Old(Bcs),
 }
 
 impl VerifyInput for SubmitTransactionsBatchPost {
@@ -127,7 +135,7 @@ impl VerifyInput for SubmitTransactionsBatchPost {
                     request.verify()?;
                 }
             },
-            SubmitTransactionsBatchPost::Bcs(_) => {},
+            SubmitTransactionsBatchPost::Bcs(_) | SubmitTransactionsBatchPost::Old(_) => {},
         }
         Ok(())
     }
@@ -1184,7 +1192,7 @@ impl TransactionsApi {
         pub const MAX_SIGNED_TRANSACTION_DEPTH: usize = 16;
 
         match data {
-            SubmitTransactionPost::Bcs(data) => {
+            SubmitTransactionPost::Bcs(data) | SubmitTransactionPost::Old(data) => {
                 let signed_transaction: SignedTransaction =
                     bcs::from_bytes_with_limit(&data.0, MAX_SIGNED_TRANSACTION_DEPTH)
                         .context("Failed to deserialize input into SignedTransaction")
@@ -1326,7 +1334,9 @@ impl TransactionsApi {
         data: SubmitTransactionsBatchPost,
     ) -> Result<Vec<SignedTransaction>, SubmitTransactionError> {
         match data {
-            SubmitTransactionsBatchPost::Bcs(data) => {
+            SubmitTransactionsBatchPost::Bcs(data) |
+            SubmitTransactionsBatchPost::Old(data)
+             => {
                 let signed_transactions = bcs::from_bytes(&data.0)
                     .context("Failed to deserialize input into SignedTransaction")
                     .map_err(|err| {
