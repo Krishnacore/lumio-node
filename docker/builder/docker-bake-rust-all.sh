@@ -29,6 +29,34 @@ export CARGO_TARGET_DIR="target/${FEATURES:-"default"}"
 export TARGET_REGISTRY=${TARGET_REGISTRY:-harbor}
 export HARBOR_REGISTRY=${HARBOR_REGISTRY:-registry.wings.toys/lumio/lumio-node}
 
+# Convenience for local builds: Load SSH key if not provided in env
+if [ -z "$SSH_KEY_B64" ]; then
+  SSH_KEY_RAW=""
+  if [ -n "$SSH_KEY" ]; then
+     SSH_KEY_RAW="$SSH_KEY"
+  elif [ -f "$HOME/.ssh/id_ed25519" ]; then
+    echo "Loading SSH_KEY from $HOME/.ssh/id_ed25519"
+    SSH_KEY_RAW=$(cat "$HOME/.ssh/id_ed25519")
+  elif [ -f "$HOME/.ssh/id_rsa" ]; then
+    echo "Loading SSH_KEY from $HOME/.ssh/id_rsa"
+    SSH_KEY_RAW=$(cat "$HOME/.ssh/id_rsa")
+  fi
+  
+  if [ -n "$SSH_KEY_RAW" ]; then
+    # Base64 encode the key to preserve format through env vars
+    # Try openssl first as it's consistent across macOS/Linux
+    if command -v openssl >/dev/null; then
+      export SSH_KEY_B64=$(echo "$SSH_KEY_RAW" | openssl base64 | tr -d '\n')
+    else
+      # Fallback to base64 command
+      export SSH_KEY_B64=$(echo "$SSH_KEY_RAW" | base64 | tr -d '\n')
+    fi
+  else
+    echo "WARNING: SSH_KEY not set and no default key found. Build might fail if private repos are needed."
+    export SSH_KEY_B64=""
+  fi
+fi
+
 if [ "$PROFILE" = "release" ]; then
   # Do not prefix image tags if we're building the default profile "release"
   profile_prefix=""
@@ -55,9 +83,9 @@ echo "To build only a specific target, run: docker/builder/docker-bake-rust-all.
 echo "E.g. docker/builder/docker-bake-rust-all.sh forge-images"
 
 if [ "$CI" == "true" ]; then
-  docker buildx bake --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
+  docker buildx bake --allow=ssh --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
 else
-  docker buildx bake --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
+  docker buildx bake --allow=ssh --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
 fi
 
 echo "Build complete. Docker buildx cache usage:"

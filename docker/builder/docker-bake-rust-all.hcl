@@ -92,8 +92,10 @@ target "builder-base" {
     BUILT_VIA_BUILDKIT = "true"
   }
   secret = [
-    "id=GIT_CREDENTIALS"
+    "id=GIT_CREDENTIALS",
+    "id=SSH_KEY,env=SSH_KEY_B64"
   ]
+  ssh = ["default"]
 }
 
 target "lumio-node-builder" {
@@ -103,8 +105,10 @@ target "lumio-node-builder" {
     builder-base = "target:builder-base"
   }
   secret = [
-    "id=GIT_CREDENTIALS"
+    "id=GIT_CREDENTIALS",
+    "id=SSH_KEY,env=SSH_KEY_B64"
   ]
+  ssh = ["default"]
 }
 
 target "tools-builder" {
@@ -114,8 +118,10 @@ target "tools-builder" {
     builder-base = "target:builder-base"
   }
   secret = [
-    "id=GIT_CREDENTIALS"
+    "id=GIT_CREDENTIALS",
+    "id=SSH_KEY,env=SSH_KEY_B64"
   ]
+  ssh = ["default"]
 }
 
 target "indexer-builder" {
@@ -125,8 +131,10 @@ target "indexer-builder" {
     builder-base = "target:builder-base"
   }
   secret = [
-    "id=GIT_CREDENTIALS"
+    "id=GIT_CREDENTIALS",
+    "id=SSH_KEY,env=SSH_KEY_B64"
   ]
+  ssh = ["default"]
 }
 
 target "_common" {

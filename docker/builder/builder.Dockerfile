@@ -38,6 +38,8 @@ ARG FEATURES
 ENV FEATURES ${FEATURES}
 ARG CARGO_TARGET_DIR
 ENV CARGO_TARGET_DIR ${CARGO_TARGET_DIR}
+# Force Cargo to use git CLI to respect SSH config
+ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 RUN ARCHITECTURE=$(uname -m | sed -e "s/arm64/arm_64/g" | sed -e "s/aarch64/aarch_64/g") \
     && curl -LOs "https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protoc-21.5-linux-$ARCHITECTURE.zip" \
@@ -46,27 +48,37 @@ RUN ARCHITECTURE=$(uname -m | sed -e "s/arm64/arm_64/g" | sed -e "s/aarch64/aarc
     && chmod +x "/usr/local/bin/protoc" \
     && rm "protoc-21.5-linux-$ARCHITECTURE.zip"
 RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git_credentials \
-    git config --global credential.helper store
+    --mount=type=secret,id=SSH_KEY,target=/root/.ssh_key \
+    git config --global credential.helper store && \
+    mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts && \
+    if [ -f /root/.ssh_key ] && [ -s /root/.ssh_key ]; then \
+        cat /root/.ssh_key | base64 -d > ~/.ssh/id_ed25519 && \
+        chmod 600 ~/.ssh/id_ed25519 && \
+        git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts"; \
+    fi
 
 COPY --link . /lumio/
 
 FROM builder-base as lumio-node-builder
 
-RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
+RUN --mount=type=ssh \
+    --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
     --mount=type=cache,target=/usr/local/cargo/git,id=node-builder-cargo-git-cache \
     --mount=type=cache,target=/usr/local/cargo/registry,id=node-builder-cargo-registry-cache \
     docker/builder/build-node.sh
 
 FROM builder-base as tools-builder
 
-RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
+RUN --mount=type=ssh \
+    --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
     --mount=type=cache,target=/usr/local/cargo/git,id=tools-builder-cargo-git-cache \
     --mount=type=cache,target=/usr/local/cargo/registry,id=tools-builder-cargo-registry-cache \
     docker/builder/build-tools.sh
 
 FROM builder-base as indexer-builder
 
-RUN --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
+RUN --mount=type=ssh \
+    --mount=type=secret,id=GIT_CREDENTIALS,target=/root/.git-credentials \
     --mount=type=cache,target=/usr/local/cargo/git,id=indexer-builder-cargo-git-cache \
     --mount=type=cache,target=/usr/local/cargo/registry,id=indexer-builder-cargo-registry-cache \
     docker/builder/build-indexer.sh
