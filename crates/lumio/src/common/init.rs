@@ -110,13 +110,13 @@ impl CliCommand<()> for InitTool {
             network
         } else {
             eprintln!(
-                "Choose network from [devnet, testnet, mainnet, local, custom | defaults to devnet]"
+                "Choose network from [testnet, local, custom | defaults to testnet]"
             );
             let input = read_line("network")?;
             let input = input.trim();
             if input.is_empty() {
-                eprintln!("No network given, using devnet...");
-                Network::Devnet
+                eprintln!("No network given, using testnet...");
+                Network::Testnet
             } else {
                 Network::from_str(input)?
             }
@@ -147,12 +147,8 @@ impl CliCommand<()> for InitTool {
             Network::Testnet => {
                 profile_config.rest_url =
                     Some("https://api.testnet.lumio.io".to_string());
-                // The faucet in testnet is only accessible with some kind of bypass.
-                // For regular users this can only really mean an auth token. So if
-                // there is no auth token set, we don't set the faucet URL. If the user
-                // is confident they want to use the testnet faucet without a token
-                // they can set it manually with `--network custom` and `--faucet-url`.
-                profile_config.faucet_url = None;
+                profile_config.faucet_url =
+                    Some("https://faucet.testnet.lumio.io".to_string());
             },
             Network::Devnet => {
                 profile_config.rest_url = Some("https://fullnode.devnet.lumiolabs.com".to_string());
@@ -482,14 +478,14 @@ impl FromStr for Network {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         Ok(match s.to_lowercase().trim() {
-            "mainnet" => Self::Mainnet,
+            // "mainnet" => Self::Mainnet,  // Not available yet
             "testnet" => Self::Testnet,
-            "devnet" => Self::Devnet,
+            // "devnet" => Self::Devnet,    // Not available yet
             "local" => Self::Local,
             "custom" => Self::Custom,
             str => {
                 return Err(CliError::CommandArgumentError(format!(
-                    "Invalid network {}.  Must be one of [devnet, testnet, mainnet, local, custom]",
+                    "Invalid network {}.  Must be one of [testnet, local, custom]",
                     str
                 )));
             },
@@ -499,6 +495,6 @@ impl FromStr for Network {
 
 impl Default for Network {
     fn default() -> Self {
-        Self::Devnet
+        Self::Testnet
     }
 }

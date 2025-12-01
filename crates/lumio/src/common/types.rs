@@ -2690,5 +2690,5 @@ pub fn get_mint_site_url(address: Option<AccountAddress>) -> String {
         Some(address) => format!("?address={}", address.to_standard_string()),
         None => "".to_string(),
     };
-    format!("https://lumio.dev/network/faucet{}", params)
+    format!("https://faucet.testnet.lumio.io{}", params)
 }
