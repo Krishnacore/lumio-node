@@ -89,9 +89,9 @@ if [ -n "$SSH_AUTH_SOCK" ]; then
 fi
 
 if [ "$CI" == "true" ]; then
-  docker buildx bake $SSH_ALLOW --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
+  docker buildx bake $SSH_ALLOW --no-cache --pull --progress=plain --file docker/builder/docker-bake-rust-all.hcl --push $BUILD_TARGET
 else
-  docker buildx bake $SSH_ALLOW --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
+  docker buildx bake $SSH_ALLOW --no-cache --pull --file docker/builder/docker-bake-rust-all.hcl $BUILD_TARGET --load
 fi
 
 echo "Build complete. Docker buildx cache usage:"
