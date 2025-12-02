@@ -42,7 +42,7 @@ COPY --link --from=tools-builder /lumio/aptos-move/move-examples/hello_blockchai
 
 ### Get Aptos Move releases for genesis ceremony
 RUN mkdir -p /lumio-framework/move
-COPY --link --from=tools-builder /lumio/dist/head.mrb /lumio-framework/move/head.mrb
+COPY --link --from=tools-builder /lumio/dist/mainnet.mrb /lumio-framework/move/head.mrb
 
 # add build info
 ARG BUILD_DATE

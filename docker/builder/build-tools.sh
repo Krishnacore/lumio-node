@@ -46,4 +46,4 @@ done
 
 # Build the Lumio Move framework and place it in dist. It can be found afterwards in the current directory.
 echo "Building the Lumio Move framework..."
-(cd dist && cargo run --locked --profile=$PROFILE --package lumio-framework -- release)
+(cd dist && cargo run --locked --profile=$PROFILE --package lumio-framework -- release --target mainnet)
