@@ -25,7 +25,7 @@ RUN mkdir -p /opt/lumio/etc /opt/lumio-framework
 COPY --link --from=node-builder /lumio/dist/lumio-node /usr/local/bin/
 COPY --link --from=tools-builder /lumio/dist/lumio-debugger /usr/local/bin/
 COPY --link --from=tools-builder /lumio/dist/lumio /usr/local/bin/
-COPY --link --from=tools-builder /lumio/dist/head.mrb /opt/lumio-framework/framework.mrb
+COPY --link --from=tools-builder /lumio/dist/mainnet.mrb /opt/lumio-framework/framework.mrb
 
 # Admission control
 EXPOSE 8000
