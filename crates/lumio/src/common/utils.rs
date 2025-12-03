@@ -589,11 +589,11 @@ pub fn explorer_account_link(hash: AccountAddress, network: Option<Network>) -> 
     // For now, default to what the browser is already on, though the link could be wrong
     if let Some(network) = network {
         format!(
-            "https://explorer.aptoslabs.com/account/{}?network={}",
-            hash, network
+            "https://explorer.{}.lumio.io/account/{}",
+            network, hash
         )
     } else {
-        format!("https://explorer.aptoslabs.com/account/{}", hash)
+        format!("https://explorer.testnet.lumio.io/account/{}", hash)
     }
 }
 
@@ -604,13 +604,13 @@ pub fn explorer_transaction_link(
     // For now, default to what the browser is already on, though the link could be wrong
     if let Some(network) = network {
         format!(
-            "https://explorer.aptoslabs.com/txn/{}?network={}",
-            hash.to_hex_literal(),
-            network
+            "https://explorer.{}.lumio.io/txn/{}",
+            network,
+            hash.to_hex_literal()
         )
     } else {
         format!(
-            "https://explorer.aptoslabs.com/txn/{}",
+            "https://explorer.testnet.lumio.io/txn/{}",
             hash.to_hex_literal()
         )
     }
