@@ -159,21 +159,21 @@ jobs:
           path: lumio-cli-*.zip
 
   # Generic linux arm should be the older version, more likely compatible
-  # build-linux-arm-binary:
-  #   name: "Build Linux ARM binary"
-  #   runs-on: ubuntu-22.04-arm
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         ref: ${{ github.event.inputs.source_git_ref_override }}
-  #     - uses: ./.github/actions/cli-rust-setup
-  #     - name: Build CLI
-  #       run: scripts/cli/build_cli_release.sh "Linux" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
-  #     - name: Upload Binary
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: cli-builds-linux-arm
-  #         path: lumio-cli-*.zip
+  build-linux-arm-binary:
+    name: "Build Linux ARM binary"
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.source_git_ref_override }}
+      - uses: ./.github/actions/cli-rust-setup
+      - name: Build CLI
+        run: scripts/cli/build_cli_release.sh "Linux" "${{inputs.release_version}}" "${{inputs.skip_checks}}" "false"
+      - name: Upload Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-builds-linux-arm
+          path: lumio-cli-*.zip
 
   # build-macos-x86_64-binary:
   #   name: "Build MacOS x86_64 binary"
@@ -315,7 +315,7 @@ jobs:
       - build-ubuntu24-binary
       - build-windows-binary
       - build-linux-binary
-      # - build-linux-arm-binary
+      - build-linux-arm-binary
       - build-macos-arm-binary
       # - build-macos-x86_64-binary
     runs-on: ubuntu-latest
