@@ -30,7 +30,7 @@ services:
       - "127.0.0.1:9102:9102"
 
   fullnode:
-    image: "${VALIDATOR_IMAGE_REPO:-lumiolabs/validator}:${IMAGE_TAG:-testnet}"
+    image: "${VALIDATOR_IMAGE_REPO:-lumioio/validator}:${IMAGE_TAG:-latest}"
     networks:
       shared:
     volumes:
